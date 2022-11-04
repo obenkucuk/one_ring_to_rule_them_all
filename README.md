@@ -2,4 +2,4 @@
 
 Herşeye hükmedecek tek yüzük.
 
-Localization added
+Localization added.......

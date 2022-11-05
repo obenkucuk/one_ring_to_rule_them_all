@@ -14,11 +14,6 @@ class HomePage extends StatelessWidget {
         PageBRouter(),
       ],
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      appBarBuilder: (context, tabsRouter) => AppBar(
-        title: const Text("HomePage"),
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        elevation: 25,
-      ),
       bottomNavigationBuilder: (context, tabsRouter) => SalomonBottomBar(
         currentIndex: tabsRouter.activeIndex,
         onTap: tabsRouter.setActiveIndex,

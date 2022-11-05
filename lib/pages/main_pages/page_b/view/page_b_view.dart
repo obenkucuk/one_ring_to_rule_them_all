@@ -7,7 +7,7 @@ class PageBView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final c = Get.put(BackgroundServices());
+    final c = Get.find<BackgroundServices>();
     return Center(
       child: Row(
         children: [

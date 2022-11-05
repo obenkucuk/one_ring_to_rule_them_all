@@ -3,8 +3,11 @@ import 'package:base_application/components/theme/theme_data.dart' as theme;
 import 'package:base_application/routes/router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
-void main() {
+void main() async {
+  await GetStorage.init();
+
   runApp(const MyApp());
 }
 
@@ -15,15 +18,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeController = Get.put(ThemeController());
+    final themeController = Get.put(BackgroundServices());
     return Obx((() => MaterialApp.router(
           debugShowCheckedModeBanner: false,
-          theme: themeController.isDark.value
-              ? theme.darkTheme()
-              : theme.lightTheme(),
-          darkTheme: themeController.isDark.value
-              ? theme.lightTheme()
-              : theme.darkTheme(),
+          theme: theme.lightTheme(),
+          darkTheme: theme.darkTheme(),
+          themeMode: themeController.themeMode.value == ThemeMode.system
+              ? ThemeMode.system
+              : (themeController.themeMode.value == ThemeMode.dark
+                  ? ThemeMode.dark
+                  : ThemeMode.light),
           title: "My App Title",
           routerDelegate: _appRouter.delegate(),
           routeInformationParser: _appRouter.defaultRouteParser(),

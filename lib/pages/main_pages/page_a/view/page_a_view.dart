@@ -8,16 +8,12 @@ class PageAView extends GetView<PageAController> {
 
   @override
   Widget build(BuildContext context) {
-    final c = Get.put(ThemeController());
     return Obx(() => Scaffold(
           appBar: AppBar(
             title: const Text(
               "HomePage",
               style: TextStyle(color: Colors.black),
             ),
-            leading: IconButton(
-                onPressed: () => c.changeTheme(),
-                icon: Icon(Icons.abc_outlined)),
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             elevation: 25,
           ),

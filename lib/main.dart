@@ -19,6 +19,9 @@ class MyApp extends StatelessWidget {
     return Obx((() => MaterialApp.router(
           debugShowCheckedModeBanner: false,
           theme: themeController.isDark.value
+              ? theme.darkTheme()
+              : theme.lightTheme(),
+          darkTheme: themeController.isDark.value
               ? theme.lightTheme()
               : theme.darkTheme(),
           title: "My App Title",

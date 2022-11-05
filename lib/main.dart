@@ -1,10 +1,11 @@
-import 'package:base_application/router/router.dart';
-import 'package:base_application/theme/adaptive_theme.dart';
+import 'package:base_application/routes/router.gr.dart';
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(const MyApp());
 }
+
+final _appRouter = AppRouter();
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -12,12 +13,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      routerConfig: router,
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: darkTheme(false),
-      darkTheme: darkTheme(true),
-      themeMode: ThemeMode.light,
+      title: "My App Title",
+      routerDelegate: _appRouter.delegate(),
+      routeInformationParser: _appRouter.defaultRouteParser(),
     );
   }
 }

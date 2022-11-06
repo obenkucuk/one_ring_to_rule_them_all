@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:auto_route/empty_router_widgets.dart';
+import 'package:base_application/components/splash/splash_page.dart';
 import 'package:base_application/main_page.dart';
 import 'package:base_application/pages/main_pages/home_page/home_page.dart';
 
@@ -10,6 +11,10 @@ import '../pages/main_pages/settings_page/settings_page.dart';
   routes: <AutoRoute>[
     AutoRoute(
       path: "/",
+      page: SplashPage,
+    ),
+    AutoRoute(
+      path: "main",
       page: MainPage,
       children: <AutoRoute>[
         AutoRoute(

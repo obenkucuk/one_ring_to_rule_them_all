@@ -58,6 +58,7 @@ class StateStatus {
     this.isError = false,
     this.errorMessage,
   });
+
   factory StateStatus.loading() {
     return StateStatus._(isLoading: true);
   }

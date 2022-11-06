@@ -1,9 +1,9 @@
-import 'package:base_application/pages/main_pages/page_a/controller/page_a_controller.dart';
+import 'package:base_application/pages/main_pages/home_page/controller/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class PageAView extends GetView<PageAController> {
-  const PageAView({super.key});
+class HomeView extends GetView<HomeController> {
+  const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {

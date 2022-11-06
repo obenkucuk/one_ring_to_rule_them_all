@@ -1,16 +1,16 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:auto_route/empty_router_widgets.dart';
-import 'package:base_application/home_page.dart';
-import 'package:base_application/pages/main_pages/page_a/page_a_page.dart';
+import 'package:base_application/main_page.dart';
+import 'package:base_application/pages/main_pages/home_page/home_page.dart';
 
-import '../pages/main_pages/page_b/pages_b_page.dart';
+import '../pages/main_pages/settings_page/settings_page.dart';
 
 @MaterialAutoRouter(
   replaceInRouteName: "Page,Route",
   routes: <AutoRoute>[
     AutoRoute(
       path: "/",
-      page: HomePage,
+      page: MainPage,
       children: <AutoRoute>[
         AutoRoute(
           path: "pagea",
@@ -19,7 +19,7 @@ import '../pages/main_pages/page_b/pages_b_page.dart';
           children: [
             AutoRoute(
               path: "",
-              page: PageAPage,
+              page: HomePage,
             ),
           ],
         ),
@@ -30,7 +30,7 @@ import '../pages/main_pages/page_b/pages_b_page.dart';
           children: [
             AutoRoute(
               path: "",
-              page: PageBPage,
+              page: SettingsPage,
             ),
           ],
         ),

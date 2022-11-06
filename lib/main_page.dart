@@ -3,8 +3,8 @@ import 'package:base_application/components/navigation_bar/salomon_bottom_bar.da
 import 'package:base_application/routes/router.gr.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class MainPage extends StatelessWidget {
+  const MainPage({super.key});
 
   @override
   Widget build(BuildContext context) {

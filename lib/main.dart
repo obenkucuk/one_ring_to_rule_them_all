@@ -27,7 +27,9 @@ class MyApp extends StatelessWidget {
         title: "My App Title",
         themeMode: themeController.themeMode.value == ThemeMode.system
             ? ThemeMode.system
-            : (themeController.themeMode.value == ThemeMode.dark ? ThemeMode.dark : ThemeMode.light),
+            : (themeController.themeMode.value == ThemeMode.dark
+                ? ThemeMode.dark
+                : ThemeMode.light),
         routerDelegate: _appRouter.delegate(),
         routeInformationParser: _appRouter.defaultRouteParser(),
         initialBinding: InitialBinding(),

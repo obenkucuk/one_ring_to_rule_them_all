@@ -11,7 +11,6 @@ class HomeView extends GetView<HomeController> {
           appBar: AppBar(
             title: const Text(
               "HomePage",
-              style: TextStyle(color: Colors.black),
             ),
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             elevation: 25,
@@ -27,9 +26,24 @@ class HomeView extends GetView<HomeController> {
                   hoverColor: Colors.transparent,
                   focusColor: Colors.transparent,
                   splashColor: Colors.transparent,
-                  onPressed: () => controller.sayfadaGosterilenSayi.value++,
+                  onPressed: () => controller.aa(),
                   icon: const Icon(Icons.add),
-                )
+                ),
+                IconButton(
+                  splashRadius: 15,
+                  enableFeedback: false,
+                  hoverColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  splashColor: Colors.transparent,
+                  onPressed: () => controller.bb(),
+                  icon: const Icon(Icons.add),
+                ),
+                controller.buildStatus(
+                    onLoaded: Container(
+                  height: 100,
+                  width: 100,
+                  color: Colors.amber,
+                ))
               ],
             ),
           ),

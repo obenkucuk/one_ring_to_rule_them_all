@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+enum StorageKeys { appLocalization, appThemeMode }
+
 class SettingsController extends GetxController {
   final box = GetStorage();
 
@@ -18,14 +20,14 @@ class SettingsController extends GetxController {
     if (lng == "system") {
       if (supportedLanguages().contains(Locale(Get.deviceLocale!.languageCode))) {
         lang.value = await AppLocalizations.delegate.load(Locale(Get.deviceLocale!.languageCode));
-        box.write("app_localization", "system");
+        box.write(StorageKeys.appLocalization.name, "system");
       } else {
         lang.value = await AppLocalizations.delegate.load(Locale(_defoultLocalization));
-        box.write("app_localization", "system");
+        box.write(StorageKeys.appLocalization.name, "system");
       }
     } else {
       lang.value = await AppLocalizations.delegate.load(Locale(lng));
-      box.write("app_localization", lng);
+      box.write(StorageKeys.appLocalization.name, lng);
     }
   }
 

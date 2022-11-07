@@ -5,5 +5,6 @@ class TextStyles {
 
   TextStyles(this.context);
 
-  TextStyle s8W300Dark() => Theme.of(context).textTheme.subtitle2!.copyWith(fontWeight: FontWeight.w300);
+  static TextStyle s8W300(BuildContext context) =>
+      Theme.of(context).textTheme.subtitle2!.copyWith(fontWeight: FontWeight.w300);
 }

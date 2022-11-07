@@ -1,5 +1,6 @@
 import 'package:base_application/pages/main_pages/home_page/controller/home_controller.dart';
 import 'package:base_application/pages/main_pages/settings_page/controller/settings_controller.dart';
+import 'package:base_application/theme/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -11,8 +12,9 @@ class HomeView extends GetView<HomeController> {
     final settings = Get.find<SettingsController>();
     return Obx(() => Scaffold(
           appBar: AppBar(
-            title: const Text(
+            title: Text(
               "HomePage",
+              style: TextStyles.s8W300(context),
             ),
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             elevation: 25,

@@ -16,14 +16,11 @@ class SettingsController extends GetxController {
 
   void changeLanguage(String lng) async {
     if (lng == "system") {
-      if (supportedLanguages()
-          .contains(Locale(Get.deviceLocale!.languageCode))) {
-        lang.value = await AppLocalizations.delegate
-            .load(Locale(Get.deviceLocale!.languageCode));
+      if (supportedLanguages().contains(Locale(Get.deviceLocale!.languageCode))) {
+        lang.value = await AppLocalizations.delegate.load(Locale(Get.deviceLocale!.languageCode));
         box.write("app_localization", "system");
       } else {
-        lang.value =
-            await AppLocalizations.delegate.load(Locale(_defoultLocalization));
+        lang.value = await AppLocalizations.delegate.load(Locale(_defoultLocalization));
         box.write("app_localization", "system");
       }
     } else {
@@ -43,13 +40,11 @@ class SettingsController extends GetxController {
   /// Tema Modu Değiştirme
   void changeTheme(ThemeMode mode) {
     if (mode == ThemeMode.dark) {
-      SystemChrome.setSystemUIOverlayStyle(
-          const SystemUiOverlayStyle(statusBarBrightness: Brightness.dark));
+      SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(statusBarBrightness: Brightness.dark));
       box.write("app_theme_mode", "dark");
       themeMode.value = ThemeMode.dark;
     } else if (mode == ThemeMode.light) {
-      SystemChrome.setSystemUIOverlayStyle(
-          const SystemUiOverlayStyle(statusBarBrightness: Brightness.light));
+      SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(statusBarBrightness: Brightness.light));
 
       box.write("app_theme_mode", "light");
       themeMode.value = ThemeMode.light;
@@ -87,8 +82,7 @@ class SettingsController extends GetxController {
       preferedLocalization = storageLocalization;
     }
 
-    lang = (await AppLocalizations.delegate.load(Locale(preferedLocalization!)))
-        .obs;
+    lang = (await AppLocalizations.delegate.load(Locale(preferedLocalization!))).obs;
 
 //////////////////////////////// tema
 //
@@ -102,9 +96,7 @@ class SettingsController extends GetxController {
     // tema modu ne?
     themeMode = storageThemeMode == "dark"
         ? ThemeMode.dark.obs
-        : (storageThemeMode == "light"
-            ? ThemeMode.light.obs
-            : ThemeMode.system.obs);
+        : (storageThemeMode == "light" ? ThemeMode.light.obs : ThemeMode.system.obs);
   }
   ////////////////////////////////
   //

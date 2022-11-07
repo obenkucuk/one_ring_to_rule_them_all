@@ -6,6 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
+enum BatuExample { oben, doga, batu }
+
+/// BatuExample.batu.name
 void main() async {
   await GetStorage.init();
   runApp(const MyApp());
@@ -38,9 +41,7 @@ class MyApp extends StatelessWidget {
         title: "My App Title",
         themeMode: themeController.themeMode.value == ThemeMode.system
             ? ThemeMode.system
-            : (themeController.themeMode.value == ThemeMode.dark
-                ? ThemeMode.dark
-                : ThemeMode.light),
+            : (themeController.themeMode.value == ThemeMode.dark ? ThemeMode.dark : ThemeMode.light),
         routerDelegate: _appRouter.delegate(),
         routeInformationParser: _appRouter.defaultRouteParser(),
         initialBinding: InitialBinding(),

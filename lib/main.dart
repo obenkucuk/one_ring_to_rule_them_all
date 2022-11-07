@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
+/// batuhanın keyfi için
 enum BatuExample { oben, doga, batu }
 
 /// BatuExample.batu.name

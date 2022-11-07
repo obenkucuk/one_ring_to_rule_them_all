@@ -6,4 +6,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get helloWorld => 'Meraba Dünya!';
+
+  @override
+  String get name => 'İsim';
 }

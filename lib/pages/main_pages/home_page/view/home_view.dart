@@ -65,7 +65,7 @@ class HomeView extends GetView<HomeController> {
                   width: 100,
                   color: Colors.amber,
                 )),
-                Text(settings.tr.value.helloWorld),
+                Text(settings.lang.value.helloWorld),
                 TextButton(
                     onPressed: (() {
                       settings.supportedLanguages();

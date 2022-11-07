@@ -1,27 +1,7 @@
 # See https://www.dartlang.org/guides/libraries/private-files
 
 # Files and directories created by pub
-#.dart_tool/
-.dart_tool/dartpad/web_plugin_registrant.dart
-.dart_tool/flutter_build/90965b9b10fde4824cd06cda5d1977cc/.filecache
-.dart_tool/flutter_build/90965b9b10fde4824cd06cda5d1977cc/app.dill
-.dart_tool/flutter_build/90965b9b10fde4824cd06cda5d1977cc/App.framework/App
-.dart_tool/flutter_build/90965b9b10fde4824cd06cda5d1977cc/debug_ios_bundle_flutter_assets.stamp
-.dart_tool/flutter_build/90965b9b10fde4824cd06cda5d1977cc/debug_universal_framework.stamp
-.dart_tool/flutter_build/90965b9b10fde4824cd06cda5d1977cc/debug_unpack_ios.stamp
-.dart_tool/flutter_build/90965b9b10fde4824cd06cda5d1977cc/flutter_assets.d
-.dart_tool/flutter_build/90965b9b10fde4824cd06cda5d1977cc/gen_dart_plugin_registrant.stamp
-.dart_tool/flutter_build/90965b9b10fde4824cd06cda5d1977cc/gen_l10n_inputs_and_outputs.json
-.dart_tool/flutter_build/90965b9b10fde4824cd06cda5d1977cc/gen_localizations.d
-.dart_tool/flutter_build/90965b9b10fde4824cd06cda5d1977cc/gen_localizations.stamp
-.dart_tool/flutter_build/90965b9b10fde4824cd06cda5d1977cc/kernel_snapshot.d
-.dart_tool/flutter_build/90965b9b10fde4824cd06cda5d1977cc/kernel_snapshot.stamp
-.dart_tool/flutter_build/90965b9b10fde4824cd06cda5d1977cc/outputs.json
-.dart_tool/flutter_build/dart_plugin_registrant.dart
-.dart_tool/package_config.json
-.dart_tool/package_config_subset
-.dart_tool/version
-.DS_Store
+.dart_tool/
 
 .packages
 build/

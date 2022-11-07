@@ -3,10 +3,8 @@ import 'package:base_application/initial_bindings.dart';
 import 'package:base_application/pages/main_pages/settings_page/controller/settings_controller.dart';
 import 'package:base_application/routes/router.gr.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() async {
   await GetStorage.init();

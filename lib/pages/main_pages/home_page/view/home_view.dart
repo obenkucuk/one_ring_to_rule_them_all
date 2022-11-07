@@ -46,17 +46,17 @@ class HomeView extends GetView<HomeController> {
                         onPressed: (() {
                           settings.changeLanguage("tr");
                         }),
-                        child: Text("TR")),
+                        child: const Text("TR")),
                     TextButton(
                         onPressed: (() {
                           settings.changeLanguage("en");
                         }),
-                        child: Text("EN")),
+                        child: const Text("EN")),
                     TextButton(
                         onPressed: (() {
                           settings.changeLanguage("system");
                         }),
-                        child: Text("system")),
+                        child: const Text("system")),
                   ],
                 ),
                 controller.buildStatus(
@@ -70,7 +70,7 @@ class HomeView extends GetView<HomeController> {
                     onPressed: (() {
                       settings.supportedLanguages();
                     }),
-                    child: Text("Desteklenen Diller")),
+                    child: const Text("Desteklenen Diller")),
               ],
             ),
           ),

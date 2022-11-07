@@ -1,10 +1,8 @@
+import 'package:base_application/pages/main_pages/settings_page/controller/settings_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class TextStyles {
-  final BuildContext context;
+final settings = Get.find<SettingsController>();
+BuildContext get context => settings.appGlobalKey.currentContext!;
 
-  TextStyles(this.context);
-
-  static TextStyle s8W300(BuildContext context) =>
-      Theme.of(context).textTheme.subtitle2!.copyWith(fontWeight: FontWeight.w300);
-}
+TextStyle get s18W300 => Theme.of(context).textTheme.subtitle2!.copyWith(fontSize: 18, fontWeight: FontWeight.w300);

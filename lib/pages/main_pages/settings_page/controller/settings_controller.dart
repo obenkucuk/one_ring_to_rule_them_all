@@ -8,6 +8,7 @@ enum StorageKeys { appLocalization, appThemeMode }
 
 class SettingsController extends GetxController {
   final box = GetStorage();
+  final GlobalKey appGlobalKey = GlobalKey();
 
 //////////////////////////////// localization
 //

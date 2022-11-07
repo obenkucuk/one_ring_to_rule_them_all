@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
     final SettingsController themeController = Get.put(SettingsController());
     return Obx(
       () => GetMaterialApp.router(
+        key: themeController.appGlobalKey,
         // localizationsDelegates: const [
         //   AppLocalizations.delegate,
         //   GlobalMaterialLocalizations.delegate,

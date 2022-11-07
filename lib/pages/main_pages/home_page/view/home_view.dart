@@ -14,7 +14,7 @@ class HomeView extends GetView<HomeController> {
           appBar: AppBar(
             title: Text(
               "HomePage",
-              style: TextStyles.s8W300(context),
+              style: s18W300,
             ),
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             elevation: 25,

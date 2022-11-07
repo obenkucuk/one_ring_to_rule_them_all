@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -42,9 +43,14 @@ class SettingsController extends GetxController {
   /// Tema Modu Değiştirme
   void changeTheme(ThemeMode mode) {
     if (mode == ThemeMode.dark) {
+      SystemChrome.setSystemUIOverlayStyle(
+          const SystemUiOverlayStyle(statusBarBrightness: Brightness.dark));
       box.write("app_theme_mode", "dark");
       themeMode.value = ThemeMode.dark;
     } else if (mode == ThemeMode.light) {
+      SystemChrome.setSystemUIOverlayStyle(
+          const SystemUiOverlayStyle(statusBarBrightness: Brightness.light));
+
       box.write("app_theme_mode", "light");
       themeMode.value = ThemeMode.light;
     } else {

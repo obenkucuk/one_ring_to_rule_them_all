@@ -11,22 +11,22 @@ class SettingsController extends GetxController {
 
   // TODO uygulama varsayılan dili her uygulama için ayarlanmalı
   String defoultLocalization = "en";
-  late Rx<AppLocalizations> appLocalization;
+  late Rx<AppLocalizations> tr;
 
   void changeLanguage(String lng) async {
     if (lng == "system") {
       if (supportedLanguages()
           .contains(Locale(Get.deviceLocale!.languageCode))) {
-        appLocalization.value = await AppLocalizations.delegate
+        tr.value = await AppLocalizations.delegate
             .load(Locale(Get.deviceLocale!.languageCode));
         box.write("app_localization", "system");
       } else {
-        appLocalization.value =
+        tr.value =
             await AppLocalizations.delegate.load(Locale(defoultLocalization));
         box.write("app_localization", "system");
       }
     } else {
-      appLocalization.value = await AppLocalizations.delegate.load(Locale(lng));
+      tr.value = await AppLocalizations.delegate.load(Locale(lng));
       box.write("app_localization", lng);
     }
   }
@@ -81,9 +81,8 @@ class SettingsController extends GetxController {
       preferedLocalization = storageLocalization;
     }
 
-    appLocalization =
-        (await AppLocalizations.delegate.load(Locale(preferedLocalization!)))
-            .obs;
+    tr = (await AppLocalizations.delegate.load(Locale(preferedLocalization!)))
+        .obs;
 
 //////////////////////////////// tema
 //

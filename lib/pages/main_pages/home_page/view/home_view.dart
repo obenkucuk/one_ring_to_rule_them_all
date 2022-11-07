@@ -2,7 +2,6 @@ import 'package:base_application/pages/main_pages/home_page/controller/home_cont
 import 'package:base_application/pages/main_pages/settings_page/controller/settings_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeView extends GetView<HomeController> {
   const HomeView({super.key});

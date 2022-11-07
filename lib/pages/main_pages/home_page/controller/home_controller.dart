@@ -6,6 +6,7 @@ class HomeController extends GetxController with AppStateMixin {
 
   aa() {
     changeStateStatus(StateStatus.loaded());
+
     sayfadaGosterilenSayi.value++;
   }
 

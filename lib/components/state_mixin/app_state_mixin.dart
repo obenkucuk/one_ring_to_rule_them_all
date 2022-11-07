@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -6,6 +8,25 @@ mixin AppStateMixin on GetxController {
 
   changeStateStatus(StateStatus status) {
     _status.value = status;
+  }
+
+// TODO bunu taşı
+  Future<bool> checkInternetConnection() async {
+    try {
+      final result = await InternetAddress.lookup('google.com');
+      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+        return true;
+      } else {
+        return false;
+      }
+    } on SocketException catch (_) {
+      return false;
+    }
+  }
+
+  @override
+  void onClose() {
+    super.onClose();
   }
 
   Widget buildStatus({
@@ -32,10 +53,7 @@ mixin AppStateMixin on GetxController {
             child: CircularProgressIndicator.adaptive(),
           );
     } else if (_status.value.isNoConnection) {
-      return onNoConnection ??
-          const Center(
-            child: CircularProgressIndicator.adaptive(),
-          );
+      return onNoConnection ?? const Center(child: Text("No Connection"));
     } else {
       return onError!(_status.value.errorMessage);
     }

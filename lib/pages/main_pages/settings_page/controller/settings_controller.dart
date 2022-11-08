@@ -21,6 +21,7 @@ class SettingsController extends GetxController {
   late Rx<AppLocalizations> lang;
 
   void changeLanguage(String lng) async {
+    print(Get.deviceLocale!.languageCode);
     if (lng == "system") {
       if (supportedLanguages()
           .contains(Locale(Get.deviceLocale!.languageCode))) {
@@ -72,10 +73,10 @@ class SettingsController extends GetxController {
     super.onInit();
 //////////////////////////////// localization
 //
-    var storageLocalization = box.read("app_localization");
+    var storageLocalization = box.read(StorageKeys.appLocalization.name);
     if (storageLocalization == null) {
-      box.write("app_localization", "system");
-      storageLocalization = box.read("app_localization");
+      box.write(StorageKeys.appLocalization.name, "system");
+      storageLocalization = box.read(StorageKeys.appLocalization.name);
     }
 
     String? preferedLocalization;

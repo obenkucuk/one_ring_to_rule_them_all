@@ -24,7 +24,9 @@ class MyApp extends StatelessWidget {
     final SettingsController themeController = Get.put(SettingsController());
     return Obx(
       () => GetMaterialApp.router(
+        scaffoldMessengerKey: themeController.snackbarKey,
         key: themeController.appGlobalKey,
+
         // localizationsDelegates: const [
         //   AppLocalizations.delegate,
         //   GlobalMaterialLocalizations.delegate,
@@ -41,9 +43,12 @@ class MyApp extends StatelessWidget {
         theme: theme.lightTheme(),
         darkTheme: theme.darkTheme(),
         title: "My App Title",
+
         themeMode: themeController.themeMode.value == ThemeMode.system
             ? ThemeMode.system
-            : (themeController.themeMode.value == ThemeMode.dark ? ThemeMode.dark : ThemeMode.light),
+            : (themeController.themeMode.value == ThemeMode.dark
+                ? ThemeMode.dark
+                : ThemeMode.light),
         routerDelegate: _appRouter.delegate(),
         routeInformationParser: _appRouter.defaultRouteParser(),
         initialBinding: InitialBinding(),

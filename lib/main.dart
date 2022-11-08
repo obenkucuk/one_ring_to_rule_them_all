@@ -4,14 +4,14 @@ import 'package:base_application/pages/main_pages/settings_page/controller/setti
 import 'package:base_application/routes/router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 
 /// batuhanın keyfi için
 enum BatuExample { oben, doga, batu }
 
 /// BatuExample.batu.name
 void main() async {
-  await GetStorage.init();
+  await SharedPrefs.init();
+
   runApp(const MyApp());
 }
 
@@ -22,37 +22,33 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final SettingsController themeController = Get.put(SettingsController());
-    return Obx(
-      () => GetMaterialApp.router(
-        scaffoldMessengerKey: themeController.snackbarKey,
-        key: themeController.appGlobalKey,
+    return GetMaterialApp.router(
+      scaffoldMessengerKey: themeController.snackbarKey,
+      key: themeController.appGlobalKey,
 
-        // localizationsDelegates: const [
-        //   AppLocalizations.delegate,
-        //   GlobalMaterialLocalizations.delegate,
-        //   GlobalWidgetsLocalizations.delegate,
-        //   GlobalCupertinoLocalizations.delegate,
-        // ],
-        // supportedLocales: const [
-        //   Locale(
-        //     'en',
-        //   ),
-        //   Locale('tr'),
-        // ],
-        debugShowCheckedModeBanner: false,
-        theme: theme.lightTheme(),
-        darkTheme: theme.darkTheme(),
-        title: "My App Title",
+      // localizationsDelegates: const [
+      //   AppLocalizations.delegate,
+      //   GlobalMaterialLocalizations.delegate,
+      //   GlobalWidgetsLocalizations.delegate,
+      //   GlobalCupertinoLocalizations.delegate,
+      // ],
+      // supportedLocales: const [
+      //   Locale(
+      //     'en',
+      //   ),
+      //   Locale('tr'),
+      // ],
+      debugShowCheckedModeBanner: false,
+      theme: theme.lightTheme(),
+      darkTheme: theme.darkTheme(),
+      title: "My App Title",
 
-        themeMode: themeController.themeMode.value == ThemeMode.system
-            ? ThemeMode.system
-            : (themeController.themeMode.value == ThemeMode.dark
-                ? ThemeMode.dark
-                : ThemeMode.light),
-        routerDelegate: _appRouter.delegate(),
-        routeInformationParser: _appRouter.defaultRouteParser(),
-        initialBinding: InitialBinding(),
-      ),
+      themeMode: themeController.themeMode.value == ThemeMode.system
+          ? ThemeMode.system
+          : (themeController.themeMode.value == ThemeMode.dark ? ThemeMode.dark : ThemeMode.light),
+      routerDelegate: _appRouter.delegate(),
+      routeInformationParser: _appRouter.defaultRouteParser(),
+      initialBinding: InitialBinding(),
     );
   }
 }

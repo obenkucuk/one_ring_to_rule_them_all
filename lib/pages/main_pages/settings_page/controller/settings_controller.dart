@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -26,7 +25,6 @@ class SharedPrefs {
 enum StorageKeys { appLocalization, appThemeMode }
 
 class SettingsController extends GetxController {
-  final box = GetStorage();
   final GlobalKey appGlobalKey = GlobalKey();
 
   final GlobalKey<ScaffoldMessengerState> snackbarKey = GlobalKey<ScaffoldMessengerState>();
@@ -43,14 +41,14 @@ class SettingsController extends GetxController {
     if (lng == "system") {
       if (supportedLanguages().contains(Locale(Get.deviceLocale!.languageCode))) {
         lang.value = await AppLocalizations.delegate.load(Locale(Get.deviceLocale!.languageCode));
-        box.write(StorageKeys.appLocalization.name, "system");
+        SharedPrefs.write(StorageKeys.appLocalization.name, "system");
       } else {
         lang.value = await AppLocalizations.delegate.load(Locale(_defoultLocalization));
-        box.write(StorageKeys.appLocalization.name, "system");
+        SharedPrefs.write(StorageKeys.appLocalization.name, "system");
       }
     } else {
       lang.value = await AppLocalizations.delegate.load(Locale(lng));
-      box.write(StorageKeys.appLocalization.name, lng);
+      SharedPrefs.write(StorageKeys.appLocalization.name, lng);
     }
   }
 
@@ -66,15 +64,15 @@ class SettingsController extends GetxController {
   void changeTheme(ThemeMode mode) {
     if (mode == ThemeMode.dark) {
       SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(statusBarBrightness: Brightness.dark));
-      box.write("app_theme_mode", "dark");
+      SharedPrefs.write("app_theme_mode", "dark");
       themeMode.value = ThemeMode.dark;
     } else if (mode == ThemeMode.light) {
       SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(statusBarBrightness: Brightness.light));
 
-      box.write("app_theme_mode", "light");
+      SharedPrefs.write("app_theme_mode", "light");
       themeMode.value = ThemeMode.light;
     } else {
-      box.write("app_theme_mode", "system");
+      SharedPrefs.write("app_theme_mode", "system");
       themeMode.value = ThemeMode.system;
     }
   }
@@ -86,10 +84,10 @@ class SettingsController extends GetxController {
     super.onInit();
 //////////////////////////////// localization
 //
-    var storageLocalization = box.read(StorageKeys.appLocalization.name);
-    if (storageLocalization == null) {
-      box.write(StorageKeys.appLocalization.name, "system");
-      storageLocalization = box.read(StorageKeys.appLocalization.name);
+    var storageLocalization = SharedPrefs.read(StorageKeys.appLocalization.name);
+    if (storageLocalization == "null") {
+      SharedPrefs.write(StorageKeys.appLocalization.name, "system");
+      storageLocalization = SharedPrefs.read(StorageKeys.appLocalization.name);
     }
 
     String? preferedLocalization;
@@ -112,10 +110,10 @@ class SettingsController extends GetxController {
 //////////////////////////////// tema
 //
     //ilk açılış tema modu
-    var storageThemeMode = box.read("app_theme_mode");
-    if (storageThemeMode == null) {
-      box.write("app_theme_mode", "system");
-      storageThemeMode = box.read("app_theme_mode");
+    var storageThemeMode = SharedPrefs.read("app_theme_mode");
+    if (storageThemeMode == "null") {
+      SharedPrefs.write("app_theme_mode", "system");
+      storageThemeMode = SharedPrefs.read("app_theme_mode");
     }
 
     // tema modu ne?

@@ -1,11 +1,11 @@
-import 'package:base_application/pages/main_pages/settings_page/view/settings_view.dart';
+import 'package:base_application/pages/main_screen/settings_screen/view/settings_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'controller/settings_controller.dart';
 
-class SettingsPage extends StatelessWidget {
-  const SettingsPage({super.key});
+class SettingsScreen extends StatelessWidget {
+  const SettingsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

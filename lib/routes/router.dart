@@ -1,13 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:auto_route/empty_router_widgets.dart';
 import 'package:base_application/components/splash/splash_page.dart';
-import 'package:base_application/main_page.dart';
-import 'package:base_application/pages/main_pages/home_page/home_page.dart';
+import 'package:base_application/main_screen.dart';
+import 'package:base_application/pages/main_screen/home_screen/home_screen.dart';
 
-import '../pages/main_pages/settings_page/settings_page.dart';
+import '../pages/main_screen/settings_screen/settings_screen.dart';
 
 @MaterialAutoRouter(
-  replaceInRouteName: "Page,Route",
+  replaceInRouteName: "Screen,Route",
   routes: <AutoRoute>[
     AutoRoute(
       path: "/",
@@ -15,7 +15,7 @@ import '../pages/main_pages/settings_page/settings_page.dart';
     ),
     AutoRoute(
       path: "main",
-      page: MainPage,
+      page: MainScreen,
       children: <AutoRoute>[
         AutoRoute(
           path: "pagea",
@@ -24,7 +24,7 @@ import '../pages/main_pages/settings_page/settings_page.dart';
           children: [
             AutoRoute(
               path: "",
-              page: HomePage,
+              page: HomeScreen,
             ),
           ],
         ),
@@ -35,7 +35,7 @@ import '../pages/main_pages/settings_page/settings_page.dart';
           children: [
             AutoRoute(
               path: "",
-              page: SettingsPage,
+              page: SettingsScreen,
             ),
           ],
         ),

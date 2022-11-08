@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
-class TextStyles {
-  final BuildContext context;
+// final settings = Get.find<SettingsController>();
+// BuildContext get context => settings.appGlobalKey.currentContext!;
 
-  TextStyles(this.context);
+class TextStylesX {
+  BuildContext context;
+  TextStylesX(this.context);
 
-  TextStyle s8W300Dark() => Theme.of(context).textTheme.subtitle2!.copyWith(fontWeight: FontWeight.w300);
+  TextStyle get s18W300 => Theme.of(context).textTheme.headline1!.copyWith(fontSize: 18, fontWeight: FontWeight.w300);
 }

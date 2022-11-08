@@ -16,13 +16,12 @@ import 'package:auto_route/empty_router_widgets.dart' as _i3;
 import 'package:flutter/material.dart' as _i7;
 
 import '../components/splash/splash_page.dart' as _i1;
-import '../main_page.dart' as _i2;
-import '../pages/main_pages/home_page/home_page.dart' as _i4;
-import '../pages/main_pages/settings_page/settings_page.dart' as _i5;
+import '../main_screen.dart' as _i2;
+import '../pages/main_screen/home_screen/home_screen.dart' as _i4;
+import '../pages/main_screen/settings_screen/settings_screen.dart' as _i5;
 
 class AppRouter extends _i6.RootStackRouter {
-  AppRouter([_i7.GlobalKey<_i7.NavigatorState>? navigatorKey])
-      : super(navigatorKey);
+  AppRouter([_i7.GlobalKey<_i7.NavigatorState>? navigatorKey]) : super(navigatorKey);
 
   @override
   final Map<String, _i6.PageFactory> pagesMap = {
@@ -35,7 +34,7 @@ class AppRouter extends _i6.RootStackRouter {
     MainRoute.name: (routeData) {
       return _i6.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i2.MainPage(),
+        child: const _i2.MainScreen(),
       );
     },
     PageARouter.name: (routeData) {
@@ -53,13 +52,13 @@ class AppRouter extends _i6.RootStackRouter {
     HomeRoute.name: (routeData) {
       return _i6.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i4.HomePage(),
+        child: const _i4.HomeScreen(),
       );
     },
     SettingsRoute.name: (routeData) {
       return _i6.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i5.SettingsPage(),
+        child: const _i5.SettingsScreen(),
       );
     },
   };
@@ -116,7 +115,7 @@ class SplashRoute extends _i6.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i2.MainPage]
+/// [_i2.MainScreen]
 class MainRoute extends _i6.PageRouteInfo<void> {
   const MainRoute({List<_i6.PageRouteInfo>? children})
       : super(
@@ -155,7 +154,7 @@ class PageBRouter extends _i6.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i4.HomePage]
+/// [_i4.HomeScreen]
 class HomeRoute extends _i6.PageRouteInfo<void> {
   const HomeRoute()
       : super(
@@ -167,7 +166,7 @@ class HomeRoute extends _i6.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i5.SettingsPage]
+/// [_i5.SettingsScreen]
 class SettingsRoute extends _i6.PageRouteInfo<void> {
   const SettingsRoute()
       : super(

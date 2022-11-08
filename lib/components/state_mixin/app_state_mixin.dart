@@ -1,12 +1,11 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 mixin AppStateMixin on GetxController {
   final Rx<StateStatus> _status = StateStatus.loading().obs;
 
-  changeStateStatus(StateStatus status) {
+  StateStatus get status => _status.value;
+  set status(StateStatus status) {
     _status.value = status;
   }
 
@@ -17,26 +16,27 @@ mixin AppStateMixin on GetxController {
     Widget? onNoConnection,
     Widget Function(String? error)? onError,
   }) {
-    // TODO defoult lar düzenlenecek
-    if (_status.value.isLoading) {
+    // NOT: defoult lar düzenlenecek
+
+    if (status.isLoading) {
       return onLoading ??
           const Center(
             child: CircularProgressIndicator.adaptive(),
           );
-    } else if (_status.value.isLoaded) {
+    } else if (status.isLoaded) {
       return onLoaded ??
           const Center(
             child: CircularProgressIndicator.adaptive(),
           );
-    } else if (_status.value.isLowConnection) {
+    } else if (status.isLowConnection) {
       return onLowConnection ??
           const Center(
             child: CircularProgressIndicator.adaptive(),
           );
-    } else if (_status.value.isNoConnection) {
+    } else if (status.isNoConnection) {
       return onNoConnection ?? const Center(child: Text("No Connection"));
     } else {
-      return onError!(_status.value.errorMessage);
+      return onError!(status.errorMessage);
     }
   }
 }

@@ -1,4 +1,4 @@
-import 'package:base_application/components/exeptions/app_exeptions.dart';
+import 'package:base_application/core/exeptions/app_exeptions.dart';
 import 'package:base_application/components/state_mixin/app_state_mixin.dart';
 import 'package:get/state_manager.dart';
 
@@ -6,7 +6,7 @@ class HomeController extends GetxController with AppStateMixin {
   final RxInt sayfadaGosterilenSayi = 0.obs;
 
   aa() {
-    changeStateStatus(StateStatus.loaded());
+    status = StateStatus.loaded();
     sayfadaGosterilenSayi.value++;
 
     try {
@@ -15,7 +15,7 @@ class HomeController extends GetxController with AppStateMixin {
   }
 
   bb() {
-    changeStateStatus(StateStatus.loading());
+    status = StateStatus.loading();
     sayfadaGosterilenSayi.value--;
   }
 }

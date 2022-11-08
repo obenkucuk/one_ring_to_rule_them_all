@@ -1,12 +1,9 @@
-import 'dart:convert';
-import 'dart:io';
-
-import 'package:base_application/components/exeptions/app_exeptions.dart';
+import 'package:base_application/core/exeptions/app_exeptions.dart';
 import 'package:dio/dio.dart';
 
-import 'chack_network_connection.dart';
+import 'check_network_connection.dart';
 
-abstract class INetvorkServices {
+abstract class INetworkServices {
   ///Map halinde json dosyayı bekleniyor ise...
   fetchDataMapJson(Uri uri) async {}
 
@@ -14,7 +11,7 @@ abstract class INetvorkServices {
   fetchDataMapList(Uri uri) async {}
 }
 
-class NetvorkServices extends INetvorkServices {
+class NetworkServices extends INetworkServices {
   @override
   Future<Response> fetchDataMapJson(uri) async {
     final dio = Dio();
@@ -22,7 +19,6 @@ class NetvorkServices extends INetvorkServices {
     if (!isConnectedNetwork) {
       throw NoInternetExeption();
     }
-
     final response = await dio.getUri(uri);
 
     if (response.statusCode != 200) {

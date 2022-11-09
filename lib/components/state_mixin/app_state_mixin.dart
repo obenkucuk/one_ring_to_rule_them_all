@@ -37,7 +37,7 @@ mixin AppStateMixin on GetxController {
 
         print("await for SONRASI");
       } on StatusExeption catch (e) {
-        status = StateStatus.error(e.statusMessage);
+        status = StateStatus.error(e.statusMessage.toString());
       } catch (e) {
         status = StateStatus.error("Unhandled Error");
       }
@@ -52,10 +52,10 @@ mixin AppStateMixin on GetxController {
 
   Widget buildStatus({
     Widget? onLoading,
-    Widget? onLoaded,
+    required Widget onLoaded,
     Widget? onLowConnection,
     Widget? onNoConnection,
-    Widget Function(String? error)? onError,
+    Widget? onError,
   }) {
     // NOT: defoult lar düzenlenecek
 
@@ -65,10 +65,7 @@ mixin AppStateMixin on GetxController {
             child: CircularProgressIndicator.adaptive(),
           );
     } else if (status.isLoaded) {
-      return onLoaded ??
-          const Center(
-            child: CircularProgressIndicator.adaptive(),
-          );
+      return onLoaded;
     } else if (status.isLowConnection) {
       return onLowConnection ??
           const Center(
@@ -77,7 +74,14 @@ mixin AppStateMixin on GetxController {
     } else if (status.isNoConnection) {
       return onNoConnection ?? const Center(child: Text("No Connection"));
     } else {
-      return onError!(status.errorMessage);
+      return onError ??
+          Center(
+            child: Column(
+              children: [
+                Text("Bi şeyler yanlış gitti! : ${status.errorMessage}"),
+              ],
+            ),
+          );
     }
   }
 }
@@ -88,7 +92,7 @@ class StateStatus {
   final bool isNoConnection;
   final bool isLowConnection;
   final bool isError;
-  final String? errorMessage;
+  final String errorMessage;
 
   StateStatus._({
     this.isLoading = false,
@@ -96,7 +100,7 @@ class StateStatus {
     this.isNoConnection = false,
     this.isLowConnection = false,
     this.isError = false,
-    this.errorMessage,
+    this.errorMessage = "",
   });
 
   factory StateStatus.loading() {
@@ -111,7 +115,7 @@ class StateStatus {
   factory StateStatus.lowConnection() {
     return StateStatus._(isLowConnection: true);
   }
-  factory StateStatus.error([String? message]) {
+  factory StateStatus.error(String message) {
     return StateStatus._(isError: true, errorMessage: message);
   }
 }

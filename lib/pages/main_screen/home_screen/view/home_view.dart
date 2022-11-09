@@ -5,6 +5,9 @@ import 'package:base_application/pages/main_screen/settings_screen/controller/se
 import 'package:base_application/components/theme/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:base_application/components/navigation_bar/salomon_bottom_bar.dart';
+import 'package:base_application/routes/router.gr.dart';
 
 class HomeView extends GetView<HomeController> {
   const HomeView({super.key});
@@ -64,10 +67,7 @@ class HomeView extends GetView<HomeController> {
             Text(settings.lang.value.helloWorld),
             TextButton(
                 onPressed: (() {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const DenemePage()));
+                  AutoRouter.of(context).pushNamed("deneme");
                 }),
                 child: const Text("Desteklenen Diller")),
           ],

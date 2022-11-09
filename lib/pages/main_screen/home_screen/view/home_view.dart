@@ -1,4 +1,5 @@
 import 'package:base_application/core/shared_pref.dart';
+import 'package:base_application/pages/deneme_page.dart';
 import 'package:base_application/pages/main_screen/home_screen/controller/home_controller.dart';
 import 'package:base_application/pages/main_screen/settings_screen/controller/settings_controller.dart';
 import 'package:base_application/theme/text_style.dart';
@@ -63,7 +64,10 @@ class HomeView extends GetView<HomeController> {
             Text(settings.lang.value.helloWorld),
             TextButton(
                 onPressed: (() {
-                  settings.supportedLanguages();
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const DenemePage()));
                 }),
                 child: const Text("Desteklenen Diller")),
           ],

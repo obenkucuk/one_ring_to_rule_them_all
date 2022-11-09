@@ -1,3 +1,7 @@
+import 'package:base_application/core/exeptions/app_exeptions.dart';
+import 'package:base_application/core/network_services/check_network_connection.dart';
+import 'package:base_application/core/network_services/network_services.dart';
+import 'package:base_application/pages/deneme_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -7,6 +11,43 @@ mixin AppStateMixin on GetxController {
   StateStatus get status => _status.value;
   set status(StateStatus status) {
     _status.value = status;
+  }
+  // TODO zamanaşımı yapılacak
+
+  Future loadStates(Uri uri) async {
+    while (true) {
+      try {
+        final response = await NetworkServices().fetchDataMapJson(uri);
+        status = StateStatus.loaded();
+        return response.data;
+      } on NoInternetExeption {
+        status = StateStatus.noConnection();
+
+        await for (var _ in Stream.periodic(const Duration(seconds: 3))) {
+          print("mixin await for");
+          print(status.isNoConnection);
+          if (await checkInternetConnection()) {
+            status = StateStatus.loading();
+            break;
+          }
+          if (!status.isNoConnection) {
+            break;
+          }
+        }
+
+        print("await for SONRASI");
+      } on StatusExeption catch (e) {
+        status = StateStatus.error(e.statusMessage);
+      } catch (e) {
+        status = StateStatus.error("Unhandled Error");
+      }
+    }
+  }
+
+  @override
+  void onClose() {
+    super.onClose();
+    status = StateStatus._();
   }
 
   Widget buildStatus({

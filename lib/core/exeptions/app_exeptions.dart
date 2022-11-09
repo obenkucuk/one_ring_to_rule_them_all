@@ -6,34 +6,44 @@ import 'package:get/get.dart';
 abstract class IAppException implements Exception {}
 
 class NoInternetExeption implements Exception {
-  int chackCount = 0;
+  int checkCount = 0;
   NoInternetExeption() {
     // TODO mesajları düzenle
-    final currentState = Get.find<SettingsController>().snackbarKey.currentState!;
+    final settingController = Get.find<SettingsController>();
 
-    currentState.showSnackBar(
-      const SnackBar(
-        backgroundColor: Colors.redAccent,
-        content: Text("İnternete Bağlı Değilsin!"),
-      ),
-    );
+    if (!settingController.isNetvorkChecking.value) {
+      settingController.snackbarKey.currentState!.showSnackBar(
+        const SnackBar(
+          backgroundColor: Colors.redAccent,
+          content: Text("İnternete Bağlı Değilsin!"),
+        ),
+      );
+    }
 
     noInternetLoop() async {
-      await for (var event in Stream.periodic(const Duration(seconds: 3))) {
-        print(chackCount);
+      settingController.isNetvorkChecking.value = true;
+      await for (var _ in Stream.periodic(const Duration(seconds: 3))) {
+        print(checkCount);
         final isConnectedNetwork = await checkInternetConnection();
 
         if (isConnectedNetwork) {
-          currentState.showSnackBar(const SnackBar(backgroundColor: Colors.greenAccent, content: Text("Bağlandın!")));
+          settingController.snackbarKey.currentState!.showSnackBar(
+              const SnackBar(
+                  backgroundColor: Colors.greenAccent,
+                  content: Text("Bağlandın!")));
+          settingController.isNetvorkChecking.value = false;
           break;
-        } else if (chackCount > 5) {
+        } else if (checkCount > 5) {
+          settingController.isNetvorkChecking.value = false;
           break;
         }
-        chackCount++;
+        checkCount++;
       }
     }
 
-    noInternetLoop();
+    if (!settingController.isNetvorkChecking.value) {
+      noInternetLoop();
+    }
   }
 }
 

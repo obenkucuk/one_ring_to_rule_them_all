@@ -25,7 +25,7 @@ class NetworkServices extends INetworkServices {
       throw StatusExeption(statusMessage: response.statusMessage);
     }
 
-    return response.data;
+    return response;
   }
 
 // TODO doldur

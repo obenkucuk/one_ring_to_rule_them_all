@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final SettingsController settings = Get.put(SettingsController());
     return Obx(
-      () => GetMaterialApp.router(
+      () => MaterialApp.router(
         scaffoldMessengerKey: settings.snackbarKey,
 
         // localizationsDelegates: const [
@@ -41,7 +41,6 @@ class MyApp extends StatelessWidget {
         themeMode: settings.themeMode,
         routerDelegate: _appRouter.delegate(),
         routeInformationParser: _appRouter.defaultRouteParser(),
-        initialBinding: InitialBinding(),
       ),
     );
   }

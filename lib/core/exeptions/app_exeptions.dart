@@ -33,7 +33,7 @@ class NoInternetExeption implements Exception {
                   content: Text("Bağlandın!")));
           settingController.isNetvorkChecking.value = false;
           break;
-        } else if (checkCount > 5) {
+        } else if (checkCount > 20) {
           settingController.isNetvorkChecking.value = false;
           break;
         }

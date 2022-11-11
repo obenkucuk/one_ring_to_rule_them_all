@@ -18,6 +18,7 @@ class NoInternetException implements Exception {
 
     noInternetLoop() async {
       settings.isNetworkChecking.value = true;
+
       await for (var _ in Stream.periodic(const Duration(seconds: 3))) {
         print(checkCount);
         final isConnectedNetwork = await checkInternetConnection();
@@ -42,10 +43,12 @@ class NoInternetException implements Exception {
   }
 }
 
-class StatusExeption implements IAppException {
+/// Status Exception
+class StatusException implements IAppException {
   final String? statusMessage;
-
-  StatusExeption({this.statusMessage});
+  StatusException({this.statusMessage}) {
+    debugPrint("StatusException: $statusMessage");
+  }
 }
 
 SnackBar snackBar({Color? color, String? text}) => SnackBar(

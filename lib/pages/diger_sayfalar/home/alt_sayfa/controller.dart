@@ -12,12 +12,9 @@ class AltSayfaController extends GetxController with AppStateMixin {
   }
 
   getDog() async {
-    print("başladı");
+    status = StateStatus.loading();
     final respose = await loadStates(Uri(scheme: 'https', host: 'dog.ceo', path: 'api/breeds/image/random'));
-    print(respose == null);
     dogModel = DogModel.fromJson(respose);
-    print(dogModel.message);
-    status = StateStatus.loaded();
   }
 }
 

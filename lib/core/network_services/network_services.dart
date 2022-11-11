@@ -9,7 +9,7 @@ abstract class INetworkServices {
   fetchDataFromSingleMap(Uri uri) async {}
 
   ///  Liste halinde json dosyası bekleniyor ise...
-  fetchDataFromMapOfList(Uri uri) async {}
+  fetchDataFromMapsOfList(Uri uri) async {}
 }
 
 class NetworkServices extends INetworkServices {
@@ -18,18 +18,17 @@ class NetworkServices extends INetworkServices {
   @override
   Future<Response> fetchDataFromSingleMap(uri) async {
     final isConnectedNetwork = await checkInternetConnection();
-    if (!isConnectedNetwork) {
-      throw NoInternetException();
-    }
+
+    if (!isConnectedNetwork) throw NoInternetException();
+
     final response = await dio.getUri(uri);
 
-    if (response.statusCode != 200) {
-      throw StatusExeption(statusMessage: response.statusMessage);
+    if (response.statusCode != HttpStatus.ok) {
+      throw StatusException(statusMessage: response.statusMessage);
     }
 
     return response;
   }
 
-// TODO doldur
-  fetchDataFromMapOfList(uri) async {}
+  fetchDataFromMapsOfList(uri) async {}
 }

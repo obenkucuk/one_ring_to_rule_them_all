@@ -20,27 +20,27 @@ class AltSayfaView extends GetView<AltSayfaController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("detay sayfası"),
-      ),
-      body: Column(
-        children: [
-          Container(height: 50, width: 100, color: Colors.amber),
-          Obx(
-            () => controller.status.isLoaded
-                ? Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.network(controller.dogModel.message ?? ""),
-                        Text(controller.dogModel.status ?? "oben"),
-                      ],
-                    ),
-                  )
-                : const SizedBox(),
-          ),
-          Container(height: 50, width: 100, color: Colors.amber),
-        ],
+      appBar: AppBar(title: const Text("Detay Sayfası")),
+      body: Obx(
+        () => Column(
+          children: [
+            Container(height: 50, width: 100, color: Colors.amber),
+            Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    height: 100,
+                    width: 100,
+                    child: controller.buildWidgetX(Image.network(controller.dogModel.message ?? "")),
+                  ),
+                  controller.buildWidgetX(Text(controller.dogModel.status ?? "oben")),
+                ],
+              ),
+            ),
+            Container(height: 50, width: 100, color: Colors.amber),
+          ],
+        ),
       ),
     );
   }

@@ -1,5 +1,5 @@
 import 'dart:developer';
-
+import 'package:base_application/components/state_mixin/shimmer_affect.dart';
 import 'package:base_application/core/exeptions/app_exeptions.dart';
 import 'package:base_application/core/network_services/check_network_connection.dart';
 import 'package:base_application/core/network_services/network_services.dart';
@@ -20,15 +20,14 @@ mixin AppStateMixin on GetxController {
       log("loadStates fonksiyonundaki while döngüsü sayısı");
       try {
         final response = await NetworkServices().fetchDataFromSingleMap(uri);
-        await Future.delayed(Duration(seconds: 2));
-        print(response.data);
+        await Future.delayed(const Duration(seconds: 2));
+
+        status = StateStatus.loaded();
         return response.data;
       } on NoInternetException {
         status = StateStatus.noConnection();
 
         await for (var _ in Stream.periodic(const Duration(seconds: 3))) {
-          print("mixin await for");
-          print(status.isNoConnection);
           if (await checkInternetConnection()) {
             status = StateStatus.loading();
             break;
@@ -37,37 +36,39 @@ mixin AppStateMixin on GetxController {
             return;
           }
         }
-
-        print("await for SONRASI");
-      } on StatusExeption catch (e) {
+      } on StatusException catch (e) {
         status = StateStatus.error(e.statusMessage.toString());
         break;
       } catch (e) {
-        status = StateStatus.error("Unhandled Error");
+        status = StateStatus.error("Unhandled Error: $e");
         break;
       }
     }
   }
 
-  @override
-  void onClose() {
-    super.onClose();
-    status = StateStatus._(isPageActive: false);
+  /// bunu yapacam amk!
+  Stream<int> checkConnectionStream() async* {
+    yield* Stream.periodic(const Duration(seconds: 2), (count) {
+      return count;
+    });
   }
 
-  Widget buildStatus({
+  Widget buildWidgetX(
+    Widget onLoaded, {
     Widget? onLoading,
-    required Widget onLoaded,
     Widget? onLowConnection,
     Widget? onNoConnection,
     Widget? onError,
   }) {
     // NOT: defoult lar düzenlenecek
-
     if (status.isLoading) {
       return onLoading ??
-          const Center(
-            child: CircularProgressIndicator.adaptive(),
+          Shimmer.fromColors(
+            baseColor: Colors.grey.shade300,
+            highlightColor: Colors.grey.shade100,
+            child: Container(
+              color: Colors.black,
+            ),
           );
     } else if (status.isLoaded) {
       return onLoaded;
@@ -88,6 +89,12 @@ mixin AppStateMixin on GetxController {
             ),
           );
     }
+  }
+
+  @override
+  void onClose() {
+    super.onClose();
+    status = StateStatus._(isPageActive: false);
   }
 }
 

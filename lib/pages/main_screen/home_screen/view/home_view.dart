@@ -1,3 +1,4 @@
+import 'package:base_application/pages/diger_sayfalar/home/alt_sayfa/alt_sayfa.dart';
 import 'package:base_application/pages/main_screen/home_screen/controller/home_controller.dart';
 import 'package:base_application/pages/main_screen/settings_screen/controller/settings_controller.dart';
 import 'package:flutter/material.dart';
@@ -55,11 +56,12 @@ class HomeView extends GetView<HomeController> {
               ],
             ),
             Text(settings.lang.value.helloWorld),
+            TextButton(onPressed: (() {}), child: const Text("Desteklenen Diller")),
             TextButton(
-                onPressed: (() {
-                  context.router.push(const DenemeRoute());
-                }),
-                child: const Text("Desteklenen Diller")),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: ((context) => AltSayfaScreen())));
+                },
+                child: const Text("Alt Sayfa")),
           ],
         ),
       ),

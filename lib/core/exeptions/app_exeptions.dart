@@ -5,43 +5,38 @@ import 'package:get/get.dart';
 
 abstract class IAppException implements Exception {}
 
-class NoInternetExeption implements Exception {
+class NoInternetException implements Exception {
   int checkCount = 0;
-  NoInternetExeption() {
-    // TODO mesajları düzenle
-    final settingController = Get.find<SettingsController>();
+  NoInternetException() {
+    final settings = Get.find<SettingsController>();
 
-    if (!settingController.isNetvorkChecking.value) {
-      settingController.snackbarKey.currentState!.showSnackBar(
-        const SnackBar(
-          backgroundColor: Colors.redAccent,
-          content: Text("İnternete Bağlı Değilsin!"),
-        ),
+    if (!settings.isNetworkChecking.value) {
+      settings.snackbarKey.currentState!.showSnackBar(
+        snackBar(color: Colors.redAccent, text: settings.lang.value.noNetworkMessage),
       );
     }
 
     noInternetLoop() async {
-      settingController.isNetvorkChecking.value = true;
+      settings.isNetworkChecking.value = true;
       await for (var _ in Stream.periodic(const Duration(seconds: 3))) {
         print(checkCount);
         final isConnectedNetwork = await checkInternetConnection();
 
         if (isConnectedNetwork) {
-          settingController.snackbarKey.currentState!.showSnackBar(
-              const SnackBar(
-                  backgroundColor: Colors.greenAccent,
-                  content: Text("Bağlandın!")));
-          settingController.isNetvorkChecking.value = false;
+          settings.snackbarKey.currentState!.showSnackBar(
+            snackBar(color: Colors.greenAccent, text: settings.lang.value.connectedMessage),
+          );
+          settings.isNetworkChecking.value = false;
           break;
         } else if (checkCount > 20) {
-          settingController.isNetvorkChecking.value = false;
+          settings.isNetworkChecking.value = false;
           break;
         }
         checkCount++;
       }
     }
 
-    if (!settingController.isNetvorkChecking.value) {
+    if (!settings.isNetworkChecking.value) {
       noInternetLoop();
     }
   }
@@ -52,3 +47,12 @@ class StatusExeption implements IAppException {
 
   StatusExeption({this.statusMessage});
 }
+
+SnackBar snackBar({Color? color, String? text}) => SnackBar(
+      duration: const Duration(seconds: 5),
+      backgroundColor: color ?? Colors.indigo,
+      content: Text(
+        text ?? "Snackbar yazısı verilmedi!",
+        textAlign: TextAlign.center,
+      ),
+    );

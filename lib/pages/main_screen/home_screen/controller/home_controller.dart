@@ -8,8 +8,8 @@ class HomeController extends GetxController {
     sayfadaGosterilenSayi.value++;
 
     try {
-      throw NoInternetExeption();
-    } on NoInternetExeption catch (e) {}
+      throw NoInternetException();
+    } on NoInternetException catch (e) {}
   }
 
   bb() {

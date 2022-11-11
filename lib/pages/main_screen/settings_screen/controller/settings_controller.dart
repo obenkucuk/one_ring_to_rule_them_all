@@ -8,16 +8,15 @@ import '../../../../core/shared_pref.dart';
 enum StorageKeys { appLocalization, appThemeMode }
 
 class SettingsController extends GetxController {
-  final GlobalKey<ScaffoldMessengerState> snackbarKey =
-      GlobalKey<ScaffoldMessengerState>();
+  final GlobalKey<ScaffoldMessengerState> snackbarKey = GlobalKey<ScaffoldMessengerState>();
   //------------EXEPIONS------------//
 
   // internet bağlantısını birden fazla kontrol etmemek için
-  RxBool isNetvorkChecking = false.obs;
+  RxBool isNetworkChecking = false.obs;
 
   //------------LOCALIZATION------------//
 
-  // TODO uygulama varsayılan dili her uygulama için ayarlanmalı
+  // NOT uygulama varsayılan dili her uygulama için ayarlanmalı
   final String _defoultLocalization = "en";
   late Rx<AppLocalizations> lang;
 
@@ -31,13 +30,10 @@ class SettingsController extends GetxController {
 
       if (supportedLanguages().contains(systemLanguage)) {
         lang.value = await AppLocalizations.delegate.load(systemLanguage);
-        SharedPrefs.write(
-            StorageKeys.appLocalization.name, ThemeMode.system.name);
+        SharedPrefs.write(StorageKeys.appLocalization.name, ThemeMode.system.name);
       } else {
-        lang.value =
-            await AppLocalizations.delegate.load(Locale(_defoultLocalization));
-        SharedPrefs.write(
-            StorageKeys.appLocalization.name, ThemeMode.system.name);
+        lang.value = await AppLocalizations.delegate.load(Locale(_defoultLocalization));
+        SharedPrefs.write(StorageKeys.appLocalization.name, ThemeMode.system.name);
       }
     } else {
       lang.value = await AppLocalizations.delegate.load(Locale(language));
@@ -50,11 +46,9 @@ class SettingsController extends GetxController {
   }
 
   _initLocalization() async {
-    var storageLocalization =
-        SharedPrefs.read(StorageKeys.appLocalization.name);
+    var storageLocalization = SharedPrefs.read(StorageKeys.appLocalization.name);
     if (storageLocalization == "null") {
-      SharedPrefs.write(
-          StorageKeys.appLocalization.name, ThemeMode.system.name);
+      SharedPrefs.write(StorageKeys.appLocalization.name, ThemeMode.system.name);
       storageLocalization = SharedPrefs.read(StorageKeys.appLocalization.name);
     }
 
@@ -74,8 +68,7 @@ class SettingsController extends GetxController {
       preferedLocalization = storageLocalization;
     }
 
-    lang = (await AppLocalizations.delegate.load(Locale(preferedLocalization)))
-        .obs;
+    lang = (await AppLocalizations.delegate.load(Locale(preferedLocalization))).obs;
   }
 
 //------------TEMA------------//
@@ -98,23 +91,19 @@ class SettingsController extends GetxController {
     // tema modu ne?
     _themeMode = storageThemeMode == "dark"
         ? ThemeMode.dark.obs
-        : (storageThemeMode == "light"
-            ? ThemeMode.light.obs
-            : ThemeMode.system.obs);
+        : (storageThemeMode == "light" ? ThemeMode.light.obs : ThemeMode.system.obs);
   }
 
   /// Tema Modu Değiştirme
   void changeTheme(ThemeMode mode) {
     switch (mode) {
       case ThemeMode.dark:
-        SystemChrome.setSystemUIOverlayStyle(
-            const SystemUiOverlayStyle(statusBarBrightness: Brightness.dark));
+        SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(statusBarBrightness: Brightness.dark));
         SharedPrefs.write(StorageKeys.appThemeMode.name, ThemeMode.dark.name);
         _themeMode.value = ThemeMode.dark;
         break;
       case (ThemeMode.light):
-        SystemChrome.setSystemUIOverlayStyle(
-            const SystemUiOverlayStyle(statusBarBrightness: Brightness.light));
+        SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(statusBarBrightness: Brightness.light));
         SharedPrefs.write(StorageKeys.appThemeMode.name, ThemeMode.light.name);
         _themeMode.value = ThemeMode.light;
         break;

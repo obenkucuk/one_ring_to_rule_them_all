@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:base_application/core/exeptions/app_exeptions.dart';
 import 'package:base_application/core/network_services/check_network_connection.dart';
 import 'package:base_application/core/network_services/network_services.dart';
@@ -15,11 +17,13 @@ mixin AppStateMixin on GetxController {
 
   Future loadStates(Uri uri) async {
     while (true) {
+      log("loadStates fonksiyonundaki while döngüsü sayısı");
       try {
-        final response = await NetworkServices().fetchDataMapJson(uri);
-        status = StateStatus.loaded();
+        final response = await NetworkServices().fetchDataFromSingleMap(uri);
+        await Future.delayed(Duration(seconds: 2));
+        print(response.data);
         return response.data;
-      } on NoInternetExeption {
+      } on NoInternetException {
         status = StateStatus.noConnection();
 
         await for (var _ in Stream.periodic(const Duration(seconds: 3))) {
@@ -37,8 +41,10 @@ mixin AppStateMixin on GetxController {
         print("await for SONRASI");
       } on StatusExeption catch (e) {
         status = StateStatus.error(e.statusMessage.toString());
+        break;
       } catch (e) {
         status = StateStatus.error("Unhandled Error");
+        break;
       }
     }
   }

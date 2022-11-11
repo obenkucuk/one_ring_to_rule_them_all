@@ -1,6 +1,5 @@
 import 'package:base_application/core/shared_pref.dart';
 import 'package:base_application/components/theme/theme_data.dart' as theme;
-import 'package:base_application/initial_bindings.dart';
 import 'package:base_application/pages/main_screen/settings_screen/controller/settings_controller.dart';
 import 'package:base_application/routes/router.gr.dart';
 import 'package:flutter/material.dart';

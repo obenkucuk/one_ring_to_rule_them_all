@@ -18,8 +18,6 @@ class MainScreen extends StatelessWidget {
         currentIndex: tabsRouter.activeIndex,
         onTap: (a) {
           // ikinci basılışta ana sayfaya dönmesi için
-          print(a);
-          print(tabsRouter.activeIndex);
           if (tabsRouter.activeIndex == a) {
             tabsRouter.popTop();
             print("aynı");

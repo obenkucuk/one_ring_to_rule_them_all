@@ -1,10 +1,9 @@
-import 'package:base_application/components/state_mixin/app_state_mixin.dart';
 import 'package:base_application/routes/router.gr.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:auto_route/auto_route.dart';
 
-class SplashController extends GetxController with AppStateMixin {
+class SplashController extends GetxController {
   final scaffoldKey = GlobalKey();
   BuildContext get context => scaffoldKey.currentContext!;
 

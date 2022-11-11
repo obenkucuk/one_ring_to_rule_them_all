@@ -30,7 +30,7 @@ mixin AppStateMixin on GetxController {
             break;
           }
           if (!status.isNoConnection) {
-            break;
+            return;
           }
         }
 
@@ -46,7 +46,7 @@ mixin AppStateMixin on GetxController {
   @override
   void onClose() {
     super.onClose();
-    status = StateStatus._();
+    status = StateStatus._(isPageActive: false);
   }
 
   Widget buildStatus({
@@ -86,6 +86,7 @@ mixin AppStateMixin on GetxController {
 }
 
 class StateStatus {
+  final bool isPageActive;
   final bool isLoading;
   final bool isLoaded;
   final bool isNoConnection;
@@ -94,6 +95,7 @@ class StateStatus {
   final String errorMessage;
 
   StateStatus._({
+    this.isPageActive = true,
     this.isLoading = false,
     this.isLoaded = false,
     this.isNoConnection = false,

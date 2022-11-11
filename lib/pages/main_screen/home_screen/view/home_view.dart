@@ -67,7 +67,7 @@ class HomeView extends GetView<HomeController> {
             Text(settings.lang.value.helloWorld),
             TextButton(
                 onPressed: (() {
-                  AutoRouter.of(context).pushNamed("deneme");
+                  context.router.push(const DenemeRoute());
                 }),
                 child: const Text("Desteklenen Diller")),
           ],

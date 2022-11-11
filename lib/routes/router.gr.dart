@@ -39,13 +39,13 @@ class AppRouter extends _i7.RootStackRouter {
         child: const _i2.MainScreen(),
       );
     },
-    PageARouter.name: (routeData) {
+    HomeRouter.name: (routeData) {
       return _i7.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i3.EmptyRouterPage(),
       );
     },
-    PageBRouter.name: (routeData) {
+    SettingsRouter.name: (routeData) {
       return _i7.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i3.EmptyRouterPage(),
@@ -57,10 +57,10 @@ class AppRouter extends _i7.RootStackRouter {
         child: const _i4.HomeScreen(),
       );
     },
-    DenemePage.name: (routeData) {
+    DenemeRoute.name: (routeData) {
       return _i7.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i5.DenemePage(),
+        child: const _i5.DenemeScreen(),
       );
     },
     SettingsRoute.name: (routeData) {
@@ -82,31 +82,31 @@ class AppRouter extends _i7.RootStackRouter {
           path: 'main',
           children: [
             _i7.RouteConfig(
-              PageARouter.name,
-              path: 'pagea',
+              HomeRouter.name,
+              path: 'home',
               parent: MainRoute.name,
               children: [
                 _i7.RouteConfig(
                   HomeRoute.name,
                   path: '',
-                  parent: PageARouter.name,
+                  parent: HomeRouter.name,
                 ),
                 _i7.RouteConfig(
-                  DenemePage.name,
-                  path: 'deneme',
-                  parent: PageARouter.name,
+                  DenemeRoute.name,
+                  path: 'DenemeRouter',
+                  parent: HomeRouter.name,
                 ),
               ],
             ),
             _i7.RouteConfig(
-              PageBRouter.name,
-              path: 'pageb',
+              SettingsRouter.name,
+              path: 'settings',
               parent: MainRoute.name,
               children: [
                 _i7.RouteConfig(
                   SettingsRoute.name,
                   path: '',
-                  parent: PageBRouter.name,
+                  parent: SettingsRouter.name,
                 )
               ],
             ),
@@ -142,28 +142,28 @@ class MainRoute extends _i7.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.EmptyRouterPage]
-class PageARouter extends _i7.PageRouteInfo<void> {
-  const PageARouter({List<_i7.PageRouteInfo>? children})
+class HomeRouter extends _i7.PageRouteInfo<void> {
+  const HomeRouter({List<_i7.PageRouteInfo>? children})
       : super(
-          PageARouter.name,
-          path: 'pagea',
+          HomeRouter.name,
+          path: 'home',
           initialChildren: children,
         );
 
-  static const String name = 'PageARouter';
+  static const String name = 'HomeRouter';
 }
 
 /// generated route for
 /// [_i3.EmptyRouterPage]
-class PageBRouter extends _i7.PageRouteInfo<void> {
-  const PageBRouter({List<_i7.PageRouteInfo>? children})
+class SettingsRouter extends _i7.PageRouteInfo<void> {
+  const SettingsRouter({List<_i7.PageRouteInfo>? children})
       : super(
-          PageBRouter.name,
-          path: 'pageb',
+          SettingsRouter.name,
+          path: 'settings',
           initialChildren: children,
         );
 
-  static const String name = 'PageBRouter';
+  static const String name = 'SettingsRouter';
 }
 
 /// generated route for
@@ -179,15 +179,15 @@ class HomeRoute extends _i7.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i5.DenemePage]
-class DenemePage extends _i7.PageRouteInfo<void> {
-  const DenemePage()
+/// [_i5.DenemeScreen]
+class DenemeRoute extends _i7.PageRouteInfo<void> {
+  const DenemeRoute()
       : super(
-          DenemePage.name,
-          path: 'deneme',
+          DenemeRoute.name,
+          path: 'DenemeRouter',
         );
 
-  static const String name = 'DenemePage';
+  static const String name = 'DenemeRoute';
 }
 
 /// generated route for

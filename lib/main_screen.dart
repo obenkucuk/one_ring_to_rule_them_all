@@ -10,8 +10,8 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return AutoTabsScaffold(
       routes: const [
-        PageARouter(),
-        PageBRouter(),
+        HomeRouter(),
+        SettingsRouter(),
       ],
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       bottomNavigationBuilder: (context, tabsRouter) => SalomonBottomBar(

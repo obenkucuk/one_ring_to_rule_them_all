@@ -19,20 +19,20 @@ import '../pages/main_screen/settings_screen/settings_screen.dart';
       page: MainScreen,
       children: <AutoRoute>[
         AutoRoute(
-          path: "pagea",
-          name: "PageARouter",
+          path: "home",
+          name: "HomeRouter",
           page: EmptyRouterPage,
           children: [
             AutoRoute(
               path: "",
               page: HomeScreen,
             ),
-            AutoRoute(path: "deneme", page: DenemePage)
+            AutoRoute(path: "DenemeRouter", page: DenemeScreen)
           ],
         ),
         AutoRoute(
-          path: "pageb",
-          name: "PageBRouter",
+          path: "settings",
+          name: "SettingsRouter",
           page: EmptyRouterPage,
           children: [
             AutoRoute(

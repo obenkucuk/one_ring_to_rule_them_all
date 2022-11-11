@@ -8,6 +8,8 @@ class SettingsView extends GetView<SettingsController> {
 
   @override
   Widget build(BuildContext context) {
+    final settings = Get.find<SettingsController>();
+
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -20,15 +22,29 @@ class SettingsView extends GetView<SettingsController> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              IconButton(
-                  onPressed: () => controller.changeTheme(ThemeMode.dark),
-                  icon: const Icon(Icons.dark_mode)),
-              IconButton(
-                  onPressed: () => controller.changeTheme(ThemeMode.light),
-                  icon: const Icon(Icons.light_mode)),
-              IconButton(
-                  onPressed: () => controller.changeTheme(ThemeMode.system),
-                  icon: const Icon(Icons.settings)),
+              IconButton(onPressed: () => controller.changeTheme(ThemeMode.dark), icon: const Icon(Icons.dark_mode)),
+              IconButton(onPressed: () => controller.changeTheme(ThemeMode.light), icon: const Icon(Icons.light_mode)),
+              IconButton(onPressed: () => controller.changeTheme(ThemeMode.system), icon: const Icon(Icons.settings)),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              TextButton(
+                  onPressed: (() {
+                    settings.changeLanguage("tr");
+                  }),
+                  child: const Text("TR")),
+              TextButton(
+                  onPressed: (() {
+                    settings.changeLanguage("en");
+                  }),
+                  child: const Text("EN")),
+              TextButton(
+                  onPressed: (() {
+                    settings.changeLanguage("system");
+                  }),
+                  child: const Text("system")),
             ],
           ),
         ],

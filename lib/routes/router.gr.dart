@@ -17,13 +17,12 @@ import 'package:flutter/material.dart' as _i8;
 
 import '../components/splash/splash_page.dart' as _i1;
 import '../main_screen.dart' as _i2;
-import '../pages/deneme_page.dart' as _i5;
+
 import '../pages/main_screen/home_screen/home_screen.dart' as _i4;
 import '../pages/main_screen/settings_screen/settings_screen.dart' as _i6;
 
 class AppRouter extends _i7.RootStackRouter {
-  AppRouter([_i8.GlobalKey<_i8.NavigatorState>? navigatorKey])
-      : super(navigatorKey);
+  AppRouter([_i8.GlobalKey<_i8.NavigatorState>? navigatorKey]) : super(navigatorKey);
 
   @override
   final Map<String, _i7.PageFactory> pagesMap = {
@@ -55,12 +54,6 @@ class AppRouter extends _i7.RootStackRouter {
       return _i7.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i4.HomeScreen(),
-      );
-    },
-    DenemeRoute.name: (routeData) {
-      return _i7.MaterialPageX<dynamic>(
-        routeData: routeData,
-        child: const _i5.DenemeScreen(),
       );
     },
     SettingsRoute.name: (routeData) {

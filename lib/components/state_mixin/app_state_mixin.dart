@@ -1,7 +1,6 @@
 import 'package:base_application/core/exeptions/app_exeptions.dart';
 import 'package:base_application/core/network_services/check_network_connection.dart';
 import 'package:base_application/core/network_services/network_services.dart';
-import 'package:base_application/pages/deneme_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

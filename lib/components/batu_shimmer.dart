@@ -8,7 +8,7 @@ import '../core/keys.dart';
 
 class BatuShimmer extends StatefulWidget {
   final Duration duration;
-  final int depth;
+  int depth;
   int? maxLine;
   double? textSize;
   double? borderRadius;
@@ -75,6 +75,9 @@ class _BatuShimmerState extends State<BatuShimmer> {
         : (_brightness == Brightness.light
             ? -50
             : (_brightness == Brightness.dark ? 5 : -50));
+    // _brightness == Brightness.light ? widget.depth = widget.depth + 10 : null;
+    print(widget.depth);
+
     onReady();
     log(name: "BatuShimmer", '\x1B[32mInitialized\x1B[0m');
 

@@ -21,7 +21,7 @@ mixin AppStateMixin on GetxController {
       log("loadStates fonksiyonundaki while döngüsü sayısı");
       try {
         final response = await NetworkServices().fetchDataFromSingleMap(uri);
-        await Future.delayed(const Duration(seconds: 80));
+        await Future.delayed(const Duration(seconds: 2));
 
         status = StateStatus.loaded();
         return response.data;
@@ -57,24 +57,44 @@ mixin AppStateMixin on GetxController {
   Widget buildWidgetX(
     Widget onLoaded, {
     Widget? onLoading,
+    int depth = 20,
+    Duration duration = const Duration(seconds: 1),
+    double? borderRadius = 10,
   }) {
     // NOT: defoult lar düzenlenecek
     if (status.isLoaded) {
       return onLoaded;
     } else {
-      return onLoading ?? BatuShimmer();
+      return onLoading ??
+          BatuShimmer(
+            depth: depth,
+            duration: duration,
+            borderRadius: borderRadius,
+          );
     }
   }
 
   Widget buildTextWidgetX(
     Widget onLoaded, {
     Widget? onLoading,
+    int depth = 20,
+    Duration duration = const Duration(seconds: 1),
+    int? maxLine = 3,
+    double? textSize = 14,
+    double? borderRadius = 10,
   }) {
     // NOT: defoult lar düzenlenecek
     if (status.isLoaded) {
       return onLoaded;
     } else {
-      return onLoading ?? BatuShimmer.text();
+      return onLoading ??
+          BatuShimmer.text(
+            depth: depth,
+            duration: duration,
+            maxLine: maxLine,
+            textSize: textSize,
+            borderRadius: borderRadius,
+          );
     }
   }
 

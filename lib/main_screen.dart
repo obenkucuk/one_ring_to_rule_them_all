@@ -1,10 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:base_application/components/navigation_bar/salomon_bottom_bar.dart';
 import 'package:base_application/core/keys.dart';
-import 'package:base_application/pages/main_screen/settings_screen/controller/settings_controller.dart';
 import 'package:base_application/routes/router.gr.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});

@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:developer';
 
-import 'package:base_application/pages/main_screen/settings_screen/controller/settings_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,19 +13,21 @@ class BatuShimmer extends StatefulWidget {
   double? textSize;
   double? borderRadius;
 
-  BatuShimmer(
-      {super.key,
-      this.depth = 20,
-      this.duration = const Duration(seconds: 1),
-      this.borderRadius = 10});
+  BatuShimmer({
+    super.key,
+    required this.depth,
+    required this.duration,
+    required this.borderRadius,
+  });
 
-  BatuShimmer.text(
-      {super.key,
-      this.depth = 20,
-      this.duration = const Duration(seconds: 1),
-      this.maxLine = 3,
-      this.textSize = 14,
-      this.borderRadius = 10});
+  BatuShimmer.text({
+    super.key,
+    required this.depth,
+    required this.duration,
+    required this.maxLine,
+    required this.textSize,
+    required this.borderRadius,
+  });
 
   @override
   State<BatuShimmer> createState() => _BatuShimmerState();
@@ -35,9 +36,8 @@ class BatuShimmer extends StatefulWidget {
 class _BatuShimmerState extends State<BatuShimmer> {
   late Timer _timer;
 
-  Duration _duration = const Duration(microseconds: 1);
   int _colorInt = 5;
-  Brightness _brightness = Theme.of(appKey.currentContext!).brightness;
+  final Brightness _brightness = Theme.of(appKey.currentContext!).brightness;
   bool _isStart = true;
 
   @override
@@ -47,7 +47,6 @@ class _BatuShimmerState extends State<BatuShimmer> {
         : (_brightness == Brightness.light
             ? -50
             : (_brightness == Brightness.dark ? 5 : -50));
-    print(_brightness);
     onReady();
     log('\x1B[32m{BatuShimmer initialized}\x1B[0m');
 
@@ -87,28 +86,28 @@ class _BatuShimmerState extends State<BatuShimmer> {
 
   @override
   Widget build(BuildContext context) {
-    final Color _bgColor = Theme.of(context).scaffoldBackgroundColor;
-    final Color _sizeWcolor = Color.fromARGB(
-        _bgColor.alpha,
-        _bgColor.red + _colorInt,
-        _bgColor.green + _colorInt,
-        _bgColor.blue + _colorInt);
-    int _textWDepth = _brightness == Brightness.dark ? 10 : -10;
-    final Color _textWColor = Color.fromARGB(
-        _bgColor.alpha,
-        _bgColor.red + _textWDepth,
-        _bgColor.green + _textWDepth,
-        _bgColor.blue + _textWDepth);
-    final Color _textWColorText = Color.fromARGB(
-        _bgColor.alpha,
-        _bgColor.red + _colorInt + 10,
-        _bgColor.green + _colorInt + 10,
-        _bgColor.blue + _colorInt + 10);
+    final Color bgColor = Theme.of(context).scaffoldBackgroundColor;
+    final Color sizeWcolor = Color.fromARGB(
+        bgColor.alpha,
+        bgColor.red + _colorInt,
+        bgColor.green + _colorInt,
+        bgColor.blue + _colorInt);
+    int textWDepth = _brightness == Brightness.dark ? 10 : -10;
+    final Color textWColor = Color.fromARGB(
+        bgColor.alpha,
+        bgColor.red + textWDepth,
+        bgColor.green + textWDepth,
+        bgColor.blue + textWDepth);
+    final Color textWColorText = Color.fromARGB(
+        bgColor.alpha,
+        bgColor.red + _colorInt + 10,
+        bgColor.green + _colorInt + 10,
+        bgColor.blue + _colorInt + 10);
 
     return AnimatedContainer(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: widget.maxLine == null ? _sizeWcolor : _textWColor,
+        color: widget.maxLine == null ? sizeWcolor : textWColor,
       ),
       duration: widget.duration,
       height: widget.maxLine == null
@@ -128,7 +127,7 @@ class _BatuShimmerState extends State<BatuShimmer> {
                         duration: widget.duration,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          color: _textWColorText,
+                          color: textWColorText,
                         ),
                         margin: const EdgeInsets.only(
                             right: 10, left: 10, bottom: 5, top: 5),

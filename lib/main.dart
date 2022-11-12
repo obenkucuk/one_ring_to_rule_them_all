@@ -23,19 +23,6 @@ class MyApp extends StatelessWidget {
     return Obx(
       () => MaterialApp.router(
         scaffoldMessengerKey: snackbarKey,
-
-        // localizationsDelegates: const [
-        //   AppLocalizations.delegate,
-        //   GlobalMaterialLocalizations.delegate,
-        //   GlobalWidgetsLocalizations.delegate,
-        //   GlobalCupertinoLocalizations.delegate,
-        // ],
-        // supportedLocales: const [
-        //   Locale(
-        //     'en',
-        //   ),
-        //   Locale('tr'),
-        // ],
         debugShowCheckedModeBanner: false,
         theme: theme.lightTheme(),
         darkTheme: theme.darkTheme(),

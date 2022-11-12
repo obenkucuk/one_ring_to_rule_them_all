@@ -55,8 +55,6 @@ class HomeView extends GetView<HomeController> {
             ),
             Text(
               settings.lang.value.helloWorld,
-              style: TextStyle(
-                  fontSize: Theme.of(context).textTheme.headline1!.fontSize),
             ),
             TextButton(
                 onPressed: (() {}), child: const Text("Desteklenen Diller")),

@@ -41,6 +41,12 @@ class AltSayfaView extends GetView<AltSayfaController> {
                     height: 20,
                   ),
                   controller.buildTextWidgetX(
+                      maxLine: 5, Text(controller.dogModel.message.toString())),
+                  const SizedBox(
+                    height: 40,
+                  ),
+
+                  controller.buildTextWidgetX(
                       Text(controller.dogModel.message.toString())),
                   // controller.buildWidgetX(Text(controller.dogModel.status ?? "oben")),
                 ],

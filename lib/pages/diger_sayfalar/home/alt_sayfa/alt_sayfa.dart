@@ -24,21 +24,27 @@ class AltSayfaView extends GetView<AltSayfaController> {
       body: Obx(
         () => Column(
           children: [
-            Container(height: 50, width: 100, color: Colors.amber),
+            //    Container(height: 50, width: 100, color: Colors.amber),
             Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(
-                    height: 100,
-                    width: 100,
-                    child: controller.buildWidgetX(Image.network(controller.dogModel.message ?? "")),
+                    height: 200,
+                    width: 200,
+                    child: controller.buildWidgetX(
+                        Image.network(controller.dogModel.message ?? "")),
                   ),
-                  controller.buildWidgetX(Text(controller.dogModel.status ?? "oben")),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  controller.buildTextWidgetX(
+                      Text(controller.dogModel.message.toString())),
+                  // controller.buildWidgetX(Text(controller.dogModel.status ?? "oben")),
                 ],
               ),
             ),
-            Container(height: 50, width: 100, color: Colors.amber),
+            //   Container(height: 50, width: 100, color: Colors.amber),
           ],
         ),
       ),

@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:base_application/components/state_mixin/batu_shimmer.dart';
 import 'package:base_application/components/state_mixin/shimmer_affect.dart';
 import 'package:base_application/core/exeptions/app_exeptions.dart';
 import 'package:base_application/core/network_services/check_network_connection.dart';
@@ -13,6 +14,7 @@ mixin AppStateMixin on GetxController {
   set status(StateStatus status) {
     _status.value = status;
   }
+
   // TODO zamanaşımı yapılacak
 
   Future loadStates(Uri uri) async {
@@ -20,7 +22,7 @@ mixin AppStateMixin on GetxController {
       log("loadStates fonksiyonundaki while döngüsü sayısı");
       try {
         final response = await NetworkServices().fetchDataFromSingleMap(uri);
-        await Future.delayed(const Duration(seconds: 2));
+        await Future.delayed(const Duration(seconds: 80));
 
         status = StateStatus.loaded();
         return response.data;
@@ -56,38 +58,24 @@ mixin AppStateMixin on GetxController {
   Widget buildWidgetX(
     Widget onLoaded, {
     Widget? onLoading,
-    Widget? onLowConnection,
-    Widget? onNoConnection,
-    Widget? onError,
   }) {
     // NOT: defoult lar düzenlenecek
-    if (status.isLoading) {
-      return onLoading ??
-          Shimmer.fromColors(
-            baseColor: Colors.grey.shade300,
-            highlightColor: Colors.grey.shade100,
-            child: Container(
-              color: Colors.black,
-            ),
-          );
-    } else if (status.isLoaded) {
+    if (status.isLoaded) {
       return onLoaded;
-    } else if (status.isLowConnection) {
-      return onLowConnection ??
-          const Center(
-            child: CircularProgressIndicator.adaptive(),
-          );
-    } else if (status.isNoConnection) {
-      return onNoConnection ?? const Center(child: Text("No Connection"));
     } else {
-      return onError ??
-          Center(
-            child: Column(
-              children: [
-                Text("Bi şeyler yanlış gitti! : ${status.errorMessage}"),
-              ],
-            ),
-          );
+      return onLoading ?? BatuShimmer();
+    }
+  }
+
+  Widget buildTextWidgetX(
+    Widget onLoaded, {
+    Widget? onLoading,
+  }) {
+    // NOT: defoult lar düzenlenecek
+    if (status.isLoaded) {
+      return onLoaded;
+    } else {
+      return onLoading ?? BatuShimmer.text();
     }
   }
 

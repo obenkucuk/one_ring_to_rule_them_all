@@ -8,17 +8,32 @@ import '../../../../core/shared_pref.dart';
 enum StorageKeys { appLocalization, appThemeMode }
 
 class SettingsController extends GetxController {
-  final GlobalKey<ScaffoldMessengerState> snackbarKey = GlobalKey<ScaffoldMessengerState>();
   //------------EXEPIONS------------//
 
   // internet bağlantısını birden fazla kontrol etmemek için
   RxBool isNetworkChecking = false.obs;
 
+  late Rx<AppLocalizations> lang;
+  final GlobalKey<ScaffoldMessengerState> snackbarKey =
+      GlobalKey<ScaffoldMessengerState>();
+
   //------------LOCALIZATION------------//
 
   // NOT uygulama varsayılan dili her uygulama için ayarlanmalı
   final String _defoultLocalization = "en";
-  late Rx<AppLocalizations> lang;
+
+//------------TEMA------------//
+
+  late Rx<ThemeMode> _themeMode;
+
+  @override
+  void onInit() async {
+    super.onInit();
+
+    _initLocalization();
+
+    _initTheme();
+  }
 
   /// Dil değiştirmek için
   void changeLanguage(String language) async {
@@ -30,10 +45,13 @@ class SettingsController extends GetxController {
 
       if (supportedLanguages().contains(systemLanguage)) {
         lang.value = await AppLocalizations.delegate.load(systemLanguage);
-        SharedPrefs.write(StorageKeys.appLocalization.name, ThemeMode.system.name);
+        SharedPrefs.write(
+            StorageKeys.appLocalization.name, ThemeMode.system.name);
       } else {
-        lang.value = await AppLocalizations.delegate.load(Locale(_defoultLocalization));
-        SharedPrefs.write(StorageKeys.appLocalization.name, ThemeMode.system.name);
+        lang.value =
+            await AppLocalizations.delegate.load(Locale(_defoultLocalization));
+        SharedPrefs.write(
+            StorageKeys.appLocalization.name, ThemeMode.system.name);
       }
     } else {
       lang.value = await AppLocalizations.delegate.load(Locale(language));
@@ -45,10 +63,39 @@ class SettingsController extends GetxController {
     return AppLocalizations.supportedLocales;
   }
 
+  ThemeMode get themeMode => _themeMode.value;
+
+  set themeMode(ThemeMode mode) {
+    _themeMode.value = mode;
+  }
+
+  /// Tema Modu Değiştirme
+  void changeTheme(ThemeMode mode) {
+    switch (mode) {
+      case ThemeMode.dark:
+        SystemChrome.setSystemUIOverlayStyle(
+            const SystemUiOverlayStyle(statusBarBrightness: Brightness.dark));
+        SharedPrefs.write(StorageKeys.appThemeMode.name, ThemeMode.dark.name);
+        _themeMode.value = ThemeMode.dark;
+        break;
+      case (ThemeMode.light):
+        SystemChrome.setSystemUIOverlayStyle(
+            const SystemUiOverlayStyle(statusBarBrightness: Brightness.light));
+        SharedPrefs.write(StorageKeys.appThemeMode.name, ThemeMode.light.name);
+        _themeMode.value = ThemeMode.light;
+        break;
+      default:
+        SharedPrefs.write(StorageKeys.appThemeMode.name, ThemeMode.system.name);
+        _themeMode.value = ThemeMode.system;
+    }
+  }
+
   _initLocalization() async {
-    var storageLocalization = SharedPrefs.read(StorageKeys.appLocalization.name);
+    var storageLocalization =
+        SharedPrefs.read(StorageKeys.appLocalization.name);
     if (storageLocalization == "null") {
-      SharedPrefs.write(StorageKeys.appLocalization.name, ThemeMode.system.name);
+      SharedPrefs.write(
+          StorageKeys.appLocalization.name, ThemeMode.system.name);
       storageLocalization = SharedPrefs.read(StorageKeys.appLocalization.name);
     }
 
@@ -68,16 +115,8 @@ class SettingsController extends GetxController {
       preferedLocalization = storageLocalization;
     }
 
-    lang = (await AppLocalizations.delegate.load(Locale(preferedLocalization))).obs;
-  }
-
-//------------TEMA------------//
-
-  late Rx<ThemeMode> _themeMode;
-
-  ThemeMode get themeMode => _themeMode.value;
-  set themeMode(ThemeMode mode) {
-    _themeMode.value = mode;
+    lang = (await AppLocalizations.delegate.load(Locale(preferedLocalization)))
+        .obs;
   }
 
   _initTheme() {
@@ -91,34 +130,8 @@ class SettingsController extends GetxController {
     // tema modu ne?
     _themeMode = storageThemeMode == "dark"
         ? ThemeMode.dark.obs
-        : (storageThemeMode == "light" ? ThemeMode.light.obs : ThemeMode.system.obs);
-  }
-
-  /// Tema Modu Değiştirme
-  void changeTheme(ThemeMode mode) {
-    switch (mode) {
-      case ThemeMode.dark:
-        SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(statusBarBrightness: Brightness.dark));
-        SharedPrefs.write(StorageKeys.appThemeMode.name, ThemeMode.dark.name);
-        _themeMode.value = ThemeMode.dark;
-        break;
-      case (ThemeMode.light):
-        SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(statusBarBrightness: Brightness.light));
-        SharedPrefs.write(StorageKeys.appThemeMode.name, ThemeMode.light.name);
-        _themeMode.value = ThemeMode.light;
-        break;
-      default:
-        SharedPrefs.write(StorageKeys.appThemeMode.name, ThemeMode.system.name);
-        _themeMode.value = ThemeMode.system;
-    }
-  }
-
-  @override
-  void onInit() async {
-    super.onInit();
-
-    _initLocalization();
-
-    _initTheme();
+        : (storageThemeMode == "light"
+            ? ThemeMode.light.obs
+            : ThemeMode.system.obs);
   }
 }

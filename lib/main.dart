@@ -14,6 +14,7 @@ final _appRouter = AppRouter();
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     final SettingsController settings = Get.put(SettingsController());

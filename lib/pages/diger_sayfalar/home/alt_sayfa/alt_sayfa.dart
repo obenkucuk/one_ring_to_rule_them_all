@@ -1,3 +1,4 @@
+import 'package:base_application/components/batu_shimmer.dart';
 import 'package:base_application/pages/deneme.dart';
 import 'package:base_application/pages/diger_sayfalar/home/alt_sayfa/controller.dart';
 import 'package:flutter/material.dart';
@@ -42,14 +43,32 @@ class AltSayfaView extends GetView<AltSayfaController> {
                   ),
                   controller.buildStateText(
                       child: Text(controller.dogModel.message.toString())),
-                  TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: ((context) => Deneemeeee())));
-                      },
-                      child: const Text("Alt Sayfa")),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  controller.buildStateText(
+                      alignment: Alignment.centerLeft,
+                      width: 100,
+                      child: Text(controller.dogModel.message.toString())),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  controller.buildStateChildren(
+                      childLoading: Column(
+                        children: [
+                          Row(
+                            children: [
+                              BatuShimmer.sized(height: 100, width: 100),
+                              BatuShimmer.sized(height: 100, width: 100),
+                              BatuShimmer.text(
+                                width: 150,
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                      child: Text(controller.dogModel.message.toString()))
+
                   // controller.buildWidgetX(Text(controller.dogModel.status ?? "oben")),
                 ],
               ),

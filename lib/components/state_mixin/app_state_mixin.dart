@@ -21,7 +21,7 @@ mixin AppStateMixin on GetxController {
       log("loadStates fonksiyonundaki while döngüsü sayısı");
       try {
         final response = await NetworkServices().fetchDataFromSingleMap(uri);
-        await Future.delayed(const Duration(seconds: 2));
+        await Future.delayed(const Duration(seconds: 200));
 
         status = StateStatus.loaded();
         return response.data;
@@ -58,6 +58,7 @@ mixin AppStateMixin on GetxController {
     int depth = 20,
     Duration duration = const Duration(seconds: 1),
     double? borderRadius = 10,
+    Alignment? alignment = Alignment.center,
     required double width,
     required double height,
     required Widget child,
@@ -66,11 +67,12 @@ mixin AppStateMixin on GetxController {
     if (status.isLoaded) {
       return SizedBox(height: height, width: width, child: child);
     } else {
-      return BatuShimmer(
+      return BatuShimmer.sized(
         width: width,
         height: height,
         depth: depth,
         duration: duration,
+        alignment: alignment,
         borderRadius: borderRadius,
       );
     }
@@ -82,6 +84,8 @@ mixin AppStateMixin on GetxController {
     int? maxLine = 3,
     double? textSize = 14,
     double? borderRadius = 10,
+    Alignment? alignment = Alignment.center,
+    double? width,
     required Widget child,
   }) {
     // NOT: defoult lar düzenlenecek
@@ -93,7 +97,32 @@ mixin AppStateMixin on GetxController {
         duration: duration,
         maxLine: maxLine,
         textSize: textSize,
+        alignment: alignment,
         borderRadius: borderRadius,
+        width: width,
+      );
+    }
+  }
+
+  Widget buildStateChildren({
+    int depth = 20,
+    Duration duration = const Duration(seconds: 1),
+    double? borderRadius = 10,
+    Alignment? alignment = Alignment.center,
+    double? width,
+    required Widget childLoading,
+    required Widget child,
+  }) {
+    // NOT: defoult lar düzenlenecek
+    if (status.isLoaded) {
+      return child;
+    } else {
+      return BatuShimmer.generated(
+        depth: depth,
+        duration: duration,
+        alignment: alignment,
+        borderRadius: borderRadius,
+        child: childLoading,
       );
     }
   }

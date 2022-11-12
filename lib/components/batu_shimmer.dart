@@ -14,24 +14,46 @@ class BatuShimmer extends StatefulWidget {
   double? borderRadius;
   double? width;
   double? height;
+  bool isText = false;
+  bool isSized = false;
+  bool isGenerated = false;
+  Widget? child;
 
-  BatuShimmer({
+  Alignment? alignment;
+
+  BatuShimmer.sized({
     super.key,
-    required this.depth,
-    required this.duration,
-    required this.borderRadius,
+    this.depth = 20,
+    this.duration = const Duration(seconds: 1),
+    this.borderRadius = 10,
+    this.alignment = Alignment.center,
     required this.height,
     required this.width,
-  });
+  }) {
+    isSized = true;
+  }
 
-  BatuShimmer.text({
-    super.key,
-    required this.depth,
-    required this.duration,
-    required this.maxLine,
-    required this.textSize,
-    required this.borderRadius,
-  });
+  BatuShimmer.text(
+      {super.key,
+      this.depth = 20,
+      this.duration = const Duration(seconds: 1),
+      this.maxLine = 3,
+      this.textSize = 14,
+      this.borderRadius = 10,
+      this.alignment = Alignment.center,
+      this.width}) {
+    isText = true;
+  }
+
+  BatuShimmer.generated(
+      {super.key,
+      this.depth = 20,
+      this.duration = const Duration(seconds: 1),
+      this.borderRadius = 10,
+      this.alignment = Alignment.center,
+      required this.child}) {
+    isGenerated = true;
+  }
 
   @override
   State<BatuShimmer> createState() => _BatuShimmerState();
@@ -97,7 +119,7 @@ class _BatuShimmerState extends State<BatuShimmer> {
         bgColor.green + _colorInt,
         bgColor.blue + _colorInt);
     int textWDepth = _brightness == Brightness.dark ? 10 : -10;
-    final Color textWColor = Color.fromARGB(
+    final Color textAndGeneratedWColor = Color.fromARGB(
         bgColor.alpha,
         bgColor.red + textWDepth,
         bgColor.green + textWDepth,
@@ -108,48 +130,82 @@ class _BatuShimmerState extends State<BatuShimmer> {
         bgColor.green + _colorInt + 10,
         bgColor.blue + _colorInt + 10);
 
-    return AnimatedContainer(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(widget.borderRadius!),
-        color: widget.maxLine == null ? sizeWcolor : textWColor,
-      ),
-      duration: widget.duration,
-      height: widget.maxLine == null
-          ? widget.height
-          : (widget.maxLine! * (widget.textSize! + 10) + 10),
-      //TODO -20 değeri uygulamanın paddingi olacak
-      width: widget.width,
+    if (widget.isGenerated) {
+      return Align(
+        alignment: widget.alignment!,
+        child: AnimatedContainer(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(widget.borderRadius!),
+            color: textAndGeneratedWColor,
+          ),
+          duration: widget.duration,
+          margin: const EdgeInsets.all(10),
+          child: widget.child,
+        ),
+      );
+    } else if (widget.isSized) {
+      return Align(
+        alignment: widget.alignment!,
+        child: AnimatedContainer(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(widget.borderRadius!),
+            color: sizeWcolor,
+          ),
+          duration: widget.duration,
+          //TODO -20 değeri uygulamanın paddingi olacak
+          margin: const EdgeInsets.all(10),
+          height: widget.height,
 
-      child: widget.maxLine == null
-          ? null
-          : Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: List.generate(
-                  widget.maxLine!,
-                  (index) => AnimatedContainer(
-                        duration: widget.duration,
-                        decoration: BoxDecoration(
-                          borderRadius:
-                              BorderRadius.circular(widget.borderRadius!),
-                          color: textWColorText,
-                        ),
-                        margin: const EdgeInsets.only(
-                            right: 10, left: 10, bottom: 5, top: 5),
-                        height: widget.textSize,
-                        width: (widget.maxLine! - 1) == index
-                            ? context.width / 3
-                            : null,
-                      ))
-                ..insert(
-                    0,
-                    const SizedBox(
-                      height: 5,
+          width: widget.width,
+        ),
+      );
+    } else {
+      return Align(
+        alignment: widget.alignment!,
+        child: AnimatedContainer(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(widget.borderRadius!),
+            color: textAndGeneratedWColor,
+          ),
+          duration: widget.duration,
+          height: (widget.maxLine! * (widget.textSize! + 10) + 10),
+          //TODO -20 değeri uygulamanın paddingi olacak
+          width: widget.width ?? context.width - 20,
+          margin: const EdgeInsets.only(
+            left: 10,
+            right: 10,
+          ),
+
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: List.generate(
+                widget.maxLine!,
+                (index) => AnimatedContainer(
+                      duration: widget.duration,
+                      decoration: BoxDecoration(
+                        borderRadius:
+                            BorderRadius.circular(widget.borderRadius!),
+                        color: textWColorText,
+                      ),
+                      margin: const EdgeInsets.only(
+                          right: 10, left: 10, bottom: 5, top: 5),
+                      height: widget.textSize,
+                      width: (widget.maxLine! - 1) == index
+                          ? (widget.width ?? context.width) / 3
+                          : null,
                     ))
-                ..add(const SizedBox(
-                  height: 5,
-                )),
-            ),
-    );
+              ..insert(
+                  0,
+                  const SizedBox(
+                    height: 5,
+                  ))
+              ..add(const SizedBox(
+                height: 5,
+              )),
+          ),
+        ),
+      );
+    }
   }
 }

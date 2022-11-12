@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -14,8 +13,6 @@ class SettingsController extends GetxController {
   RxBool isNetworkChecking = false.obs;
 
   late Rx<AppLocalizations> lang;
-  final GlobalKey<ScaffoldMessengerState> snackbarKey =
-      GlobalKey<ScaffoldMessengerState>();
 
   //------------LOCALIZATION------------//
 
@@ -23,8 +20,6 @@ class SettingsController extends GetxController {
   final String _defoultLocalization = "en";
 
 //------------TEMA------------//
-
-  late Rx<ThemeMode> _themeMode;
 
   @override
   void onInit() async {
@@ -37,9 +32,6 @@ class SettingsController extends GetxController {
 
   /// Dil değiştirmek için
   void changeLanguage(String language) async {
-    print(Get.deviceLocale!.languageCode);
-    print(supportedLanguages());
-
     if (language == "system") {
       var systemLanguage = Locale(Get.deviceLocale!.languageCode);
 
@@ -63,6 +55,8 @@ class SettingsController extends GetxController {
     return AppLocalizations.supportedLocales;
   }
 
+  late Rx<ThemeMode> _themeMode;
+
   ThemeMode get themeMode => _themeMode.value;
 
   set themeMode(ThemeMode mode) {
@@ -73,14 +67,10 @@ class SettingsController extends GetxController {
   void changeTheme(ThemeMode mode) {
     switch (mode) {
       case ThemeMode.dark:
-        SystemChrome.setSystemUIOverlayStyle(
-            const SystemUiOverlayStyle(statusBarBrightness: Brightness.dark));
         SharedPrefs.write(StorageKeys.appThemeMode.name, ThemeMode.dark.name);
         _themeMode.value = ThemeMode.dark;
         break;
       case (ThemeMode.light):
-        SystemChrome.setSystemUIOverlayStyle(
-            const SystemUiOverlayStyle(statusBarBrightness: Brightness.light));
         SharedPrefs.write(StorageKeys.appThemeMode.name, ThemeMode.light.name);
         _themeMode.value = ThemeMode.light;
         break;

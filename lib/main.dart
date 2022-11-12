@@ -5,6 +5,8 @@ import 'package:base_application/routes/router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'core/keys.dart';
+
 void main() async {
   await SharedPrefs.init();
   runApp(const MyApp());
@@ -20,7 +22,7 @@ class MyApp extends StatelessWidget {
     final SettingsController settings = Get.put(SettingsController());
     return Obx(
       () => MaterialApp.router(
-        scaffoldMessengerKey: settings.snackbarKey,
+        scaffoldMessengerKey: snackbarKey,
 
         // localizationsDelegates: const [
         //   AppLocalizations.delegate,

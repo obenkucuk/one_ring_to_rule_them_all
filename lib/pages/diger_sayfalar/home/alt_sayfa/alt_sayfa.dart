@@ -19,6 +19,8 @@ class AltSayfaView extends GetView<AltSayfaController> {
 
   @override
   Widget build(BuildContext context) {
+    // print(Theme.of(context).brightness);
+
     return Scaffold(
       appBar: AppBar(title: const Text("Detay Sayfası")),
       body: Obx(

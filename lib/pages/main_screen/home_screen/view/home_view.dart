@@ -3,8 +3,6 @@ import 'package:base_application/pages/main_screen/home_screen/controller/home_c
 import 'package:base_application/pages/main_screen/settings_screen/controller/settings_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:auto_route/auto_route.dart';
-import 'package:base_application/routes/router.gr.dart';
 
 class HomeView extends GetView<HomeController> {
   const HomeView({super.key});
@@ -55,11 +53,19 @@ class HomeView extends GetView<HomeController> {
                     child: const Text("system")),
               ],
             ),
-            Text(settings.lang.value.helloWorld),
-            TextButton(onPressed: (() {}), child: const Text("Desteklenen Diller")),
+            Text(
+              settings.lang.value.helloWorld,
+              style: TextStyle(
+                  fontSize: Theme.of(context).textTheme.headline1!.fontSize),
+            ),
+            TextButton(
+                onPressed: (() {}), child: const Text("Desteklenen Diller")),
             TextButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: ((context) => AltSayfaScreen())));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: ((context) => AltSayfaScreen())));
                 },
                 child: const Text("Alt Sayfa")),
           ],

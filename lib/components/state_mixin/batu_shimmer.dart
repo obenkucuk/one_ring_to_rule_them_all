@@ -5,6 +5,8 @@ import 'package:base_application/pages/main_screen/settings_screen/controller/se
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../core/keys.dart';
+
 class BatuShimmer extends StatefulWidget {
   final Duration duration;
   final int depth;
@@ -14,13 +16,13 @@ class BatuShimmer extends StatefulWidget {
 
   BatuShimmer(
       {super.key,
-      this.depth = 10,
+      this.depth = 20,
       this.duration = const Duration(seconds: 1),
       this.borderRadius = 10});
 
   BatuShimmer.text(
       {super.key,
-      this.depth = 5,
+      this.depth = 20,
       this.duration = const Duration(seconds: 1),
       this.maxLine = 3,
       this.textSize = 14,
@@ -35,11 +37,17 @@ class _BatuShimmerState extends State<BatuShimmer> {
 
   Duration _duration = const Duration(microseconds: 1);
   int _colorInt = 5;
-  var _brightness = Get.find<SettingsController>().themeMode;
+  Brightness _brightness = Theme.of(appKey.currentContext!).brightness;
   bool _isStart = true;
 
   @override
   void initState() {
+    _colorInt = _brightness == Brightness.dark
+        ? 5
+        : (_brightness == Brightness.light
+            ? -50
+            : (_brightness == Brightness.dark ? 5 : -50));
+    print(_brightness);
     onReady();
     log('\x1B[32m{BatuShimmer initialized}\x1B[0m');
 
@@ -85,8 +93,12 @@ class _BatuShimmerState extends State<BatuShimmer> {
         _bgColor.red + _colorInt,
         _bgColor.green + _colorInt,
         _bgColor.blue + _colorInt);
-    final Color _textWColor = Color.fromARGB(_bgColor.alpha, _bgColor.red + 5,
-        _bgColor.green + 5, _bgColor.blue + 5);
+    int _textWDepth = _brightness == Brightness.dark ? 10 : -10;
+    final Color _textWColor = Color.fromARGB(
+        _bgColor.alpha,
+        _bgColor.red + _textWDepth,
+        _bgColor.green + _textWDepth,
+        _bgColor.blue + _textWDepth);
     final Color _textWColorText = Color.fromARGB(
         _bgColor.alpha,
         _bgColor.red + _colorInt + 10,
@@ -112,7 +124,8 @@ class _BatuShimmerState extends State<BatuShimmer> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: List.generate(
                   widget.maxLine!,
-                  (index) => Container(
+                  (index) => AnimatedContainer(
+                        duration: widget.duration,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           color: _textWColorText,

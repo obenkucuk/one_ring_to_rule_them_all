@@ -113,18 +113,14 @@ class _BatuShimmerState extends State<BatuShimmer> {
   @override
   Widget build(BuildContext context) {
     final Color bgColor = Theme.of(context).scaffoldBackgroundColor;
-    final Color sizeWcolor = Color.fromARGB(
-        bgColor.alpha,
-        bgColor.red + _colorInt,
-        bgColor.green + _colorInt,
-        bgColor.blue + _colorInt);
+
     int textWDepth = _brightness == Brightness.dark ? 10 : -10;
     final Color textAndGeneratedWColor = Color.fromARGB(
         bgColor.alpha,
         bgColor.red + textWDepth,
         bgColor.green + textWDepth,
         bgColor.blue + textWDepth);
-    final Color textWColorText = Color.fromARGB(
+    final Color textWColorTextAndSize = Color.fromARGB(
         bgColor.alpha,
         bgColor.red + _colorInt + 10,
         bgColor.green + _colorInt + 10,
@@ -149,7 +145,7 @@ class _BatuShimmerState extends State<BatuShimmer> {
         child: AnimatedContainer(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(widget.borderRadius!),
-            color: sizeWcolor,
+            color: textWColorTextAndSize,
           ),
           duration: widget.duration,
           //TODO -20 değeri uygulamanın paddingi olacak
@@ -186,7 +182,7 @@ class _BatuShimmerState extends State<BatuShimmer> {
                       decoration: BoxDecoration(
                         borderRadius:
                             BorderRadius.circular(widget.borderRadius!),
-                        color: textWColorText,
+                        color: textWColorTextAndSize,
                       ),
                       margin: const EdgeInsets.only(
                           right: 10, left: 10, bottom: 5, top: 5),

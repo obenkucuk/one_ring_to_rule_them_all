@@ -60,9 +60,7 @@ class AltSayfaView extends GetView<AltSayfaController> {
                             children: [
                               BatuShimmer.sized(height: 100, width: 100),
                               BatuShimmer.sized(height: 100, width: 100),
-                              BatuShimmer.text(
-                                width: 150,
-                              )
+                              BatuShimmer.text(width: 150)
                             ],
                           ),
                         ],

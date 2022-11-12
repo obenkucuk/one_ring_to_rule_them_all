@@ -18,10 +18,21 @@ class MainScreen extends StatelessWidget {
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       bottomNavigationBuilder: (context, tabsRouter) => SalomonBottomBar(
         currentIndex: tabsRouter.activeIndex,
-        onTap: (a) {
+        onTap: (a) async {
           // ikinci basılışta ana sayfaya dönmesi için
           if (tabsRouter.activeIndex == a) {
-            tabsRouter.popTop();
+            while (true) {
+              tabsRouter.popTop();
+              if (tabsRouter.canPop()) {
+                // TODO adam gibi yap
+
+                print("main routa pop");
+                await Future.delayed(const Duration(microseconds: 1));
+                tabsRouter.popTop();
+              } else {
+                break;
+              }
+            }
           } else {
             tabsRouter.setActiveIndex(a);
           }

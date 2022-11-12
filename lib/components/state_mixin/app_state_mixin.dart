@@ -1,5 +1,5 @@
 import 'dart:developer';
-import 'package:base_application/components/state_mixin/batu_shimmer.dart';
+import 'package:base_application/components/batu_shimmer.dart';
 import 'package:base_application/core/exeptions/app_exeptions.dart';
 import 'package:base_application/core/network_services/check_network_connection.dart';
 import 'package:base_application/core/network_services/network_services.dart';
@@ -54,47 +54,47 @@ mixin AppStateMixin on GetxController {
     });
   }
 
-  Widget buildWidgetX(
-    Widget onLoaded, {
-    Widget? onLoading,
+  Widget buildStateSize({
     int depth = 20,
     Duration duration = const Duration(seconds: 1),
     double? borderRadius = 10,
+    required double width,
+    required double height,
+    required Widget child,
   }) {
     // NOT: defoult lar düzenlenecek
     if (status.isLoaded) {
-      return onLoaded;
+      return SizedBox(height: height, width: width, child: child);
     } else {
-      return onLoading ??
-          BatuShimmer(
-            depth: depth,
-            duration: duration,
-            borderRadius: borderRadius,
-          );
+      return BatuShimmer(
+        width: width,
+        height: height,
+        depth: depth,
+        duration: duration,
+        borderRadius: borderRadius,
+      );
     }
   }
 
-  Widget buildTextWidgetX(
-    Widget onLoaded, {
-    Widget? onLoading,
+  Widget buildStateText({
     int depth = 20,
     Duration duration = const Duration(seconds: 1),
     int? maxLine = 3,
     double? textSize = 14,
     double? borderRadius = 10,
+    required Widget child,
   }) {
     // NOT: defoult lar düzenlenecek
     if (status.isLoaded) {
-      return onLoaded;
+      return child;
     } else {
-      return onLoading ??
-          BatuShimmer.text(
-            depth: depth,
-            duration: duration,
-            maxLine: maxLine,
-            textSize: textSize,
-            borderRadius: borderRadius,
-          );
+      return BatuShimmer.text(
+        depth: depth,
+        duration: duration,
+        maxLine: maxLine,
+        textSize: textSize,
+        borderRadius: borderRadius,
+      );
     }
   }
 

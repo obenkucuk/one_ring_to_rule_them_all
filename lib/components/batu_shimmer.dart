@@ -4,7 +4,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../core/keys.dart';
+import '../core/keys.dart';
 
 class BatuShimmer extends StatefulWidget {
   final Duration duration;
@@ -12,12 +12,16 @@ class BatuShimmer extends StatefulWidget {
   int? maxLine;
   double? textSize;
   double? borderRadius;
+  double? width;
+  double? height;
 
   BatuShimmer({
     super.key,
     required this.depth,
     required this.duration,
     required this.borderRadius,
+    required this.height,
+    required this.width,
   });
 
   BatuShimmer.text({
@@ -106,15 +110,15 @@ class _BatuShimmerState extends State<BatuShimmer> {
 
     return AnimatedContainer(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(widget.borderRadius!),
         color: widget.maxLine == null ? sizeWcolor : textWColor,
       ),
       duration: widget.duration,
       height: widget.maxLine == null
-          ? context.height
+          ? widget.height
           : (widget.maxLine! * (widget.textSize! + 10) + 10),
       //TODO -20 değeri uygulamanın paddingi olacak
-      width: context.width - 20,
+      width: widget.width,
 
       child: widget.maxLine == null
           ? null
@@ -126,12 +130,13 @@ class _BatuShimmerState extends State<BatuShimmer> {
                   (index) => AnimatedContainer(
                         duration: widget.duration,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius:
+                              BorderRadius.circular(widget.borderRadius!),
                           color: textWColorText,
                         ),
                         margin: const EdgeInsets.only(
                             right: 10, left: 10, bottom: 5, top: 5),
-                        height: 14,
+                        height: widget.textSize,
                         width: (widget.maxLine! - 1) == index
                             ? context.width / 3
                             : null,

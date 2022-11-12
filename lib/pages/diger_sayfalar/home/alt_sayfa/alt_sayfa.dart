@@ -1,3 +1,4 @@
+import 'package:base_application/pages/deneme.dart';
 import 'package:base_application/pages/diger_sayfalar/home/alt_sayfa/controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
@@ -31,23 +32,24 @@ class AltSayfaView extends GetView<AltSayfaController> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(
-                    height: 200,
-                    width: 200,
-                    child: controller.buildWidgetX(
-                        Image.network(controller.dogModel.message ?? "")),
-                  ),
+                  controller.buildStateSize(
+                      width: 200,
+                      height: 200,
+                      child: Image.network(
+                          controller.dogModel.message.toString())),
                   const SizedBox(
                     height: 20,
                   ),
-                  controller.buildTextWidgetX(
-                      maxLine: 5, Text(controller.dogModel.message.toString())),
-                  const SizedBox(
-                    height: 40,
-                  ),
-
-                  controller.buildTextWidgetX(
-                      Text(controller.dogModel.message.toString())),
+                  controller.buildStateText(
+                      child: Text(controller.dogModel.message.toString())),
+                  TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: ((context) => Deneemeeee())));
+                      },
+                      child: const Text("Alt Sayfa")),
                   // controller.buildWidgetX(Text(controller.dogModel.status ?? "oben")),
                 ],
               ),

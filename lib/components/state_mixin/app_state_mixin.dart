@@ -110,6 +110,7 @@ mixin AppStateMixin on GetxController {
     double? borderRadius = 10,
     Alignment? alignment = Alignment.center,
     double? width,
+    double? height,
     required Widget childLoading,
     required Widget child,
   }) {
@@ -122,6 +123,8 @@ mixin AppStateMixin on GetxController {
         duration: duration,
         alignment: alignment,
         borderRadius: borderRadius,
+        width: width,
+        height: height,
         child: childLoading,
       );
     }

@@ -51,6 +51,8 @@ class BatuShimmer extends StatefulWidget {
       this.duration = const Duration(seconds: 1),
       this.borderRadius = 10,
       this.alignment = Alignment.center,
+      this.width,
+      this.height,
       required this.child}) {
     isGenerated = true;
   }
@@ -74,7 +76,7 @@ class _BatuShimmerState extends State<BatuShimmer> {
             ? -50
             : (_brightness == Brightness.dark ? 5 : -50));
     onReady();
-    log('\x1B[32m{BatuShimmer initialized}\x1B[0m');
+    log(name: "BatuShimmer", '\x1B[32mInitialized\x1B[0m');
 
     super.initState();
   }
@@ -107,7 +109,7 @@ class _BatuShimmerState extends State<BatuShimmer> {
     if (_timer.isActive) {
       _timer.cancel();
     }
-    log('\x1B[32m{BatuShimmer deleted}\x1B[0m');
+    log(name: "BatuShimmer", '\x1B[32mDeleted\x1B[0m');
   }
 
   @override
@@ -136,6 +138,8 @@ class _BatuShimmerState extends State<BatuShimmer> {
           ),
           duration: widget.duration,
           margin: const EdgeInsets.all(10),
+          width: widget.width,
+          height: widget.height,
           child: widget.child,
         ),
       );
@@ -188,7 +192,9 @@ class _BatuShimmerState extends State<BatuShimmer> {
                           right: 10, left: 10, bottom: 5, top: 5),
                       height: widget.textSize,
                       width: (widget.maxLine! - 1) == index
-                          ? (widget.width ?? context.width) / 3
+                          ? (widget.maxLine != 1
+                              ? (widget.width ?? context.width) / 3
+                              : null)
                           : null,
                     ))
               ..insert(

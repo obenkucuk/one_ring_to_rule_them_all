@@ -26,53 +26,67 @@ class AltSayfaView extends GetView<AltSayfaController> {
     return Scaffold(
       appBar: AppBar(title: const Text("Detay Sayfası")),
       body: Obx(
-        () => Column(
-          children: [
-            //    Container(height: 50, width: 100, color: Colors.amber),
-            Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  controller.buildStateSize(
-                      width: 200,
-                      height: 200,
-                      child: Image.network(
-                          controller.dogModel.message.toString())),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  controller.buildStateText(
-                      child: Text(controller.dogModel.message.toString())),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  controller.buildStateText(
-                      alignment: Alignment.centerLeft,
-                      width: 100,
-                      child: Text(controller.dogModel.message.toString())),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  controller.buildStateChildren(
-                      childLoading: Column(
-                        children: [
-                          Row(
-                            children: [
-                              BatuShimmer.sized(height: 100, width: 100),
-                              BatuShimmer.sized(height: 100, width: 100),
-                              BatuShimmer.text(width: 150)
-                            ],
-                          ),
-                        ],
-                      ),
-                      child: Text(controller.dogModel.message.toString()))
+        () => SingleChildScrollView(
+          child: Column(
+            children: [
+              //    Container(height: 50, width: 100, color: Colors.amber),
+              Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    controller.buildStateSize(
+                        width: 200,
+                        height: 200,
+                        child: Image.network(
+                            controller.dogModel.message.toString())),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    controller.buildStateText(
+                        child: Text(controller.dogModel.message.toString())),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    controller.buildStateText(
+                        alignment: Alignment.centerLeft,
+                        width: 100,
+                        child: Text(controller.dogModel.message.toString())),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    controller.buildStateChildren(
+                        childLoading: Column(
+                          children: [
+                            Row(
+                              children: [
+                                BatuShimmer.sized(height: 100, width: 100),
+                                BatuShimmer.sized(height: 100, width: 100),
+                                BatuShimmer.text(width: 150)
+                              ],
+                            ),
+                          ],
+                        ),
+                        child: Text(controller.dogModel.message.toString())),
+                    controller.buildStateChildren(
+                        width: 200,
+                        childLoading: Column(
+                          children: [
+                            BatuShimmer.sized(
+                                borderRadius: 50, height: 100, width: 100),
+                            BatuShimmer.text(
+                              maxLine: 1,
+                            )
+                          ],
+                        ),
+                        child: Text(controller.dogModel.message.toString()))
 
-                  // controller.buildWidgetX(Text(controller.dogModel.status ?? "oben")),
-                ],
+                    // controller.buildWidgetX(Text(controller.dogModel.status ?? "oben")),
+                  ],
+                ),
               ),
-            ),
-            //   Container(height: 50, width: 100, color: Colors.amber),
-          ],
+              //   Container(height: 50, width: 100, color: Colors.amber),
+            ],
+          ),
         ),
       ),
     );

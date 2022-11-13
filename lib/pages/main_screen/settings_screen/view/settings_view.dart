@@ -1,5 +1,5 @@
 import 'package:base_application/pages/main_screen/settings_screen/controller/settings_controller.dart';
-import 'package:base_application/components/theme/text_style.dart';
+import 'package:base_application/theme/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -22,9 +22,18 @@ class SettingsView extends GetView<SettingsController> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              IconButton(onPressed: () => controller.changeTheme(ThemeMode.dark), icon: const Icon(Icons.dark_mode)),
-              IconButton(onPressed: () => controller.changeTheme(ThemeMode.light), icon: const Icon(Icons.light_mode)),
-              IconButton(onPressed: () => controller.changeTheme(ThemeMode.system), icon: const Icon(Icons.settings)),
+              IconButton(
+                onPressed: () => controller.changeTheme(ThemeMode.dark),
+                icon: const Icon(Icons.dark_mode),
+              ),
+              IconButton(
+                onPressed: () => controller.changeTheme(ThemeMode.light),
+                icon: const Icon(Icons.light_mode),
+              ),
+              IconButton(
+                onPressed: () => controller.changeTheme(ThemeMode.system),
+                icon: const Icon(Icons.settings),
+              ),
             ],
           ),
           Row(

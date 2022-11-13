@@ -8,8 +8,5 @@ class TextStylesX {
 
   BuildContext context;
 
-  TextStyle get s18W300 => Theme.of(context)
-      .textTheme
-      .headline1!
-      .copyWith(fontSize: 18, fontWeight: FontWeight.w300);
+  TextStyle get s18W300 => Theme.of(context).textTheme.headline1!.copyWith(fontSize: 18, fontWeight: FontWeight.w300);
 }

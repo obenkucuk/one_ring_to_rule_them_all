@@ -1,3 +1,5 @@
+import 'dart:async';
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -37,13 +39,10 @@ class SettingsController extends GetxController {
 
       if (supportedLanguages().contains(systemLanguage)) {
         lang.value = await AppLocalizations.delegate.load(systemLanguage);
-        SharedPrefs.write(
-            StorageKeys.appLocalization.name, ThemeMode.system.name);
+        SharedPrefs.write(StorageKeys.appLocalization.name, ThemeMode.system.name);
       } else {
-        lang.value =
-            await AppLocalizations.delegate.load(Locale(_defoultLocalization));
-        SharedPrefs.write(
-            StorageKeys.appLocalization.name, ThemeMode.system.name);
+        lang.value = await AppLocalizations.delegate.load(Locale(_defoultLocalization));
+        SharedPrefs.write(StorageKeys.appLocalization.name, ThemeMode.system.name);
       }
     } else {
       lang.value = await AppLocalizations.delegate.load(Locale(language));
@@ -55,37 +54,10 @@ class SettingsController extends GetxController {
     return AppLocalizations.supportedLocales;
   }
 
-  late Rx<ThemeMode> _themeMode;
-
-  ThemeMode get themeMode => _themeMode.value;
-
-  set themeMode(ThemeMode mode) {
-    _themeMode.value = mode;
-  }
-
-  /// Tema Modu Değiştirme
-  void changeTheme(ThemeMode mode) {
-    switch (mode) {
-      case ThemeMode.dark:
-        SharedPrefs.write(StorageKeys.appThemeMode.name, ThemeMode.dark.name);
-        _themeMode.value = ThemeMode.dark;
-        break;
-      case (ThemeMode.light):
-        SharedPrefs.write(StorageKeys.appThemeMode.name, ThemeMode.light.name);
-        _themeMode.value = ThemeMode.light;
-        break;
-      default:
-        SharedPrefs.write(StorageKeys.appThemeMode.name, ThemeMode.system.name);
-        _themeMode.value = ThemeMode.system;
-    }
-  }
-
   _initLocalization() async {
-    var storageLocalization =
-        SharedPrefs.read(StorageKeys.appLocalization.name);
+    var storageLocalization = SharedPrefs.read(StorageKeys.appLocalization.name);
     if (storageLocalization == "null") {
-      SharedPrefs.write(
-          StorageKeys.appLocalization.name, ThemeMode.system.name);
+      SharedPrefs.write(StorageKeys.appLocalization.name, ThemeMode.system.name);
       storageLocalization = SharedPrefs.read(StorageKeys.appLocalization.name);
     }
 
@@ -105,23 +77,53 @@ class SettingsController extends GetxController {
       preferedLocalization = storageLocalization;
     }
 
-    lang = (await AppLocalizations.delegate.load(Locale(preferedLocalization)))
-        .obs;
+    lang = (await AppLocalizations.delegate.load(Locale(preferedLocalization))).obs;
+  }
+
+  /// Tema Modu Değiştirme
+  void changeTheme(ThemeMode mode) {
+    switch (mode) {
+      case ThemeMode.dark:
+        SharedPrefs.write(StorageKeys.appThemeMode.name, ThemeMode.dark.name);
+        ThemeStream.inTheme = ThemeMode.dark;
+        break;
+      case (ThemeMode.light):
+        SharedPrefs.write(StorageKeys.appThemeMode.name, ThemeMode.light.name);
+        ThemeStream.inTheme = ThemeMode.light;
+        break;
+      default:
+        SharedPrefs.write(StorageKeys.appThemeMode.name, ThemeMode.system.name);
+        ThemeStream.inTheme = ThemeMode.system;
+    }
   }
 
   _initTheme() {
     //ilk açılış tema modu
-    var storageThemeMode = SharedPrefs.read(StorageKeys.appThemeMode.name);
+    String storageThemeMode = SharedPrefs.read(StorageKeys.appThemeMode.name);
+
     if (storageThemeMode == "null") {
       SharedPrefs.write(StorageKeys.appThemeMode.name, ThemeMode.system.name);
       storageThemeMode = SharedPrefs.read(StorageKeys.appThemeMode.name);
     }
 
     // tema modu ne?
-    _themeMode = storageThemeMode == "dark"
-        ? ThemeMode.dark.obs
+    storageThemeMode == "dark"
+        ? ThemeStream.initialThemeMode = ThemeMode.dark
         : (storageThemeMode == "light"
-            ? ThemeMode.light.obs
-            : ThemeMode.system.obs);
+            ? ThemeStream.initialThemeMode = ThemeMode.light
+            : ThemeStream.initialThemeMode = ThemeMode.system);
+  }
+}
+
+class ThemeStream {
+  static StreamController<ThemeMode> theme = StreamController<ThemeMode>.broadcast();
+  static set inTheme(ThemeMode mode) => theme.sink.add(mode);
+  static Stream<ThemeMode> get outTheme => theme.stream;
+
+  static ThemeMode initialThemeMode = ThemeMode.system;
+
+  static dispose() {
+    log("Theme stream dispose method has been triggered");
+    theme.close();
   }
 }

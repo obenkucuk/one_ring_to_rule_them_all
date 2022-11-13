@@ -40,11 +40,11 @@ dependencies:
   intl: ^0.17.0 
 
   get: ^4.6.5
- 
   lottie: ^1.4.3
 
   dio: ^4.0.6
   shared_preferences: ^2.0.15
+  rxdart: ^0.27.6
 
 
 

@@ -1,5 +1,4 @@
 import 'dart:developer';
-import 'package:base_application/components/batu_shimmer.dart';
 import 'package:base_application/core/exeptions/app_exeptions.dart';
 import 'package:base_application/core/network_services/check_network_connection.dart';
 import 'package:base_application/core/network_services/network_services.dart';
@@ -52,12 +51,6 @@ mixin AppStateMixin on GetxController {
     yield* Stream.periodic(const Duration(seconds: 2), (count) {
       return count;
     });
-  }
-
-  Function()? buildFuncX(Function()? a) {
-    if (status.isLoaded) {
-      return a;
-    }
   }
 
   Widget buildStateX({

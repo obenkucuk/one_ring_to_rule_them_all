@@ -111,10 +111,10 @@ class SettingsController extends GetxController {
 
     // tema modu ne?
     storageThemeMode == "dark"
-        ? ThemeStream.initialThemeMode = ThemeMode.dark
+        ? ThemeStream.inTheme = ThemeMode.dark
         : (storageThemeMode == "light"
-            ? ThemeStream.initialThemeMode = ThemeMode.light
-            : ThemeStream.initialThemeMode = ThemeMode.system);
+            ? ThemeStream.inTheme = ThemeMode.light
+            : ThemeStream.inTheme = ThemeMode.system);
   }
 }
 
@@ -122,8 +122,6 @@ class ThemeStream {
   static StreamController<ThemeMode> theme = StreamController<ThemeMode>.broadcast();
   static set inTheme(ThemeMode mode) => theme.sink.add(mode);
   static Stream<ThemeMode> get outTheme => theme.stream;
-
-  static ThemeMode initialThemeMode = ThemeMode.system;
 
   static dispose() {
     log("Theme stream dispose method has been triggered");

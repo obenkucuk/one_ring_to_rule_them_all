@@ -6,8 +6,6 @@ import 'package:get/get.dart';
 
 import '../core/keys.dart';
 
-enum ShimmerProTypes { sized, generated, text }
-
 class ShimmerPro extends StatefulWidget {
   final Duration duration;
   int depth;
@@ -149,7 +147,7 @@ class _ShimmerProState extends State<ShimmerPro> {
             color: textWColorTextAndSize,
           ),
           duration: widget.duration,
-          //TODO -20 değeri uygulamanın paddingi olacak
+          //NOT: -20 değeri uygulamanın paddingi olacak
           margin: const EdgeInsets.all(10),
           height: widget.height,
 

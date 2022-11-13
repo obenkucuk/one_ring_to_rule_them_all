@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -147,7 +146,7 @@ class _BatuShimmerState extends State<BatuShimmer> {
             color: textWColorTextAndSize,
           ),
           duration: widget.duration,
-          //TODO -20 değeri uygulamanın paddingi olacak
+          //NOT: -20 değeri uygulamanın paddingi olacak
           margin: const EdgeInsets.all(10),
           height: widget.height,
 
@@ -164,7 +163,7 @@ class _BatuShimmerState extends State<BatuShimmer> {
           ),
           duration: widget.duration,
           height: (widget.maxLine! * (widget.textSize! + 10) + 10),
-          //TODO -20 değeri uygulamanın paddingi olacak
+          //NOT: -20 değeri uygulamanın paddingi olacak
           width: widget.width ?? context.width - 20,
           margin: const EdgeInsets.only(
             left: 10,

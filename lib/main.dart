@@ -22,8 +22,7 @@ class MyApp extends StatelessWidget {
     Get.lazyPut(() => SettingsController());
 
     return StreamBuilder<ThemeMode>(
-      initialData: ThemeStream.initialThemeMode,
-      stream: ThemeStream.theme.stream,
+      stream: ThemeStream.outTheme,
       builder: (context, snapshot) {
         return MaterialApp.router(
           scaffoldMessengerKey: snackbarKey,

@@ -23,7 +23,7 @@ class MainScreen extends StatelessWidget {
               if (tabsRouter.canPop()) {
                 // TODO adam gibi yap
 
-                print("main routa pop");
+                debugPrint("main routa pop");
                 await Future.delayed(const Duration(microseconds: 1));
                 tabsRouter.popTop();
               } else {

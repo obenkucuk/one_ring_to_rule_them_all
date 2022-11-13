@@ -72,11 +72,9 @@ class _BatuShimmerState extends State<BatuShimmer> {
   void initState() {
     _colorInt = _brightness == Brightness.dark
         ? 5
-        : (_brightness == Brightness.light
-            ? -50
-            : (_brightness == Brightness.dark ? 5 : -50));
+        : (_brightness == Brightness.light ? -50 : (_brightness == Brightness.dark ? 5 : -50));
     // _brightness == Brightness.light ? widget.depth = widget.depth + 10 : null;
-    print(widget.depth);
+    debugPrint(widget.depth.toString());
 
     onReady();
     log(name: "BatuShimmer", '\x1B[32mInitialized\x1B[0m');
@@ -120,16 +118,10 @@ class _BatuShimmerState extends State<BatuShimmer> {
     final Color bgColor = Theme.of(context).scaffoldBackgroundColor;
 
     int textWDepth = _brightness == Brightness.dark ? 10 : -10;
-    final Color textAndGeneratedWColor = Color.fromARGB(
-        bgColor.alpha,
-        bgColor.red + textWDepth,
-        bgColor.green + textWDepth,
-        bgColor.blue + textWDepth);
+    final Color textAndGeneratedWColor =
+        Color.fromARGB(bgColor.alpha, bgColor.red + textWDepth, bgColor.green + textWDepth, bgColor.blue + textWDepth);
     final Color textWColorTextAndSize = Color.fromARGB(
-        bgColor.alpha,
-        bgColor.red + _colorInt + 10,
-        bgColor.green + _colorInt + 10,
-        bgColor.blue + _colorInt + 10);
+        bgColor.alpha, bgColor.red + _colorInt + 10, bgColor.green + _colorInt + 10, bgColor.blue + _colorInt + 10);
 
     if (widget.isGenerated) {
       return Align(
@@ -187,17 +179,13 @@ class _BatuShimmerState extends State<BatuShimmer> {
                 (index) => AnimatedContainer(
                       duration: widget.duration,
                       decoration: BoxDecoration(
-                        borderRadius:
-                            BorderRadius.circular(widget.borderRadius!),
+                        borderRadius: BorderRadius.circular(widget.borderRadius!),
                         color: textWColorTextAndSize,
                       ),
-                      margin: const EdgeInsets.only(
-                          right: 10, left: 10, bottom: 5, top: 5),
+                      margin: const EdgeInsets.only(right: 10, left: 10, bottom: 5, top: 5),
                       height: widget.textSize,
                       width: (widget.maxLine! - 1) == index
-                          ? (widget.maxLine != 1
-                              ? (widget.width ?? context.width) / 3
-                              : null)
+                          ? (widget.maxLine != 1 ? (widget.width ?? context.width) / 3 : null)
                           : null,
                     ))
               ..insert(

@@ -1,4 +1,5 @@
 import 'package:base_application/core/exeptions/app_exeptions.dart';
+import 'package:flutter/rendering.dart';
 import 'package:get/state_manager.dart';
 
 class HomeController extends GetxController {
@@ -9,7 +10,9 @@ class HomeController extends GetxController {
 
     try {
       throw NoInternetException();
-    } on NoInternetException catch (e) {}
+    } on NoInternetException catch (e) {
+      debugPrint(e.toString());
+    }
   }
 
   bb() {

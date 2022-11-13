@@ -59,7 +59,7 @@ class HomeView extends GetView<HomeController> {
             TextButton(onPressed: (() {}), child: const Text("Desteklenen Diller")),
             TextButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: ((context) => AltSayfaScreen())));
+                  Navigator.push(context, MaterialPageRoute(builder: ((context) => const AltSayfaScreen())));
                 },
                 child: const Text("Alt Sayfa")),
           ],

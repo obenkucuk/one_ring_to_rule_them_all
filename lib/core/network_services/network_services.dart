@@ -30,5 +30,6 @@ class NetworkServices extends INetworkServices {
     return response;
   }
 
+  @override
   fetchDataFromMapsOfList(uri) async {}
 }

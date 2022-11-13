@@ -19,7 +19,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final SettingsController settings = Get.put(SettingsController());
+    Get.lazyPut(() => SettingsController());
+
     return StreamBuilder<ThemeMode>(
       initialData: ThemeStream.initialThemeMode,
       stream: ThemeStream.theme.stream,

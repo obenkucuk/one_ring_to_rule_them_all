@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:developer';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -86,10 +87,12 @@ class SettingsController extends GetxController {
       case ThemeMode.dark:
         SharedPrefs.write(StorageKeys.appThemeMode.name, ThemeMode.dark.name);
         ThemeStream.inTheme = ThemeMode.dark;
+        SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(statusBarBrightness: Brightness.dark));
         break;
       case (ThemeMode.light):
         SharedPrefs.write(StorageKeys.appThemeMode.name, ThemeMode.light.name);
         ThemeStream.inTheme = ThemeMode.light;
+        SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(statusBarBrightness: Brightness.light));
         break;
       default:
         SharedPrefs.write(StorageKeys.appThemeMode.name, ThemeMode.system.name);

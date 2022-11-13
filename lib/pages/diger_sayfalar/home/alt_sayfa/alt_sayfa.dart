@@ -33,6 +33,13 @@ class AltSayfaView extends GetView<AltSayfaController> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    ElevatedButton(
+                        onPressed: () {
+                          if (controller.status.isLoaded) {
+                            print("object");
+                          }
+                        },
+                        child: const Text("data")),
                     controller.buildStateX(
                         onLoading: BatuShimmer.sized(height: 200, width: 200),
                         onLoaded: Image.network(controller.dogModel.message.toString())),
@@ -80,7 +87,7 @@ class AltSayfaView extends GetView<AltSayfaController> {
                             ],
                           ),
                         ),
-                        onLoaded: Text(controller.dogModel.message.toString()))
+                        onLoaded: Text(controller.dogModel.message.toString())),
 
                     // controller.buildWidgetX(Text(controller.dogModel.status ?? "oben")),
                   ],

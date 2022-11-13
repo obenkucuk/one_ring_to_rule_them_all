@@ -21,7 +21,7 @@ mixin AppStateMixin on GetxController {
       log("loadStates fonksiyonundaki while döngüsü sayısı");
       try {
         final response = await NetworkServices().fetchDataFromSingleMap(uri);
-        await Future.delayed(const Duration(seconds: 200));
+        await Future.delayed(const Duration(seconds: 2));
 
         status = StateStatus.loaded();
         return response.data;
@@ -52,6 +52,12 @@ mixin AppStateMixin on GetxController {
     yield* Stream.periodic(const Duration(seconds: 2), (count) {
       return count;
     });
+  }
+
+  Function()? buildFuncX(Function()? a) {
+    if (status.isLoaded) {
+      return a;
+    }
   }
 
   Widget buildStateX({

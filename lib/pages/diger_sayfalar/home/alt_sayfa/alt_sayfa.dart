@@ -34,51 +34,57 @@ class AltSayfaView extends GetView<AltSayfaController> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    controller.buildStateSize(
-                        width: 200,
-                        height: 200,
-                        child: Image.network(
+                    controller.buildStateX(
+                        onLoading: BatuShimmer.sized(height: 200, width: 200),
+                        onLoaded: Image.network(
                             controller.dogModel.message.toString())),
                     const SizedBox(
                       height: 20,
                     ),
-                    controller.buildStateText(
-                        child: Text(controller.dogModel.message.toString())),
+                    controller.buildStateX(
+                        onLoading: BatuShimmer.text(),
+                        onLoaded: Text(controller.dogModel.message.toString())),
                     const SizedBox(
                       height: 20,
                     ),
-                    controller.buildStateText(
-                        alignment: Alignment.centerLeft,
-                        width: 100,
-                        child: Text(controller.dogModel.message.toString())),
+                    controller.buildStateX(
+                        onLoading: BatuShimmer.text(
+                          alignment: Alignment.centerLeft,
+                          width: 100,
+                        ),
+                        onLoaded: Text(controller.dogModel.message.toString())),
                     const SizedBox(
                       height: 20,
                     ),
-                    controller.buildStateChildren(
-                        childLoading: Column(
-                          children: [
-                            Row(
-                              children: [
-                                BatuShimmer.sized(height: 100, width: 100),
-                                BatuShimmer.sized(height: 100, width: 100),
-                                BatuShimmer.text(width: 150)
-                              ],
-                            ),
-                          ],
+                    controller.buildStateX(
+                        onLoading: BatuShimmer.generated(
+                          child: Column(
+                            children: [
+                              Row(
+                                children: [
+                                  BatuShimmer.sized(height: 100, width: 100),
+                                  BatuShimmer.sized(height: 100, width: 100),
+                                  BatuShimmer.text(width: 150)
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
-                        child: Text(controller.dogModel.message.toString())),
-                    controller.buildStateChildren(
-                        width: 200,
-                        childLoading: Column(
-                          children: [
-                            BatuShimmer.sized(
-                                borderRadius: 50, height: 100, width: 100),
-                            BatuShimmer.text(
-                              maxLine: 1,
-                            )
-                          ],
+                        onLoaded: Text(controller.dogModel.message.toString())),
+                    controller.buildStateX(
+                        onLoading: BatuShimmer.generated(
+                          width: 200,
+                          child: Column(
+                            children: [
+                              BatuShimmer.sized(
+                                  borderRadius: 50, height: 100, width: 100),
+                              BatuShimmer.text(
+                                maxLine: 1,
+                              )
+                            ],
+                          ),
                         ),
-                        child: Text(controller.dogModel.message.toString()))
+                        onLoaded: Text(controller.dogModel.message.toString()))
 
                     // controller.buildWidgetX(Text(controller.dogModel.status ?? "oben")),
                   ],

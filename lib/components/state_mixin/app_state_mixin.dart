@@ -54,79 +54,15 @@ mixin AppStateMixin on GetxController {
     });
   }
 
-  Widget buildStateSize({
-    int depth = 20,
-    Duration duration = const Duration(seconds: 1),
-    double? borderRadius = 10,
-    Alignment? alignment = Alignment.center,
-    required double width,
-    required double height,
-    required Widget child,
+  Widget buildStateX({
+    required Widget onLoaded,
+    required Widget onLoading,
   }) {
     // NOT: defoult lar düzenlenecek
     if (status.isLoaded) {
-      return SizedBox(height: height, width: width, child: child);
+      return onLoaded;
     } else {
-      return BatuShimmer.sized(
-        width: width,
-        height: height,
-        depth: depth,
-        duration: duration,
-        alignment: alignment,
-        borderRadius: borderRadius,
-      );
-    }
-  }
-
-  Widget buildStateText({
-    int depth = 20,
-    Duration duration = const Duration(seconds: 1),
-    int? maxLine = 3,
-    double? textSize = 14,
-    double? borderRadius = 10,
-    Alignment? alignment = Alignment.center,
-    double? width,
-    required Widget child,
-  }) {
-    // NOT: defoult lar düzenlenecek
-    if (status.isLoaded) {
-      return child;
-    } else {
-      return BatuShimmer.text(
-        depth: depth,
-        duration: duration,
-        maxLine: maxLine,
-        textSize: textSize,
-        alignment: alignment,
-        borderRadius: borderRadius,
-        width: width,
-      );
-    }
-  }
-
-  Widget buildStateChildren({
-    int depth = 20,
-    Duration duration = const Duration(seconds: 1),
-    double? borderRadius = 10,
-    Alignment? alignment = Alignment.center,
-    double? width,
-    double? height,
-    required Widget childLoading,
-    required Widget child,
-  }) {
-    // NOT: defoult lar düzenlenecek
-    if (status.isLoaded) {
-      return child;
-    } else {
-      return BatuShimmer.generated(
-        depth: depth,
-        duration: duration,
-        alignment: alignment,
-        borderRadius: borderRadius,
-        width: width,
-        height: height,
-        child: childLoading,
-      );
+      return onLoading;
     }
   }
 

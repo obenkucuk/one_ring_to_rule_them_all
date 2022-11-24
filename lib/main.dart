@@ -1,11 +1,13 @@
 import 'package:base_application/core/shared_pref.dart';
-import 'package:base_application/theme/theme_data.dart' as theme;
+
 import 'package:base_application/pages/main_screen/settings_screen/controller/settings_controller.dart';
 import 'package:base_application/routes/router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'core/keys.dart';
+import 'theme/theme_data_dark.dart';
+import 'theme/theme_data_light.dart';
 
 void main() async {
   await SharedPrefs.init();
@@ -27,8 +29,8 @@ class MyApp extends StatelessWidget {
         return MaterialApp.router(
           scaffoldMessengerKey: snackbarKey,
           debugShowCheckedModeBanner: false,
-          theme: theme.lightTheme,
-          darkTheme: theme.darkTheme,
+          theme: lightTheme,
+          darkTheme: darkTheme,
           title: "My App Title",
           themeMode: snapshot.data,
           routerDelegate: _appRouter.delegate(),

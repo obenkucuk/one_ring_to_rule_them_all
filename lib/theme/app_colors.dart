@@ -12,6 +12,7 @@ class AppColors {
   static const Color primaryContainerLight = Colors.white;
 
   static const Color secondaryContainer = Color(0xffEBF2FA);
+
   static const Color textDarkTheme = Color(0xffCDDBD7);
   static const Color textLightTheme = Color(0xff14385A);
   static const Color unSelectedColor = Color(0xffABB4B3);

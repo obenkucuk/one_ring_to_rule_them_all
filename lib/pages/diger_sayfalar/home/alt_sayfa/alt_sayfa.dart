@@ -1,7 +1,8 @@
-import 'package:base_application/components/batu_shimmer.dart';
 import 'package:base_application/pages/diger_sayfalar/home/alt_sayfa/controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
+
+import '../../../../components/shimmer_pro.dart';
 
 class AltSayfaScreen extends StatelessWidget {
   const AltSayfaScreen({super.key});
@@ -34,18 +35,18 @@ class AltSayfaView extends GetView<AltSayfaController> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     controller.buildStateX(
-                        onLoading: BatuShimmer.sized(height: 200, width: 200),
+                        onLoading: ShimmerPro.sized(height: 200, width: 200),
                         onLoaded: Image.network(controller.dogModel.message.toString())),
                     const SizedBox(
                       height: 20,
                     ),
                     controller.buildStateX(
-                        onLoading: BatuShimmer.text(), onLoaded: Text(controller.dogModel.message.toString())),
+                        onLoading: ShimmerPro.text(), onLoaded: Text(controller.dogModel.message.toString())),
                     const SizedBox(
                       height: 20,
                     ),
                     controller.buildStateX(
-                        onLoading: BatuShimmer.text(
+                        onLoading: ShimmerPro.text(
                           alignment: Alignment.centerLeft,
                           width: 100,
                         ),
@@ -54,14 +55,14 @@ class AltSayfaView extends GetView<AltSayfaController> {
                       height: 20,
                     ),
                     controller.buildStateX(
-                        onLoading: BatuShimmer.generated(
+                        onLoading: ShimmerPro.generated(
                           child: Column(
                             children: [
                               Row(
                                 children: [
-                                  BatuShimmer.sized(height: 100, width: 100),
-                                  BatuShimmer.sized(height: 100, width: 100),
-                                  BatuShimmer.text(width: 150)
+                                  ShimmerPro.sized(height: 100, width: 100),
+                                  ShimmerPro.sized(height: 100, width: 100),
+                                  ShimmerPro.text(width: 150)
                                 ],
                               ),
                             ],
@@ -69,12 +70,12 @@ class AltSayfaView extends GetView<AltSayfaController> {
                         ),
                         onLoaded: Text(controller.dogModel.message.toString())),
                     controller.buildStateX(
-                        onLoading: BatuShimmer.generated(
+                        onLoading: ShimmerPro.generated(
                           width: 200,
                           child: Column(
                             children: [
-                              BatuShimmer.sized(borderRadius: 50, height: 100, width: 100),
-                              BatuShimmer.text(
+                              ShimmerPro.sized(borderRadius: 50, height: 100, width: 100),
+                              ShimmerPro.text(
                                 maxLine: 1,
                               )
                             ],

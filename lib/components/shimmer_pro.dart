@@ -1,10 +1,8 @@
 import 'dart:async';
 import 'dart:developer';
-
+import 'package:base_application/pages/main_screen/settings_screen/controller/settings_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../core/keys.dart';
 
 class ShimmerPro extends StatefulWidget {
   final Duration duration;
@@ -65,7 +63,7 @@ class _ShimmerProState extends State<ShimmerPro> {
   late Timer _timer;
 
   int _colorInt = 5;
-  final Brightness _brightness = Theme.of(appKey.currentContext!).brightness;
+  final Brightness _brightness = Theme.of(Get.find<SettingsController>().globalAppKey.currentContext!).brightness;
   bool _isStart = true;
 
   @override

@@ -1,4 +1,3 @@
-import 'package:base_application/core/keys.dart';
 import 'package:base_application/core/network_services/check_network_connection.dart';
 import 'package:base_application/pages/main_screen/settings_screen/controller/settings_controller.dart';
 import 'package:flutter/material.dart';
@@ -12,11 +11,9 @@ class NoInternetException implements Exception {
     final settings = Get.find<SettingsController>();
 
     if (!settings.isNetworkChecking.value) {
-      snackbarKey.currentState!.showSnackBar(
-        snackBar(
-            color: Colors.redAccent,
-            text: settings.lang.value.noNetworkMessage),
-      );
+      Get.find<SettingsController>().snackbarKey.currentState!.showSnackBar(
+            snackBar(color: Colors.redAccent, text: settings.lang.value.noNetworkMessage),
+          );
     }
 
     noInternetLoop() async {
@@ -26,11 +23,9 @@ class NoInternetException implements Exception {
         final isConnectedNetwork = await checkInternetConnection();
 
         if (isConnectedNetwork) {
-          snackbarKey.currentState!.showSnackBar(
-            snackBar(
-                color: Colors.greenAccent,
-                text: settings.lang.value.connectedMessage),
-          );
+          Get.find<SettingsController>().snackbarKey.currentState!.showSnackBar(
+                snackBar(color: Colors.greenAccent, text: settings.lang.value.connectedMessage),
+              );
           settings.isNetworkChecking.value = false;
           break;
         } else if (checkCount > 20) {

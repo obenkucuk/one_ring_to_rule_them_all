@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:base_application/components/navigation_bar/salomon_bottom_bar.dart';
-import 'package:base_application/core/keys.dart';
 import 'package:base_application/routes/router.gr.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +10,6 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     const List<PageRouteInfo<dynamic>> routes = [HomeRouter(), SettingsRouter()];
     return AutoTabsScaffold(
-      key: appKey,
       routes: routes,
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       bottomNavigationBuilder: (context, tabsRouter) => SalomonBottomBar(

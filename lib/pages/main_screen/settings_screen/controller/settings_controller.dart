@@ -10,6 +10,10 @@ import '../../../../core/shared_pref.dart';
 enum StorageKeys { appLocalization, appThemeMode }
 
 class SettingsController extends GetxController {
+  final globalAppKey = GlobalKey();
+  final snackbarKey = GlobalKey<ScaffoldMessengerState>();
+
+  BuildContext get context => globalAppKey.currentContext!;
   //------------EXEPIONS------------//
 
   // internet bağlantısını birden fazla kontrol etmemek için

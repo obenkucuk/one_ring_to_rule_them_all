@@ -4,6 +4,7 @@ import 'package:base_application/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
 ThemeData darkTheme = ThemeData.dark().copyWith(
+  useMaterial3: true,
   brightness: Brightness.dark,
   selectedRowColor: AppColors.textDarkTheme,
   backgroundColor: AppColors.backgroundDark,
@@ -14,6 +15,7 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
   bottomAppBarColor: Colors.white,
   dividerColor: AppColors.dividerDark,
   shadowColor: Colors.black26,
+  primaryColor: Colors.amber,
   colorScheme: const ColorScheme(
     primary: AppColors.primary,
     onPrimary: AppColors.textDarkTheme,

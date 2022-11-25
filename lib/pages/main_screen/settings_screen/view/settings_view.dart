@@ -16,7 +16,7 @@ class SettingsView extends GetView<SettingsController> {
         children: [
           Text(
             "Settings",
-            style: TextStylesX(context).s18W300,
+            style: TextStylesX(context).s8W500,
           ),
           const SizedBox(height: 50),
           Row(

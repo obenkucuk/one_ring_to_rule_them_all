@@ -1,4 +1,4 @@
-import 'package:base_application/pages/diger_sayfalar/home/alt_sayfa/controller.dart';
+import 'package:base_application/screens/diger_sayfalar/home/alt_sayfa/controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 

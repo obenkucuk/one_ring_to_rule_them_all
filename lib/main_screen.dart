@@ -11,7 +11,6 @@ class MainScreen extends StatelessWidget {
     const List<PageRouteInfo<dynamic>> routes = [HomeRouter(), SettingsRouter()];
     return AutoTabsScaffold(
       routes: routes,
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       bottomNavigationBuilder: (context, tabsRouter) => SalomonBottomBar(
         currentIndex: tabsRouter.activeIndex,
         onTap: (index) async {

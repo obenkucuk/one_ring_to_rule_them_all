@@ -1,5 +1,5 @@
 import 'package:base_application/core/shared_pref.dart';
-import 'package:base_application/pages/main_screen/settings_screen/controller/settings_controller.dart';
+import 'package:base_application/screens/main_screen/settings_screen/controller/settings_controller.dart';
 import 'package:base_application/routes/router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
 
     return StreamBuilder<ThemeMode>(
       stream: ThemeStream.outTheme,
-      builder: (context, snapshot) {
+      builder: (context, themeSnapshot) {
         return MaterialApp.router(
           key: Get.find<SettingsController>().globalAppKey,
           scaffoldMessengerKey: Get.find<SettingsController>().snackbarKey,
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
           theme: lightTheme,
           darkTheme: darkTheme,
           title: "My App Title",
-          themeMode: snapshot.data,
+          themeMode: themeSnapshot.data,
           routerDelegate: _appRouter.delegate(),
           routeInformationParser: _appRouter.defaultRouteParser(),
         );

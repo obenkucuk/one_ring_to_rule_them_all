@@ -1,4 +1,4 @@
-import 'package:base_application/pages/main_screen/settings_screen/view/settings_view.dart';
+import 'package:base_application/screens/main_screen/settings_screen/view/settings_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

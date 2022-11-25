@@ -15,7 +15,7 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
   bottomAppBarColor: Colors.white,
   dividerColor: AppColors.dividerDark,
   shadowColor: Colors.black26,
-  primaryColor: Colors.amber,
+  primaryColor: Colors.greenAccent,
   colorScheme: const ColorScheme(
     primary: AppColors.primary,
     onPrimary: AppColors.textDarkTheme,

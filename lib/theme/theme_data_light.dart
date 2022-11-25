@@ -15,7 +15,7 @@ ThemeData lightTheme = ThemeData.light().copyWith(
   bottomAppBarColor: Colors.white,
   dividerColor: AppColors.dividerLight,
   shadowColor: Colors.black26,
-  primaryColor: Colors.amberAccent,
+  primaryColor: Colors.red,
   colorScheme: const ColorScheme(
     primary: AppColors.primary,
     onPrimary: AppColors.textLightTheme,

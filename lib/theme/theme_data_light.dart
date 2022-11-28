@@ -129,7 +129,7 @@ ThemeData lightTheme = ThemeData.light().copyWith(
     ),
   ),
   inputDecorationTheme: InputDecorationTheme(
-    fillColor: AppColors.inputDecorationLight,
+    fillColor: AppColors.cardDark,
     contentPadding: const EdgeInsets.symmetric(horizontal: 10),
     filled: true,
     labelStyle: const TextStyle(

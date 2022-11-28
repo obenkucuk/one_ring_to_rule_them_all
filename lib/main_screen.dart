@@ -8,7 +8,7 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const List<PageRouteInfo<dynamic>> routes = [HomeRouter(), SettingsRouter()];
+    const List<PageRouteInfo<dynamic>> routes = [AuthRouter(), HomeRouter(), SettingsRouter()];
     return AutoTabsScaffold(
       routes: routes,
       bottomNavigationBuilder: (context, tabsRouter) => SalomonBottomBar(
@@ -30,6 +30,10 @@ class MainScreen extends StatelessWidget {
           }
         },
         items: [
+          SalomonBottomBarItem(
+            icon: const Icon(Icons.login),
+            title: const Text("Auth"),
+          ),
           SalomonBottomBarItem(
             icon: const Icon(Icons.home),
             title: const Text("Home"),

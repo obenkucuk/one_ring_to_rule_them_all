@@ -4,6 +4,7 @@ import 'package:base_application/components/splash/splash_page.dart';
 import 'package:base_application/main_screen.dart';
 import 'package:base_application/screens/main_screen/home_screen/home_screen.dart';
 
+import '../core/auth/auth_screen.dart';
 import '../screens/main_screen/settings_screen/settings_screen.dart';
 
 @MaterialAutoRouter(
@@ -36,6 +37,17 @@ import '../screens/main_screen/settings_screen/settings_screen.dart';
             AutoRoute(
               path: "",
               page: SettingsScreen,
+            ),
+          ],
+        ),
+        AutoRoute(
+          path: "auth",
+          name: "AuthRouter",
+          page: EmptyRouterPage,
+          children: [
+            AutoRoute(
+              path: "",
+              page: AuthScreen,
             ),
           ],
         ),

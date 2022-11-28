@@ -10,18 +10,18 @@ enum RegisterUpdateKeys { termsOfUse }
 
 class AuthController extends GetxController {
   final Rx<PageController> pageController = PageController().obs;
-
-  /// Yeni yerler
-  /// login
   GlobalKey scaffoldKey = GlobalKey();
   BuildContext get context => scaffoldKey.currentState!.context;
 
-  FocusNode passwordFocusNode = FocusNode();
+  /// LoginView
   final RxBool isPasswordHidden = true.obs;
   final List<String> emailHintList = ['Enter your e-mail', "Please submit an proper e-mail address"];
   final RxInt firstIndex = 0.obs;
 
-  final emailTextController = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final emailFocus = FocusNode();
+  final passwordFocus = FocusNode();
 
   updateHintText(List<String> list, int index) {
     return list[index];
@@ -29,7 +29,7 @@ class AuthController extends GetxController {
 
   changePasswordVisibility() {
     isPasswordHidden.value = !isPasswordHidden.value;
-    passwordFocusNode.requestFocus();
+    passwordFocus.requestFocus();
   }
 
   createAccount() => pageController.value.animateToPage(
@@ -54,14 +54,7 @@ class AuthController extends GetxController {
         ),
       );
 
-  login() {
-    print("email doğru");
-  }
-
-  final emailVerificationController = TextEditingController();
-  final emailVerificationFocusNode = FocusNode();
-  final phoneVerificationController = TextEditingController();
-  final phoneVerificationFocusNode = FocusNode();
+  login() => print("login tıklandı");
 
   bottomSheet({required String title, required Widget widget}) async {
     await showModalBottomSheet<String>(
@@ -82,8 +75,8 @@ class AuthController extends GetxController {
     super.onReady();
 
     /// şifreyi otomatik gizlemek için
-    passwordFocusNode.addListener(() {
-      if (!passwordFocusNode.hasFocus) {
+    passwordFocus.addListener(() {
+      if (!passwordFocus.hasFocus) {
         isPasswordHidden.value = true;
       }
     });
@@ -93,13 +86,9 @@ class AuthController extends GetxController {
   void onClose() {
     super.onClose();
 
-    passwordFocusNode.dispose();
+    passwordFocus.dispose();
     forgotPasswordEmailVerificationController.dispose();
     forgotPasswordVerificationFocusNode.dispose();
-    emailVerificationController.dispose();
-    emailVerificationFocusNode.dispose();
-    phoneVerificationController.dispose();
-    phoneVerificationFocusNode.dispose();
   }
 
   /// register view
@@ -127,7 +116,7 @@ class AuthController extends GetxController {
 
   changePasswordVisibilityRegister() {
     isPasswordHidden.value = !isPasswordHidden.value;
-    passwordFocusNode.requestFocus();
+    passwordFocus.requestFocus();
   }
 
   final RxBool isPasswordAgainHidden = true.obs;
@@ -161,86 +150,83 @@ class AuthController extends GetxController {
   }
 }
 
+// AuthBadRequestModel signInBadRequestModel = AuthBadRequestModel();
+// AuthBadRequestModel signUpBadRequestModel = AuthBadRequestModel();
 
-  // AuthBadRequestModel signInBadRequestModel = AuthBadRequestModel();
-  // AuthBadRequestModel signUpBadRequestModel = AuthBadRequestModel();
+// AuthModel signInModel = AuthModel();
+// AuthModel signUpModel = AuthModel();
 
-  // AuthModel signInModel = AuthModel();
-  // AuthModel signUpModel = AuthModel();
+//   signUp() async {
+//   final Uri signUpUri = Uri(
+//     scheme: 'https',
+//     host: HttpUrl.host,
+//     path: 'v1/accounts:signUp',
+//     queryParameters: {
+//       "key": HttpUrl.firebaseWebApiKey,
+//       "returnSecureToken": "true",
+//       "email": signUpEmailController.text,
+//       "password": signUpPasswordController.text,
+//     },
+//   );
 
+//   if (!isSignUpEmailValid.value) {
+//     //print("email sıkıntılı");
+//   } else if (signUpPasswordController.text.length < 6) {
+//     // print("şifre 5 karakterden daha kısa");
+//   } else {
+//     try {
+//       /// Post request to sign up app.
+//       await NetworkServices().post(signUpUri).then(
+//         (response) async {
+//           signUpModel = authModelFromJson(response.body);
+//           final Uri emailVerifyUri = Uri(
+//             scheme: 'https',
+//             host: HttpUrl.host,
+//             path: 'v1/accounts:sendOobCode',
+//             queryParameters: {
+//               "key": HttpUrl.firebaseWebApiKey,
+//               "requestType": "VERIFY_EMAIL",
+//               "idToken": signUpModel.idToken,
+//             },
+//           );
 
+//           /// Post request to verify email.
+//           await NetworkServices().post(emailVerifyUri);
+//         },
+//       );
+//     } on StatusException catch (e) {
+//       if (e.statusCode == HttpStatus.badRequest) {
+//         signUpBadRequestModel = authBadRequestModelFromJson(e.statusBody!);
+//         // print(signUpBadRequestModel.error!.message);
+//       }
+//     }
+//   }
+// }
 
-  //   signUp() async {
-  //   final Uri signUpUri = Uri(
-  //     scheme: 'https',
-  //     host: HttpUrl.host,
-  //     path: 'v1/accounts:signUp',
-  //     queryParameters: {
-  //       "key": HttpUrl.firebaseWebApiKey,
-  //       "returnSecureToken": "true",
-  //       "email": signUpEmailController.text,
-  //       "password": signUpPasswordController.text,
-  //     },
-  //   );
+// signIn() async {
+//   final Uri uri = Uri(
+//     scheme: 'https',
+//     host: HttpUrl.host,
+//     path: 'v1/accounts:signInWithPassword',
+//     queryParameters: {
+//       "key": HttpUrl.firebaseWebApiKey,
+//       "returnSecureToken": "true",
+//       "email": signInEmail,
+//       "password": signInPassword,
+//     },
+//   );
 
-  //   if (!isSignUpEmailValid.value) {
-  //     //print("email sıkıntılı");
-  //   } else if (signUpPasswordController.text.length < 6) {
-  //     // print("şifre 5 karakterden daha kısa");
-  //   } else {
-  //     try {
-  //       /// Post request to sign up app.
-  //       await NetworkServices().post(signUpUri).then(
-  //         (response) async {
-  //           signUpModel = authModelFromJson(response.body);
-  //           final Uri emailVerifyUri = Uri(
-  //             scheme: 'https',
-  //             host: HttpUrl.host,
-  //             path: 'v1/accounts:sendOobCode',
-  //             queryParameters: {
-  //               "key": HttpUrl.firebaseWebApiKey,
-  //               "requestType": "VERIFY_EMAIL",
-  //               "idToken": signUpModel.idToken,
-  //             },
-  //           );
+//   if (signInEmail.isValidEmail()) {
+//     try {
+//       final response = await NetworkServices().post(uri);
 
-  //           /// Post request to verify email.
-  //           await NetworkServices().post(emailVerifyUri);
-  //         },
-  //       );
-  //     } on StatusException catch (e) {
-  //       if (e.statusCode == HttpStatus.badRequest) {
-  //         signUpBadRequestModel = authBadRequestModelFromJson(e.statusBody!);
-  //         // print(signUpBadRequestModel.error!.message);
-  //       }
-  //     }
-  //   }
-  // }
-
-  // signIn() async {
-  //   final Uri uri = Uri(
-  //     scheme: 'https',
-  //     host: HttpUrl.host,
-  //     path: 'v1/accounts:signInWithPassword',
-  //     queryParameters: {
-  //       "key": HttpUrl.firebaseWebApiKey,
-  //       "returnSecureToken": "true",
-  //       "email": signInEmail,
-  //       "password": signInPassword,
-  //     },
-  //   );
-
-  //   if (signInEmail.isValidEmail()) {
-  //     try {
-  //       final response = await NetworkServices().post(uri);
-
-  //       signInModel = authModelFromJson(response.body);
-  //     } on StatusException catch (e) {
-  //       if (e.statusCode == HttpStatus.badRequest) {
-  //         signInBadRequestModel = authBadRequestModelFromJson(e.statusBody!);
-  //       }
-  //     }
-  //   } else {
-  //     // print("email sıkıntılı");
-  //   }
-  // }
+//       signInModel = authModelFromJson(response.body);
+//     } on StatusException catch (e) {
+//       if (e.statusCode == HttpStatus.badRequest) {
+//         signInBadRequestModel = authBadRequestModelFromJson(e.statusBody!);
+//       }
+//     }
+//   } else {
+//     // print("email sıkıntılı");
+//   }
+// }

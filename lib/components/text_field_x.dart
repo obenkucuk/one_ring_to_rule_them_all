@@ -39,6 +39,7 @@ class TextFieldX extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String text = "";
     return SizedBox(
       height: height ?? 50.h,
       child: TextField(
@@ -49,9 +50,10 @@ class TextFieldX extends StatelessWidget {
         obscuringCharacter: '•',
         onSubmitted: (value) async {
           if (nextFocus != null) FocusScope.of(context).requestFocus(nextFocus);
+          text = textEditingController!.text;
           textEditingController?.clear();
           await Future.delayed(const Duration(seconds: 1));
-          textEditingController!.text = "dsfsdsf";
+          textEditingController!.text = text;
           return validator != null ? validator!(value) : null;
         },
         textInputAction: textInputAction ?? TextInputAction.next,
@@ -63,7 +65,11 @@ class TextFieldX extends StatelessWidget {
           hintText: hintText,
           prefixIcon: prefixIcon,
           suffixIcon: suffixIcon,
-          errorStyle: const TextStyle(fontWeight: FontWeight.w400, color: Colors.white, fontSize: 14),
+          errorStyle: const TextStyle(
+            fontWeight: FontWeight.w400,
+            color: Colors.white,
+            fontSize: 14,
+          ),
           contentPadding: EdgeInsets.only(left: 10.w),
           focusedErrorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10.w),

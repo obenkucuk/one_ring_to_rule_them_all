@@ -15,11 +15,13 @@ class _LoginView extends GetView<AuthController> {
           SizedBox(height: 10.h),
           Obx(
             () => TextFieldX(
-              textEditingController: controller.emailTextController,
+              textEditingController: controller.emailController,
               onChanged: (value) => debugPrint(value),
               keyboardType: TextInputType.emailAddress,
               hintText: controller.updateHintText(controller.emailHintList, controller.firstIndex.value),
               inputFormatters: const [],
+              focusNode: controller.emailFocus,
+              nextFocus: controller.passwordFocus,
               validator: (val) {
                 if (!val.isValidEmail) {
                   print("doğro değiil");
@@ -33,8 +35,9 @@ class _LoginView extends GetView<AuthController> {
           SizedBox(height: 10.h),
           Obx(
             () => TextFieldX(
+              textEditingController: controller.passwordController,
               onChanged: (value) => debugPrint(value),
-              focusNode: controller.passwordFocusNode,
+              focusNode: controller.passwordFocus,
               hintText: "Enter your password",
               suffixIcon: IconButtonX(
                 onTap: () => controller.changePasswordVisibility(),

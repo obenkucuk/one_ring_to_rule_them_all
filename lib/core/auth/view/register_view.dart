@@ -124,7 +124,7 @@ class _RegisterView extends GetView<AuthController> {
                       Obx(
                         () => TextFormFieldX(
                           onChanged: (value) => debugPrint(value),
-                          focusNode: controller.passwordFocusNode,
+                          focusNode: controller.passwordFocus,
                           obscureText: controller.isPasswordHidden.value,
                           suffixIcon: IconButton(
                             splashRadius: 1,

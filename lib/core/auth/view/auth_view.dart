@@ -1,12 +1,17 @@
-import 'package:base_application/core/auth_screen/widget/string_extensions.dart';
+import 'package:base_application/core/auth/widget/string_extensions.dart';
+import 'package:base_application/core/screen_utility/size_extension.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
+import '../../../components/material_button_x.dart';
+import '../../../components/icon_button_x.dart';
+import '../../../components/text_button_x.dart';
+import '../../../components/text_field_x.dart';
+import '../../../components/text_form_field_x.dart';
 import '../../../theme/text_style.dart';
 import '../controller/auth_controller.dart';
-import '../widget/custom_form_field.dart';
 import '../widget/date_formater.dart';
 import '../widget/utilities.dart';
 
@@ -18,15 +23,21 @@ class AuthView extends GetView<AuthController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: controller.scaffoldKey,
-      body: PageView.builder(
-        scrollDirection: Axis.vertical,
-        physics: const BouncingScrollPhysics(),
-        controller: controller.pageController.value,
-        itemCount: 2,
-        itemBuilder: (context, index) => Center(
-          child: index == 0 ? const _LoginView() : const _RegisterView(),
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        controller.isPasswordHidden.value = true;
+      },
+      child: Scaffold(
+        key: controller.scaffoldKey,
+        body: PageView.builder(
+          scrollDirection: Axis.vertical,
+          physics: const BouncingScrollPhysics(),
+          controller: controller.pageController.value,
+          itemCount: 2,
+          itemBuilder: (context, index) => Center(
+            child: index == 0 ? const _LoginView() : const _RegisterView(),
+          ),
         ),
       ),
     );

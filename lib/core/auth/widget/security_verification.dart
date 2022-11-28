@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../components/text_field_x.dart';
 import '../view/auth_view.dart';
 
 class SecurityVerification extends StatelessWidget {
@@ -45,7 +46,7 @@ class SecurityVerification extends StatelessWidget {
         const SizedBox(height: 20),
         const Text("E-Mail Address Verification Code", style: null),
         const SizedBox(height: 10),
-        TextInputX(
+        TextFieldX(
           textEditingController: emailVerificationController,
           focusNode: emailFocusNode,
           hintText: "Enter verification code",
@@ -63,7 +64,7 @@ class SecurityVerification extends StatelessWidget {
         const SizedBox(height: 20),
         const Text("Phone Number Verification Code", style: null),
         const SizedBox(height: 10),
-        TextInputX(
+        TextFieldX(
           textEditingController: phoneVerificationController,
           focusNode: phoneFocusNode,
           hintText: "Enter verification code",

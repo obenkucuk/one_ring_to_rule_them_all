@@ -1,58 +1,42 @@
-import 'package:auto_route/auto_route.dart';
-import 'package:base_application/routes/router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../widget/confirmation_view.dart';
 import '../widget/forgot_password.dart';
 import '../widget/mail_confirmation.dart';
-import '../widget/security_verification.dart';
 import '../widget/terms_of_use.dart';
 
 enum RegisterUpdateKeys { termsOfUse }
 
 class AuthController extends GetxController {
-  TextEditingController signInEmailController = TextEditingController();
-  TextEditingController signInPasswordController = TextEditingController();
-
-  TextEditingController signUpEmailController = TextEditingController();
-  TextEditingController signUpPasswordController = TextEditingController();
-
   final Rx<PageController> pageController = PageController().obs;
-
-  String signInEmail = "";
-  String signInPassword = "";
-
-  final RxBool isSignUpEmailValid = false.obs;
-
-  ///
-  goToMainPage() => context.replaceRoute(const MainRoute());
-
-  alreadyHaveAccount() {
-    pageController.value.animateToPage(1, duration: const Duration(seconds: 1), curve: Curves.easeInOutQuint);
-  }
 
   /// Yeni yerler
   /// login
   GlobalKey scaffoldKey = GlobalKey();
-  GlobalKey scaffoldKeyLogin = GlobalKey();
-
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-
-  FocusNode emailFocusNode = FocusNode();
-  FocusNode passwordFocusNode = FocusNode();
-
   BuildContext get context => scaffoldKey.currentState!.context;
 
+  FocusNode passwordFocusNode = FocusNode();
   final RxBool isPasswordHidden = true.obs;
+  final List<String> emailHintList = ['Enter your e-mail', "Please submit an proper e-mail address"];
+  final RxInt firstIndex = 0.obs;
+
+  final emailTextController = TextEditingController();
+
+  updateHintText(List<String> list, int index) {
+    return list[index];
+  }
 
   changePasswordVisibility() {
     isPasswordHidden.value = !isPasswordHidden.value;
     passwordFocusNode.requestFocus();
   }
 
-  createAccount() => debugPrint("goto create account view");
+  createAccount() => pageController.value.animateToPage(
+        1,
+        duration: const Duration(milliseconds: 990),
+        curve: Curves.easeInToLinear,
+      );
 
   void gestureTap() {
     FocusScope.of(context).unfocus();
@@ -70,15 +54,9 @@ class AuthController extends GetxController {
         ),
       );
 
-  login() => bottomSheet(
-        title: "Security Verification",
-        widget: SecurityVerification(
-          emailVerificationController: emailVerificationController,
-          emailFocusNode: emailVerificationFocusNode,
-          phoneVerificationController: phoneVerificationController,
-          phoneFocusNode: phoneVerificationFocusNode,
-        ),
-      );
+  login() {
+    print("email doğru");
+  }
 
   final emailVerificationController = TextEditingController();
   final emailVerificationFocusNode = FocusNode();
@@ -114,9 +92,7 @@ class AuthController extends GetxController {
   @override
   void onClose() {
     super.onClose();
-    emailController.dispose();
-    passwordController.dispose();
-    emailFocusNode.dispose();
+
     passwordFocusNode.dispose();
     forgotPasswordEmailVerificationController.dispose();
     forgotPasswordVerificationFocusNode.dispose();
@@ -127,8 +103,8 @@ class AuthController extends GetxController {
   }
 
   /// register view
-  final scaffoldKeyRegister = GlobalKey();
-  final formKey = GlobalKey<FormState>();
+
+  final formKeyRegister = GlobalKey<FormState>();
 
   final RxBool _acceptTermsOfUse = false.obs;
   final RxBool acceptCommercial = false.obs;
@@ -137,8 +113,6 @@ class AuthController extends GetxController {
   FocusNode passwordAgainFocusNode = FocusNode();
 
   final RxBool isPasswordHiddenRegister = true.obs;
-
-  BuildContext get contextRegister => scaffoldKeyRegister.currentContext!;
 
   bool get acceptTermsOfUse => _acceptTermsOfUse.value;
   set acceptTermsOfUse(bool value) {
@@ -163,7 +137,7 @@ class AuthController extends GetxController {
   }
 
   validateAllFields() {
-    if ((formKey.currentState!.validate() && acceptTermsOfUse)) {
+    if ((formKeyRegister.currentState!.validate() && acceptTermsOfUse)) {
       debugPrint("başarılı");
     } else {
       debugPrint("alanlarda doldurulmamış yerler var");
@@ -178,7 +152,7 @@ class AuthController extends GetxController {
     await showModalBottomSheet<String>(
       enableDrag: false,
       isScrollControlled: true,
-      context: contextRegister,
+      context: context,
       builder: (context) => Confirmationwidget(
         title: title,
         widget: widget,

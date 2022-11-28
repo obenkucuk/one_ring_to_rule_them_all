@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:base_application/core/screen_utility/size_extension.dart';
 import 'package:base_application/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -77,7 +78,6 @@ ThemeData lightTheme = ThemeData.light().copyWith(
     ),
 
     ///BodyText
-
     bodyText1: TextStyle(
       fontSize: 16,
       fontWeight: FontWeight.w400,
@@ -93,7 +93,7 @@ ThemeData lightTheme = ThemeData.light().copyWith(
     subtitle1: TextStyle(
       fontSize: 14,
       fontWeight: FontWeight.w500,
-      color: AppColors.textLightTheme,
+      color: Colors.white,
       fontFeatures: [FontFeature.tabularFigures()],
     ),
     subtitle2: TextStyle(
@@ -109,6 +109,7 @@ ThemeData lightTheme = ThemeData.light().copyWith(
       fontFeatures: [FontFeature.tabularFigures()],
     ),
   ),
+  buttonTheme: const ButtonThemeData(),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ButtonStyle(
       elevation: MaterialStateProperty.all(0),
@@ -129,8 +130,8 @@ ThemeData lightTheme = ThemeData.light().copyWith(
     ),
   ),
   inputDecorationTheme: InputDecorationTheme(
-    fillColor: AppColors.cardDark,
-    contentPadding: const EdgeInsets.symmetric(horizontal: 10),
+    fillColor: AppColors.paleTextLightTheme,
+    contentPadding: EdgeInsets.symmetric(horizontal: 10.w),
     filled: true,
     labelStyle: const TextStyle(
       fontSize: 14,
@@ -140,10 +141,13 @@ ThemeData lightTheme = ThemeData.light().copyWith(
     ),
     hintStyle: const TextStyle(
       fontWeight: FontWeight.w400,
-      color: AppColors.paleTextLightTheme,
+      color: Colors.white,
       fontSize: 14,
     ),
-    border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0), borderSide: BorderSide.none),
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(10.0.w),
+      borderSide: BorderSide.none,
+    ),
     /*  enabledBorder: OutlineInputBorder(
       borderSide: BorderSide(width: 0.5, color: ColorPalette.paleTextLightTheme),
       borderRadius: BorderRadius.circular(

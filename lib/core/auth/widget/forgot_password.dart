@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../components/text_field_x.dart';
 import '../view/auth_view.dart';
 
 class ForgotPassword extends StatelessWidget {
@@ -39,7 +40,7 @@ class ForgotPassword extends StatelessWidget {
         const SizedBox(height: 20),
         const Text("E-Mail Address", style: null),
         const SizedBox(height: 10),
-        TextInputX(
+        TextFieldX(
           textEditingController: verificationController,
           focusNode: focusNode,
           hintText: "Enter e-mail address",

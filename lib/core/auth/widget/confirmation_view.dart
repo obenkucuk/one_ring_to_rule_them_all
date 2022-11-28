@@ -11,27 +11,30 @@ class Confirmationwidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.primaryContainer,
-      body: SizedBox(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 10,
-            ),
-            AppBar(
-              backgroundColor: Theme.of(context).colorScheme.primaryContainer,
-              title: Text(title!),
-            ),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: widget ?? const SizedBox(),
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.amber,
+        // backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+        body: SizedBox(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 1000,
               ),
-            ),
-          ],
+              AppBar(
+                backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+                title: Text(title!),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: widget ?? const SizedBox(),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -1,3 +1,5 @@
+import 'package:base_application/core/app_size.dart';
+import 'package:base_application/core/screen_utility/screenutil_init.dart';
 import 'package:base_application/core/shared_pref.dart';
 import 'package:base_application/screens/main_screen/settings_screen/controller/settings_controller.dart';
 import 'package:base_application/routes/router.gr.dart';
@@ -23,16 +25,23 @@ class MyApp extends StatelessWidget {
     return StreamBuilder<ThemeMode>(
       stream: ThemeStream.outTheme,
       builder: (context, themeSnapshot) {
-        return MaterialApp.router(
-          key: Get.find<SettingsController>().globalAppKey,
-          scaffoldMessengerKey: Get.find<SettingsController>().snackbarKey,
-          debugShowCheckedModeBanner: false,
-          theme: lightTheme,
-          darkTheme: darkTheme,
-          title: "My App Title",
-          themeMode: themeSnapshot.data,
-          routerDelegate: _appRouter.delegate(),
-          routeInformationParser: _appRouter.defaultRouteParser(),
+        return ScreenUtilInit(
+          designSize: const Size(430, 932),
+          minTextAdapt: true,
+          splitScreenMode: true,
+          builder: (context, child) {
+            return MaterialApp.router(
+              key: Get.find<SettingsController>().globalAppKey,
+              scaffoldMessengerKey: Get.find<SettingsController>().snackbarKey,
+              debugShowCheckedModeBanner: false,
+              theme: lightTheme,
+              darkTheme: darkTheme,
+              title: "My App Title",
+              themeMode: themeSnapshot.data,
+              routerDelegate: _appRouter.delegate(),
+              routeInformationParser: _appRouter.defaultRouteParser(),
+            );
+          },
         );
       },
     );

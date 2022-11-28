@@ -12,7 +12,7 @@ class SplashController extends GetxController {
     super.onReady();
 
     /// Üç saniye beklettikten sonra main page'a yönlendirir.
-    await Future.delayed(const Duration(milliseconds: 100)).then(
+    await Future.delayed(const Duration(milliseconds: 700)).then(
       (value) => context.replaceRoute(
         const MainRoute(),
       ),

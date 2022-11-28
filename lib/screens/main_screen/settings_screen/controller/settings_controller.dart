@@ -14,6 +14,7 @@ class SettingsController extends GetxController {
   final snackbarKey = GlobalKey<ScaffoldMessengerState>();
 
   BuildContext get context => globalAppKey.currentContext!;
+
   //------------EXEPIONS------------//
 
   // internet bağlantısını birden fazla kontrol etmemek için

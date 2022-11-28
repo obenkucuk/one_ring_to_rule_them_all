@@ -3,19 +3,22 @@ import 'package:base_application/components/navigation_bar/salomon_bottom_bar.da
 import 'package:base_application/routes/router.gr.dart';
 import 'package:flutter/material.dart';
 
+import 'core/app_size.dart';
+
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     const List<PageRouteInfo<dynamic>> routes = [AuthRouter(), HomeRouter(), SettingsRouter()];
+
+    XSize.setScreenSize(context);
     return AutoTabsScaffold(
       routes: routes,
       bottomNavigationBuilder: (context, tabsRouter) => SalomonBottomBar(
         currentIndex: tabsRouter.activeIndex,
         onTap: (index) async {
-          // ikinci basılışta ana sayfaya dönmesi için
-
+          /// ikinci basılışta ana sayfaya dönmesi için
           if (tabsRouter.activeIndex == index) {
             while (true) {
               if (tabsRouter.canPop()) {

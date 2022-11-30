@@ -23,7 +23,7 @@ class IconButtonX extends StatelessWidget {
         shape: MaterialStateProperty.all<OutlinedBorder>(
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.w))),
         alignment: Alignment.centerRight,
-        padding: MaterialStateProperty.all<EdgeInsetsGeometry>(EdgeInsets.all(10.w)),
+        padding: MaterialStateProperty.all<EdgeInsetsGeometry>(EdgeInsets.symmetric(horizontal: 10.w)),
       ),
       icon: Icon(icon),
       onPressed: () => onTap(),

@@ -1,10 +1,10 @@
-import 'package:base_application/core/app_size.dart';
 import 'package:base_application/core/screen_utility/screenutil_init.dart';
 import 'package:base_application/core/shared_pref.dart';
 import 'package:base_application/screens/main_screen/settings_screen/controller/settings_controller.dart';
-import 'package:base_application/routes/router.gr.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'routes/router.gr.dart';
 import 'theme/theme_data_dark.dart';
 import 'theme/theme_data_light.dart';
 

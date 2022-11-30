@@ -130,7 +130,7 @@ ThemeData lightTheme = ThemeData.light().copyWith(
     ),
   ),
   inputDecorationTheme: InputDecorationTheme(
-    fillColor: AppColors.paleTextLightTheme,
+    fillColor: Colors.grey.shade400,
     contentPadding: EdgeInsets.symmetric(horizontal: 10.w),
     filled: true,
     labelStyle: const TextStyle(

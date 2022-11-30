@@ -1,16 +1,16 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:base_application/components/navigation_bar/salomon_bottom_bar.dart';
-import 'package:base_application/routes/router.gr.dart';
 import 'package:flutter/material.dart';
 
 import 'core/app_size.dart';
+import 'routes/router.gr.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    const List<PageRouteInfo<dynamic>> routes = [AuthRouter(), HomeRouter(), SettingsRouter()];
+    const List<PageRouteInfo<dynamic>> routes = [HomeRouter(), SettingsRouter()];
 
     XSize.setScreenSize(context);
     return AutoTabsScaffold(
@@ -33,10 +33,6 @@ class MainScreen extends StatelessWidget {
           }
         },
         items: [
-          SalomonBottomBarItem(
-            icon: const Icon(Icons.login),
-            title: const Text("Auth"),
-          ),
           SalomonBottomBarItem(
             icon: const Icon(Icons.home),
             title: const Text("Home"),

@@ -1,20 +1,27 @@
 import 'package:base_application/core/screen_utility/size_extension.dart';
+import 'package:base_application/theme/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class MaterialButtonX extends StatelessWidget {
+  final VoidCallback onTap;
+  final String? buttonText;
+  final double? borderRadius;
+
   const MaterialButtonX({
     Key? key,
     required this.onTap,
     this.buttonText,
+    this.borderRadius,
   }) : super(key: key);
-
-  final VoidCallback onTap;
-  final String? buttonText;
 
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.w)),
+      shape: RoundedRectangleBorder(
+        side: const BorderSide(color: Colors.black, width: 1),
+        borderRadius: BorderRadius.circular(borderRadius ?? 10.w),
+      ),
       padding: EdgeInsets.symmetric(vertical: 0.h),
       height: 50.h,
       minWidth: 100.w,
@@ -30,11 +37,17 @@ class MaterialButtonX extends StatelessWidget {
       textColor: Colors.redAccent,
       animationDuration: Duration.zero,
       hoverColor: Colors.green,
-      color: Colors.grey,
+      color: AppColors.backgroundLight,
       splashColor: Colors.transparent,
       enableFeedback: true,
       onPressed: () => onTap(),
-      child: Text(buttonText ?? "Button Yazısı Eksik!"),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Icon(FontAwesomeIcons.google, color: Colors.amber),
+          Text(buttonText ?? "Button Yazısı Eksik!"),
+        ],
+      ),
     );
   }
 }

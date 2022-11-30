@@ -3,10 +3,11 @@ import 'package:base_application/theme/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class TextFieldX extends StatelessWidget {
+class TextFieldX extends StatefulWidget {
   final TextEditingController? textEditingController;
   final FocusNode? focusNode;
-  final String hintText;
+  final String? hintText;
+  final String? errorText;
   final Widget? suffixIcon;
   final Widget? prefixIcon;
   final bool? obscureText;
@@ -16,14 +17,15 @@ class TextFieldX extends StatelessWidget {
   final List<TextInputFormatter>? inputFormatters;
   final Function(String)? onChanged;
   final TextInputType? keyboardType;
-  final void Function(String value)? validator;
+  final bool Function(String)? validator;
   final TextInputAction? textInputAction;
+  final Function(String)? onFinished;
 
   const TextFieldX({
     super.key,
     this.textEditingController,
     this.focusNode,
-    required this.hintText,
+    this.hintText,
     this.suffixIcon,
     this.obscureText,
     this.nextFocus,
@@ -35,42 +37,86 @@ class TextFieldX extends StatelessWidget {
     this.keyboardType,
     this.validator,
     this.textInputAction,
+    this.errorText,
+    this.onFinished,
   });
 
   @override
+  State<TextFieldX> createState() => _TextFieldXState();
+}
+
+class _TextFieldXState extends State<TextFieldX> {
+  final textEditingController = TextEditingController();
+  String text = "";
+  String? hintText;
+  Color hintColor = Colors.grey.shade700;
+
+  @override
+  void initState() {
+    super.initState();
+    hintText = widget.hintText;
+    widget.focusNode!.addListener(() {
+      if (!widget.focusNode!.hasFocus) {
+        validate(textEditingController.text);
+      }
+    });
+  }
+
+  validate(String value) async {
+    if (widget.validator != null) {
+      if (widget.validator!(value)) {
+        if (widget.nextFocus != null) FocusScope.of(context).requestFocus(widget.nextFocus);
+      } else {
+        text = textEditingController.text;
+        textEditingController.clear();
+        setState(() => hintText = widget.errorText);
+        setState(() => hintColor = Colors.redAccent);
+        await Future.delayed(const Duration(seconds: 2)).then((value) {
+          if (mounted) {
+            setState(() => hintText = widget.hintText);
+            textEditingController.text = text;
+          }
+        });
+      }
+    } else {
+      if (widget.nextFocus != null) FocusScope.of(context).requestFocus(widget.nextFocus);
+    }
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    textEditingController.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    String text = "";
     return SizedBox(
-      height: height ?? 50.h,
+      height: widget.height ?? 50.h,
       child: TextField(
-        style: TextStylesX(context).s14W300.copyWith(),
+        style: TextStylesX(context).s14W500.copyWith(color: Colors.black),
         controller: textEditingController,
-        keyboardType: keyboardType,
-        onChanged: (value) => onChanged!(value),
         obscuringCharacter: '•',
-        onSubmitted: (value) async {
-          if (nextFocus != null) FocusScope.of(context).requestFocus(nextFocus);
-          text = textEditingController!.text;
-          textEditingController?.clear();
-          await Future.delayed(const Duration(seconds: 1));
-          textEditingController!.text = text;
-          return validator != null ? validator!(value) : null;
-        },
-        textInputAction: textInputAction ?? TextInputAction.next,
-        inputFormatters: inputFormatters,
-        focusNode: focusNode,
-        obscureText: obscureText ?? false,
+        keyboardType: widget.keyboardType ?? TextInputType.visiblePassword,
+        onChanged: (value) => widget.onChanged != null ? widget.onChanged!(value) : null,
+        onSubmitted: (value) {},
+        onEditingComplete: () => validate(textEditingController.text),
+        textInputAction: widget.textInputAction ?? TextInputAction.next,
+        inputFormatters: widget.inputFormatters,
+        focusNode: widget.focusNode,
+        obscureText: widget.obscureText ?? false,
+        autocorrect: false,
         decoration: InputDecoration(
-          fillColor: fillColor,
+          fillColor: widget.fillColor,
           hintText: hintText,
-          prefixIcon: prefixIcon,
-          suffixIcon: suffixIcon,
-          errorStyle: const TextStyle(
+          prefixIcon: widget.prefixIcon,
+          suffixIcon: widget.suffixIcon,
+          hintStyle: TextStyle(
             fontWeight: FontWeight.w400,
-            color: Colors.white,
+            color: hintColor,
             fontSize: 14,
           ),
-          contentPadding: EdgeInsets.only(left: 10.w),
+          contentPadding: EdgeInsets.zero,
           focusedErrorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10.w),
             borderSide: BorderSide.none,

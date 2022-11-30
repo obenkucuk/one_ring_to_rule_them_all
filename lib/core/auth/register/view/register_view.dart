@@ -1,7 +1,16 @@
-part of "auth_view.dart";
+import 'package:base_application/core/auth/login/widget/string_extensions.dart';
+import 'package:base_application/core/auth/register/controller/register_controller.dart';
+import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 
-class _RegisterView extends GetView<AuthController> {
-  const _RegisterView();
+import '../../../../components/text_form_field_x.dart';
+import '../../login/widget/date_formater.dart';
+import '../../login/widget/utilities.dart';
+
+class RegisterView extends GetView<RegisterController> {
+  const RegisterView();
 
   @override
   Widget build(BuildContext context) {
@@ -11,14 +20,13 @@ class _RegisterView extends GetView<AuthController> {
         controller.isPasswordHiddenRegister.value = true;
         controller.isPasswordAgainHidden.value = true;
       },
-      child: Column(
-        children: [
-          Expanded(
-            child: Form(
-              key: controller.formKeyRegister,
-              child: SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
+      child: Scaffold(
+        body: Column(
+          children: [
+            Expanded(
+              child: Form(
+                key: controller.formKeyRegister,
+                child: SingleChildScrollView(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -241,20 +249,20 @@ class _RegisterView extends GetView<AuthController> {
                 ),
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                ElevatedButton(
-                  onPressed: () => controller.validateAllFields(),
-                  child: const Text("Üye Ol"),
-                ),
-              ],
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  ElevatedButton(
+                    onPressed: () => controller.validateAllFields(),
+                    child: const Text("Üye Ol"),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

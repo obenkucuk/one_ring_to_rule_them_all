@@ -2,14 +2,14 @@ import 'dart:developer';
 
 import 'package:flutter/widgets.dart';
 
-class XSize {
+class SizeX {
   static late double width;
   static late double height;
 
   static setScreenSize(BuildContext context) {
-    XSize.width = MediaQuery.of(context).size.width;
-    XSize.height = MediaQuery.of(context).size.height;
+    SizeX.width = MediaQuery.of(context).size.width;
+    SizeX.height = MediaQuery.of(context).size.height;
 
-    log('${XSize.width}x${XSize.height}', name: 'Screen local pixel');
+    log('${SizeX.width}x${SizeX.height}', name: 'Screen local pixel');
   }
 }

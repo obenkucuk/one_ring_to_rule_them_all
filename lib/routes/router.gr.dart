@@ -11,135 +11,162 @@
 // ignore_for_file: type=lint
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i8;
+import 'package:auto_route/auto_route.dart' as _i9;
 import 'package:auto_route/empty_router_widgets.dart' as _i2;
-import 'package:flutter/material.dart' as _i9;
+import 'package:flutter/material.dart' as _i10;
 
 import '../core/auth/login/login_screen.dart' as _i4;
 import '../core/auth/register/register_screen.dart' as _i5;
+import '../core/search_screen/search_screen.dart' as _i6;
 import '../core/splash_screen/splash_page.dart' as _i1;
 import '../main_screen.dart' as _i3;
-import '../screens/main_screen/home_screen/home_screen.dart' as _i6;
-import '../screens/main_screen/settings_screen/settings_screen.dart' as _i7;
+import '../screens/main_screen/home_screen/home_screen.dart' as _i7;
+import '../screens/main_screen/settings_screen/settings_screen.dart' as _i8;
 
-class AppRouter extends _i8.RootStackRouter {
-  AppRouter([_i9.GlobalKey<_i9.NavigatorState>? navigatorKey])
+class AppRouter extends _i9.RootStackRouter {
+  AppRouter([_i10.GlobalKey<_i10.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
-  final Map<String, _i8.PageFactory> pagesMap = {
+  final Map<String, _i9.PageFactory> pagesMap = {
     SplashPage.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
+      return _i9.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i1.SplashPage(),
       );
     },
     LoginRouter.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
+      return _i9.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i2.EmptyRouterPage(),
       );
     },
     RegisterRouter.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
+      return _i9.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i2.EmptyRouterPage(),
       );
     },
+    SearchRouter.name: (routeData) {
+      return _i9.CustomPage<dynamic>(
+        routeData: routeData,
+        child: const _i2.EmptyRouterPage(),
+        transitionsBuilder: _i9.TransitionsBuilders.fadeIn,
+        opaque: true,
+        barrierDismissible: false,
+      );
+    },
     MainRouter.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
+      return _i9.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i3.MainScreen(),
       );
     },
     LoginRoute.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
+      return _i9.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i4.LoginScreen(),
       );
     },
     RegisterRoute.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
+      return _i9.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i5.RegisterScreen(),
       );
     },
+    SearchRoute.name: (routeData) {
+      return _i9.MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const _i6.SearchScreen(),
+      );
+    },
     HomeRouter.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
+      return _i9.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i2.EmptyRouterPage(),
       );
     },
     SettingsRouter.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
+      return _i9.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i2.EmptyRouterPage(),
       );
     },
     HomeRoute.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
+      return _i9.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i6.HomeScreen(),
+        child: const _i7.HomeScreen(),
       );
     },
     SettingsRoute.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
+      return _i9.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i7.SettingsScreen(),
+        child: const _i8.SettingsScreen(),
       );
     },
   };
 
   @override
-  List<_i8.RouteConfig> get routes => [
-        _i8.RouteConfig(
+  List<_i9.RouteConfig> get routes => [
+        _i9.RouteConfig(
           SplashPage.name,
           path: '/',
         ),
-        _i8.RouteConfig(
+        _i9.RouteConfig(
           LoginRouter.name,
           path: 'login',
           children: [
-            _i8.RouteConfig(
+            _i9.RouteConfig(
               LoginRoute.name,
               path: '',
               parent: LoginRouter.name,
             )
           ],
         ),
-        _i8.RouteConfig(
+        _i9.RouteConfig(
           RegisterRouter.name,
           path: 'register',
           children: [
-            _i8.RouteConfig(
+            _i9.RouteConfig(
               RegisterRoute.name,
               path: '',
               parent: RegisterRouter.name,
             )
           ],
         ),
-        _i8.RouteConfig(
+        _i9.RouteConfig(
+          SearchRouter.name,
+          path: 'search',
+          children: [
+            _i9.RouteConfig(
+              SearchRoute.name,
+              path: '',
+              parent: SearchRouter.name,
+            )
+          ],
+        ),
+        _i9.RouteConfig(
           MainRouter.name,
           path: 'main',
           children: [
-            _i8.RouteConfig(
+            _i9.RouteConfig(
               HomeRouter.name,
               path: 'home',
               parent: MainRouter.name,
               children: [
-                _i8.RouteConfig(
+                _i9.RouteConfig(
                   HomeRoute.name,
                   path: '',
                   parent: HomeRouter.name,
                 )
               ],
             ),
-            _i8.RouteConfig(
+            _i9.RouteConfig(
               SettingsRouter.name,
               path: 'settings',
               parent: MainRouter.name,
               children: [
-                _i8.RouteConfig(
+                _i9.RouteConfig(
                   SettingsRoute.name,
                   path: '',
                   parent: SettingsRouter.name,
@@ -153,7 +180,7 @@ class AppRouter extends _i8.RootStackRouter {
 
 /// generated route for
 /// [_i1.SplashPage]
-class SplashPage extends _i8.PageRouteInfo<void> {
+class SplashPage extends _i9.PageRouteInfo<void> {
   const SplashPage()
       : super(
           SplashPage.name,
@@ -165,8 +192,8 @@ class SplashPage extends _i8.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.EmptyRouterPage]
-class LoginRouter extends _i8.PageRouteInfo<void> {
-  const LoginRouter({List<_i8.PageRouteInfo>? children})
+class LoginRouter extends _i9.PageRouteInfo<void> {
+  const LoginRouter({List<_i9.PageRouteInfo>? children})
       : super(
           LoginRouter.name,
           path: 'login',
@@ -178,8 +205,8 @@ class LoginRouter extends _i8.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.EmptyRouterPage]
-class RegisterRouter extends _i8.PageRouteInfo<void> {
-  const RegisterRouter({List<_i8.PageRouteInfo>? children})
+class RegisterRouter extends _i9.PageRouteInfo<void> {
+  const RegisterRouter({List<_i9.PageRouteInfo>? children})
       : super(
           RegisterRouter.name,
           path: 'register',
@@ -190,9 +217,22 @@ class RegisterRouter extends _i8.PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [_i2.EmptyRouterPage]
+class SearchRouter extends _i9.PageRouteInfo<void> {
+  const SearchRouter({List<_i9.PageRouteInfo>? children})
+      : super(
+          SearchRouter.name,
+          path: 'search',
+          initialChildren: children,
+        );
+
+  static const String name = 'SearchRouter';
+}
+
+/// generated route for
 /// [_i3.MainScreen]
-class MainRouter extends _i8.PageRouteInfo<void> {
-  const MainRouter({List<_i8.PageRouteInfo>? children})
+class MainRouter extends _i9.PageRouteInfo<void> {
+  const MainRouter({List<_i9.PageRouteInfo>? children})
       : super(
           MainRouter.name,
           path: 'main',
@@ -204,7 +244,7 @@ class MainRouter extends _i8.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i4.LoginScreen]
-class LoginRoute extends _i8.PageRouteInfo<void> {
+class LoginRoute extends _i9.PageRouteInfo<void> {
   const LoginRoute()
       : super(
           LoginRoute.name,
@@ -216,7 +256,7 @@ class LoginRoute extends _i8.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i5.RegisterScreen]
-class RegisterRoute extends _i8.PageRouteInfo<void> {
+class RegisterRoute extends _i9.PageRouteInfo<void> {
   const RegisterRoute()
       : super(
           RegisterRoute.name,
@@ -227,9 +267,21 @@ class RegisterRoute extends _i8.PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [_i6.SearchScreen]
+class SearchRoute extends _i9.PageRouteInfo<void> {
+  const SearchRoute()
+      : super(
+          SearchRoute.name,
+          path: '',
+        );
+
+  static const String name = 'SearchRoute';
+}
+
+/// generated route for
 /// [_i2.EmptyRouterPage]
-class HomeRouter extends _i8.PageRouteInfo<void> {
-  const HomeRouter({List<_i8.PageRouteInfo>? children})
+class HomeRouter extends _i9.PageRouteInfo<void> {
+  const HomeRouter({List<_i9.PageRouteInfo>? children})
       : super(
           HomeRouter.name,
           path: 'home',
@@ -241,8 +293,8 @@ class HomeRouter extends _i8.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.EmptyRouterPage]
-class SettingsRouter extends _i8.PageRouteInfo<void> {
-  const SettingsRouter({List<_i8.PageRouteInfo>? children})
+class SettingsRouter extends _i9.PageRouteInfo<void> {
+  const SettingsRouter({List<_i9.PageRouteInfo>? children})
       : super(
           SettingsRouter.name,
           path: 'settings',
@@ -253,8 +305,8 @@ class SettingsRouter extends _i8.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i6.HomeScreen]
-class HomeRoute extends _i8.PageRouteInfo<void> {
+/// [_i7.HomeScreen]
+class HomeRoute extends _i9.PageRouteInfo<void> {
   const HomeRoute()
       : super(
           HomeRoute.name,
@@ -265,8 +317,8 @@ class HomeRoute extends _i8.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i7.SettingsScreen]
-class SettingsRoute extends _i8.PageRouteInfo<void> {
+/// [_i8.SettingsScreen]
+class SettingsRoute extends _i9.PageRouteInfo<void> {
   const SettingsRoute()
       : super(
           SettingsRoute.name,

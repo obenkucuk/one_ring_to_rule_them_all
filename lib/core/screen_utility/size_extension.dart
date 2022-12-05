@@ -34,19 +34,16 @@ extension SizeExtension on num {
   Widget get verticalSpace => ScreenUtil().setVerticalSpacing(this);
 
   ///[ScreenUtil.setVerticalSpacingFromWidth]
-  Widget get verticalSpaceFromWidth =>
-      ScreenUtil().setVerticalSpacingFromWidth(this);
+  Widget get verticalSpaceFromWidth => ScreenUtil().setVerticalSpacingFromWidth(this);
 
   ///[ScreenUtil.setWidth]
   Widget get horizontalSpace => ScreenUtil().setHorizontalSpacing(this);
 
   ///[ScreenUtil.radius]
-  Widget get horizontalSpaceRadius =>
-      ScreenUtil().setHorizontalSpacingRadius(this);
+  Widget get horizontalSpaceRadius => ScreenUtil().setHorizontalSpacingRadius(this);
 
   ///[ScreenUtil.radius]
-  Widget get verticalSpacingRadius =>
-      ScreenUtil().setVerticalSpacingRadius(this);
+  Widget get verticalSpacingRadius => ScreenUtil().setVerticalSpacingRadius(this);
 }
 
 extension EdgeInsetsExtension on EdgeInsets {
@@ -108,7 +105,7 @@ extension RaduisExtension on Radius {
 
 extension BoxConstraintsExtension on BoxConstraints {
   /// Creates adapt BoxConstraints using r [SizeExtension].
-  BoxConstraints get r => this.copyWith(
+  BoxConstraints get r => copyWith(
         maxHeight: maxHeight.r,
         maxWidth: maxWidth.r,
         minHeight: minHeight.r,
@@ -116,21 +113,21 @@ extension BoxConstraintsExtension on BoxConstraints {
       );
 
   /// Creates adapt BoxConstraints using h-w [SizeExtension].
-  BoxConstraints get hw => this.copyWith(
+  BoxConstraints get hw => copyWith(
         maxHeight: maxHeight.h,
         maxWidth: maxWidth.w,
         minHeight: minHeight.h,
         minWidth: minWidth.w,
       );
 
-  BoxConstraints get w => this.copyWith(
+  BoxConstraints get w => copyWith(
         maxHeight: maxHeight.w,
         maxWidth: maxWidth.w,
         minHeight: minHeight.w,
         minWidth: minWidth.w,
       );
 
-  BoxConstraints get h => this.copyWith(
+  BoxConstraints get h => copyWith(
         maxHeight: maxHeight.h,
         maxWidth: maxWidth.h,
         minHeight: minHeight.h,

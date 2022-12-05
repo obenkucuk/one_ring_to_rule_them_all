@@ -10,7 +10,7 @@ import '../../login/widget/date_formater.dart';
 import '../../login/widget/utilities.dart';
 
 class RegisterView extends GetView<RegisterController> {
-  const RegisterView();
+  const RegisterView({super.key});
 
   @override
   Widget build(BuildContext context) {

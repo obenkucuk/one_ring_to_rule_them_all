@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -27,7 +29,7 @@ class RegisterController extends GetxController {
   final verificationController = TextEditingController();
   final verificationFocusNode = FocusNode();
 
-  tapTermsOfUse() => print("terms of use sayfası");
+  tapTermsOfUse() => log("terms of use sayfası");
 
   changePasswordVisibilityRegister() {
     isPasswordHidden.value = !isPasswordHidden.value;

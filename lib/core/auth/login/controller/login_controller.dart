@@ -1,5 +1,6 @@
+import 'dart:developer';
+
 import 'package:auto_route/auto_route.dart';
-import 'package:base_application/components/bottom_sheet.dart';
 import 'package:base_application/routes/router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -25,11 +26,11 @@ class LoginController extends GetxController {
   }
 
   createAccount() {
-    print("create account sayfasına yolla");
+    log("create account sayfasına yolla");
     context.router.push(const RegisterRouter());
   }
 
-  forgotPassword() => print("forgor password");
+  forgotPassword() => log("forgor password");
 
   login() {
     // if (isEmailValid.isTrue)

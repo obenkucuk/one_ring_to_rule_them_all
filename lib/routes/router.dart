@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:auto_route/empty_router_widgets.dart';
 import 'package:base_application/core/auth/register/register_screen.dart';
+import 'package:base_application/core/search_screen/search_screen.dart';
 import 'package:base_application/core/splash_screen/splash_page.dart';
 import 'package:base_application/main_screen.dart';
 import 'package:base_application/screens/main_screen/home_screen/home_screen.dart';
@@ -34,6 +35,18 @@ import '../screens/main_screen/settings_screen/settings_screen.dart';
         AutoRoute(
           path: "",
           page: RegisterScreen,
+        ),
+      ],
+    ),
+    CustomRoute(
+      path: "search",
+      name: "SearchRouter",
+      page: EmptyRouterPage,
+      transitionsBuilder: TransitionsBuilders.fadeIn,
+      children: [
+        AutoRoute(
+          path: "",
+          page: SearchScreen,
         ),
       ],
     ),

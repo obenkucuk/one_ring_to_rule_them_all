@@ -2,20 +2,8 @@ import 'package:base_application/components/state_mixin/app_state_mixin.dart';
 import 'package:get/get.dart';
 import 'dart:convert';
 
-class AltSayfaController extends GetxController with AppStateMixin {
+class AltSayfaController extends GetxController {
   DogModel dogModel = DogModel();
-
-  @override
-  void onReady() {
-    super.onReady();
-    getDog();
-  }
-
-  getDog() async {
-    status = StateStatus.loading();
-    final respose = await loadStates(Uri(scheme: 'https', host: 'dog.ceo', path: 'api/breeds/image/random'));
-    dogModel = DogModel.fromJson(respose);
-  }
 }
 
 class DogModel {

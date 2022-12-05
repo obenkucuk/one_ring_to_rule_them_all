@@ -11,7 +11,7 @@ import 'package:flutter/widgets.dart';
 
 class ScreenUtil {
   static const Size defaultSize = Size(360, 690);
-  static ScreenUtil _instance = ScreenUtil._();
+  static final ScreenUtil _instance = ScreenUtil._();
 
   /// UI设计中手机尺寸 , dp
   /// Size of the phone in UI Design , dp
@@ -89,16 +89,13 @@ class ScreenUtil {
   }
 
   /// Initializing the library.
-  static Future<void> init(
-    BuildContext context, {
-    Size designSize = defaultSize,
-    bool splitScreenMode = false,
-    bool minTextAdapt = false,
-    bool scaleByHeight = false
-  }) async {
+  static Future<void> init(BuildContext context,
+      {Size designSize = defaultSize,
+      bool splitScreenMode = false,
+      bool minTextAdapt = false,
+      bool scaleByHeight = false}) async {
     final navigatorContext = Navigator.maybeOf(context)?.context as Element?;
-    final mediaQueryContext =
-        navigatorContext?.getElementForInheritedWidgetOfExactType<MediaQuery>();
+    final mediaQueryContext = navigatorContext?.getElementForInheritedWidgetOfExactType<MediaQuery>();
 
     final initCompleter = Completer<void>();
 
@@ -111,9 +108,7 @@ class ScreenUtil {
 
     final deviceSize = deviceData?.size ?? designSize;
     final orientation = deviceData?.orientation ??
-        (deviceSize.width > deviceSize.height
-            ? Orientation.landscape
-            : Orientation.portrait);
+        (deviceSize.width > deviceSize.height ? Orientation.landscape : Orientation.portrait);
 
     _instance
       .._context = scaleByHeight ? null : context
@@ -121,8 +116,7 @@ class ScreenUtil {
       .._splitScreenMode = splitScreenMode
       .._minTextAdapt = minTextAdapt
       .._orientation = orientation
-      .._screenWidth = scaleByHeight ? (deviceSize.height * designSize.width) /
-          designSize.height : deviceSize.width
+      .._screenWidth = scaleByHeight ? (deviceSize.height * designSize.width) / designSize.height : deviceSize.width
       .._screenHeight = deviceSize.height;
 
     _instance._elementsToRebuild?.forEach((el) => el.markNeedsBuild());
@@ -136,45 +130,36 @@ class ScreenUtil {
 
   /// 每个逻辑像素的字体像素数，字体的缩放比例
   /// The number of font pixels for each logical pixel.
-  double get textScaleFactor =>
-      _context != null ? MediaQuery.of(_context!).textScaleFactor : 1;
+  double get textScaleFactor => _context != null ? MediaQuery.of(_context!).textScaleFactor : 1;
 
   /// 设备的像素密度
   /// The size of the media in logical pixels (e.g, the size of the screen).
-  double? get pixelRatio =>
-      _context != null ? MediaQuery.of(_context!).devicePixelRatio : 1;
+  double? get pixelRatio => _context != null ? MediaQuery.of(_context!).devicePixelRatio : 1;
 
   /// 当前设备宽度 dp
   /// The horizontal extent of this size.
-  double get screenWidth =>
-      _context != null ? MediaQuery.of(_context!).size.width : _screenWidth;
+  double get screenWidth => _context != null ? MediaQuery.of(_context!).size.width : _screenWidth;
 
   ///当前设备高度 dp
   ///The vertical extent of this size. dp
-  double get screenHeight =>
-      _context != null ? MediaQuery.of(_context!).size.height : _screenHeight;
+  double get screenHeight => _context != null ? MediaQuery.of(_context!).size.height : _screenHeight;
 
   /// 状态栏高度 dp 刘海屏会更高
   /// The offset from the top, in dp
-  double get statusBarHeight =>
-      _context == null ? 0 : MediaQuery.of(_context!).padding.top;
+  double get statusBarHeight => _context == null ? 0 : MediaQuery.of(_context!).padding.top;
 
   /// 底部安全区距离 dp
   /// The offset from the bottom, in dp
-  double get bottomBarHeight =>
-      _context == null ? 0 : MediaQuery.of(_context!).padding.bottom;
+  double get bottomBarHeight => _context == null ? 0 : MediaQuery.of(_context!).padding.bottom;
 
   /// 实际尺寸与UI设计的比例
   /// The ratio of actual width to UI design
   double get scaleWidth => screenWidth / _uiSize.width;
 
   ///  /// The ratio of actual height to UI design
-  double get scaleHeight =>
-      (_splitScreenMode ? max(screenHeight, 700) : screenHeight) /
-      _uiSize.height;
+  double get scaleHeight => (_splitScreenMode ? max(screenHeight, 700) : screenHeight) / _uiSize.height;
 
-  double get scaleText =>
-      _minTextAdapt ? min(scaleWidth, scaleHeight) : scaleWidth;
+  double get scaleText => _minTextAdapt ? min(scaleWidth, scaleHeight) : scaleWidth;
 
   /// 根据UI设计的设备宽度适配
   /// 高度也可以根据这个来做适配可以保证不变形,比如你想要一个正方形的时候.
@@ -205,23 +190,21 @@ class ScreenUtil {
 
   Widget setVerticalSpacing(num height) => SizedBox(height: setHeight(height));
 
-  Widget setVerticalSpacingFromWidth(num height) =>
-      SizedBox(height: setWidth(height));
+  Widget setVerticalSpacingFromWidth(num height) => SizedBox(height: setWidth(height));
 
   Widget setHorizontalSpacing(num width) => SizedBox(width: setWidth(width));
 
-  Widget setHorizontalSpacingRadius(num width) =>
-      SizedBox(width: radius(width));
+  Widget setHorizontalSpacingRadius(num width) => SizedBox(width: radius(width));
 
-  Widget setVerticalSpacingRadius(num height) =>
-      SizedBox(height: radius(height));
+  Widget setVerticalSpacingRadius(num height) => SizedBox(height: radius(height));
 }
 
 extension on MediaQueryData? {
   MediaQueryData? nonEmptySizeOrNull() {
-    if (this?.size.isEmpty ?? true)
+    if (this?.size.isEmpty ?? true) {
       return null;
-    else
+    } else {
       return this;
+    }
   }
 }

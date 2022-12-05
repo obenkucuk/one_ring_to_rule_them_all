@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:base_application/core/screen_utility/size_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -43,7 +45,7 @@ class TextFormFieldX extends StatelessWidget {
       obscureText: obscureText ?? false,
       onChanged: (value) => onChanged!(value),
       obscuringCharacter: '•',
-      onTap: () => print("Text Form Alanı Üzerine tıklandı"),
+      onTap: () => log("Text Form Alanı Üzerine tıklandı"),
       toolbarOptions: const ToolbarOptions(copy: true, paste: true, selectAll: true),
       decoration: InputDecoration(
         fillColor: fillColor,

@@ -24,72 +24,20 @@ class AltSayfaView extends GetView<AltSayfaController> {
     // print(Theme.of(context).brightness);
 
     return Scaffold(
-      appBar: AppBar(title: const Text("Detay Sayfası")),
-      body: Obx(
-        () => SingleChildScrollView(
-          child: Column(
-            children: [
-              //    Container(height: 50, width: 100, color: Colors.amber),
-              Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    controller.buildStateX(
-                        onLoading: ShimmerPro.sized(height: 200, width: 200),
-                        onLoaded: Image.network(controller.dogModel.message.toString())),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    controller.buildStateX(
-                        onLoading: ShimmerPro.text(), onLoaded: Text(controller.dogModel.message.toString())),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    controller.buildStateX(
-                        onLoading: ShimmerPro.text(
-                          alignment: Alignment.centerLeft,
-                          width: 100,
-                        ),
-                        onLoaded: Text(controller.dogModel.message.toString())),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    controller.buildStateX(
-                        onLoading: ShimmerPro.generated(
-                          child: Column(
-                            children: [
-                              Row(
-                                children: [
-                                  ShimmerPro.sized(height: 100, width: 100),
-                                  ShimmerPro.sized(height: 100, width: 100),
-                                  ShimmerPro.text(width: 150)
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                        onLoaded: Text(controller.dogModel.message.toString())),
-                    controller.buildStateX(
-                        onLoading: ShimmerPro.generated(
-                          width: 200,
-                          child: Column(
-                            children: [
-                              ShimmerPro.sized(borderRadius: 50, height: 100, width: 100),
-                              ShimmerPro.text(
-                                maxLine: 1,
-                              )
-                            ],
-                          ),
-                        ),
-                        onLoaded: Text(controller.dogModel.message.toString())),
-
-                    // controller.buildWidgetX(Text(controller.dogModel.status ?? "oben")),
-                  ],
-                ),
+      backgroundColor: Colors.grey,
+      body: SafeArea(
+        child: ListView.builder(
+          physics: const AlwaysScrollableScrollPhysics(),
+          shrinkWrap: true,
+          itemCount: 1000,
+          itemBuilder: (BuildContext context, int index) {
+            return SizedBox.square(
+              dimension: 100,
+              child: Card(
+                child: Center(child: Text(index.toString())),
               ),
-              //   Container(height: 50, width: 100, color: Colors.amber),
-            ],
-          ),
+            );
+          },
         ),
       ),
     );

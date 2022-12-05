@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 
 class TextFieldX extends StatefulWidget {
   final TextEditingController? textEditingController;
-  final FocusNode? focusNode;
+  final FocusNode focusNode;
   final String? hintText;
   final String? errorText;
   final Widget? suffixIcon;
@@ -20,11 +20,12 @@ class TextFieldX extends StatefulWidget {
   final bool Function(String)? validator;
   final TextInputAction? textInputAction;
   final Function(String)? onFinished;
+  final double? borderRadius;
 
   const TextFieldX({
     super.key,
     this.textEditingController,
-    this.focusNode,
+    required this.focusNode,
     this.hintText,
     this.suffixIcon,
     this.obscureText,
@@ -39,6 +40,7 @@ class TextFieldX extends StatefulWidget {
     this.textInputAction,
     this.errorText,
     this.onFinished,
+    this.borderRadius,
   });
 
   @override
@@ -55,8 +57,8 @@ class _TextFieldXState extends State<TextFieldX> {
   void initState() {
     super.initState();
     hintText = widget.hintText;
-    widget.focusNode!.addListener(() {
-      if (!widget.focusNode!.hasFocus) {
+    widget.focusNode.addListener(() {
+      if (!widget.focusNode.hasFocus) {
         validate(textEditingController.text);
       }
     });
@@ -116,29 +118,29 @@ class _TextFieldXState extends State<TextFieldX> {
             color: hintColor,
             fontSize: 14,
           ),
-          contentPadding: EdgeInsets.zero,
+          contentPadding: const EdgeInsets.symmetric(horizontal: 10),
           focusedErrorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10.w),
+            borderRadius: BorderRadius.circular((widget.borderRadius ?? 0).w),
             borderSide: BorderSide.none,
           ),
           disabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10.w),
+            borderRadius: BorderRadius.circular((widget.borderRadius ?? 0).w),
             borderSide: BorderSide.none,
           ),
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10.w),
+            borderRadius: BorderRadius.circular((widget.borderRadius ?? 0).w),
             borderSide: BorderSide.none,
           ),
           errorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10.w),
+            borderRadius: BorderRadius.circular((widget.borderRadius ?? 0).w),
             borderSide: BorderSide.none,
           ),
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10.w),
+            borderRadius: BorderRadius.circular((widget.borderRadius ?? 0).w),
             borderSide: BorderSide.none,
           ),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10.w),
+            borderRadius: BorderRadius.circular((widget.borderRadius ?? 0).w),
             borderSide: BorderSide.none,
           ),
         ),

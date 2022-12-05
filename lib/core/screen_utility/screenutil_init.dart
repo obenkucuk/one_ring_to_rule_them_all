@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 
 import 'screen_util.dart';
-import 'dart:ui' show FlutterWindow;
 
 typedef RebuildFactor = bool Function(MediaQueryData old, MediaQueryData data);
 
@@ -32,17 +31,17 @@ class RebuildFactors {
 
 class ScreenUtilInit extends StatefulWidget {
   /// A helper widget that initializes [ScreenUtil]
-  const ScreenUtilInit({
-    Key? key,
-    required this.builder,
-    this.child,
-    this.rebuildFactor = RebuildFactors.size,
-    this.designSize = ScreenUtil.defaultSize,
-    this.splitScreenMode = false,
-    this.minTextAdapt = false,
-    this.useInheritedMediaQuery = false,
-    this.scaleByHeight = false
-  }) : super(key: key);
+  const ScreenUtilInit(
+      {Key? key,
+      required this.builder,
+      this.child,
+      this.rebuildFactor = RebuildFactors.size,
+      this.designSize = ScreenUtil.defaultSize,
+      this.splitScreenMode = false,
+      this.minTextAdapt = false,
+      this.useInheritedMediaQuery = false,
+      this.scaleByHeight = false})
+      : super(key: key);
 
   final ScreenUtilInitBuilder builder;
   final Widget? child;
@@ -59,8 +58,7 @@ class ScreenUtilInit extends StatefulWidget {
   State<ScreenUtilInit> createState() => _ScreenUtilInitState();
 }
 
-class _ScreenUtilInitState extends State<ScreenUtilInit>
-    with WidgetsBindingObserver {
+class _ScreenUtilInitState extends State<ScreenUtilInit> with WidgetsBindingObserver {
   MediaQueryData? _mediaQueryData;
 
   bool wrappedInMediaQuery = false;
@@ -112,7 +110,7 @@ class _ScreenUtilInitState extends State<ScreenUtilInit>
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    if (_mediaQueryData == null) _mediaQueryData = newData;
+    _mediaQueryData ??= newData;
     didChangeMetrics();
   }
 
@@ -123,68 +121,61 @@ class _ScreenUtilInitState extends State<ScreenUtilInit>
   }
 
   @override
-  Widget build(BuildContext _context) {
+  Widget build(BuildContext context) {
     if (mediaQueryData.size == Size.zero) return const SizedBox.shrink();
     if (!wrappedInMediaQuery) {
       return MediaQuery(
         // key: GlobalObjectKey('mediaQuery'),
         data: mediaQueryData,
         child: Builder(
-          builder: (__context) {
-            final deviceData = MediaQuery.maybeOf(__context);
+          builder: (context) {
+            final deviceData = MediaQuery.maybeOf(context);
             final deviceSize = deviceData?.size ?? widget.designSize;
-            ScreenUtil.init(
-                __context,
+            ScreenUtil.init(context,
                 designSize: widget.designSize,
                 splitScreenMode: widget.splitScreenMode,
                 minTextAdapt: widget.minTextAdapt,
-                scaleByHeight: widget.scaleByHeight
-            );
-            return Container(
+                scaleByHeight: widget.scaleByHeight);
+            return SizedBox(
                 width: deviceSize.width,
                 height: deviceSize.height,
                 child: FittedBox(
                   fit: BoxFit.none,
                   alignment: Alignment.center,
-                  child: Container(
+                  child: SizedBox(
                     width: widget.scaleByHeight
-                        ? (deviceSize.height * widget.designSize.width) /
-                        widget.designSize.height
+                        ? (deviceSize.height * widget.designSize.width) / widget.designSize.height
                         : deviceSize.width,
                     height: deviceSize.height,
                     child: child,
                   ),
-                )
-            );
+                ));
           },
         ),
       );
     }
 
-    ScreenUtil.init(
-        _context,
+    ScreenUtil.init(context,
         designSize: widget.designSize,
         splitScreenMode: widget.splitScreenMode,
         minTextAdapt: widget.minTextAdapt,
-        scaleByHeight: widget.scaleByHeight
-    );
-    final deviceData = MediaQuery.maybeOf(_context);
+        scaleByHeight: widget.scaleByHeight);
+    final deviceData = MediaQuery.maybeOf(context);
 
     final deviceSize = deviceData?.size ?? widget.designSize;
-    return Container(
+    return SizedBox(
         width: deviceSize.width,
         height: deviceSize.height,
         child: FittedBox(
           fit: BoxFit.none,
           alignment: Alignment.center,
-          child: Container(
-            width: widget.scaleByHeight ? (deviceSize.height *
-                widget.designSize.width) / widget.designSize.height : deviceSize
-                .width,
+          child: SizedBox(
+            width: widget.scaleByHeight
+                ? (deviceSize.height * widget.designSize.width) / widget.designSize.height
+                : deviceSize.width,
             height: deviceSize.height,
             child: child,
           ),
-        )
-    );
+        ));
   }
 }

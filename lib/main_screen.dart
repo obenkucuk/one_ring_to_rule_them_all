@@ -12,7 +12,7 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     const List<PageRouteInfo<dynamic>> routes = [HomeRouter(), SettingsRouter()];
 
-    XSize.setScreenSize(context);
+    SizeX.setScreenSize(context);
     return AutoTabsScaffold(
       routes: routes,
       bottomNavigationBuilder: (context, tabsRouter) => SalomonBottomBar(

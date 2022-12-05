@@ -1,4 +1,5 @@
 import 'package:base_application/components/search_bar/search_bar.dart';
+import 'package:base_application/core/launcher_manager.dart';
 import 'package:base_application/screens/diger_sayfalar/home/alt_sayfa/alt_sayfa.dart';
 import 'package:base_application/screens/main_screen/home_screen/controller/home_controller.dart';
 import 'package:base_application/screens/main_screen/settings_screen/controller/settings_controller.dart';
@@ -15,7 +16,7 @@ class HomeView extends GetView<HomeController> {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size(MediaQuery.of(context).size.width, 40),
-        child: SafeArea(child: const SearchBar()),
+        child: const SafeArea(child: SearchBar()),
       ),
       body: Obx(
         () => GestureDetector(
@@ -74,7 +75,12 @@ class HomeView extends GetView<HomeController> {
                     },
                     child: const Text("Alt Sayfa"),
                   ),
-                  GestureDetector(child: Container(height: 300, width: 300, color: Theme.of(context).primaryColor))
+                  GestureDetector(
+                      onTap: () {
+                        LauncherManager.instance
+                            .sendMail(mailAddress: "obenkucuk@gmail.com", subject: "konu", body: "body");
+                      },
+                      child: Container(height: 300, width: 300, color: Theme.of(context).primaryColor))
                 ],
               ),
             ),

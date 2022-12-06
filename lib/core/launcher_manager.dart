@@ -1,8 +1,8 @@
 import 'package:url_launcher/url_launcher.dart';
 
-class LauncherManager {
-  LauncherManager._();
-  static final LauncherManager instance = LauncherManager._();
+class LauncherX {
+  LauncherX._();
+  static final LauncherX instance = LauncherX._();
 
   /// iOS için örnek adres tipi = 'https://www.youtube.com'
   launchApp(String webAddress) async {

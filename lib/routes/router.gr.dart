@@ -17,10 +17,10 @@ import 'package:flutter/material.dart' as _i10;
 
 import '../core/auth/login/login_screen.dart' as _i4;
 import '../core/auth/register/register_screen.dart' as _i5;
-import '../core/search_screen/search_screen.dart' as _i6;
+import '../core/search_screen/search_screen.dart' as _i7;
 import '../core/splash_screen/splash_page.dart' as _i1;
 import '../main_screen.dart' as _i3;
-import '../screens/main_screen/home_screen/home_screen.dart' as _i7;
+import '../screens/main_screen/home_screen/home_screen.dart' as _i6;
 import '../screens/main_screen/settings_screen/settings_screen.dart' as _i8;
 
 class AppRouter extends _i9.RootStackRouter {
@@ -47,15 +47,6 @@ class AppRouter extends _i9.RootStackRouter {
         child: const _i2.EmptyRouterPage(),
       );
     },
-    SearchRouter.name: (routeData) {
-      return _i9.CustomPage<dynamic>(
-        routeData: routeData,
-        child: const _i2.EmptyRouterPage(),
-        transitionsBuilder: _i9.TransitionsBuilders.fadeIn,
-        opaque: true,
-        barrierDismissible: false,
-      );
-    },
     MainRouter.name: (routeData) {
       return _i9.MaterialPageX<dynamic>(
         routeData: routeData,
@@ -74,12 +65,6 @@ class AppRouter extends _i9.RootStackRouter {
         child: const _i5.RegisterScreen(),
       );
     },
-    SearchRoute.name: (routeData) {
-      return _i9.MaterialPageX<dynamic>(
-        routeData: routeData,
-        child: const _i6.SearchScreen(),
-      );
-    },
     HomeRouter.name: (routeData) {
       return _i9.MaterialPageX<dynamic>(
         routeData: routeData,
@@ -95,7 +80,13 @@ class AppRouter extends _i9.RootStackRouter {
     HomeRoute.name: (routeData) {
       return _i9.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i7.HomeScreen(),
+        child: const _i6.HomeScreen(),
+      );
+    },
+    SearchRouter.name: (routeData) {
+      return _i9.MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const _i7.SearchScreen(),
       );
     },
     SettingsRoute.name: (routeData) {
@@ -135,17 +126,6 @@ class AppRouter extends _i9.RootStackRouter {
           ],
         ),
         _i9.RouteConfig(
-          SearchRouter.name,
-          path: 'search',
-          children: [
-            _i9.RouteConfig(
-              SearchRoute.name,
-              path: '',
-              parent: SearchRouter.name,
-            )
-          ],
-        ),
-        _i9.RouteConfig(
           MainRouter.name,
           path: 'main',
           children: [
@@ -158,7 +138,12 @@ class AppRouter extends _i9.RootStackRouter {
                   HomeRoute.name,
                   path: '',
                   parent: HomeRouter.name,
-                )
+                ),
+                _i9.RouteConfig(
+                  SearchRouter.name,
+                  path: 'search',
+                  parent: HomeRouter.name,
+                ),
               ],
             ),
             _i9.RouteConfig(
@@ -217,19 +202,6 @@ class RegisterRouter extends _i9.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i2.EmptyRouterPage]
-class SearchRouter extends _i9.PageRouteInfo<void> {
-  const SearchRouter({List<_i9.PageRouteInfo>? children})
-      : super(
-          SearchRouter.name,
-          path: 'search',
-          initialChildren: children,
-        );
-
-  static const String name = 'SearchRouter';
-}
-
-/// generated route for
 /// [_i3.MainScreen]
 class MainRouter extends _i9.PageRouteInfo<void> {
   const MainRouter({List<_i9.PageRouteInfo>? children})
@@ -267,18 +239,6 @@ class RegisterRoute extends _i9.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i6.SearchScreen]
-class SearchRoute extends _i9.PageRouteInfo<void> {
-  const SearchRoute()
-      : super(
-          SearchRoute.name,
-          path: '',
-        );
-
-  static const String name = 'SearchRoute';
-}
-
-/// generated route for
 /// [_i2.EmptyRouterPage]
 class HomeRouter extends _i9.PageRouteInfo<void> {
   const HomeRouter({List<_i9.PageRouteInfo>? children})
@@ -305,7 +265,7 @@ class SettingsRouter extends _i9.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i7.HomeScreen]
+/// [_i6.HomeScreen]
 class HomeRoute extends _i9.PageRouteInfo<void> {
   const HomeRoute()
       : super(
@@ -314,6 +274,18 @@ class HomeRoute extends _i9.PageRouteInfo<void> {
         );
 
   static const String name = 'HomeRoute';
+}
+
+/// generated route for
+/// [_i7.SearchScreen]
+class SearchRouter extends _i9.PageRouteInfo<void> {
+  const SearchRouter()
+      : super(
+          SearchRouter.name,
+          path: 'search',
+        );
+
+  static const String name = 'SearchRouter';
 }
 
 /// generated route for

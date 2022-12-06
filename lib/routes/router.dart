@@ -38,18 +38,6 @@ import '../screens/main_screen/settings_screen/settings_screen.dart';
         ),
       ],
     ),
-    CustomRoute(
-      path: "search",
-      name: "SearchRouter",
-      page: EmptyRouterPage,
-      transitionsBuilder: TransitionsBuilders.fadeIn,
-      children: [
-        AutoRoute(
-          path: "",
-          page: SearchScreen,
-        ),
-      ],
-    ),
     AutoRoute(
       path: "main",
       name: "MainRouter",
@@ -63,6 +51,11 @@ import '../screens/main_screen/settings_screen/settings_screen.dart';
             AutoRoute(
               path: "",
               page: HomeScreen,
+            ),
+            AutoRoute(
+              path: "search",
+              name: "SearchRouter",
+              page: SearchScreen,
             ),
           ],
         ),

@@ -4,8 +4,8 @@ import 'package:base_application/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
 ThemeData darkTheme = ThemeData.dark().copyWith(
-  useMaterial3: true,
   brightness: Brightness.dark,
+  useMaterial3: true,
   selectedRowColor: AppColors.textDarkTheme,
   backgroundColor: AppColors.backgroundDark,
   scaffoldBackgroundColor: AppColors.backgroundDark,

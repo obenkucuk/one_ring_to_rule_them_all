@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:auto_route/empty_router_widgets.dart';
 import 'package:base_application/core/auth/register/register_screen.dart';
-import 'package:base_application/core/search_screen/search_screen.dart';
+import 'package:base_application/screens/diger_sayfalar/search_screen/search_screen.dart';
 import 'package:base_application/core/splash_screen/splash_page.dart';
 import 'package:base_application/main_screen.dart';
 import 'package:base_application/screens/main_screen/home_screen/home_screen.dart';

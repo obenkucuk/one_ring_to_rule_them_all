@@ -17,15 +17,14 @@ import 'package:flutter/material.dart' as _i10;
 
 import '../core/auth/login/login_screen.dart' as _i4;
 import '../core/auth/register/register_screen.dart' as _i5;
-import '../core/search_screen/search_screen.dart' as _i7;
+import '../screens/diger_sayfalar/search_screen/search_screen.dart' as _i7;
 import '../core/splash_screen/splash_page.dart' as _i1;
 import '../main_screen.dart' as _i3;
 import '../screens/main_screen/home_screen/home_screen.dart' as _i6;
 import '../screens/main_screen/settings_screen/settings_screen.dart' as _i8;
 
 class AppRouter extends _i9.RootStackRouter {
-  AppRouter([_i10.GlobalKey<_i10.NavigatorState>? navigatorKey])
-      : super(navigatorKey);
+  AppRouter([_i10.GlobalKey<_i10.NavigatorState>? navigatorKey]) : super(navigatorKey);
 
   @override
   final Map<String, _i9.PageFactory> pagesMap = {

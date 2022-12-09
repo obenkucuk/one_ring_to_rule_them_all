@@ -4,7 +4,6 @@ import 'package:base_application/screens/main_screen/settings_screen/controller/
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'core/app_size.dart';
 import 'routes/router.gr.dart';
 import 'theme/theme_data_dark.dart';
 import 'theme/theme_data_light.dart';

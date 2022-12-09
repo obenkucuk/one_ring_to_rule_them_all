@@ -1,5 +1,5 @@
-import 'package:base_application/core/search_screen/controller/search_controller.dart';
-import 'package:base_application/core/search_screen/view/search_view.dart';
+import 'package:base_application/screens/diger_sayfalar/search_screen/controller/search_controller.dart';
+import 'package:base_application/screens/diger_sayfalar/search_screen/view/search_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 

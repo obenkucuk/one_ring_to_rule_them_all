@@ -3,6 +3,8 @@ import 'package:base_application/theme/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../core/app_size.dart';
+
 class SettingsView extends GetView<SettingsController> {
   const SettingsView({super.key});
 
@@ -23,15 +25,17 @@ class SettingsView extends GetView<SettingsController> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               IconButton(
-                onPressed: () => controller.changeTheme(ThemeMode.dark),
+                onPressed: () => controller.changeTheme(themeMode: ThemeMode.dark, brightness: Brightness.dark),
                 icon: const Icon(Icons.dark_mode),
               ),
               IconButton(
-                onPressed: () => controller.changeTheme(ThemeMode.light),
+                onPressed: () => controller.changeTheme(themeMode: ThemeMode.light, brightness: Brightness.light),
                 icon: const Icon(Icons.light_mode),
               ),
               IconButton(
-                onPressed: () => controller.changeTheme(ThemeMode.system),
+                onPressed: () => controller.changeTheme(
+                    themeMode: ThemeMode.system,
+                    brightness: SizeX.platformBrightness == Brightness.dark ? Brightness.dark : Brightness.light),
                 icon: const Icon(Icons.settings),
               ),
             ],

@@ -1,5 +1,5 @@
-import 'package:base_application/components/text_field_x.dart';
-import 'package:base_application/core/screen_utility/size_extension.dart';
+import 'package:base_application/components/text_field/text_field_x.dart';
+import 'package:base_application/core/extensions/widget_scale.dart';
 import 'package:base_application/theme/text_style.dart';
 import 'package:flutter/material.dart';
 

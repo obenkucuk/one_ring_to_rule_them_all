@@ -1,14 +1,14 @@
 import 'package:base_application/core/auth/login/widget/string_extensions.dart';
-import 'package:base_application/core/screen_utility/size_extension.dart';
+import 'package:base_application/core/extensions/widget_scale.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../components/icon_button_x.dart';
-import '../../../../components/material_button_x.dart';
-import '../../../../components/text_button_x.dart';
-import '../../../../components/text_field_x.dart';
+import '../../../../components/buttons/icon_button_x.dart';
+import '../../../../components/buttons/material_button_x.dart';
+import '../../../../components/buttons/text_button_x.dart';
+import '../../../../components/text_field/text_field_x.dart';
 import '../../../../theme/text_style.dart';
 import '../controller/login_controller.dart';
 

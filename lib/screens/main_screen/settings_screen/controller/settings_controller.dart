@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../../../core/app_size.dart';
 import '../../../../core/shared_pref.dart';
 
 enum StorageKeys { appLocalization, appThemeMode }
@@ -32,9 +33,7 @@ class SettingsController extends GetxController {
   @override
   void onInit() async {
     super.onInit();
-
     _initLocalization();
-
     _initTheme();
   }
 
@@ -45,14 +44,14 @@ class SettingsController extends GetxController {
 
       if (supportedLanguages().contains(systemLanguage)) {
         lang.value = await AppLocalizations.delegate.load(systemLanguage);
-        SharedPrefs.write(StorageKeys.appLocalization.name, ThemeMode.system.name);
+        SharedPrefs.setString(StorageKeys.appLocalization.name, ThemeMode.system.name);
       } else {
         lang.value = await AppLocalizations.delegate.load(Locale(_defoultLocalization));
-        SharedPrefs.write(StorageKeys.appLocalization.name, ThemeMode.system.name);
+        SharedPrefs.setString(StorageKeys.appLocalization.name, ThemeMode.system.name);
       }
     } else {
       lang.value = await AppLocalizations.delegate.load(Locale(language));
-      SharedPrefs.write(StorageKeys.appLocalization.name, language);
+      SharedPrefs.setString(StorageKeys.appLocalization.name, language);
     }
   }
 
@@ -61,10 +60,10 @@ class SettingsController extends GetxController {
   }
 
   _initLocalization() async {
-    var storageLocalization = SharedPrefs.read(StorageKeys.appLocalization.name);
+    var storageLocalization = SharedPrefs.getString(StorageKeys.appLocalization.name);
     if (storageLocalization == "null") {
-      SharedPrefs.write(StorageKeys.appLocalization.name, ThemeMode.system.name);
-      storageLocalization = SharedPrefs.read(StorageKeys.appLocalization.name);
+      SharedPrefs.setString(StorageKeys.appLocalization.name, ThemeMode.system.name);
+      storageLocalization = SharedPrefs.getString(StorageKeys.appLocalization.name);
     }
 
     String? preferedLocalization;
@@ -86,40 +85,29 @@ class SettingsController extends GetxController {
     lang = (await AppLocalizations.delegate.load(Locale(preferedLocalization))).obs;
   }
 
-  /// Tema Modu Değiştirme
-  void changeTheme(ThemeMode mode) {
-    switch (mode) {
-      case ThemeMode.dark:
-        SharedPrefs.write(StorageKeys.appThemeMode.name, ThemeMode.dark.name);
-        ThemeStream.inTheme = ThemeMode.dark;
-        SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(statusBarBrightness: Brightness.dark));
-        break;
-      case (ThemeMode.light):
-        SharedPrefs.write(StorageKeys.appThemeMode.name, ThemeMode.light.name);
-        ThemeStream.inTheme = ThemeMode.light;
-        SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(statusBarBrightness: Brightness.light));
-        break;
-      default:
-        SharedPrefs.write(StorageKeys.appThemeMode.name, ThemeMode.system.name);
-        ThemeStream.inTheme = ThemeMode.system;
-    }
+  void changeTheme({required ThemeMode themeMode, Brightness? brightness}) {
+    SharedPrefs.setString(StorageKeys.appThemeMode.name, themeMode.name);
+    ThemeStream.inTheme = themeMode;
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarBrightness: brightness));
   }
 
   _initTheme() {
     //ilk açılış tema modu
-    String storageThemeMode = SharedPrefs.read(StorageKeys.appThemeMode.name);
+    String storageThemeMode = SharedPrefs.getString(StorageKeys.appThemeMode.name);
 
     if (storageThemeMode == "null") {
-      SharedPrefs.write(StorageKeys.appThemeMode.name, ThemeMode.system.name);
-      storageThemeMode = SharedPrefs.read(StorageKeys.appThemeMode.name);
+      SharedPrefs.setString(StorageKeys.appThemeMode.name, ThemeMode.system.name);
+      storageThemeMode = SharedPrefs.getString(StorageKeys.appThemeMode.name);
     }
 
     // tema modu ne?
-    storageThemeMode == "dark"
-        ? ThemeStream.inTheme = ThemeMode.dark
-        : (storageThemeMode == "light"
-            ? ThemeStream.inTheme = ThemeMode.light
-            : ThemeStream.inTheme = ThemeMode.system);
+    storageThemeMode == ThemeMode.dark.name
+        ? changeTheme(themeMode: ThemeMode.dark, brightness: Brightness.dark)
+        : storageThemeMode == ThemeMode.light.name
+            ? changeTheme(themeMode: ThemeMode.light, brightness: Brightness.light)
+            : changeTheme(
+                themeMode: ThemeMode.system,
+                brightness: SizeX.platformBrightness == Brightness.dark ? Brightness.dark : Brightness.light);
   }
 }
 

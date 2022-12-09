@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:base_application/components/material_button_x.dart';
+import 'package:base_application/components/buttons/material_button_x.dart';
 import 'package:base_application/components/search_bar/search_bar.dart';
+import 'package:base_application/core/extensions/widget_scale.dart';
 import 'package:base_application/routes/router.gr.dart';
 import 'package:base_application/screens/diger_sayfalar/home/alt_sayfa/alt_sayfa.dart';
 import 'package:base_application/screens/main_screen/home_screen/controller/home_controller.dart';
@@ -80,7 +81,17 @@ class HomeView extends GetView<HomeController> {
                     },
                     child: const Text("Alt Sayfa"),
                   ),
-                  GestureDetector(child: Container(height: 300, width: 300, color: Theme.of(context).primaryColor))
+                  GestureDetector(
+                    onTap: () => controller.aaa(),
+                    key: controller.key,
+                    child: SizedBox(
+                      height: 300.h,
+                      child: AspectRatio(
+                        aspectRatio: 1,
+                        child: Container(color: Theme.of(context).primaryColor),
+                      ),
+                    ),
+                  )
                 ],
               ),
             ),

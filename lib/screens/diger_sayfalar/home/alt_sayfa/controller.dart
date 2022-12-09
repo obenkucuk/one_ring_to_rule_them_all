@@ -1,4 +1,3 @@
-import 'package:base_application/components/state_mixin/app_state_mixin.dart';
 import 'package:get/get.dart';
 import 'dart:convert';
 

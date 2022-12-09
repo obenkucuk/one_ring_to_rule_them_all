@@ -1,4 +1,4 @@
-import 'package:base_application/core/screen_utility/size_extension.dart';
+import 'package:base_application/core/extensions/widget_scale.dart';
 import 'package:base_application/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -19,7 +19,7 @@ class MaterialButtonX extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialButton(
       shape: RoundedRectangleBorder(
-        side: const BorderSide(color: Colors.black, width: 1),
+        side: BorderSide(color: Colors.black, width: 1.w),
         borderRadius: BorderRadius.circular(borderRadius ?? 10.w),
       ),
       padding: EdgeInsets.symmetric(vertical: 0.h),

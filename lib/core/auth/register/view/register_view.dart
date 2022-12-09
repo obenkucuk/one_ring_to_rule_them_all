@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
-import '../../../../components/text_form_field_x.dart';
+import '../../../../components/text_field/text_form_field_x.dart';
 import '../../login/widget/date_formater.dart';
 import '../../login/widget/utilities.dart';
 

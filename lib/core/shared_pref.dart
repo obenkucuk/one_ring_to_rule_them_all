@@ -12,9 +12,9 @@ class SharedPrefs {
     return _sharedPrefs;
   }
 
-  static String read(String key) => _sharedPrefs!.getString(key) ?? "null";
+  static String getString(String key) => _sharedPrefs!.getString(key) ?? "null";
 
-  static write(String key, String value) {
+  static setString(String key, String value) {
     _sharedPrefs!.setString(key, value);
   }
 }

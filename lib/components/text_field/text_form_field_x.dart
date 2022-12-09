@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:base_application/core/screen_utility/size_extension.dart';
+import 'package:base_application/core/extensions/widget_scale.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

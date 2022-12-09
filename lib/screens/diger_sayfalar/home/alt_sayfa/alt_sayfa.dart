@@ -2,8 +2,6 @@ import 'package:base_application/screens/diger_sayfalar/home/alt_sayfa/controlle
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
-import '../../../../components/shimmer_pro.dart';
-
 class AltSayfaScreen extends StatelessWidget {
   const AltSayfaScreen({super.key});
 

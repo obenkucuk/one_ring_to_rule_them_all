@@ -15,7 +15,7 @@ class SizeX {
   static late double textScaleFactor;
 
   static setScreenSize(BuildContext context) {
-    _mediaQueryData = MediaQuery.of(context);
+    _mediaQueryData = MediaQueryData.fromWindow(WidgetsBinding.instance.window);
     height = _mediaQueryData.size.height;
     width = _mediaQueryData.size.width;
     padding = _mediaQueryData.padding;
@@ -24,6 +24,6 @@ class SizeX {
     displayFeatures = _mediaQueryData.displayFeatures;
     textScaleFactor = _mediaQueryData.textScaleFactor;
 
-    log('${SizeX.width}x${SizeX.height}', name: 'Screen local pixel');
+    log('$width x $height', name: 'Screen local pixel');
   }
 }

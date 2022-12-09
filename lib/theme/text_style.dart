@@ -1,4 +1,6 @@
+import 'package:base_application/screens/main_screen/settings_screen/controller/settings_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 // final settings = Get.find<SettingsController>();
 // BuildContext get context => settings.appGlobalKey.currentContext!;

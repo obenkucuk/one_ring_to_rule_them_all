@@ -16,6 +16,7 @@ class MediaQueryX {
 
   static setScreenSize(BuildContext context) {
     _mediaQueryData = MediaQueryData.fromWindow(WidgetsBinding.instance.window);
+
     height = _mediaQueryData.size.height;
     width = _mediaQueryData.size.width;
     padding = _mediaQueryData.padding;

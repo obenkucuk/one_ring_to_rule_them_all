@@ -1,7 +1,6 @@
 import 'package:base_application/core/extensions/widget_scale.dart';
 import 'package:base_application/theme/app_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class MaterialButtonX extends StatelessWidget {
   final VoidCallback onTap;
@@ -44,7 +43,7 @@ class MaterialButtonX extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Icon(FontAwesomeIcons.google, color: Colors.amber),
+          const Icon(Icons.numbers, color: Colors.amber),
           Text(buttonText ?? "Button Yazısı Eksik!"),
         ],
       ),

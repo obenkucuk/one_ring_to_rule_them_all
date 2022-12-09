@@ -19,24 +19,20 @@ class AltSayfaView extends GetView<AltSayfaController> {
 
   @override
   Widget build(BuildContext context) {
-    // print(Theme.of(context).brightness);
-
     return Scaffold(
-      backgroundColor: Colors.grey,
-      body: SafeArea(
-        child: ListView.builder(
-          physics: const AlwaysScrollableScrollPhysics(),
-          shrinkWrap: true,
-          itemCount: 1000,
-          itemBuilder: (BuildContext context, int index) {
-            return SizedBox.square(
-              dimension: 100,
-              child: Card(
-                child: Center(child: Text(index.toString())),
-              ),
-            );
-          },
-        ),
+      backgroundColor: Colors.amber,
+      body: ListView.builder(
+        physics: const AlwaysScrollableScrollPhysics(),
+        shrinkWrap: true,
+        itemCount: 1000,
+        itemBuilder: (BuildContext context, int index) {
+          return SizedBox.square(
+            dimension: 100,
+            child: Card(
+              child: Center(child: Text(index.toString())),
+            ),
+          );
+        },
       ),
     );
   }

@@ -223,14 +223,8 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
       borderRadius: BorderRadius.circular(10),
     ),
   ),
-  radioTheme: RadioThemeData(
-    fillColor: MaterialStateProperty.all<Color>(AppColors.primary),
-  ),
-  dividerTheme: const DividerThemeData(
-    color: AppColors.dividerDark,
-    thickness: 1,
-    space: 0,
-  ),
+  radioTheme: RadioThemeData(fillColor: MaterialStateProperty.all<Color>(AppColors.primary)),
+  dividerTheme: const DividerThemeData(color: AppColors.dividerDark, thickness: 1, space: 0),
   appBarTheme: const AppBarTheme(
     titleSpacing: 0,
     elevation: 0.0,
@@ -259,8 +253,5 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
     ),
   ),
   indicatorColor: AppColors.indicatorDarkColor,
-  bottomAppBarTheme: const BottomAppBarTheme(
-    color: Colors.transparent,
-    elevation: 0,
-  ),
+  bottomAppBarTheme: const BottomAppBarTheme(color: Colors.transparent, elevation: 0),
 );

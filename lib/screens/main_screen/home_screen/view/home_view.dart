@@ -32,25 +32,6 @@ class HomeView extends GetView<HomeController> {
                   MaterialButtonX(onTap: () {
                     context.router.navigate(const SearchRouter());
                   }),
-                  Text(controller.sayfadaGosterilenSayi.string),
-                  IconButton(
-                    splashRadius: 15,
-                    enableFeedback: false,
-                    hoverColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    splashColor: Colors.transparent,
-                    onPressed: () => controller.aa(),
-                    icon: const Icon(Icons.add),
-                  ),
-                  IconButton(
-                    splashRadius: 15,
-                    enableFeedback: false,
-                    hoverColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    splashColor: Colors.transparent,
-                    onPressed: () => controller.bb(),
-                    icon: const Icon(Icons.add),
-                  ),
                   Text(
                     settings.lang.value.helloWorld,
                     style: TextStylesX(context).s18W500,
@@ -63,7 +44,7 @@ class HomeView extends GetView<HomeController> {
                     child: const Text("Alt Sayfa"),
                   ),
                   GestureDetector(
-                    onTap: () => controller.aaa(),
+                    onTap: () {},
                     key: controller.key,
                     child: SizedBox(
                       height: 300.h,

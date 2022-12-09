@@ -51,25 +51,6 @@ class HomeView extends GetView<HomeController> {
                     onPressed: () => controller.bb(),
                     icon: const Icon(Icons.add),
                   ),
-                  Row(
-                    children: [
-                      TextButton(
-                          onPressed: (() {
-                            settings.changeLanguage("tr");
-                          }),
-                          child: const Text("TR")),
-                      TextButton(
-                          onPressed: (() {
-                            settings.changeLanguage("en");
-                          }),
-                          child: const Text("EN")),
-                      TextButton(
-                          onPressed: (() {
-                            settings.changeLanguage("system");
-                          }),
-                          child: const Text("system")),
-                    ],
-                  ),
                   Text(
                     settings.lang.value.helloWorld,
                     style: TextStylesX(context).s18W500,

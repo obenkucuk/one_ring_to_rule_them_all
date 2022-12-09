@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class SharedPrefs {
+class SharedPreferencesX {
   static Future<SharedPreferences> get _instance async => _sharedPrefs ??= await SharedPreferences.getInstance();
   static SharedPreferences? _sharedPrefs;
 

@@ -5,8 +5,8 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../../../core/app_size.dart';
-import '../../../../core/shared_pref.dart';
+import '../../../../core/media_query_x.dart';
+import '../../../../core/shared_preferences_x.dart';
 
 enum StorageKeys { appLocalization, appThemeMode }
 
@@ -16,19 +16,13 @@ class SettingsController extends GetxController {
 
   BuildContext get context => globalAppKey.currentContext!;
 
-  //------------EXEPIONS------------//
-
   // internet bağlantısını birden fazla kontrol etmemek için
   RxBool isNetworkChecking = false.obs;
 
   late Rx<AppLocalizations> lang;
 
-  //------------LOCALIZATION------------//
-
   // NOT uygulama varsayılan dili her uygulama için ayarlanmalı
   final String _defoultLocalization = "en";
-
-//------------TEMA------------//
 
   @override
   void onInit() async {
@@ -44,14 +38,14 @@ class SettingsController extends GetxController {
 
       if (supportedLanguages().contains(systemLanguage)) {
         lang.value = await AppLocalizations.delegate.load(systemLanguage);
-        SharedPrefs.setString(StorageKeys.appLocalization.name, ThemeMode.system.name);
+        SharedPreferencesX.setString(StorageKeys.appLocalization.name, ThemeMode.system.name);
       } else {
         lang.value = await AppLocalizations.delegate.load(Locale(_defoultLocalization));
-        SharedPrefs.setString(StorageKeys.appLocalization.name, ThemeMode.system.name);
+        SharedPreferencesX.setString(StorageKeys.appLocalization.name, ThemeMode.system.name);
       }
     } else {
       lang.value = await AppLocalizations.delegate.load(Locale(language));
-      SharedPrefs.setString(StorageKeys.appLocalization.name, language);
+      SharedPreferencesX.setString(StorageKeys.appLocalization.name, language);
     }
   }
 
@@ -60,10 +54,10 @@ class SettingsController extends GetxController {
   }
 
   _initLocalization() async {
-    var storageLocalization = SharedPrefs.getString(StorageKeys.appLocalization.name);
+    var storageLocalization = SharedPreferencesX.getString(StorageKeys.appLocalization.name);
     if (storageLocalization == "null") {
-      SharedPrefs.setString(StorageKeys.appLocalization.name, ThemeMode.system.name);
-      storageLocalization = SharedPrefs.getString(StorageKeys.appLocalization.name);
+      SharedPreferencesX.setString(StorageKeys.appLocalization.name, ThemeMode.system.name);
+      storageLocalization = SharedPreferencesX.getString(StorageKeys.appLocalization.name);
     }
 
     String? preferedLocalization;
@@ -86,18 +80,18 @@ class SettingsController extends GetxController {
   }
 
   void changeTheme({required ThemeMode themeMode, Brightness? brightness}) {
-    SharedPrefs.setString(StorageKeys.appThemeMode.name, themeMode.name);
+    SharedPreferencesX.setString(StorageKeys.appThemeMode.name, themeMode.name);
     ThemeStream.inTheme = themeMode;
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarBrightness: brightness));
   }
 
   _initTheme() {
     //ilk açılış tema modu
-    String storageThemeMode = SharedPrefs.getString(StorageKeys.appThemeMode.name);
+    String storageThemeMode = SharedPreferencesX.getString(StorageKeys.appThemeMode.name);
 
     if (storageThemeMode == "null") {
-      SharedPrefs.setString(StorageKeys.appThemeMode.name, ThemeMode.system.name);
-      storageThemeMode = SharedPrefs.getString(StorageKeys.appThemeMode.name);
+      SharedPreferencesX.setString(StorageKeys.appThemeMode.name, ThemeMode.system.name);
+      storageThemeMode = SharedPreferencesX.getString(StorageKeys.appThemeMode.name);
     }
 
     // tema modu ne?
@@ -107,7 +101,7 @@ class SettingsController extends GetxController {
             ? changeTheme(themeMode: ThemeMode.light, brightness: Brightness.light)
             : changeTheme(
                 themeMode: ThemeMode.system,
-                brightness: SizeX.platformBrightness == Brightness.dark ? Brightness.dark : Brightness.light);
+                brightness: MediaQueryX.platformBrightness == Brightness.dark ? Brightness.dark : Brightness.light);
   }
 }
 

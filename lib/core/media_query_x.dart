@@ -4,7 +4,7 @@ import 'dart:ui';
 import 'package:flutter/widgets.dart';
 
 /// MediaQuery Data'larına buradan erişilecek ve değişiklik yapmak gerekirse burdan yapılacak.
-class SizeX {
+class MediaQueryX {
   static late double width;
   static late double height;
   static late EdgeInsets padding;

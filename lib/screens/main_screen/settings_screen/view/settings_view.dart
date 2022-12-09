@@ -3,7 +3,7 @@ import 'package:base_application/theme/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../core/app_size.dart';
+import '../../../../core/media_query_x.dart';
 
 class SettingsView extends GetView<SettingsController> {
   const SettingsView({super.key});
@@ -35,7 +35,7 @@ class SettingsView extends GetView<SettingsController> {
               IconButton(
                 onPressed: () => controller.changeTheme(
                     themeMode: ThemeMode.system,
-                    brightness: SizeX.platformBrightness == Brightness.dark ? Brightness.dark : Brightness.light),
+                    brightness: MediaQueryX.platformBrightness == Brightness.dark ? Brightness.dark : Brightness.light),
                 icon: const Icon(Icons.settings),
               ),
             ],

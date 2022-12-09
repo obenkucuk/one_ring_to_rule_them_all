@@ -15,12 +15,16 @@ class SplashView extends GetView<SplashController> {
       body: Center(
         child: Container(
           key: key,
-          color: Colors.white,
-          height: 100.h,
-          width: 100.w,
-          child: Text(
-            "Splash Ekranı",
-            style: TextStylesX(context).s24W300,
+          color: Colors.redAccent,
+          width: 200.w,
+          child: AspectRatio(
+            aspectRatio: 1,
+            child: FittedBox(
+              child: Text(
+                "Splash Ekranı",
+                style: TextStylesX(context).s24W300,
+              ),
+            ),
           ),
         ),
       ),

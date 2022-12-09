@@ -3,7 +3,7 @@ import 'package:base_application/core/extensions/widget_scale.dart';
 import 'package:base_application/theme/text_style.dart';
 import 'package:flutter/material.dart';
 
-import '../../core/app_size.dart';
+import '../../core/media_query_x.dart';
 
 class SearchBar extends StatefulWidget {
   const SearchBar({super.key});
@@ -66,7 +66,7 @@ class _SearchBarState extends State<SearchBar> with SingleTickerProviderStateMix
   }
 
   final double searchBarPadding = 20.w;
-  final double width = SizeX.width;
+  final double width = MediaQueryX.width;
 
   final Size leadingSize = Size(40.w, 40.h);
 

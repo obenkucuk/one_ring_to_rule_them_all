@@ -1,15 +1,15 @@
-import 'package:base_application/core/shared_pref.dart';
+import 'package:base_application/core/shared_preferences_x.dart';
 import 'package:base_application/screens/main_screen/settings_screen/controller/settings_controller.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'core/app_size.dart';
+import 'core/media_query_x.dart';
 import 'routes/router.gr.dart';
 import 'theme/theme_data_dark.dart';
 import 'theme/theme_data_light.dart';
 
 void main() async {
-  await SharedPrefs.init();
+  await SharedPreferencesX.init();
   runApp(const MyApp());
 }
 
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.lazyPut(() => SettingsController());
 
-    SizeX.setScreenSize(context);
+    MediaQueryX.setScreenSize(context);
 
     return StreamBuilder<ThemeMode>(
       stream: ThemeStream.outTheme,

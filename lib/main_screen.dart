@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:base_application/components/navigation_bar/salomon_bottom_bar.dart';
 import 'package:flutter/material.dart';
 
-import 'core/app_size.dart';
 import 'routes/router.gr.dart';
 
 class MainScreen extends StatelessWidget {
@@ -12,7 +11,6 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     const List<PageRouteInfo<dynamic>> routes = [HomeRouter(), SettingsRouter()];
 
-    SizeX.setScreenSize(context);
     return AutoTabsScaffold(
       routes: routes,
       bottomNavigationBuilder: (context, tabsRouter) => SalomonBottomBar(

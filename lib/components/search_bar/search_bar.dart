@@ -1,7 +1,5 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:base_application/components/text_field_x.dart';
 import 'package:base_application/core/screen_utility/size_extension.dart';
-import 'package:base_application/routes/router.gr.dart';
 import 'package:base_application/theme/text_style.dart';
 import 'package:flutter/material.dart';
 

@@ -21,7 +21,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.lazyPut(() => SettingsController());
-
     MediaQueryX.setScreenSize(context);
 
     return StreamBuilder<ThemeMode>(

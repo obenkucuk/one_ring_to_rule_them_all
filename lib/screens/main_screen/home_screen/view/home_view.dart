@@ -53,7 +53,8 @@ class HomeView extends GetView<HomeController> {
                         child: Container(color: Theme.of(context).primaryColor),
                       ),
                     ),
-                  )
+                  ),
+                  Text("Alt Sayfa", style: oben),
                 ],
               ),
             ),

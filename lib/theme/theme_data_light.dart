@@ -4,7 +4,7 @@ import 'package:base_application/core/extensions/widget_scale.dart';
 import 'package:base_application/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
-ThemeData lightTheme = ThemeData.light().copyWith(
+ThemeData lightTheme = ThemeData(
   brightness: Brightness.light,
   useMaterial3: true,
   selectedRowColor: AppColors.textDarkTheme,

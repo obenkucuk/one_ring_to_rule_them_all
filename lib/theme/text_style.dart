@@ -1,9 +1,9 @@
+// final settings = Get.find<SettingsController>();
+// BuildContext get context => settings.appGlobalKey.currentContext!;
+
 import 'package:base_application/screens/main_screen/settings_screen/controller/settings_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-// final settings = Get.find<SettingsController>();
-// BuildContext get context => settings.appGlobalKey.currentContext!;
 
 class TextStylesX {
   final BuildContext context;
@@ -66,3 +66,8 @@ class TextStylesX {
   TextStyle get s24W600 => Theme.of(context).textTheme.headline6!.copyWith(fontWeight: FontWeight.w600);
   TextStyle get s24W700 => Theme.of(context).textTheme.headline6!.copyWith(fontWeight: FontWeight.w700);
 }
+
+TextStyle get oben => Theme.of(Get.find<SettingsController>().mainScreenKey.currentContext!)
+    .textTheme
+    .headline6!
+    .copyWith(fontWeight: FontWeight.w300);

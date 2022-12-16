@@ -1,8 +1,6 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:base_application/components/buttons/material_button_x.dart';
 import 'package:base_application/components/search_bar/search_bar.dart';
 import 'package:base_application/core/extensions/widget_scale.dart';
-import 'package:base_application/routes/router.gr.dart';
 import 'package:base_application/screens/diger_sayfalar/home/alt_sayfa/alt_sayfa.dart';
 import 'package:base_application/screens/main_screen/home_screen/controller/home_controller.dart';
 import 'package:base_application/screens/main_screen/settings_screen/controller/settings_controller.dart';
@@ -30,7 +28,7 @@ class HomeView extends GetView<HomeController> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   MaterialButtonX(onTap: () {
-                    context.router.navigate(const SearchRouter());
+                    // context.router.navigate(const SearchRouter());
                   }),
                   Text(
                     settings.lang.value.helloWorld,
@@ -54,7 +52,6 @@ class HomeView extends GetView<HomeController> {
                       ),
                     ),
                   ),
-                  Text("Alt Sayfa", style: oben),
                 ],
               ),
             ),

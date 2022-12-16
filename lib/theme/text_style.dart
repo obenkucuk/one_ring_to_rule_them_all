@@ -66,8 +66,3 @@ class TextStylesX {
   TextStyle get s24W600 => Theme.of(context).textTheme.headline6!.copyWith(fontWeight: FontWeight.w600);
   TextStyle get s24W700 => Theme.of(context).textTheme.headline6!.copyWith(fontWeight: FontWeight.w700);
 }
-
-TextStyle get oben => Theme.of(Get.find<SettingsController>().mainScreenKey.currentContext!)
-    .textTheme
-    .headline6!
-    .copyWith(fontWeight: FontWeight.w300);

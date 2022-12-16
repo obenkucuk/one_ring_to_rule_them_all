@@ -1,77 +1,33 @@
-import 'package:auto_route/auto_route.dart';
-import 'package:auto_route/empty_router_widgets.dart';
-import 'package:base_application/core/auth/register/register_screen.dart';
-import 'package:base_application/screens/diger_sayfalar/search_screen/search_screen.dart';
-import 'package:base_application/core/splash_screen/splash_page.dart';
 import 'package:base_application/main_screen.dart';
-import 'package:base_application/screens/main_screen/home_screen/home_screen.dart';
+import 'package:base_application/screens/main_screen/settings_screen/settings_screen.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
-import '../core/auth/login/login_screen.dart';
-import '../screens/main_screen/settings_screen/settings_screen.dart';
-
-@MaterialAutoRouter(
-  replaceInRouteName: "Screen,Route",
-  routes: <AutoRoute>[
-    AutoRoute(
-      path: "/",
-      page: SplashPage,
+GoRouter appRouter = GoRouter(
+  routes: [
+    GoRoute(
+      name: "home",
+      path: '/',
+      pageBuilder: (context, state) {
+        return const MaterialPage(child: MainScreen());
+      },
     ),
-    AutoRoute(
-      path: "login",
-      name: "LoginRouter",
-      page: EmptyRouterPage,
-      children: [
-        AutoRoute(
-          path: "",
-          page: LoginScreen,
-        ),
-      ],
+    GoRoute(
+      name: "settings",
+      path: '/settings',
+      pageBuilder: (context, state) {
+        return const MaterialPage(child: SettingsScreen());
+      },
     ),
-    AutoRoute(
-      path: "register",
-      name: "RegisterRouter",
-      page: EmptyRouterPage,
-      children: [
-        AutoRoute(
-          path: "",
-          page: RegisterScreen,
-        ),
-      ],
-    ),
-    AutoRoute(
-      path: "main",
-      name: "MainRouter",
-      page: MainScreen,
-      children: <AutoRoute>[
-        AutoRoute(
-          path: "home",
-          name: "HomeRouter",
-          page: EmptyRouterPage,
-          children: [
-            AutoRoute(
-              path: "",
-              page: HomeScreen,
-            ),
-            AutoRoute(
-              path: "search",
-              name: "SearchRouter",
-              page: SearchScreen,
-            ),
-          ],
-        ),
-        AutoRoute(
-          path: "settings",
-          name: "SettingsRouter",
-          page: EmptyRouterPage,
-          children: [
-            AutoRoute(
-              path: "",
-              page: SettingsScreen,
-            ),
-          ],
-        ),
-      ],
-    )
   ],
-)
-class $AppRouter {}
+  errorPageBuilder: (context, state) {
+    return const MaterialPage(child: Text("Error Page will be here"));
+  },
+  // redirect: (context, state) {
+  //   if (!isAuth && state.location.startsWith('')) {
+  //     return context.namedLocation("");
+  //   } else {
+  //     return null;
+  //   }
+  // },
+);

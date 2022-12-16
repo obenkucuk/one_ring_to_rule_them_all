@@ -1,10 +1,10 @@
 import 'package:base_application/core/shared_preferences_x.dart';
+import 'package:base_application/routes/router.dart';
 import 'package:base_application/screens/main_screen/settings_screen/controller/settings_controller.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'core/media_query_x.dart';
-import 'routes/router.gr.dart';
 import 'theme/theme_data_dark.dart';
 import 'theme/theme_data_light.dart';
 
@@ -12,8 +12,6 @@ void main() async {
   await SharedPreferencesX.init();
   runApp(const MyApp());
 }
-
-final _appRouter = AppRouter();
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -34,8 +32,8 @@ class MyApp extends StatelessWidget {
           darkTheme: darkTheme,
           title: "My App Title",
           themeMode: themeSnapshot.data,
-          routerDelegate: _appRouter.delegate(),
-          routeInformationParser: _appRouter.defaultRouteParser(),
+          routerDelegate: appRouter.routerDelegate,
+          routeInformationParser: appRouter.routeInformationParser,
         );
       },
     );

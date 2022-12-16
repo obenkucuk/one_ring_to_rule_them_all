@@ -1,7 +1,5 @@
 import 'dart:developer';
 
-import 'package:auto_route/auto_route.dart';
-import 'package:base_application/routes/router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -27,14 +25,14 @@ class LoginController extends GetxController {
 
   createAccount() {
     log("create account sayfasına yolla");
-    context.router.push(const RegisterRouter());
+    // context.router.push(const RegisterRouter());
   }
 
   forgotPassword() => log("forgor password");
 
   login() {
     // if (isEmailValid.isTrue)
-    context.replaceRoute(const MainRouter());
+    //  context.replaceRoute(const MainRouter());
     debugPrint("login tıklandı");
   }
 

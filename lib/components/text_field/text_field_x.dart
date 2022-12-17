@@ -1,3 +1,4 @@
+import 'package:base_application/core/constants/size_constants.dart';
 import 'package:base_application/core/extensions/widget_scale.dart';
 import 'package:base_application/theme/text_style.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +22,7 @@ class TextFieldX extends StatefulWidget {
   final TextInputAction? textInputAction;
   final Function(String)? onFinished;
   final double? borderRadius;
+  final double? contentPadding;
 
   const TextFieldX({
     super.key,
@@ -41,6 +43,7 @@ class TextFieldX extends StatefulWidget {
     this.errorText,
     this.onFinished,
     this.borderRadius,
+    this.contentPadding,
   });
 
   @override
@@ -118,29 +121,29 @@ class _TextFieldXState extends State<TextFieldX> {
             color: hintColor,
             fontSize: 14,
           ),
-          contentPadding: const EdgeInsets.symmetric(horizontal: 10),
+          contentPadding: EdgeInsets.symmetric(horizontal: widget.contentPadding ?? padding10.w),
           focusedErrorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular((widget.borderRadius ?? 0).w),
+            borderRadius: BorderRadius.circular(widget.borderRadius ?? 0),
             borderSide: BorderSide.none,
           ),
           disabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular((widget.borderRadius ?? 0).w),
+            borderRadius: BorderRadius.circular(widget.borderRadius ?? 0),
             borderSide: BorderSide.none,
           ),
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular((widget.borderRadius ?? 0).w),
+            borderRadius: BorderRadius.circular(widget.borderRadius ?? 0),
             borderSide: BorderSide.none,
           ),
           errorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular((widget.borderRadius ?? 0).w),
+            borderRadius: BorderRadius.circular(widget.borderRadius ?? 0),
             borderSide: BorderSide.none,
           ),
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular((widget.borderRadius ?? 0).w),
+            borderRadius: BorderRadius.circular(widget.borderRadius ?? 0),
             borderSide: BorderSide.none,
           ),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular((widget.borderRadius ?? 0).w),
+            borderRadius: BorderRadius.circular(widget.borderRadius ?? 0),
             borderSide: BorderSide.none,
           ),
         ),

@@ -2,8 +2,10 @@ import 'package:base_application/screens/auth/login/login_screen.dart';
 import 'package:base_application/screens/auth/register/register_screen.dart';
 import 'package:base_application/core/splash_screen/splash_screen.dart';
 import 'package:base_application/screens/main_screens/home_screen/home_screen.dart';
+import 'package:base_application/screens/main_screens/portfolio_screen/portfolio_screen.dart';
 import 'package:base_application/screens/main_screens/settings_screen/controller/settings_controller.dart';
 import 'package:base_application/screens/main_screens/settings_screen/settings_screen.dart';
+import 'package:base_application/screens/others/add_stock/add_stock_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
@@ -67,6 +69,20 @@ final GoRouter appRouter = GoRouter(
         return const MaterialPage(child: SettingsScreen());
       },
     ),
+    GoRoute(
+      path: '/portfolio',
+      name: RoutesNames.portfolio,
+      pageBuilder: (context, state) {
+        return const MaterialPage(child: PortfolioScreen());
+      },
+    ),
+    GoRoute(
+      path: '/add_stock',
+      name: RoutesNames.addStock,
+      pageBuilder: (context, state) {
+        return const MaterialPage(child: AddStockScreen());
+      },
+    ),
   ],
   errorPageBuilder: (context, state) {
     return const MaterialPage(child: Scaffold(body: Center(child: Text("Error Page will be here"))));
@@ -89,4 +105,6 @@ class RoutesNames {
   static const String splash = "splash";
   static const String login = "login";
   static const String register = "register";
+  static const String portfolio = "portfolio";
+  static const String addStock = "addStock";
 }

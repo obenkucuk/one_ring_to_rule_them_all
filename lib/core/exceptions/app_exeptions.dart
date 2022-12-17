@@ -1,5 +1,5 @@
 import 'package:base_application/core/network_services/check_network_connection.dart';
-import 'package:base_application/screens/main_screen/settings_screen/controller/settings_controller.dart';
+import 'package:base_application/screens/main_screens/settings_screen/controller/settings_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

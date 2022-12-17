@@ -3,7 +3,8 @@
     "@helloWorld": {
       "description": "The conventional newborn programmer greeting"
     }, 
-    "name": "Name",
     "noNetworkMessage":"Network connection is not available!",
-    "connectedMessage": "Connected to the network"
+    "connectedMessage": "Connected to the network",
+    "settings": "Settings",
+    "home": "Home"
 }

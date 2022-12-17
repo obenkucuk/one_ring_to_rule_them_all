@@ -3,7 +3,8 @@
     "@helloWorld": {
       "description": "The conventional newborn programmer greeting"
     },
-    "name": "İsim", 
     "noNetworkMessage": "Ağ Bağlantısı Sağlanamadı!",
-    "connectedMessage": "Bağlantı Sağlandı!"
+    "connectedMessage": "Bağlantı Sağlandı!",
+    "settings": "Ayarlar",
+    "home": "Ana Sayfa"
 }

@@ -1,6 +1,6 @@
 import 'package:base_application/core/shared_preferences_x.dart';
-import 'package:base_application/routes/router.dart';
-import 'package:base_application/screens/main_screen/settings_screen/controller/settings_controller.dart';
+import 'package:base_application/router/router.dart';
+import 'package:base_application/screens/main_screens/settings_screen/controller/settings_controller.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -21,16 +21,20 @@ class MyApp extends StatelessWidget {
     Get.lazyPut(() => SettingsController());
     MediaQueryX.setScreenSize(context);
 
-    return GetMaterialApp.router(
-      key: Get.find<SettingsController>().globalAppKey,
-      scaffoldMessengerKey: Get.find<SettingsController>().snackbarKey,
-      debugShowCheckedModeBanner: false,
-      theme: lightTheme,
-      darkTheme: darkTheme,
-      title: "Base App",
-      themeMode: Get.find<SettingsController>().themeModes.value,
-      routeInformationParser: appRouter.routeInformationParser,
-      routerDelegate: appRouter.routerDelegate,
-    );
+    return GetBuilder<SettingsController>(
+        id: SettingsUpdateKeys.materialApp,
+        builder: (settingsController) {
+          return MaterialApp.router(
+            scaffoldMessengerKey: settingsController.snackbarKey,
+            debugShowCheckedModeBanner: false,
+            theme: lightTheme,
+            darkTheme: darkTheme,
+            title: "Base App",
+            themeMode: settingsController.systemThemeMode.value,
+            routerConfig: appRouter,
+            // routeInformationParser: appRouter.routeInformationParser,
+            // routerDelegate: appRouter.routerDelegate,
+          );
+        });
   }
 }

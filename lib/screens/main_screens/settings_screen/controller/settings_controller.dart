@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -8,13 +7,16 @@ import '../../../../core/media_query_x.dart';
 import '../../../../core/shared_preferences_x.dart';
 
 class SettingsController extends GetxController {
-  final GlobalKey globalAppKey = GlobalKey();
+  final GlobalKey scaffoldKey = GlobalKey();
+
+  BuildContext get context => scaffoldKey.currentContext!;
 
   final snackbarKey = GlobalKey<ScaffoldMessengerState>();
 
   // internet bağlantısını birden fazla kontrol etmemek için
   RxBool isNetworkChecking = false.obs;
-  final Rx<ThemeMode> themeModes = ThemeMode.system.obs;
+  final Rx<ThemeMode> systemThemeMode = Rx(ThemeMode.system);
+  final RxBool isLogin = false.obs;
 
   late Rx<AppLocalizations> lang;
 
@@ -78,9 +80,9 @@ class SettingsController extends GetxController {
 
   void changeTheme({required ThemeMode themeMode, Brightness? brightness}) {
     SharedPreferencesX.setString(StorageKeys.appThemeMode.name, themeMode.name);
-    themeModes(themeMode);
-
+    systemThemeMode(themeMode);
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarBrightness: brightness));
+    update([SettingsUpdateKeys.materialApp]);
   }
 
   _initTheme() {
@@ -102,5 +104,7 @@ class SettingsController extends GetxController {
                 brightness: MediaQueryX.platformBrightness == Brightness.dark ? Brightness.dark : Brightness.light);
   }
 }
+
+enum SettingsUpdateKeys { materialApp }
 
 enum StorageKeys { appLocalization, appThemeMode }

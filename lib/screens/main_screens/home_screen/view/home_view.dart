@@ -1,9 +1,6 @@
-import 'package:base_application/components/buttons/material_button_x.dart';
-import 'package:base_application/components/search_bar/search_bar.dart';
-import 'package:base_application/core/extensions/widget_scale.dart';
 import 'package:base_application/core/media_query_x.dart';
-import 'package:base_application/screens/main_screen/home_screen/controller/home_controller.dart';
-import 'package:base_application/screens/main_screen/settings_screen/controller/settings_controller.dart';
+import 'package:base_application/screens/main_screens/home_screen/controller/home_controller.dart';
+import 'package:base_application/screens/main_screens/settings_screen/controller/settings_controller.dart';
 import 'package:base_application/theme/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

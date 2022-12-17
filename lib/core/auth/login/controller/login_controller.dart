@@ -1,7 +1,10 @@
 import 'dart:developer';
 
+import 'package:base_application/router/router.dart';
+import 'package:base_application/screens/main_screens/settings_screen/controller/settings_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 enum RegisterUpdateKeys { termsOfUse }
 
@@ -31,9 +34,8 @@ class LoginController extends GetxController {
   forgotPassword() => log("forgor password");
 
   login() {
-    // if (isEmailValid.isTrue)
-    //  context.replaceRoute(const MainRouter());
-    debugPrint("login tıklandı");
+    Get.find<SettingsController>().isLogin(true);
+    context.goNamed(RoutesNames.main);
   }
 
   @override

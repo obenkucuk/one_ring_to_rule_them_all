@@ -1,4 +1,4 @@
-import 'package:base_application/core/auth/login/widget/string_extensions.dart';
+import 'package:base_application/screens/auth/login/widget/string_extensions.dart';
 import 'package:base_application/core/extensions/widget_scale.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';

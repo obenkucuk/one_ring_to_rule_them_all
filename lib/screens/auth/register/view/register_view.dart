@@ -1,5 +1,5 @@
-import 'package:base_application/core/auth/login/widget/string_extensions.dart';
-import 'package:base_application/core/auth/register/controller/register_controller.dart';
+import 'package:base_application/screens/auth/login/widget/string_extensions.dart';
+import 'package:base_application/screens/auth/register/controller/register_controller.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

@@ -1,5 +1,5 @@
-import 'package:base_application/core/auth/login/login_screen.dart';
-import 'package:base_application/core/auth/register/register_screen.dart';
+import 'package:base_application/screens/auth/login/login_screen.dart';
+import 'package:base_application/screens/auth/register/register_screen.dart';
 import 'package:base_application/core/splash_screen/splash_screen.dart';
 import 'package:base_application/screens/main_screens/home_screen/home_screen.dart';
 import 'package:base_application/screens/main_screens/settings_screen/controller/settings_controller.dart';
@@ -11,7 +11,7 @@ import 'package:go_router/go_router.dart';
 import '../main_screen.dart';
 
 final GoRouter appRouter = GoRouter(
-  debugLogDiagnostics: true,
+  // debugLogDiagnostics: true,
   routes: [
     GoRoute(
       path: '/',

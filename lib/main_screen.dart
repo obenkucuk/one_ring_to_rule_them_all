@@ -15,9 +15,7 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   final settings = Get.find<SettingsController>();
-
   int selectedScreen = 0;
-
   final List<Widget> mainScreens = const [HomeScreen(), SettingsScreen()];
 
   @override

@@ -21,21 +21,16 @@ class MyApp extends StatelessWidget {
     Get.lazyPut(() => SettingsController());
     MediaQueryX.setScreenSize(context);
 
-    return StreamBuilder<ThemeMode>(
-      stream: ThemeStream.outTheme,
-      builder: (context, themeSnapshot) {
-        return MaterialApp.router(
-          key: Get.find<SettingsController>().globalAppKey,
-          scaffoldMessengerKey: Get.find<SettingsController>().snackbarKey,
-          debugShowCheckedModeBanner: false,
-          theme: lightTheme,
-          darkTheme: darkTheme,
-          title: "My App Title",
-          themeMode: themeSnapshot.data,
-          routerDelegate: appRouter.routerDelegate,
-          routeInformationParser: appRouter.routeInformationParser,
-        );
-      },
+    return GetMaterialApp.router(
+      key: Get.find<SettingsController>().globalAppKey,
+      scaffoldMessengerKey: Get.find<SettingsController>().snackbarKey,
+      debugShowCheckedModeBanner: false,
+      theme: lightTheme,
+      darkTheme: darkTheme,
+      title: "Base App",
+      themeMode: Get.find<SettingsController>().themeModes.value,
+      routeInformationParser: appRouter.routeInformationParser,
+      routerDelegate: appRouter.routerDelegate,
     );
   }
 }

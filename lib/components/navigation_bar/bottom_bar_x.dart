@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class SalomonBottomBar extends StatelessWidget {
+class BottomBarX extends StatelessWidget {
   /// A bottom bar that faithfully follows the design by Aurélien Salomon
-  const SalomonBottomBar({
+  const BottomBarX({
     Key? key,
     required this.items,
     this.currentIndex = 0,
@@ -18,7 +18,7 @@ class SalomonBottomBar extends StatelessWidget {
   }) : super(key: key);
 
   /// A list of tabs to display, ie `Home`, `Likes`, etc
-  final List<SalomonBottomBarItem> items;
+  final List<BarItemX> items;
 
   /// The tab to display.
   final int currentIndex;
@@ -137,8 +137,8 @@ class SalomonBottomBar extends StatelessWidget {
   }
 }
 
-/// A tab to display in a [SalomonBottomBar]
-class SalomonBottomBarItem {
+/// A tab to display in a [BottomBarX]
+class BarItemX {
   /// An icon to display.
   final Widget icon;
 
@@ -154,7 +154,7 @@ class SalomonBottomBarItem {
   /// The color to display when this tab is not selected.
   final Color? unselectedColor;
 
-  SalomonBottomBarItem({
+  BarItemX({
     required this.icon,
     required this.title,
     this.selectedColor,

@@ -1,6 +1,5 @@
-import 'dart:async';
-import 'dart:developer';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -8,16 +7,14 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../core/media_query_x.dart';
 import '../../../../core/shared_preferences_x.dart';
 
-enum StorageKeys { appLocalization, appThemeMode }
-
 class SettingsController extends GetxController {
   final GlobalKey globalAppKey = GlobalKey();
 
-  final GlobalKey mainScreenKey = GlobalKey();
   final snackbarKey = GlobalKey<ScaffoldMessengerState>();
 
   // internet bağlantısını birden fazla kontrol etmemek için
   RxBool isNetworkChecking = false.obs;
+  final Rx<ThemeMode> themeModes = ThemeMode.system.obs;
 
   late Rx<AppLocalizations> lang;
 
@@ -81,7 +78,8 @@ class SettingsController extends GetxController {
 
   void changeTheme({required ThemeMode themeMode, Brightness? brightness}) {
     SharedPreferencesX.setString(StorageKeys.appThemeMode.name, themeMode.name);
-    ThemeStream.inTheme = themeMode;
+    themeModes(themeMode);
+
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarBrightness: brightness));
   }
 
@@ -105,13 +103,4 @@ class SettingsController extends GetxController {
   }
 }
 
-class ThemeStream {
-  static StreamController<ThemeMode> theme = StreamController<ThemeMode>.broadcast();
-  static set inTheme(ThemeMode mode) => theme.sink.add(mode);
-  static Stream<ThemeMode> get outTheme => theme.stream;
-
-  static dispose() {
-    log("Theme stream dispose method has been triggered");
-    theme.close();
-  }
-}
+enum StorageKeys { appLocalization, appThemeMode }

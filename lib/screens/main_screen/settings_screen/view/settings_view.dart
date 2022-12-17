@@ -1,64 +1,36 @@
+import 'package:base_application/core/extensions/widget_scale.dart';
+import 'package:base_application/core/media_query_x.dart';
 import 'package:base_application/screens/main_screen/settings_screen/controller/settings_controller.dart';
-import 'package:base_application/theme/text_style.dart';
+import 'package:base_application/size_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../../../../core/media_query_x.dart';
 
 class SettingsView extends GetView<SettingsController> {
   const SettingsView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final settings = Get.find<SettingsController>();
-
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+    return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        title: const Text("Settings"),
+      ),
+      body: ListView(
         children: [
-          Text(
-            "Settings",
-            style: TextStylesX(context).s8W500,
-          ),
-          const SizedBox(height: 50),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              IconButton(
-                onPressed: () => controller.changeTheme(themeMode: ThemeMode.dark, brightness: Brightness.dark),
-                icon: const Icon(Icons.dark_mode),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: padding20),
+            child: SizedBox(
+              width: MediaQueryX.width,
+              child: AspectRatio(
+                aspectRatio: 3,
+                child: Container(
+                  color: Colors.white,
+                  child: Row(
+                    children: const [CircleAvatar()],
+                  ),
+                ),
               ),
-              IconButton(
-                onPressed: () => controller.changeTheme(themeMode: ThemeMode.light, brightness: Brightness.light),
-                icon: const Icon(Icons.light_mode),
-              ),
-              IconButton(
-                onPressed: () => controller.changeTheme(
-                    themeMode: ThemeMode.system,
-                    brightness: MediaQueryX.platformBrightness == Brightness.dark ? Brightness.dark : Brightness.light),
-                icon: const Icon(Icons.settings),
-              ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TextButton(
-                  onPressed: (() {
-                    settings.changeLanguage("tr");
-                  }),
-                  child: const Text("TR")),
-              TextButton(
-                  onPressed: (() {
-                    settings.changeLanguage("en");
-                  }),
-                  child: const Text("EN")),
-              TextButton(
-                  onPressed: (() {
-                    settings.changeLanguage("system");
-                  }),
-                  child: const Text("system")),
-            ],
+            ),
           ),
         ],
       ),

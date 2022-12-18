@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../theme/text_style.dart';
+
 class SettingsView extends GetView<SettingsController> {
   const SettingsView({super.key});
 
@@ -43,7 +45,57 @@ class SettingsView extends GetView<SettingsController> {
           ElevatedButton(
             onPressed: () => context.pushNamed(RoutesNames.login),
             child: const Text("Login"),
-          )
+          ),
+          Obx(
+            () => Text(
+              controller.lang.value.helloWorld,
+              style: TextStylesX(context).s18W500,
+            ),
+          ),
+          Text(
+            "Settings",
+            style: TextStylesX(context).s8W500,
+          ),
+          const SizedBox(height: 50),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              IconButton(
+                onPressed: () => controller.changeTheme(themeMode: ThemeMode.dark, brightness: Brightness.dark),
+                icon: const Icon(Icons.dark_mode),
+              ),
+              IconButton(
+                onPressed: () => controller.changeTheme(themeMode: ThemeMode.light, brightness: Brightness.light),
+                icon: const Icon(Icons.light_mode),
+              ),
+              IconButton(
+                onPressed: () => controller.changeTheme(
+                    themeMode: ThemeMode.system,
+                    brightness: MediaQueryX.platformBrightness == Brightness.dark ? Brightness.dark : Brightness.light),
+                icon: const Icon(Icons.settings),
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              TextButton(
+                  onPressed: (() {
+                    controller.changeLanguage("tr");
+                  }),
+                  child: const Text("TR")),
+              TextButton(
+                  onPressed: (() {
+                    controller.changeLanguage("en");
+                  }),
+                  child: const Text("EN")),
+              TextButton(
+                  onPressed: (() {
+                    controller.changeLanguage("system");
+                  }),
+                  child: const Text("system")),
+            ],
+          ),
         ],
       ),
     );

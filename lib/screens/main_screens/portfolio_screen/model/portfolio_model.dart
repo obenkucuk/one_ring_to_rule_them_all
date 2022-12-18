@@ -1,10 +1,6 @@
 class PortfolioModel {
-  String? stockName;
-  double? numberOfLots;
-  String? dateBuy;
-  double? unitCost;
-  String? dateSell;
-  double? sellPrice;
+  String? stockName, dateBuy, dateSell;
+  double? numberOfLots, unitCost, sellPrice;
 
   PortfolioModel({
     this.numberOfLots,

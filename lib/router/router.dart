@@ -12,7 +12,10 @@ import 'package:go_router/go_router.dart';
 
 import '../main_screen.dart';
 
+final navigatorKey = GlobalKey<NavigatorState>();
+
 final GoRouter appRouter = GoRouter(
+  navigatorKey: navigatorKey,
   // debugLogDiagnostics: true,
   routes: [
     GoRoute(

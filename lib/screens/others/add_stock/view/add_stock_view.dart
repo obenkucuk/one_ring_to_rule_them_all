@@ -1,4 +1,5 @@
 import 'package:base_application/components/buttons/material_button_x.dart';
+import 'package:base_application/components/dropdown/my_dropdown.dart';
 import 'package:base_application/core/constants/size_constants.dart';
 import 'package:base_application/core/extensions/widget_scale.dart';
 import 'package:base_application/core/media_query_x.dart';
@@ -24,6 +25,15 @@ class AddStockView extends GetView<AddStockController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              SizedBox(
+                height: 48.h,
+                child: MyDropdownWidget(
+                  backgroundColor: Colors.white,
+                  itemsList: const ["1", "2", "3"],
+                  getSelectedValue: ((p0) => null),
+                  dropdownWidth: MediaQueryX.width - 40.w,
+                ),
+              ),
               const Text("Hisse Adı"),
               TextFieldX(
                 borderRadius: 0,

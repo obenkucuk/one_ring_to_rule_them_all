@@ -36,7 +36,7 @@ class PortfolioView extends GetView<PortfolioController> {
                   children: [
                     SlidableAction(
                       onPressed: (context) {},
-                      backgroundColor: Color(0xFF21B7CA),
+                      backgroundColor: const Color(0xFF21B7CA),
                       foregroundColor: Colors.white,
                       icon: Icons.share,
                       label: 'Share',
@@ -50,7 +50,7 @@ class PortfolioView extends GetView<PortfolioController> {
                     SlidableAction(
                       borderRadius: BorderRadius.horizontal(left: Radius.circular(padding15.w)),
                       onPressed: (context) => controller.removePortfolioItem(index),
-                      backgroundColor: Color(0xFFFE4A49),
+                      backgroundColor: const Color(0xFFFE4A49),
                       foregroundColor: Colors.white,
                       icon: Icons.delete,
                       label: 'Delete',

@@ -124,7 +124,7 @@ class _SearchBarState extends State<SearchBar> with SingleTickerProviderStateMix
                     alignment: Alignment.center,
                     width: zeroToOneAnimation.value * 40.w,
                     height: zeroToOneAnimation.value * 40.w,
-                    child: FittedBox(child: Text("Cancel", style: TextStylesX(context).s12W500))),
+                    child: FittedBox(child: Text("Cancel", style: s12W500))),
               ),
             ),
           ),

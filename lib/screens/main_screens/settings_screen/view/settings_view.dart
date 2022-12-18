@@ -49,12 +49,12 @@ class SettingsView extends GetView<SettingsController> {
           Obx(
             () => Text(
               controller.lang.value.helloWorld,
-              style: TextStylesX(context).s18W500,
+              style: s18W500,
             ),
           ),
           Text(
             "Settings",
-            style: TextStylesX(context).s8W500,
+            style: s8W500,
           ),
           const SizedBox(height: 50),
           Row(

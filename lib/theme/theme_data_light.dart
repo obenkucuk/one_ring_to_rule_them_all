@@ -93,7 +93,7 @@ ThemeData lightTheme = ThemeData(
     subtitle1: TextStyle(
       fontSize: 14,
       fontWeight: FontWeight.w500,
-      color: Colors.white,
+      color: AppColors.textLightTheme,
       fontFeatures: [FontFeature.tabularFigures()],
     ),
     subtitle2: TextStyle(

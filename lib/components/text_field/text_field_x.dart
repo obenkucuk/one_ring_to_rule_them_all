@@ -99,7 +99,7 @@ class _TextFieldXState extends State<TextFieldX> {
     return SizedBox(
       height: widget.height ?? 50.h,
       child: TextField(
-        style: TextStylesX(context).s14W500.copyWith(color: Colors.black),
+        style: s14W500.copyWith(color: Colors.black),
         controller: textEditingController,
         obscuringCharacter: '•',
         keyboardType: widget.keyboardType ?? TextInputType.visiblePassword,

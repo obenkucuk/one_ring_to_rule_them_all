@@ -83,15 +83,15 @@ class LoginView extends GetView<LoginController> {
                     RichText(
                       text: TextSpan(
                         children: [
-                          TextSpan(text: 'Hesabınız yoksa ', style: TextStylesX(context).s14W500),
+                          TextSpan(text: 'Hesabınız yoksa ', style: s14W500),
                           TextSpan(
                             recognizer: TapGestureRecognizer()..onTap = () => controller.createAccount(),
                             text: 'Ücretsiz Üyelik ',
-                            style: TextStylesX(context).s14W500.copyWith(color: Colors.amber),
+                            style: s14W500.copyWith(color: Colors.amber),
                           ),
                           TextSpan(
                             text: 'oluşturun.',
-                            style: TextStylesX(context).s14W500,
+                            style: s14W500,
                           ),
                         ],
                       ),

@@ -30,7 +30,7 @@ class MaterialButtonX extends StatelessWidget {
       focusColor: Colors.red,
       textColor: Colors.white,
       animationDuration: Duration.zero,
-      hoverColor: AppColors.backgroundDark,
+      hoverColor: AppColorsX.backgroundDark,
       color: Theme.of(context).colorScheme.primary,
       splashColor: Colors.transparent,
       enableFeedback: true,

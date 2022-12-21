@@ -10,7 +10,7 @@ Future<T?> showBottomSheetX<T>({
 }) async {
   var result = await showModalBottomSheet<T>(
     context: context,
-    backgroundColor: AppColors.backgroundLight,
+    backgroundColor: AppColorsX.backgroundLight,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.only(
         topLeft: Radius.circular(20.w),

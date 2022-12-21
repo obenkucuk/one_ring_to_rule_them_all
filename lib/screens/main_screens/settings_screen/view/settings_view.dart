@@ -96,6 +96,7 @@ class SettingsView extends GetView<SettingsController> {
                   child: const Text('system')),
             ],
           ),
+          IconButton(onPressed: () {}, icon: const Icon(Icons.ad_units))
         ],
       ),
     );

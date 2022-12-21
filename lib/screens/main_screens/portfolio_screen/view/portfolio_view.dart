@@ -16,9 +16,14 @@ class PortfolioView extends GetView<PortfolioController> {
 
   @override
   Widget build(BuildContext context) {
+    print(Theme.of(context).textTheme.bodySmall!.fontSize);
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Portföy'),
+        title: Text(
+          'Portföy',
+          style: Theme.of(context).textTheme.bodySmall,
+        ),
         actions: [
           Hero(tag: 'oben', child: IconButtonX(onTap: () => context.pushNamed(RoutesNames.addStock), icon: Icons.add))
         ],
@@ -124,6 +129,9 @@ class PortfolioView extends GetView<PortfolioController> {
             separatorBuilder: (context, index) => SizedBox(height: 10.h),
           );
         },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
       ),
     );
   }

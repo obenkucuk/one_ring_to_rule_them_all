@@ -19,7 +19,9 @@ class PortfolioView extends GetView<PortfolioController> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Portföy'),
-        actions: [IconButtonX(onTap: () => context.pushNamed(RoutesNames.addStock), icon: Icons.add)],
+        actions: [
+          Hero(tag: 'oben', child: IconButtonX(onTap: () => context.pushNamed(RoutesNames.addStock), icon: Icons.add))
+        ],
       ),
       body: GetBuilder<PortfolioController>(
         id: PortfolioScreenUpdateKeys.portfolio,

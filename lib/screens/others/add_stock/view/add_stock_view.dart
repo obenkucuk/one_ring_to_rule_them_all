@@ -59,6 +59,13 @@ class AddStockView extends GetView<AddStockController> {
                 textInputAction: TextInputAction.done,
                 onChanged: (unitCost) => controller.portfolioModel.unitCost = double.parse(unitCost),
               ),
+              const Hero(
+                tag: 'oben',
+                child: SizedBox.square(
+                  dimension: 100,
+                  child: ColoredBox(color: Colors.amber),
+                ),
+              ),
               const Spacer(),
               MaterialButtonX(
                   buttonText: 'Ekle',

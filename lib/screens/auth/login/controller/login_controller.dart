@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:base_application/router/router.dart';
-import 'package:base_application/screens/main_screens/settings_screen/controller/settings_controller.dart';
+import 'package:base_application/session_services.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
@@ -34,7 +34,7 @@ class LoginController extends GetxController {
   void forgotPassword() => log('forgor password');
 
   void login() {
-    Get.find<SettingsController>().isLogin(true);
+    Get.find<SessionServices>().isLogin(true);
     context.goNamed(RoutesNames.main);
   }
 

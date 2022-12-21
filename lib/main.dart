@@ -1,6 +1,6 @@
 import 'package:base_application/core/shared_preferences_x.dart';
 import 'package:base_application/router/router.dart';
-import 'package:base_application/screens/main_screens/settings_screen/controller/settings_controller.dart';
+import 'package:base_application/session_services.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,20 +18,21 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.lazyPut(() => SettingsController());
+    Get.lazyPut(() => SessionServices());
     MediaQueryX.setScreenSize(context);
 
-    return GetBuilder<SettingsController>(
-        id: SettingsUpdateKeys.materialApp,
-        builder: (settingsController) {
+    return GetBuilder<SessionServices>(
+        id: SessionServicesUpdateKeys.materialApp,
+        builder: (sessionServices) {
           return MaterialApp.router(
-            scaffoldMessengerKey: settingsController.snackbarKey,
+            scaffoldMessengerKey: sessionServices.snackbarKey,
             debugShowCheckedModeBanner: false,
             theme: lightTheme,
             darkTheme: darkTheme,
-            title: 'Base App',
-            themeMode: settingsController.systemThemeMode.value,
+            title: 'One Ring to Rule Them All',
+            themeMode: sessionServices.systemThemeMode.value,
             routerConfig: appRouter,
+
             // routeInformationParser: appRouter.routeInformationParser,
             // routerDelegate: appRouter.routerDelegate,
           );

@@ -16,8 +16,6 @@ class PortfolioView extends GetView<PortfolioController> {
 
   @override
   Widget build(BuildContext context) {
-    print(Theme.of(context).textTheme.bodySmall!.fontSize);
-
     return Scaffold(
       appBar: AppBar(
         title: Text(

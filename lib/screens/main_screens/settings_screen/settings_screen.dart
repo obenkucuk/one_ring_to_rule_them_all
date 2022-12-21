@@ -9,7 +9,7 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<SettingsController>(
+    return GetBuilder(
       init: SettingsController(),
       builder: (controller) => const SettingsView(),
     );

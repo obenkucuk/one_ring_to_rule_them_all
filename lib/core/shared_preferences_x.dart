@@ -11,9 +11,15 @@ class SharedPreferencesX {
     return _sharedPrefs = await _instance;
   }
 
-  static String getString(String key) => _sharedPrefs!.getString(key) ?? 'null';
+  static String? getString(String key) => _sharedPrefs!.getString(key);
 
   static void setString(String key, String value) {
     _sharedPrefs!.setString(key, value);
   }
+}
+
+class StorageArgs {
+  static const String appLocalization = 'appLocalization';
+  static const String appThemeMode = 'appThemeMode';
+  static const String system = 'system';
 }

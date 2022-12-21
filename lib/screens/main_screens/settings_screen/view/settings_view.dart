@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../session_services.dart';
 import '../../../../theme/text_style.dart';
 
 class SettingsView extends GetView<SettingsController> {
@@ -14,90 +15,96 @@ class SettingsView extends GetView<SettingsController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: controller.scaffoldKey,
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: Text(controller.lang.value.settings),
-      ),
-      body: ListView(
-        children: [
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: padding20.w),
-            child: SizedBox(
-              width: MediaQueryX.width,
-              child: AspectRatio(
-                aspectRatio: 3,
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: padding20.w),
-                  color: Colors.white,
-                  child: Row(
-                    children: [
-                      CircleAvatar(
-                        radius: 40.w,
-                      )
-                    ],
+    var sessionServices = Get.find<SessionServices>();
+
+    return Obx(
+      () => Scaffold(
+        key: controller.scaffoldKey,
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          title: Text(sessionServices.lang.value.settings),
+        ),
+        body: ListView(
+          children: [
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: padding20.w),
+              child: SizedBox(
+                width: MediaQueryX.width,
+                child: AspectRatio(
+                  aspectRatio: 3,
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: padding20.w),
+                    color: Colors.white,
+                    child: Row(
+                      children: [
+                        CircleAvatar(
+                          radius: 40.w,
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-          ElevatedButton(
-            onPressed: () => context.pushNamed(RoutesNames.login),
-            child: const Text('Login'),
-          ),
-          Obx(
-            () => Text(
-              controller.lang.value.helloWorld,
-              style: s18W500,
+            ElevatedButton(
+              onPressed: () => context.pushNamed(RoutesNames.login),
+              child: const Text('Login'),
             ),
-          ),
-          Text(
-            'Settings',
-            style: s8W500,
-          ),
-          const SizedBox(height: 50),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              IconButton(
-                onPressed: () => controller.changeTheme(themeMode: ThemeMode.dark, brightness: Brightness.dark),
-                icon: const Icon(Icons.dark_mode),
+            Obx(
+              () => Text(
+                sessionServices.lang.value.helloWorld,
+                style: s18W500,
               ),
-              IconButton(
-                onPressed: () => controller.changeTheme(themeMode: ThemeMode.light, brightness: Brightness.light),
-                icon: const Icon(Icons.light_mode),
-              ),
-              IconButton(
-                onPressed: () => controller.changeTheme(
-                    themeMode: ThemeMode.system,
-                    brightness: MediaQueryX.platformBrightness == Brightness.dark ? Brightness.dark : Brightness.light),
-                icon: const Icon(Icons.settings),
-              ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TextButton(
-                  onPressed: () {
-                    controller.changeLanguage('tr');
-                  },
-                  child: const Text('TR')),
-              TextButton(
-                  onPressed: () {
-                    controller.changeLanguage('en');
-                  },
-                  child: const Text('EN')),
-              TextButton(
-                  onPressed: () {
-                    controller.changeLanguage('system');
-                  },
-                  child: const Text('system')),
-            ],
-          ),
-          IconButton(onPressed: () {}, icon: const Icon(Icons.ad_units))
-        ],
+            ),
+            Text(
+              sessionServices.lang.value.settings,
+              style: s8W500,
+            ),
+            const SizedBox(height: 50),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton(
+                  onPressed: () => sessionServices.changeTheme(themeMode: ThemeMode.dark, brightness: Brightness.dark),
+                  icon: const Icon(Icons.dark_mode),
+                ),
+                IconButton(
+                  onPressed: () =>
+                      sessionServices.changeTheme(themeMode: ThemeMode.light, brightness: Brightness.light),
+                  icon: const Icon(Icons.light_mode),
+                ),
+                IconButton(
+                  onPressed: () => sessionServices.changeTheme(
+                      themeMode: ThemeMode.system,
+                      brightness:
+                          MediaQueryX.platformBrightness == Brightness.dark ? Brightness.dark : Brightness.light),
+                  icon: const Icon(Icons.settings),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextButton(
+                    onPressed: () {
+                      sessionServices.changeLanguage('tr');
+                    },
+                    child: const Text('TR')),
+                TextButton(
+                    onPressed: () {
+                      sessionServices.changeLanguage('en');
+                    },
+                    child: const Text('EN')),
+                TextButton(
+                    onPressed: () {
+                      sessionServices.changeLanguage('system');
+                    },
+                    child: const Text('system')),
+              ],
+            ),
+            IconButton(onPressed: () {}, icon: const Icon(Icons.ad_units))
+          ],
+        ),
       ),
     );
   }

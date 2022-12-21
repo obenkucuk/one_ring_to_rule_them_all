@@ -1,46 +1,41 @@
-import 'dart:math' as math;
-
 import 'package:base_application/components/dropdown/animated_dropdown.dart';
 import 'package:base_application/core/constants/size_constants.dart';
 import 'package:base_application/core/extensions/widget_scale.dart';
 import 'package:base_application/core/media_query_x.dart';
+import 'package:base_application/theme/text_style.dart';
 import 'package:flutter/material.dart';
 
-import '../../theme/text_style.dart';
-
 class MyDropdownWidget extends StatefulWidget {
+  final List<String> itemsList;
+  final Function(String) getSelectedValue;
+  final String? title;
+  final Color? backgroundColor;
+  final double? borderRadius;
+  final double? paddingLeft;
+  final double? paddingRight;
+  final TextStyle? textStyle;
+  final double? dropdownWidth;
+  final int? positionOnTabBar;
+  final Function(int)? updateTabIndex;
+  final double? itemHeight;
+  final double? paddingBetween;
+
   const MyDropdownWidget({
     super.key,
     this.title,
     this.backgroundColor,
     this.borderRadius,
-    this.leftPadding,
+    this.paddingLeft,
     this.textStyle,
     this.updateTabIndex,
     required this.itemsList,
     required this.getSelectedValue,
-    required this.dropdownWidth,
+    this.dropdownWidth,
     this.positionOnTabBar,
-    this.hintText,
-    this.leftIcon,
+    this.paddingRight,
     this.itemHeight,
-    this.rightPadding,
+    this.paddingBetween,
   });
-
-  final List<String> itemsList;
-  final Function(String) getSelectedValue;
-  final double? itemHeight;
-  final String? title;
-  final Color? backgroundColor;
-  final double? borderRadius;
-  final double? leftPadding;
-  final double? rightPadding;
-  final TextStyle? textStyle;
-  final double dropdownWidth;
-  final int? positionOnTabBar;
-  final String? hintText;
-  final Function(int)? updateTabIndex;
-  final String? leftIcon;
 
   @override
   State<MyDropdownWidget> createState() => _MyDropdownWidgetState();
@@ -49,9 +44,14 @@ class MyDropdownWidget extends StatefulWidget {
 class _MyDropdownWidgetState extends State<MyDropdownWidget> {
   final GlobalKey dimensionKey = GlobalKey();
 
-  late String selectedItem = widget.hintText ?? widget.itemsList.first;
+  late String selectedItem = widget.itemsList.first;
 
   bool overlayIsVisible = false;
+
+  final layerLink = LayerLink();
+
+  @override
+  BuildContext get context => dimensionKey.currentContext!;
 
   late OverlayEntry? overlayEntry;
   OverlayState? overlayState;
@@ -62,6 +62,7 @@ class _MyDropdownWidgetState extends State<MyDropdownWidget> {
     Offset offset = renderBox.localToGlobal(Offset.zero);
 
     overlayEntry = OverlayEntry(builder: (context) {
+      debugPrint(renderBox.size.width.toString());
       return SizedBox(
         width: MediaQueryX.width,
         height: MediaQueryX.height,
@@ -72,25 +73,30 @@ class _MyDropdownWidgetState extends State<MyDropdownWidget> {
               child: const ColoredBox(color: Colors.transparent),
             ),
             Positioned(
-              left: MediaQueryX.width - offset.dx > widget.dropdownWidth ? offset.dx : null,
-              right: MediaQueryX.width - offset.dx < widget.dropdownWidth ? 0 + 20 : null,
+              left: MediaQueryX.width - offset.dx > (widget.dropdownWidth ?? renderBox.size.width) ? offset.dx : null,
+              right: MediaQueryX.width - offset.dx < (widget.dropdownWidth ?? renderBox.size.width) ? 0 + 20 : null,
               top: offset.dy + renderBox.size.height + 15.h,
-              child: SizedBox(
-                width: widget.dropdownWidth,
-                height: widget.itemsList.length < 4
-                    ? (widget.itemHeight == null ? padding15 : widget.itemHeight!) * 3 * widget.itemsList.length
-                    : (widget.itemHeight == null ? padding15 : widget.itemHeight!) * 3 * 4,
-                child: AnimatedDropdown(
-                  padding: widget.leftPadding,
-                  itemHeight: widget.itemHeight,
-                  textStyle: widget.textStyle,
-                  itemsList: widget.itemsList,
-                  selectedPair: selectedItem,
-                  onTap: (val) {
-                    widget.getSelectedValue(val);
-                    setState(() => selectedItem = val);
-                    hideOverlay();
-                  },
+              child: Scrollbar(
+                child: SizedBox(
+                  width: widget.dropdownWidth ?? renderBox.size.width,
+                  height: widget.itemsList.length < 4
+                      ? (widget.itemHeight ?? padding15).h * 3 * widget.itemsList.length
+                      : (widget.itemHeight ?? padding15).h * 3 * 4,
+                  child: AnimatedDropdown(
+                    backgroundColor: widget.backgroundColor,
+                    itemHeight: widget.itemHeight,
+                    textStyle: widget.textStyle,
+                    itemsList: widget.itemsList,
+                    selectedPair: selectedItem,
+                    paddingLeft: widget.paddingLeft,
+                    paddingRight: widget.paddingRight,
+                    borderRadius: widget.borderRadius,
+                    onTap: (val) {
+                      widget.getSelectedValue(val);
+                      setState(() => selectedItem = val);
+                      hideOverlay();
+                    },
+                  ),
                 ),
               ),
             ),
@@ -112,13 +118,6 @@ class _MyDropdownWidgetState extends State<MyDropdownWidget> {
   }
 
   @override
-  void dispose() {
-    super.dispose();
-    if (overlayEntry != null) overlayEntry!.dispose();
-    overlayState!.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return GestureDetector(
       key: dimensionKey,
@@ -128,35 +127,21 @@ class _MyDropdownWidgetState extends State<MyDropdownWidget> {
       },
       child: Material(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(widget.borderRadius ?? radius5.w),
+          borderRadius: BorderRadius.circular(widget.borderRadius ?? radius5),
         ),
         borderOnForeground: false,
         color: widget.backgroundColor ?? Theme.of(context).scaffoldBackgroundColor,
         child: Padding(
-          padding: EdgeInsets.only(
-            left: widget.leftPadding ?? padding15,
-            right: widget.rightPadding ?? padding15,
-          ),
+          padding: EdgeInsets.only(left: widget.paddingLeft ?? padding15, right: widget.paddingRight ?? padding15),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Row(
-                children: [
-                  if (widget.leftIcon != null)
-                    Row(
-                      children: [
-                        CircleAvatar(
-                          radius: radius10.w,
-                          backgroundColor: Colors.grey,
-                        ),
-                        SizedBox(width: (radius5 - 1).w),
-                      ],
-                    ),
-                  Text(selectedItem, style: widget.textStyle ?? s16W600),
-                ],
+              Text(selectedItem, style: widget.textStyle ?? s16W600),
+              SizedBox(width: widget.paddingBetween ?? padding10.w),
+              RotatedBox(
+                quarterTurns: overlayIsVisible ? 0 : 2,
+                child: const Icon(Icons.keyboard_arrow_down_outlined),
               ),
-              Transform.rotate(
-                  angle: overlayIsVisible ? 0 : math.pi, child: const Icon(Icons.keyboard_arrow_down_sharp)),
             ],
           ),
         ),

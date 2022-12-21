@@ -4,22 +4,28 @@ import 'package:base_application/theme/text_style.dart';
 import 'package:flutter/material.dart';
 
 class AnimatedDropdown extends StatefulWidget {
-  const AnimatedDropdown(
-      {Key? key,
-      required this.itemsList,
-      required this.selectedPair,
-      this.onTap,
-      this.textStyle,
-      this.itemHeight,
-      this.padding})
-      : super(key: key);
-
   final List itemsList;
   final String selectedPair;
   final TextStyle? textStyle;
   final Function(String)? onTap;
   final double? itemHeight;
-  final double? padding;
+  final double? paddingLeft;
+  final double? paddingRight;
+  final double? borderRadius;
+  final Color? backgroundColor;
+
+  const AnimatedDropdown({
+    Key? key,
+    required this.itemsList,
+    required this.selectedPair,
+    this.onTap,
+    this.textStyle,
+    this.itemHeight,
+    this.paddingLeft,
+    this.paddingRight,
+    this.borderRadius,
+    this.backgroundColor,
+  }) : super(key: key);
 
   @override
   State<AnimatedDropdown> createState() => _AnimatedDropdownState();
@@ -75,11 +81,14 @@ class _AnimatedDropdownState extends State<AnimatedDropdown> with SingleTickerPr
     return FadeTransition(
       opacity: animation,
       child: Material(
-        color: Theme.of(context).scaffoldBackgroundColor,
+        color: widget.backgroundColor ?? Theme.of(context).scaffoldBackgroundColor,
         elevation: 10,
-        borderRadius: BorderRadius.circular(radius10.w),
-        child: ListView.builder(
-          padding: EdgeInsets.symmetric(horizontal: widget.padding ?? padding15),
+        borderRadius: BorderRadius.circular(widget.borderRadius ?? radius10.w),
+        child: ListView.separated(
+          padding: EdgeInsets.only(
+            left: widget.paddingLeft ?? padding15,
+            right: widget.paddingRight ?? padding15,
+          ),
           physics: widget.itemsList.length > 4
               ? const AlwaysScrollableScrollPhysics()
               : const NeverScrollableScrollPhysics(),
@@ -90,32 +99,32 @@ class _AnimatedDropdownState extends State<AnimatedDropdown> with SingleTickerPr
               onTap: () {
                 widget.onTap!(widget.itemsList[index]);
               },
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    child: Container(
-                      alignment: Alignment.centerLeft,
-                      height: ((widget.itemHeight == null ? padding15 : widget.itemHeight!) * 3).h,
-                      child: Text(
-                        widget.itemsList[index].toString(),
-                        style: widget.itemsList[index] == widget.selectedPair
-                            ? widget.textStyle == null
-                                ? s16W600.copyWith(color: Theme.of(context).colorScheme.primary)
-                                : widget.textStyle!.copyWith(color: Theme.of(context).colorScheme.primary)
-                            : widget.textStyle ?? s16W600,
-                        maxLines: 1,
+              child: ColoredBox(
+                color: Colors.transparent,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height: ((widget.itemHeight ?? padding15) * 3).h,
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          widget.itemsList[index].toString(),
+                          style: widget.itemsList[index] == widget.selectedPair
+                              ? widget.textStyle == null
+                                  ? s16W600.copyWith(color: Theme.of(context).colorScheme.primary)
+                                  : widget.textStyle!.copyWith(color: Theme.of(context).colorScheme.primary)
+                              : widget.textStyle ?? s16W600,
+                          maxLines: 1,
+                        ),
                       ),
                     ),
-                  ),
-                  Divider(
-                    thickness: index != widget.itemsList.length - 1 ? 1.h : 0,
-                    color: Colors.grey,
-                  )
-                ],
+                  ],
+                ),
               ),
             );
           },
+          separatorBuilder: (context, index) => const Divider(color: Colors.amber),
         ),
       ),
     );

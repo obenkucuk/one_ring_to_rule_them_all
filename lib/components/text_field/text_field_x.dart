@@ -52,7 +52,7 @@ class TextFieldX extends StatefulWidget {
 
 class _TextFieldXState extends State<TextFieldX> {
   final textEditingController = TextEditingController();
-  String text = "";
+  String text = '';
   String? hintText;
   Color hintColor = Colors.grey.shade700;
 
@@ -67,7 +67,7 @@ class _TextFieldXState extends State<TextFieldX> {
     });
   }
 
-  validate(String value) async {
+  void validate(String value) async {
     if (widget.validator != null) {
       if (widget.validator!(value)) {
         if (widget.nextFocus != null) FocusScope.of(context).requestFocus(widget.nextFocus);

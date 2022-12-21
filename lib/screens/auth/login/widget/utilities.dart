@@ -2,9 +2,9 @@ import 'package:intl/intl.dart';
 
 class Utilities {
   static String? birthDateValidator(String value) {
-    final DateTime now = DateTime.now();
-    final DateFormat formatter = DateFormat('yyyy');
-    final String formatted = formatter.format(now);
+    DateTime now = DateTime.now();
+    DateFormat formatter = DateFormat('yyyy');
+    String formatted = formatter.format(now);
     String str1 = value;
     List<String> str2 = str1.split('/');
     String month = str2.isNotEmpty ? str2[0] : '';
@@ -16,9 +16,9 @@ class Utilities {
       return 'Month is invalid';
     } else if (int.parse(day) > 32) {
       return 'Day is invalid';
-    } else if ((int.parse(year) > int.parse(formatted))) {
+    } else if (int.parse(year) > int.parse(formatted)) {
       return 'Year is invalid';
-    } else if ((int.parse(year) < 1920)) {
+    } else if (int.parse(year) < 1920) {
       return 'Year is invalid';
     }
 

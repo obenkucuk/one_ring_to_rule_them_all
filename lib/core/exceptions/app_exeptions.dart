@@ -8,7 +8,7 @@ abstract class IAppException implements Exception {}
 class NoInternetException implements Exception {
   int checkCount = 0;
   NoInternetException() {
-    final settings = Get.find<SettingsController>();
+    var settings = Get.find<SettingsController>();
 
     if (!settings.isNetworkChecking.value) {
       Get.find<SettingsController>().snackbarKey.currentState!.showSnackBar(
@@ -16,11 +16,11 @@ class NoInternetException implements Exception {
           );
     }
 
-    noInternetLoop() async {
+    void noInternetLoop() async {
       settings.isNetworkChecking.value = true;
 
       await for (var _ in Stream.periodic(const Duration(seconds: 3))) {
-        final isConnectedNetwork = await checkInternetConnection();
+        var isConnectedNetwork = await checkInternetConnection();
 
         if (isConnectedNetwork) {
           Get.find<SettingsController>().snackbarKey.currentState!.showSnackBar(
@@ -46,7 +46,7 @@ class NoInternetException implements Exception {
 class StatusException implements IAppException {
   final String? statusMessage;
   StatusException({this.statusMessage}) {
-    debugPrint("StatusException: $statusMessage");
+    debugPrint('StatusException: $statusMessage');
   }
 }
 
@@ -54,7 +54,7 @@ SnackBar snackBar({Color? color, String? text}) => SnackBar(
       duration: const Duration(seconds: 5),
       backgroundColor: color ?? Colors.indigo,
       content: Text(
-        text ?? "Snackbar yazısı verilmedi!",
+        text ?? 'Snackbar yazısı verilmedi!',
         textAlign: TextAlign.center,
       ),
     );

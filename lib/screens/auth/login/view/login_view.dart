@@ -32,31 +32,31 @@ class LoginView extends GetView<LoginController> {
               children: [
                 MaterialButtonX(
                   borderRadius: 0.w,
-                  buttonText: "Login with Google",
+                  buttonText: 'Login with Google',
                   onTap: () => controller.login(),
                 ),
-                const Text("E-Mail Address", style: null),
+                const Text('E-Mail Address', style: null),
                 SizedBox(height: 10.h),
                 TextFieldX(
                   keyboardType: TextInputType.emailAddress,
                   hintText: 'Enter your e-mail',
-                  errorText: "Please submit an proper e-mail address",
+                  errorText: 'Please submit an proper e-mail address',
                   inputFormatters: const [],
                   focusNode: controller.emailFocus,
                   nextFocus: controller.passwordFocus,
-                  validator: (val) => val.isValidEmail ? true : false,
+                  validator: (val) => val.isValidEmail ? val.isValidEmail : !val.isValidEmail,
                   onChanged: (val) {
                     controller.isEmailValid(val.isEmail);
                     controller.emailText(val);
                   },
                 ),
                 SizedBox(height: 30.h),
-                const Text("Password", style: null),
+                const Text('Password', style: null),
                 SizedBox(height: 10.h),
                 Obx(
                   () => TextFieldX(
                     focusNode: controller.passwordFocus,
-                    hintText: "Enter your password",
+                    hintText: 'Enter your password',
                     suffixIcon: IconButtonX(
                       onTap: () => controller.changePasswordVisibility(),
                       buttonClicked: controller.isPasswordHidden.value,
@@ -68,12 +68,12 @@ class LoginView extends GetView<LoginController> {
                 ),
                 TextButtonX(
                   alignment: Alignment.centerLeft,
-                  text: "Şifremi Unuttum",
+                  text: 'Şifremi Unuttum',
                   onTap: () => controller.forgotPassword(),
                 ),
                 SizedBox(height: 20.h),
                 MaterialButtonX(
-                  buttonText: "Giriş Yap",
+                  buttonText: 'Giriş Yap',
                   onTap: () => controller.login(),
                 ),
                 SizedBox(height: 20.h),

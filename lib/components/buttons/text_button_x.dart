@@ -23,7 +23,7 @@ class TextButtonX extends StatelessWidget {
       ),
       autofocus: true,
       onPressed: () => onTap(),
-      child: Text(text ?? "Text Verilmedi!", style: null),
+      child: Text(text ?? 'Text Verilmedi!', style: null),
     );
   }
 }

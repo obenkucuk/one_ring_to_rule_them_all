@@ -45,7 +45,7 @@ class TextFormFieldX extends StatelessWidget {
       obscureText: obscureText ?? false,
       onChanged: (value) => onChanged!(value),
       obscuringCharacter: '•',
-      onTap: () => log("Text Form Alanı Üzerine tıklandı"),
+      onTap: () => log('Text Form Alanı Üzerine tıklandı'),
       toolbarOptions: const ToolbarOptions(copy: true, paste: true, selectAll: true),
       decoration: InputDecoration(
         fillColor: fillColor,

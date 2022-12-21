@@ -121,7 +121,7 @@ ThemeData lightTheme = ThemeData(
           fontSize: 16,
         ),
       ),
-      padding: MaterialStateProperty.all<EdgeInsets>(const EdgeInsets.only()),
+      padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.zero),
       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
         RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),

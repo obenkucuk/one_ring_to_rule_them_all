@@ -12,7 +12,7 @@ class StateStatus {
     this.isNoConnection = false,
     this.isLowConnection = false,
     this.isError = false,
-    this.errorMessage = "",
+    this.errorMessage = '',
   });
 
   factory StateStatus.loading() {

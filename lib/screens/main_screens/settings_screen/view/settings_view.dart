@@ -44,7 +44,7 @@ class SettingsView extends GetView<SettingsController> {
           ),
           ElevatedButton(
             onPressed: () => context.pushNamed(RoutesNames.login),
-            child: const Text("Login"),
+            child: const Text('Login'),
           ),
           Obx(
             () => Text(
@@ -53,7 +53,7 @@ class SettingsView extends GetView<SettingsController> {
             ),
           ),
           Text(
-            "Settings",
+            'Settings',
             style: s8W500,
           ),
           const SizedBox(height: 50),
@@ -80,20 +80,20 @@ class SettingsView extends GetView<SettingsController> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TextButton(
-                  onPressed: (() {
-                    controller.changeLanguage("tr");
-                  }),
-                  child: const Text("TR")),
+                  onPressed: () {
+                    controller.changeLanguage('tr');
+                  },
+                  child: const Text('TR')),
               TextButton(
-                  onPressed: (() {
-                    controller.changeLanguage("en");
-                  }),
-                  child: const Text("EN")),
+                  onPressed: () {
+                    controller.changeLanguage('en');
+                  },
+                  child: const Text('EN')),
               TextButton(
-                  onPressed: (() {
-                    controller.changeLanguage("system");
-                  }),
-                  child: const Text("system")),
+                  onPressed: () {
+                    controller.changeLanguage('system');
+                  },
+                  child: const Text('system')),
             ],
           ),
         ],

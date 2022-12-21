@@ -9,21 +9,6 @@ import 'package:flutter/material.dart';
 import '../../theme/text_style.dart';
 
 class MyDropdownWidget extends StatefulWidget {
-  final List<String> itemsList;
-  final Function(String) getSelectedValue;
-  final double? itemHeight;
-  final String? title;
-  final Color? backgroundColor;
-  final double? borderRadius;
-  final double? leftPadding;
-  final double? rightPadding;
-  final TextStyle? textStyle;
-  final double dropdownWidth;
-  final int? positionOnTabBar;
-  final String? hintText;
-  final Function(int)? updateTabIndex;
-  final String? leftIcon;
-
   const MyDropdownWidget({
     super.key,
     this.title,
@@ -42,6 +27,21 @@ class MyDropdownWidget extends StatefulWidget {
     this.rightPadding,
   });
 
+  final List<String> itemsList;
+  final Function(String) getSelectedValue;
+  final double? itemHeight;
+  final String? title;
+  final Color? backgroundColor;
+  final double? borderRadius;
+  final double? leftPadding;
+  final double? rightPadding;
+  final TextStyle? textStyle;
+  final double dropdownWidth;
+  final int? positionOnTabBar;
+  final String? hintText;
+  final Function(int)? updateTabIndex;
+  final String? leftIcon;
+
   @override
   State<MyDropdownWidget> createState() => _MyDropdownWidgetState();
 }
@@ -56,7 +56,7 @@ class _MyDropdownWidgetState extends State<MyDropdownWidget> {
   late OverlayEntry? overlayEntry;
   OverlayState? overlayState;
 
-  showOverlay() {
+  void showOverlay() {
     setState(() => overlayIsVisible = true);
     RenderBox renderBox = dimensionKey.currentContext!.findRenderObject() as RenderBox;
     Offset offset = renderBox.localToGlobal(Offset.zero);
@@ -69,7 +69,7 @@ class _MyDropdownWidgetState extends State<MyDropdownWidget> {
           children: [
             GestureDetector(
               onTap: () => hideOverlay(),
-              child: Container(color: Colors.transparent),
+              child: const ColoredBox(color: Colors.transparent),
             ),
             Positioned(
               left: MediaQueryX.width - offset.dx > widget.dropdownWidth ? offset.dx : null,
@@ -103,7 +103,7 @@ class _MyDropdownWidgetState extends State<MyDropdownWidget> {
     overlayState!.insert(overlayEntry!);
   }
 
-  hideOverlay() {
+  void hideOverlay() {
     if (overlayEntry == null) return;
 
     overlayEntry!.remove();

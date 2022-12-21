@@ -22,6 +22,89 @@ linter:
   # `// ignore_for_file: name_of_lint` syntax on the line or in the file
   # producing the lint.
   rules:
+    # Error Rules  
+    - avoid_empty_else
+    - lines_longer_than_80_chars: false
+    - avoid_print
+    - avoid_type_to_string
+    - cancel_subscriptions
+    - close_sinks
+    - empty_statements
+    - list_remove_unrelated_type
+    - literal_only_boolean_expressions
+    - no_duplicate_case_values
+    - throw_in_finally
+    - valid_regexps
+    # Style Rules
+    - always_declare_return_types
+    - always_specify_types: false
+    - annotate_overrides
+    - avoid_bool_literals_in_conditional_expressions
+    - avoid_classes_with_only_static_members: false
+    - avoid_double_and_int_checks
+    - avoid_escaping_inner_quotes
+    - avoid_field_initializers_in_const_classes
+    - avoid_final_parameters: false
+    - avoid_function_literals_in_foreach_calls
+    - avoid_multiple_declarations_per_line
+    - avoid_return_types_on_setters
+    - avoid_returning_null
+    - avoid_setters_without_getters
+    - avoid_single_cascade_in_expression_statements
+    - avoid_unnecessary_containers
+    - camel_case_extensions
+    - constant_identifier_names
+    - curly_braces_in_flow_control_structures
+    - do_not_use_environment
+    - empty_catches
+    - empty_constructor_bodies
+    - flutter_style_todos
+    - file_names
+    - join_return_with_assignment
+    - leading_newlines_in_multiline_strings
+    - no_leading_underscores_for_library_prefixes: false
+    # Bunu bi ara açabilirim!
+    - omit_local_variable_types: false
+    - use_setters_to_change_properties
+    - use_raw_strings
+    - use_named_constants
+    - use_is_even_rather_than_modulo
+    - use_function_type_syntax_for_parameters
+    - use_decorated_box
+    - use_colored_box
+    - unnecessary_to_list_in_spreads
+    - unnecessary_this
+    - unnecessary_string_interpolations
+    - unnecessary_string_escapes
+    - unnecessary_parenthesis
+    - unnecessary_overrides
+    - unnecessary_null_aware_assignments
+    - unnecessary_null_in_if_null_operators
+    - unnecessary_new
+    - unnecessary_late
+    - unnecessary_lambdas: false
+    - unnecessary_getters_setters
+    - unnecessary_final
+    - unnecessary_constructor_name
+    - unnecessary_const
+    - unnecessary_brace_in_string_interps
+    - unnecessary_await_in_return
+    - unawaited_futures
+    - type_init_formals
+    - type_annotate_public_apis
+    - type_init_formals
+    - sort_unnamed_constructors_first
+    - sort_constructors_first: false
+    - sort_child_properties_last
+    - slash_for_doc_comments
+    - sized_box_shrink_expand
+    - sized_box_for_whitespace
+    - recursive_getters
+    #TODO: Bu kural kesinlikle açılacak!
+    - public_member_api_docs: false
+    - provide_deprecation_message
+    - prefer_spread_collections
+    - prefer_single_quotes
     # avoid_print: false  # Uncomment to disable the `avoid_print` rule
     # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
 

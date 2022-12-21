@@ -13,7 +13,7 @@ class HomeController extends GetxController {
   AllStocksModel allStocksModel = AllStocksModel();
   final Rx<ScreenStatus> homeStatus = ScreenStatus.loading.obs;
 
-  fetchAllStocks() async {
+  void fetchAllStocks() async {
     try {
       String allStocksText = await rootBundle.loadString('assets/all_stocks.json');
       allStocksModel = AllStocksModel.fromJson(jsonDecode(allStocksText));

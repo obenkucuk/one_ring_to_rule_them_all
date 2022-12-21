@@ -29,24 +29,24 @@ class RegisterController extends GetxController {
   final verificationController = TextEditingController();
   final verificationFocusNode = FocusNode();
 
-  tapTermsOfUse() => log("terms of use sayfası");
+  void tapTermsOfUse() => log('terms of use sayfası');
 
-  changePasswordVisibilityRegister() {
+  void changePasswordVisibilityRegister() {
     isPasswordHidden.value = !isPasswordHidden.value;
     passwordFocus.requestFocus();
   }
 
   final RxBool isPasswordAgainHidden = true.obs;
-  changePasswordAgainVisibility() {
+  void changePasswordAgainVisibility() {
     isPasswordAgainHidden.value = !isPasswordAgainHidden.value;
     passwordAgainFocusNode.requestFocus();
   }
 
-  validateAllFields() {
-    if ((formKeyRegister.currentState!.validate() && acceptTermsOfUse)) {
-      debugPrint("başarılı");
+  void validateAllFields() {
+    if (formKeyRegister.currentState!.validate() && acceptTermsOfUse) {
+      debugPrint('başarılı');
     } else {
-      debugPrint("alanlarda doldurulmamış yerler var");
+      debugPrint('alanlarda doldurulmamış yerler var');
     }
   }
 }

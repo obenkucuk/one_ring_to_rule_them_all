@@ -3,16 +3,11 @@ import 'package:base_application/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class MaterialButtonX extends StatelessWidget {
+  const MaterialButtonX({Key? key, required this.onTap, this.buttonText, this.borderRadius}) : super(key: key);
+
   final VoidCallback onTap;
   final String? buttonText;
   final double? borderRadius;
-
-  const MaterialButtonX({
-    Key? key,
-    required this.onTap,
-    this.buttonText,
-    this.borderRadius,
-  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +16,7 @@ class MaterialButtonX extends StatelessWidget {
         side: BorderSide.none, // BorderSide(color: Colors.black, width: 1.w),
         borderRadius: BorderRadius.circular(borderRadius ?? 10.w),
       ),
-      padding: const EdgeInsets.symmetric(vertical: 0),
+      padding: EdgeInsets.zero,
       height: 50.h,
       minWidth: 100.w,
       highlightColor: Theme.of(context).colorScheme.primary,
@@ -44,7 +39,7 @@ class MaterialButtonX extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           //const Icon(Icons.numbers, color: Colors.amber),
-          Text(buttonText ?? "Button Yazısı Eksik!"),
+          Text(buttonText ?? 'Button Yazısı Eksik!'),
         ],
       ),
     );

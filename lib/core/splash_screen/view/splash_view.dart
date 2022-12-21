@@ -32,7 +32,7 @@ class SplashView extends GetView<SplashController> {
             ),
           ),
           const Spacer(),
-          const Text("v 1.0.0"),
+          const Text('v 1.0.0'),
           SizedBox(height: MediaQueryX.padding.bottom),
         ],
       ),

@@ -77,7 +77,7 @@ class _SearchBarState extends State<SearchBar> with SingleTickerProviderStateMix
       child: Row(
         children: [
           Transform.translate(
-            offset: Offset(zeroToOneAnimation.value * -(leadingSize.width), 0),
+            offset: Offset(zeroToOneAnimation.value * -leadingSize.width, 0),
             child: Container(
               alignment: Alignment.center,
               width: oneToZeroAnimation.value * leadingSize.width,
@@ -87,13 +87,13 @@ class _SearchBarState extends State<SearchBar> with SingleTickerProviderStateMix
             ),
           ),
           Transform.translate(
-            offset: Offset(zeroToOneAnimation.value * -(searchBarPadding), 0),
+            offset: Offset(zeroToOneAnimation.value * -searchBarPadding, 0),
             child: Container(
               alignment: Alignment.center,
               height: 40.h,
               width: width - 120.w,
               child: TextFieldX(
-                hintText: "Search",
+                hintText: 'Search',
                 focusNode: focusNode,
                 borderRadius: 20,
               ),
@@ -113,9 +113,7 @@ class _SearchBarState extends State<SearchBar> with SingleTickerProviderStateMix
             ),
           ),
           GestureDetector(
-            onTap: () {
-              focusNode.unfocus();
-            },
+            onTap: () => focusNode.unfocus(),
             child: FadeTransition(
               opacity: zeroToOneAnimation,
               child: Transform.translate(
@@ -124,7 +122,7 @@ class _SearchBarState extends State<SearchBar> with SingleTickerProviderStateMix
                     alignment: Alignment.center,
                     width: zeroToOneAnimation.value * 40.w,
                     height: zeroToOneAnimation.value * 40.w,
-                    child: FittedBox(child: Text("Cancel", style: s12W500))),
+                    child: FittedBox(child: Text('Cancel', style: s12W500))),
               ),
             ),
           ),

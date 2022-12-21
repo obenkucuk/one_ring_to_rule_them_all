@@ -1,6 +1,6 @@
 extension ExtString on String {
   bool get isValidEmail {
-    final emailRegExp = RegExp(
+    var emailRegExp = RegExp(
       r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$',
     );
 
@@ -8,7 +8,7 @@ extension ExtString on String {
   }
 
   bool get isValidName {
-    final nameRegExp = RegExp(
+    var nameRegExp = RegExp(
       r"^[a-zA-ZüğişçöĞÜİŞÇÖıIZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð]+(([',. -][a-zA-ZüğişçöĞÜİŞÇÖıIZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ])?[a-zA-ZüğişçöĞÜİŞÇÖıIZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð]*)*$",
       unicode: true,
     );
@@ -17,19 +17,19 @@ extension ExtString on String {
   }
 
   bool get isTCKN {
-    final tcknRegEx = RegExp(r'^[0-9]+$');
+    var tcknRegEx = RegExp(r'^[0-9]+$');
 
     return tcknRegEx.hasMatch(this) && length == 11;
   }
 
   bool get isValidPassword {
-    final passwordRegExp = RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\><*~]).{8,}/pre>');
+    var passwordRegExp = RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\><*~]).{8,}/pre>');
 
     return passwordRegExp.hasMatch(this);
   }
 
   bool get isValidPhone {
-    final phoneRegExp = RegExp(r"^\+?0[0-9]{10}$");
+    var phoneRegExp = RegExp(r'^\+?0[0-9]{10}$');
 
     return phoneRegExp.hasMatch(this);
   }

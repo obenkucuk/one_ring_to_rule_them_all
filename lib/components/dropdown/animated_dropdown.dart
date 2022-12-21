@@ -4,22 +4,22 @@ import 'package:base_application/theme/text_style.dart';
 import 'package:flutter/material.dart';
 
 class AnimatedDropdown extends StatefulWidget {
+  const AnimatedDropdown(
+      {Key? key,
+      required this.itemsList,
+      required this.selectedPair,
+      this.onTap,
+      this.textStyle,
+      this.itemHeight,
+      this.padding})
+      : super(key: key);
+
   final List itemsList;
   final String selectedPair;
   final TextStyle? textStyle;
   final Function(String)? onTap;
   final double? itemHeight;
   final double? padding;
-
-  const AnimatedDropdown({
-    Key? key,
-    required this.itemsList,
-    required this.selectedPair,
-    this.onTap,
-    this.textStyle,
-    this.itemHeight,
-    this.padding,
-  }) : super(key: key);
 
   @override
   State<AnimatedDropdown> createState() => _AnimatedDropdownState();

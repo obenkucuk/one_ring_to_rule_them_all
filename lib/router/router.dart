@@ -88,13 +88,13 @@ final GoRouter appRouter = GoRouter(
     ),
   ],
   errorPageBuilder: (context, state) {
-    return const MaterialPage(child: Scaffold(body: Center(child: Text("Error Page will be here"))));
+    return const MaterialPage(child: Scaffold(body: Center(child: Text('Error Page will be here'))));
   },
   redirect: (BuildContext context, GoRouterState state) {
-    final settings = Get.find<SettingsController>();
+    var settings = Get.find<SettingsController>();
 
-    if (settings.isLogin.isFalse && state.subloc != "/") {
-      return "/login";
+    if (settings.isLogin.isFalse && state.subloc != '/') {
+      return '/login';
     }
     return null;
   },
@@ -102,12 +102,12 @@ final GoRouter appRouter = GoRouter(
 
 /// Uygulamadaki rotaların isimleri.
 class RoutesNames {
-  static const String home = "home";
-  static const String settings = "settings";
-  static const String main = "main";
-  static const String splash = "splash";
-  static const String login = "login";
-  static const String register = "register";
-  static const String portfolio = "portfolio";
-  static const String addStock = "addStock";
+  static const String home = 'home';
+  static const String settings = 'settings';
+  static const String main = 'main';
+  static const String splash = 'splash';
+  static const String login = 'login';
+  static const String register = 'register';
+  static const String portfolio = 'portfolio';
+  static const String addStock = 'addStock';
 }

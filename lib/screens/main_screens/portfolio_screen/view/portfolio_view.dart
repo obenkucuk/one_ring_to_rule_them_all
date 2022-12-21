@@ -18,7 +18,7 @@ class PortfolioView extends GetView<PortfolioController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Portföy"),
+        title: const Text('Portföy'),
         actions: [IconButtonX(onTap: () => context.pushNamed(RoutesNames.addStock), icon: Icons.add)],
       ),
       body: GetBuilder<PortfolioController>(
@@ -27,7 +27,7 @@ class PortfolioView extends GetView<PortfolioController> {
           return ListView.separated(
             itemCount: controller.portfolioList.value.length,
             itemBuilder: (BuildContext context, int index) {
-              final item = controller.portfolioList.value[index];
+              var item = controller.portfolioList.value[index];
               return Slidable(
                 key: UniqueKey(),
                 startActionPane: ActionPane(
@@ -79,16 +79,16 @@ class PortfolioView extends GetView<PortfolioController> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Text("Hisse Adı"),
+                                const Text('Hisse Adı'),
                                 SizedBox(height: 10.h),
-                                Text(item.stockName ?? ""),
+                                Text(item.stockName ?? ''),
                               ],
                             ),
                             Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Text("Birim Maliyet"),
+                                const Text('Birim Maliyet'),
                                 SizedBox(height: 10.h),
                                 Text(item.unitCost.toString()),
                               ],
@@ -97,7 +97,7 @@ class PortfolioView extends GetView<PortfolioController> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Text("Lot Sayısı"),
+                                const Text('Lot Sayısı'),
                                 SizedBox(height: 10.h),
                                 Text(item.numberOfLots.toString()),
                               ],
@@ -106,7 +106,7 @@ class PortfolioView extends GetView<PortfolioController> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Text("Toplam Maliyet"),
+                                const Text('Toplam Maliyet'),
                                 SizedBox(height: 10.h),
                                 Text(((item.unitCost ?? 0.0) * (item.numberOfLots ?? 0.0)).toString()),
                               ],

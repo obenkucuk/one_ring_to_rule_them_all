@@ -17,7 +17,12 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   final settings = Get.find<SettingsController>();
   int selectedScreen = 0;
-  final List<Widget> mainScreens = const [HomeScreen(), PortfolioScreen(), SettingsScreen()];
+
+  final List<Widget> mainScreens = const [
+    HomeScreen(),
+    PortfolioScreen(),
+    SettingsScreen(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +38,7 @@ class _MainScreenState extends State<MainScreen> {
           ),
           BarItemX(
             icon: const Icon(Icons.grid_on_sharp),
-            title: const Text("Potfolyo"),
+            title: const Text('Potfolyo'),
           ),
           BarItemX(
             icon: const Icon(Icons.settings),

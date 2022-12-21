@@ -19,12 +19,12 @@ class HomeView extends GetView<HomeController> {
             if (controller.homeStatus.value == ScreenStatus.loading) {
               return const CircularProgressIndicator.adaptive();
             } else if (controller.homeStatus.value == ScreenStatus.loaded) {
-              final List<AllStocksDataModel> modelList = controller.allStocksModel.data!;
+              List<AllStocksDataModel> modelList = controller.allStocksModel.data!;
               return ListView.builder(
                 itemCount: modelList.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Text(
-                    modelList[index].kod ?? "",
+                    modelList[index].kod ?? '',
                     style: s14W600,
                   );
                 },

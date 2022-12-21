@@ -1,9 +1,9 @@
 abstract class INetworkServices {
   ///  Map halinde json dosyayı bekleniyor ise...
-  fetchDataFromSingleMap(Uri uri) async {}
+  void fetchDataFromSingleMap(Uri uri) async {}
 
   ///  Liste halinde json dosyası bekleniyor ise...
-  fetchDataFromMapsOfList(Uri uri) async {}
+  void fetchDataFromMapsOfList(Uri uri) async {}
 }
 
 // class NetworkServices extends INetworkServices {

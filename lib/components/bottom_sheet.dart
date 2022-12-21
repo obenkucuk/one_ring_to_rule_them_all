@@ -3,8 +3,12 @@ import 'package:base_application/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
 /// Bütün sayfalardaki bottom sheetler buradan çağırılır.
-Future<T?> showBottomSheetX<T>({required BuildContext context, String? title, Widget? widget}) async {
-  final result = await showModalBottomSheet<T>(
+Future<T?> showBottomSheetX<T>({
+  required BuildContext context,
+  String? title,
+  Widget? widget,
+}) async {
+  var result = await showModalBottomSheet<T>(
     context: context,
     backgroundColor: AppColors.backgroundLight,
     shape: RoundedRectangleBorder(
@@ -23,7 +27,7 @@ Future<T?> showBottomSheetX<T>({required BuildContext context, String? title, Wi
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(title ?? "Title is not given!", style: null),
+                Text(title ?? 'Title is not given!', style: null),
               ],
             ),
           ),

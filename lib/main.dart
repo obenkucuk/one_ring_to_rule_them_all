@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             theme: lightTheme,
             darkTheme: darkTheme,
-            title: "Base App",
+            title: 'Base App',
             themeMode: settingsController.systemThemeMode.value,
             routerConfig: appRouter,
             // routeInformationParser: appRouter.routeInformationParser,

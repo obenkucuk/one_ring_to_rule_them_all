@@ -17,23 +17,23 @@ class LoginController extends GetxController {
   final emailFocus = FocusNode();
   final passwordFocus = FocusNode();
 
-  final RxString emailText = "".obs;
-  final RxString passwordText = "".obs;
+  final RxString emailText = ''.obs;
+  final RxString passwordText = ''.obs;
   final RxBool isEmailValid = false.obs;
 
-  changePasswordVisibility() {
+  void changePasswordVisibility() {
     isPasswordHidden.value = !isPasswordHidden.value;
     passwordFocus.requestFocus();
   }
 
-  createAccount() {
-    log("create account sayfasına yolla");
+  void createAccount() {
+    log('create account sayfasına yolla');
     // context.router.push(const RegisterRouter());
   }
 
-  forgotPassword() => log("forgor password");
+  void forgotPassword() => log('forgor password');
 
-  login() {
+  void login() {
     Get.find<SettingsController>().isLogin(true);
     context.goNamed(RoutesNames.main);
   }

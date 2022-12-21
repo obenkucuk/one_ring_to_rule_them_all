@@ -52,7 +52,7 @@ class BottomBarX extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
+    var theme = Theme.of(context);
 
     return SafeArea(
       minimum: margin,
@@ -69,9 +69,9 @@ class BottomBarX extends StatelessWidget {
               curve: curve,
               duration: duration,
               builder: (context, t, _) {
-                final selectedColor = item.selectedColor ?? selectedItemColor ?? theme.primaryColor;
+                var selectedColor = item.selectedColor ?? selectedItemColor ?? theme.primaryColor;
 
-                final unselectedColor = item.unselectedColor ?? unselectedItemColor ?? theme.iconTheme.color;
+                var unselectedColor = item.unselectedColor ?? unselectedItemColor ?? theme.iconTheme.color;
 
                 return Material(
                   color: Color.lerp(

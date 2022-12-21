@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 
 mixin BottomSheetX {
   /// Bütün sayfalardaki bottom sheetler buradan çağırılır.
-  static Future<T?> showBottomSheet<T>(Widget widget, BuildContext context, {required String title}) async {
+  static Future<T?> showBottomSheet<T>(
+    Widget widget,
+    BuildContext context, {
+    required String title,
+  }) async {
     return showModalBottomSheet<T>(
       context: context,
       backgroundColor: Colors.orangeAccent.shade100,

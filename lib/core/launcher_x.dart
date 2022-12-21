@@ -5,7 +5,7 @@ class LauncherX {
   static final LauncherX instance = LauncherX._();
 
   /// iOS için örnek adres tipi = 'https://www.youtube.com'
-  launchApp(String webAddress) async {
+  void launchApp(String webAddress) async {
     if (await canLaunchUrl(Uri.parse(webAddress))) {
       await launchUrl(Uri.parse(webAddress), mode: LaunchMode.externalApplication);
     } else {
@@ -13,7 +13,7 @@ class LauncherX {
     }
   }
 
-  sendMail({required String mailAddress, String? subject, String? body}) async {
+  void sendMail({required String mailAddress, String? subject, String? body}) async {
     if (await canLaunchUrl(Uri.parse('mailto:$mailAddress?subject=$subject&body=$body'))) {
       await launchUrl(Uri.parse('mailto:$mailAddress?subject=$subject&body=$body'));
     } else {
@@ -22,7 +22,7 @@ class LauncherX {
   }
 
   /// Android ve iOS için örnek tel no = '0-542-581-59-51'
-  callMe(String telNo) async {
+  void callMe(String telNo) async {
     if (await canLaunchUrl(Uri.parse('tel:$telNo'))) {
       await launchUrl(Uri.parse('tel:$telNo'));
     } else {
@@ -31,7 +31,7 @@ class LauncherX {
   }
 
   /// Android ve iOS için örnek tel no = '0-542-581-59-51'
-  textMe(String telNo) async {
+  void textMe(String telNo) async {
     if (await canLaunchUrl(Uri.parse('sms:$telNo'))) {
       await launchUrl(Uri.parse('sms:$telNo'));
     } else {

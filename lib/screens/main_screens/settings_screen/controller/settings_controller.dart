@@ -21,7 +21,7 @@ class SettingsController extends GetxController {
   late Rx<AppLocalizations> lang;
 
   // NOT uygulama varsayılan dili her uygulama için ayarlanmalı
-  final String _defoultLocalization = "en";
+  final String _defoultLocalization = 'en';
 
   @override
   void onInit() async {
@@ -32,7 +32,7 @@ class SettingsController extends GetxController {
 
   /// Dil değiştirmek için
   void changeLanguage(String language) async {
-    if (language == "system") {
+    if (language == 'system') {
       var systemLanguage = Locale(Get.deviceLocale!.languageCode);
 
       if (supportedLanguages().contains(systemLanguage)) {
@@ -52,16 +52,16 @@ class SettingsController extends GetxController {
     return AppLocalizations.supportedLocales;
   }
 
-  _initLocalization() async {
+  void _initLocalization() async {
     var storageLocalization = SharedPreferencesX.getString(StorageKeys.appLocalization.name);
-    if (storageLocalization == "null") {
+    if (storageLocalization == 'null') {
       SharedPreferencesX.setString(StorageKeys.appLocalization.name, ThemeMode.system.name);
       storageLocalization = SharedPreferencesX.getString(StorageKeys.appLocalization.name);
     }
 
     String? preferedLocalization;
     if (storageLocalization == ThemeMode.system.name) {
-      final devLocal = Get.deviceLocale!.languageCode;
+      var devLocal = Get.deviceLocale!.languageCode;
       List<String> sysLangs = [];
       supportedLanguages().forEach((element) {
         sysLangs.add(element.languageCode);
@@ -85,11 +85,11 @@ class SettingsController extends GetxController {
     update([SettingsUpdateKeys.materialApp]);
   }
 
-  _initTheme() {
+  void _initTheme() {
     //ilk açılış tema modu
     String storageThemeMode = SharedPreferencesX.getString(StorageKeys.appThemeMode.name);
 
-    if (storageThemeMode == "null") {
+    if (storageThemeMode == 'null') {
       SharedPreferencesX.setString(StorageKeys.appThemeMode.name, ThemeMode.system.name);
       storageThemeMode = SharedPreferencesX.getString(StorageKeys.appThemeMode.name);
     }

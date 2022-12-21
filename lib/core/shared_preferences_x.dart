@@ -8,13 +8,12 @@ class SharedPreferencesX {
   // call this method from iniState() function of mainApp().
   static Future<SharedPreferences?> init() async {
     WidgetsFlutterBinding.ensureInitialized();
-    _sharedPrefs = await _instance;
-    return _sharedPrefs;
+    return _sharedPrefs = await _instance;
   }
 
-  static String getString(String key) => _sharedPrefs!.getString(key) ?? "null";
+  static String getString(String key) => _sharedPrefs!.getString(key) ?? 'null';
 
-  static setString(String key, String value) {
+  static void setString(String key, String value) {
     _sharedPrefs!.setString(key, value);
   }
 }

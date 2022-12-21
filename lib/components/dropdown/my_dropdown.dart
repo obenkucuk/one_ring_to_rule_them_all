@@ -114,7 +114,7 @@ class _MyDropdownWidgetState extends State<MyDropdownWidget> {
   @override
   void dispose() {
     super.dispose();
-    overlayEntry!.dispose();
+    if (overlayEntry != null) overlayEntry!.dispose();
     overlayState!.dispose();
   }
 
@@ -142,17 +142,16 @@ class _MyDropdownWidgetState extends State<MyDropdownWidget> {
             children: [
               Row(
                 children: [
-                  widget.leftIcon != null
-                      ? Row(
-                          children: [
-                            CircleAvatar(
-                              radius: radius10.w,
-                              backgroundColor: Colors.grey,
-                            ),
-                            SizedBox(width: (radius5 - 1).w),
-                          ],
-                        )
-                      : const SizedBox(),
+                  if (widget.leftIcon != null)
+                    Row(
+                      children: [
+                        CircleAvatar(
+                          radius: radius10.w,
+                          backgroundColor: Colors.grey,
+                        ),
+                        SizedBox(width: (radius5 - 1).w),
+                      ],
+                    ),
                   Text(selectedItem, style: widget.textStyle ?? s16W600),
                 ],
               ),

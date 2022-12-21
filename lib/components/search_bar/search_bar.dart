@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_int_literals
+
 import 'package:base_application/components/text_field/text_field_x.dart';
 import 'package:base_application/core/extensions/widget_scale.dart';
 import 'package:base_application/theme/text_style.dart';
@@ -25,10 +27,10 @@ class _SearchBarState extends State<SearchBar> with SingleTickerProviderStateMix
     super.initState();
     animationController = AnimationController(vsync: this, duration: const Duration(milliseconds: 1000));
 
-    sizeAnimationSearchBar = Tween<double>(begin: 0.0, end: 1.0).animate(
+    sizeAnimationSearchBar = Tween<double>(begin: 0, end: 1).animate(
         CurvedAnimation(parent: animationController, curve: Curves.easeInOutCirc, reverseCurve: Curves.easeOutCirc));
 
-    oneToZeroAnimation = Tween<double>(begin: 1.0, end: 0.0)
+    oneToZeroAnimation = Tween<double>(begin: 1, end: 0)
         .animate(CurvedAnimation(parent: animationController, curve: Curves.linearToEaseOut));
 
     zeroToOneAnimation = Tween(begin: 0.0, end: 1.0)

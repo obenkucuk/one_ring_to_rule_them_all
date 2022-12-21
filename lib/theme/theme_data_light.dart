@@ -236,7 +236,7 @@ ThemeData lightTheme = ThemeData(
   ),
   appBarTheme: const AppBarTheme(
     titleSpacing: 0,
-    elevation: 0.0,
+    elevation: 0,
     color: AppColors.backgroundLight,
     titleTextStyle: TextStyle(
       fontSize: 20,

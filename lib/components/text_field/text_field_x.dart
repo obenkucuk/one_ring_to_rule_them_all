@@ -103,7 +103,7 @@ class _TextFieldXState extends State<TextFieldX> {
         controller: textEditingController,
         obscuringCharacter: '•',
         keyboardType: widget.keyboardType ?? TextInputType.visiblePassword,
-        onChanged: (value) => widget.onChanged != null ? widget.onChanged!(value) : null,
+        onChanged: (value) => widget.onChanged!.call(value),
         onSubmitted: (value) {},
         onEditingComplete: () => validate(textEditingController.text),
         textInputAction: widget.textInputAction ?? TextInputAction.next,

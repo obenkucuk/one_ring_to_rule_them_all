@@ -142,7 +142,7 @@ ThemeData darkTheme = ThemeData(
       fontSize: 15,
     ),
     border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(10.0),
+      borderRadius: BorderRadius.circular(10),
       borderSide: BorderSide.none,
     ),
     /*  enabledBorder: OutlineInputBorder(
@@ -227,7 +227,7 @@ ThemeData darkTheme = ThemeData(
   dividerTheme: const DividerThemeData(color: AppColors.dividerDark, thickness: 1, space: 0),
   appBarTheme: const AppBarTheme(
     titleSpacing: 0,
-    elevation: 0.0,
+    elevation: 0,
     color: AppColors.backgroundDark,
     titleTextStyle: TextStyle(
       fontSize: 20,

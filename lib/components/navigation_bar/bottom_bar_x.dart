@@ -75,7 +75,7 @@ class BottomBarX extends StatelessWidget {
 
                 return Material(
                   color: Color.lerp(
-                      selectedColor.withOpacity(0.0), selectedColor.withOpacity(selectedColorOpacity ?? 0.1), t),
+                      selectedColor.withOpacity(0), selectedColor.withOpacity(selectedColorOpacity ?? 0.1), t),
                   shape: itemShape,
                   child: InkWell(
                     onTap: () => onTap?.call(items.indexOf(item)),
@@ -107,7 +107,7 @@ class BottomBarX extends StatelessWidget {
                               /// best to find a way to make it respond only to padding.
                               height: 20,
                               child: Align(
-                                alignment: const Alignment(-0.2, 0.0),
+                                alignment: const Alignment(-0.2, 0),
                                 widthFactor: t,
                                 child: Padding(
                                   padding: Directionality.of(context) == TextDirection.ltr
@@ -115,7 +115,7 @@ class BottomBarX extends StatelessWidget {
                                       : EdgeInsets.only(left: itemPadding.left, right: itemPadding.right / 2),
                                   child: DefaultTextStyle(
                                     style: TextStyle(
-                                      color: Color.lerp(selectedColor.withOpacity(0.0), selectedColor, t),
+                                      color: Color.lerp(selectedColor.withOpacity(0), selectedColor, t),
                                       fontWeight: FontWeight.w600,
                                     ),
                                     child: item.title,

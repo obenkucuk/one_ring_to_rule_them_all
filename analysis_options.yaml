@@ -7,7 +7,8 @@
 
 # The following line activates a set of recommended lints for Flutter apps,
 # packages, and plugins designed to encourage good coding practices.
-include: package:flutter_lints/flutter.yaml
+
+include: package:lints/recommended.yaml
 
 linter:
   # The lint rules applied to this project can be customized in the
@@ -105,6 +106,34 @@ linter:
     - provide_deprecation_message
     - prefer_spread_collections
     - prefer_single_quotes
+    - prefer_null_aware_operators
+    - prefer_null_aware_method_calls
+    - prefer_mixin
+    - prefer_iterable_whereType
+    - prefer_is_not_operator
+    - prefer_is_not_empty
+    - prefer_is_empty
+    - prefer_interpolation_to_compose_strings
+    - prefer_int_literals
+    - prefer_inlined_adds
+    - prefer_initializing_formals
+    - prefer_if_null_operators
+    - prefer_if_elements_to_conditional_expressions
+    - prefer_function_declarations_over_variables
+    - prefer_foreach
+    - prefer_for_elements_to_map_fromIterable
+    - prefer_expression_function_bodies: false
+    - prefer_contains
+    - prefer_const_declarations
+    - prefer_const_constructors
+    - prefer_conditional_assignment
+    - prefer_asserts_with_message
+    - prefer_asserts_in_initializer_lists
+    - parameter_assignments: false
+    - use_to_and_as_if_applicable
+    - use_test_throws_matchers
+    - use_rethrow_when_possible
+    
     # avoid_print: false  # Uncomment to disable the `avoid_print` rule
     # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
 

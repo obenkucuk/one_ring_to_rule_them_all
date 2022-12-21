@@ -4,9 +4,9 @@ import '../model/portfolio_model.dart';
 
 class PortfolioController extends GetxController {
   final Rx<List<PortfolioModel>> portfolioList = Rx(<PortfolioModel>[
-    PortfolioModel(stockName: 'SASA', numberOfLots: 5.0, unitCost: 10.0),
-    PortfolioModel(stockName: 'BRKVY', numberOfLots: 6.0, unitCost: 20.0),
-    PortfolioModel(stockName: 'GARAN', numberOfLots: 7.0, unitCost: 30.0),
+    PortfolioModel(stockName: 'SASA', numberOfLots: 5, unitCost: 10),
+    PortfolioModel(stockName: 'BRKVY', numberOfLots: 6, unitCost: 20),
+    PortfolioModel(stockName: 'GARAN', numberOfLots: 7, unitCost: 30),
   ]);
 
   void removePortfolioItem(int index) {

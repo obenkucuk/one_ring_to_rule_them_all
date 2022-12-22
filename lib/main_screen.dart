@@ -30,7 +30,7 @@ class _MainScreenState extends State<MainScreen> {
         items: [
           BarItemX(
             icon: const Icon(Icons.home),
-            title: Text(sessionServices.lang.value.home),
+            title: Text(appLocalization!.home),
           ),
           BarItemX(
             icon: const Icon(Icons.grid_on_sharp),
@@ -38,7 +38,7 @@ class _MainScreenState extends State<MainScreen> {
           ),
           BarItemX(
             icon: const Icon(Icons.settings),
-            title: Text(sessionServices.lang.value.settings),
+            title: Text(appLocalization!.settings),
           ),
         ],
       ),

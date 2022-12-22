@@ -12,7 +12,7 @@ class NoInternetException implements Exception {
 
     if (!settings.isNetworkChecking.value) {
       Get.find<SessionServices>().snackbarKey.currentState!.showSnackBar(
-            snackBar(color: Colors.redAccent, text: settings.lang.value.noNetworkMessage),
+            snackBar(color: Colors.redAccent, text: appLocalization!.noNetworkMessage),
           );
     }
 
@@ -24,7 +24,7 @@ class NoInternetException implements Exception {
 
         if (isConnectedNetwork) {
           Get.find<SessionServices>().snackbarKey.currentState!.showSnackBar(
-                snackBar(color: Colors.greenAccent, text: settings.lang.value.connectedMessage),
+                snackBar(color: Colors.greenAccent, text: appLocalization!.connectedMessage),
               );
           settings.isNetworkChecking.value = false;
           break;

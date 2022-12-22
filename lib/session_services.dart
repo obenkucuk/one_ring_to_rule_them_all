@@ -12,14 +12,19 @@ class SessionServices extends GetxController {
   // internet bağlantısını birden fazla kontrol etmemek için
   RxBool isNetworkChecking = false.obs;
 
+  final Rx<Locale> locale = Rx(const Locale('tr'));
   final Rx<ThemeMode> systemThemeMode = Rx(ThemeMode.system);
   final RxBool isLogin = false.obs;
 
   @override
   void onInit() async {
     super.onInit();
-
     _initTheme();
+  }
+
+  void changeLocale() {
+    locale(const Locale('en'));
+    update([SessionServicesUpdateKeys.materialApp]);
   }
 
   void changeTheme({required ThemeMode themeMode, Brightness? brightness}) {

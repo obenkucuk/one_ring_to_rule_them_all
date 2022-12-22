@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 /// fontSize: 8
 TextStyle get s8W300 =>
     Theme.of(navigatorKey.currentContext!).textTheme.bodySmall!.copyWith(fontSize: 8, fontWeight: FontWeight.w300);
+
 TextStyle get s8W400 =>
     Theme.of(navigatorKey.currentContext!).textTheme.bodySmall!.copyWith(fontSize: 8, fontWeight: FontWeight.w400);
 TextStyle get s8W500 =>

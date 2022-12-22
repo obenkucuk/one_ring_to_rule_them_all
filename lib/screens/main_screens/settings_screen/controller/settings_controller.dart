@@ -7,5 +7,5 @@ class SettingsController extends GetxController {
 
   BuildContext get context => scaffoldKey.currentContext!;
 
-  sayLocale() => print(AppLocalizations.of(context)!.localeName);
+  void sayLocale() => debugPrint(AppLocalizations.of(context)!.localeName);
 }

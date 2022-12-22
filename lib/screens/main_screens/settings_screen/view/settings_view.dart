@@ -60,6 +60,7 @@ class SettingsView extends GetView<SettingsController> {
             appLocalization!.settings,
             style: s8W500,
           ),
+          Text('data', style: s24W700),
           const SizedBox(height: 50),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -100,7 +101,7 @@ class SettingsView extends GetView<SettingsController> {
           //         child: const Text('system')),
           //   ],
           // ),
-          TextButton(onPressed: () => controller.sayLocale(), child: Icon(Icons.language))
+          TextButton(onPressed: () => sessionServices.changeLocale(), child: const Icon(Icons.language)),
         ],
       ),
     );

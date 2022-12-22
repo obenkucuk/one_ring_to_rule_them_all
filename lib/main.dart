@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
             title: 'One Ring to Rule Them All',
             themeMode: sessionServices.systemThemeMode.value,
             routerConfig: appRouter,
-            locale: const Locale('tr'), // Bu değer değiştirilip güncellenebilir hale gelecek
+            locale: sessionServices.locale.value,
             supportedLocales: AppLocalizations.supportedLocales,
             localizationsDelegates: AppLocalizations.localizationsDelegates,
 

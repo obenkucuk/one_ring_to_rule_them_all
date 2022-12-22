@@ -34,8 +34,8 @@ class SessionServices extends GetxController {
     update([SessionServicesUpdateKeys.materialApp]);
   }
 
+  //ilk açılış tema modu
   void _initTheme() {
-    //ilk açılış tema modu
     String? storageThemeMode = SharedPreferencesX.getString(StorageArgs.appThemeMode);
 
     if (storageThemeMode == null) {

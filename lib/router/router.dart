@@ -100,7 +100,7 @@ final GoRouter appRouter = GoRouter(
   },
 );
 
-/// Uygulamadaki rotaların isimleri.
+/// Uygulamadaki tüm rotaların isimleri.
 class RoutesNames {
   static const String home = 'home';
   static const String settings = 'settings';

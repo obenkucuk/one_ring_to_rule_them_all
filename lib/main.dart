@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.lazyPut(() => SessionServices());
-    MediaQueryX.setScreenSize(context);
+    MediaQueryX.setScreenSize();
 
     return GetBuilder<SessionServices>(
         id: SessionServicesUpdateKeys.materialApp,

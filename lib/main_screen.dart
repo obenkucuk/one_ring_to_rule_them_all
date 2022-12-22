@@ -1,11 +1,12 @@
+import 'dart:io';
+
 import 'package:base_application/screens/main_screens/home_screen/home_screen.dart';
 import 'package:base_application/screens/main_screens/portfolio_screen/portfolio_screen.dart';
 import 'package:base_application/session_services.dart';
-import 'package:base_application/theme/text_style.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'components/navigation_bar/bottom_bar_x.dart';
 import 'screens/main_screens/settings_screen/settings_screen.dart';
 
 class MainScreen extends StatefulWidget {
@@ -25,33 +26,26 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: mainScreens[selectedScreen],
-      bottomNavigationBar: BottomBarX(
-        currentIndex: selectedScreen,
-        onTap: (index) => setState(() => selectedScreen = index),
-        items: [
-          BarItemX(
-            icon: Icon(
-              Icons.home,
-              color: Theme.of(context).colorScheme.onPrimary,
+      bottomNavigationBar: Platform.isAndroid
+          ? NavigationBar(
+              onDestinationSelected: (int index) => setState(() => selectedScreen = index),
+              selectedIndex: selectedScreen,
+              destinations: const <Widget>[
+                NavigationDestination(icon: Icon(Icons.explore), label: 'Explore'),
+                NavigationDestination(icon: Icon(Icons.commute), label: 'Commute'),
+                NavigationDestination(
+                    selectedIcon: Icon(Icons.bookmark), icon: Icon(Icons.bookmark_border), label: 'Saved'),
+              ],
+            )
+          : CupertinoTabBar(
+              currentIndex: selectedScreen,
+              onTap: (index) => setState(() => selectedScreen = index),
+              items: [
+                const BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+                const BottomNavigationBarItem(icon: Icon(Icons.grid_3x3), label: 'Port'),
+                const BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings')
+              ],
             ),
-            title: Text(appLocalization!.home),
-          ),
-          BarItemX(
-            icon: Icon(
-              Icons.grid_on_sharp,
-              color: Theme.of(context).colorScheme.onPrimary,
-            ),
-            title: Text('Potfolyo', style: s12W300),
-          ),
-          BarItemX(
-            icon: Icon(
-              Icons.settings,
-              color: Theme.of(context).colorScheme.onPrimary,
-            ),
-            title: Text(appLocalization!.settings),
-          ),
-        ],
-      ),
     );
   }
 }

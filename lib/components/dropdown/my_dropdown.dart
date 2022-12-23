@@ -1,5 +1,5 @@
 import 'package:base_application/components/dropdown/animated_dropdown.dart';
-import 'package:base_application/core/constants/size_constants.dart';
+import 'package:base_application/constants/size_constants.dart';
 import 'package:base_application/core/extensions/widget_scale.dart';
 import 'package:base_application/core/media_query_x.dart';
 import 'package:base_application/theme/text_style.dart';

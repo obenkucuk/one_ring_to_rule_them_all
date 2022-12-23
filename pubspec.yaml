@@ -83,17 +83,46 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  #
+  fonts:
+    - family: Martel
+      fonts:
+        - asset: assets/fonts/martel/Martel-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/martel/Martel-Light.ttf
+          weight: 300
+        - asset: assets/fonts/martel/Martel-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/martel/Martel-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/martel/Martel-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/martel/Martel-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/martel/Martel-Black.ttf
+          weight: 900
+    - family: Ubuntu
+      fonts:
+        - asset: assets/fonts/ubuntu/Ubuntu-Light.ttf
+          weight: 300
+        - asset: assets/fonts/ubuntu/Ubuntu-LightItalic.ttf
+          weight: 300
+          style: italic
+        - asset: assets/fonts/ubuntu/Ubuntu-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/ubuntu/Ubuntu-Italic.ttf
+          weight: 400
+          style: italic
+        - asset: assets/fonts/ubuntu/Ubuntu-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/ubuntu/Ubuntu-MediumItalic.ttf
+          weight: 500
+          style: italic
+        - asset: assets/fonts/ubuntu/Ubuntu-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/ubuntu/Ubuntu-BoldItalic.ttf
+          weight: 700
+          style: italic
+
+
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

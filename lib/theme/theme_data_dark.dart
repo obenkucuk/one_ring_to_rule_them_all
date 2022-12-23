@@ -1,6 +1,8 @@
 import 'package:base_application/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
+const String fontFamily = 'Ubuntu';
+
 ThemeData darkTheme = ThemeData(
   useMaterial3: true,
   brightness: Brightness.dark,
@@ -39,89 +41,44 @@ ThemeData darkTheme = ThemeData(
   ),
   textTheme: const TextTheme(
     /// Label TextTheme
-    labelSmall: TextStyle(
-      fontSize: 11,
-      fontWeight: FontWeight.w500,
-      color: AppColorsX.textDarkTheme,
-    ),
-    labelMedium: TextStyle(
-      fontSize: 12,
-      fontWeight: FontWeight.w500,
-      color: AppColorsX.textDarkTheme,
-    ),
-    labelLarge: TextStyle(
-      fontSize: 14,
-      fontWeight: FontWeight.w500,
-      color: AppColorsX.textDarkTheme,
-    ),
+    labelSmall:
+        TextStyle(fontSize: 11, fontWeight: FontWeight.w500, color: AppColorsX.textDarkTheme, fontFamily: fontFamily),
+    labelMedium:
+        TextStyle(fontSize: 12, fontWeight: FontWeight.w500, color: AppColorsX.textDarkTheme, fontFamily: fontFamily),
+    labelLarge:
+        TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: AppColorsX.textDarkTheme, fontFamily: fontFamily),
 
     /// Body TextTheme
-    bodySmall: TextStyle(
-      fontSize: 12,
-      fontWeight: FontWeight.w400,
-      color: AppColorsX.textDarkTheme,
-    ),
-    bodyMedium: TextStyle(
-      fontSize: 14,
-      fontWeight: FontWeight.w400,
-      color: AppColorsX.textDarkTheme,
-    ),
-    bodyLarge: TextStyle(
-      fontSize: 16,
-      fontWeight: FontWeight.w400,
-      color: AppColorsX.textDarkTheme,
-    ),
+    bodySmall:
+        TextStyle(fontSize: 12, fontWeight: FontWeight.w400, color: AppColorsX.textDarkTheme, fontFamily: fontFamily),
+    bodyMedium:
+        TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: AppColorsX.textDarkTheme, fontFamily: fontFamily),
+    bodyLarge:
+        TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: AppColorsX.textDarkTheme, fontFamily: fontFamily),
 
     /// Title TextTheme
-    titleSmall: TextStyle(
-      fontSize: 14,
-      fontWeight: FontWeight.w500,
-      color: AppColorsX.textDarkTheme,
-    ),
-    titleMedium: TextStyle(
-      fontSize: 16,
-      fontWeight: FontWeight.w500,
-      color: AppColorsX.textDarkTheme,
-    ),
-    titleLarge: TextStyle(
-      fontSize: 22,
-      fontWeight: FontWeight.w500,
-      color: AppColorsX.textDarkTheme,
-    ),
+    titleSmall:
+        TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: AppColorsX.textDarkTheme, fontFamily: fontFamily),
+    titleMedium:
+        TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: AppColorsX.textDarkTheme, fontFamily: fontFamily),
+    titleLarge:
+        TextStyle(fontSize: 22, fontWeight: FontWeight.w500, color: AppColorsX.textDarkTheme, fontFamily: fontFamily),
 
     /// Headline TextTheme
-    headlineSmall: TextStyle(
-      fontSize: 24,
-      fontWeight: FontWeight.w400,
-      color: AppColorsX.textDarkTheme,
-    ),
-    headlineMedium: TextStyle(
-      fontSize: 28,
-      fontWeight: FontWeight.w400,
-      color: AppColorsX.textDarkTheme,
-    ),
-    headlineLarge: TextStyle(
-      fontSize: 32,
-      fontWeight: FontWeight.w400,
-      color: AppColorsX.textDarkTheme,
-    ),
+    headlineSmall:
+        TextStyle(fontSize: 24, fontWeight: FontWeight.w400, color: AppColorsX.textDarkTheme, fontFamily: fontFamily),
+    headlineMedium:
+        TextStyle(fontSize: 28, fontWeight: FontWeight.w400, color: AppColorsX.textDarkTheme, fontFamily: fontFamily),
+    headlineLarge:
+        TextStyle(fontSize: 32, fontWeight: FontWeight.w400, color: AppColorsX.textDarkTheme, fontFamily: fontFamily),
 
     /// Display TextTheme
-    displaySmall: TextStyle(
-      fontSize: 36,
-      fontWeight: FontWeight.w400,
-      color: AppColorsX.textDarkTheme,
-    ),
-    displayMedium: TextStyle(
-      fontSize: 45,
-      fontWeight: FontWeight.w400,
-      color: AppColorsX.textDarkTheme,
-    ),
-    displayLarge: TextStyle(
-      fontSize: 57,
-      fontWeight: FontWeight.w400,
-      color: AppColorsX.textDarkTheme,
-    ),
+    displaySmall:
+        TextStyle(fontSize: 36, fontWeight: FontWeight.w400, color: AppColorsX.textDarkTheme, fontFamily: fontFamily),
+    displayMedium:
+        TextStyle(fontSize: 45, fontWeight: FontWeight.w400, color: AppColorsX.textDarkTheme, fontFamily: fontFamily),
+    displayLarge:
+        TextStyle(fontSize: 57, fontWeight: FontWeight.w400, color: AppColorsX.textDarkTheme, fontFamily: fontFamily),
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ButtonStyle(

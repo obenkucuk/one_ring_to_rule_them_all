@@ -1,6 +1,6 @@
 import 'package:base_application/components/buttons/material_button_x.dart';
 import 'package:base_application/components/dropdown/my_dropdown.dart';
-import 'package:base_application/core/constants/size_constants.dart';
+import 'package:base_application/constants/size_constants.dart';
 import 'package:base_application/core/extensions/widget_scale.dart';
 import 'package:base_application/core/media_query_x.dart';
 import 'package:base_application/screens/main_screens/portfolio_screen/controller/portfolio_controller.dart';

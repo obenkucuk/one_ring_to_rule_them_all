@@ -8,7 +8,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../core/constants/size_constants.dart';
+import '../../../../constants/size_constants.dart';
 import '../../../../core/media_query_x.dart';
 
 class PortfolioView extends GetView<PortfolioController> {

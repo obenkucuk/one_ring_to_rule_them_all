@@ -1,4 +1,4 @@
-import 'package:base_application/core/constants/size_constants.dart';
+import 'package:base_application/constants/size_constants.dart';
 import 'package:base_application/core/extensions/widget_scale.dart';
 import 'package:base_application/theme/text_style.dart';
 import 'package:flutter/material.dart';

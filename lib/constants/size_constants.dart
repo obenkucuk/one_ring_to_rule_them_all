@@ -1,5 +1,4 @@
 /// Standart padding sizes
-
 const double padding5 = 5;
 const double padding10 = 10;
 const double padding15 = 15;

@@ -18,32 +18,34 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   final sessionServices = Get.find<SessionServices>();
-  int selectedScreen = 0;
+  int _selectedIndex = 0;
 
   final List<Widget> mainScreens = const [HomeScreen(), PortfolioScreen(), SettingsScreen()];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: mainScreens[selectedScreen],
+      body: mainScreens[_selectedIndex],
       bottomNavigationBar: Platform.isAndroid
           ? NavigationBar(
-              onDestinationSelected: (int index) => setState(() => selectedScreen = index),
-              selectedIndex: selectedScreen,
-              destinations: const <Widget>[
-                NavigationDestination(icon: Icon(Icons.explore), label: 'Explore'),
-                NavigationDestination(icon: Icon(Icons.commute), label: 'Commute'),
+              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+              onDestinationSelected: (int index) => setState(() => _selectedIndex = index),
+              selectedIndex: _selectedIndex,
+              destinations: const [
+                NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
+                NavigationDestination(icon: Icon(Icons.grid_3x3), label: 'Port'),
                 NavigationDestination(
-                    selectedIcon: Icon(Icons.bookmark), icon: Icon(Icons.bookmark_border), label: 'Saved'),
+                    selectedIcon: Icon(Icons.bookmark), icon: Icon(Icons.bookmark_border), label: 'Setting'),
               ],
             )
           : CupertinoTabBar(
-              currentIndex: selectedScreen,
-              onTap: (index) => setState(() => selectedScreen = index),
-              items: [
-                const BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-                const BottomNavigationBarItem(icon: Icon(Icons.grid_3x3), label: 'Port'),
-                const BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings')
+              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+              currentIndex: _selectedIndex,
+              onTap: (int index) => setState(() => _selectedIndex = index),
+              items: const [
+                BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+                BottomNavigationBarItem(icon: Icon(Icons.grid_3x3), label: 'Port'),
+                BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings')
               ],
             ),
     );

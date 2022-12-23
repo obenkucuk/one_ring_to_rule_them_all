@@ -1,5 +1,6 @@
 import 'package:base_application/core/extensions/widget_scale.dart';
 import 'package:base_application/core/media_query_x.dart';
+import 'package:base_application/main.dart';
 import 'package:base_application/router/router.dart';
 import 'package:base_application/screens/main_screens/settings_screen/controller/settings_controller.dart';
 import 'package:base_application/core/constants/size_constants.dart';
@@ -66,16 +67,18 @@ class SettingsView extends GetView<SettingsController> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               IconButton(
-                onPressed: () => sessionServices.changeTheme(themeMode: ThemeMode.dark, brightness: Brightness.dark),
+                onPressed: () =>
+                    MaterialInherited.of(context).changeTheme(mode: ThemeMode.dark, brightness: Brightness.dark),
                 icon: const Icon(Icons.dark_mode),
               ),
               IconButton(
-                onPressed: () => sessionServices.changeTheme(themeMode: ThemeMode.light, brightness: Brightness.light),
+                onPressed: () =>
+                    MaterialInherited.of(context).changeTheme(mode: ThemeMode.light, brightness: Brightness.light),
                 icon: const Icon(Icons.light_mode),
               ),
               IconButton(
-                onPressed: () => sessionServices.changeTheme(
-                    themeMode: ThemeMode.system,
+                onPressed: () => MaterialInherited.of(context).changeTheme(
+                    mode: ThemeMode.system,
                     brightness: MediaQueryX.platformBrightness == Brightness.dark ? Brightness.dark : Brightness.light),
                 icon: const Icon(Icons.settings),
               ),
@@ -101,7 +104,7 @@ class SettingsView extends GetView<SettingsController> {
           //         child: const Text('system')),
           //   ],
           // ),
-          TextButton(onPressed: () => sessionServices.changeLocale(), child: const Icon(Icons.language)),
+          TextButton(onPressed: () => MaterialInherited.of(context).changeLocale(), child: const Icon(Icons.language)),
         ],
       ),
     );

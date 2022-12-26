@@ -11,7 +11,7 @@ class SharedPreferencesX {
     return _sharedPrefs = await _instance;
   }
 
-  static String? getString(String key) => _sharedPrefs!.getString(key);
+  String? getString(String key) => _sharedPrefs!.getString(key);
 
   static void setString(String key, String value) {
     _sharedPrefs!.setString(key, value);

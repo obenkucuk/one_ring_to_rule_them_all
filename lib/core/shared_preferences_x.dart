@@ -13,8 +13,8 @@ class SharedPreferencesX {
 
   String? getString(String key) => _sharedPrefs!.getString(key);
 
-  static void setString(String key, String value) {
-    _sharedPrefs!.setString(key, value);
+  Future<void> setString(String key, String value) async {
+    await _sharedPrefs!.setString(key, value);
   }
 }
 

@@ -24,22 +24,24 @@ class MyApp extends StatelessWidget {
     MediaQueryX.setScreenSize();
 
     return MaterialAppUpdater(
-      child: Builder(builder: (context) {
-        return MaterialApp.router(
-          scaffoldMessengerKey: Get.find<SessionServices>().snackbarKey,
-          debugShowCheckedModeBanner: false,
-          theme: lightTheme,
-          darkTheme: darkTheme,
-          title: AppConstants.appName,
-          themeMode: MaterialAppInheritedWidget.of(context).themeMode,
-          locale: MaterialAppInheritedWidget.of(context).locale,
-          supportedLocales: AppLocalizations.supportedLocales,
-          localizationsDelegates: AppLocalizations.localizationsDelegates,
-          routerConfig: appRouter,
-          // routeInformationParser: appRouter.routeInformationParser,
-          // routerDelegate: appRouter.routerDelegate,
-        );
-      }),
+      child: Builder(
+        builder: (context) {
+          return MaterialApp.router(
+            scaffoldMessengerKey: Get.find<SessionServices>().snackbarKey,
+            debugShowCheckedModeBanner: false,
+            theme: lightTheme,
+            darkTheme: darkTheme,
+            title: AppConstants.appName,
+            themeMode: MaterialAppInheritedWidget.of(context).themeMode,
+            locale: MaterialAppInheritedWidget.of(context).locale,
+            supportedLocales: AppLocalizations.supportedLocales,
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
+            routerConfig: appRouter,
+            // routeInformationParser: appRouter.routeInformationParser,
+            // routerDelegate: appRouter.routerDelegate,
+          );
+        },
+      ),
     );
   }
 }

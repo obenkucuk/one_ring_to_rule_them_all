@@ -50,7 +50,7 @@ class SettingsView extends GetView<SettingsController> {
           Text(appLocalization!.helloWorld, style: s18W500),
           Text(appLocalization!.settings, style: s8W500),
           Text('data', style: s24W700),
-          Text("Yazı Boyutu verilmemiş yazı"),
+          const Text('Yazı Boyutu verilmemiş yazı'),
           const SizedBox(height: 50),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -58,7 +58,10 @@ class SettingsView extends GetView<SettingsController> {
               IconButton(
                 onPressed: () => MaterialAppInheritedWidget.of(context)
                     .changeTheme(mode: ThemeMode.dark, brightness: Brightness.dark),
-                icon: const Icon(Icons.dark_mode),
+                icon: Icon(
+                  Icons.dark_mode,
+                  color: Theme.of(context).colorScheme.secondary,
+                ),
               ),
               IconButton(
                 onPressed: () => MaterialAppInheritedWidget.of(context)

@@ -30,9 +30,9 @@ class MaterialAppUpdaterState extends State<MaterialAppUpdater> {
   @override
   Widget build(BuildContext context) {
     return MaterialAppInheritedWidget(
+      state: this,
       themeMode: themeMode,
       locale: locale,
-      state: this,
       child: widget.child,
     );
   }
@@ -51,8 +51,9 @@ class MaterialAppInheritedWidget extends InheritedWidget {
     required this.themeMode,
   });
 
-  static MaterialAppUpdaterState of(BuildContext context) =>
-      context.dependOnInheritedWidgetOfExactType<MaterialAppInheritedWidget>()!.state;
+  static MaterialAppUpdaterState of(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType<MaterialAppInheritedWidget>()!.state;
+  }
 
   @override
   bool updateShouldNotify(covariant MaterialAppInheritedWidget oldWidget) {

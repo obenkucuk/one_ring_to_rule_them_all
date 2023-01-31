@@ -45,9 +45,9 @@ class MaterialAppInheritedWidget extends InheritedWidget {
   final MaterialAppUpdaterState state;
 
   MaterialAppInheritedWidget({
+    required super.child,
     required this.locale,
     required this.state,
-    required super.child,
     required this.themeMode,
   });
 

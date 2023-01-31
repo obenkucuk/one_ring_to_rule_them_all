@@ -50,6 +50,7 @@ class SettingsView extends GetView<SettingsController> {
           Text(appLocalization!.helloWorld, style: s18W500),
           Text(appLocalization!.settings, style: s8W500),
           Text('data', style: s24W700),
+          Text("Yazı Boyutu verilmemiş yazı"),
           const SizedBox(height: 50),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,

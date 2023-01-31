@@ -6,13 +6,10 @@ const String fontFamily = 'Ubuntu';
 ThemeData darkTheme = ThemeData(
   useMaterial3: true,
   brightness: Brightness.dark,
-  selectedRowColor: AppColorsX.textDarkTheme,
-  backgroundColor: AppColorsX.backgroundDark,
   scaffoldBackgroundColor: AppColorsX.backgroundDark,
   primaryIconTheme: const IconThemeData(color: Colors.white),
   iconTheme: const IconThemeData(color: Colors.black),
   cardColor: AppColorsX.primaryContainerDark,
-  bottomAppBarColor: Colors.white,
   dividerColor: AppColorsX.dividerDark,
   shadowColor: Colors.black26,
   primaryColor: Colors.greenAccent,
@@ -195,6 +192,6 @@ ThemeData darkTheme = ThemeData(
     ),
   ),
   indicatorColor: AppColorsX.indicatorDarkColor,
-  bottomAppBarTheme: const BottomAppBarTheme(color: Colors.transparent, elevation: 0),
+  bottomAppBarTheme: const BottomAppBarTheme(color: Colors.white, elevation: 0),
   floatingActionButtonTheme: const FloatingActionButtonThemeData(),
 );

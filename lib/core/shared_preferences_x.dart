@@ -11,9 +11,9 @@ class SharedPreferencesX {
     return _sharedPrefs = await _instance;
   }
 
-  String? getString(String key) => _sharedPrefs!.getString(key);
+  static String? getString(String key) => _sharedPrefs!.getString(key);
 
-  Future<void> setString(String key, String value) async {
+  static Future<void> setString(String key, String value) async {
     await _sharedPrefs!.setString(key, value);
   }
 }

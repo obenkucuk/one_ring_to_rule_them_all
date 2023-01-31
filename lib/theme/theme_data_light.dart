@@ -6,13 +6,12 @@ import 'package:flutter/material.dart';
 ThemeData lightTheme = ThemeData(
   useMaterial3: true,
   brightness: Brightness.light,
-  selectedRowColor: AppColorsX.textDarkTheme,
-  backgroundColor: AppColorsX.backgroundLight,
+
   scaffoldBackgroundColor: AppColorsX.backgroundLight,
   primaryIconTheme: const IconThemeData(color: Colors.white),
   iconTheme: const IconThemeData(color: Colors.black),
   cardColor: AppColorsX.cardLight,
-  bottomAppBarColor: Colors.white,
+
   dividerColor: AppColorsX.dividerLight,
   shadowColor: Colors.black26,
   primaryColor: Colors.red,
@@ -83,6 +82,8 @@ ThemeData lightTheme = ThemeData(
 
   /// Button TextTheme
   buttonTheme: const ButtonThemeData(),
+
+  /// Button
 
   /// ElevatedButton TextTheme
   elevatedButtonTheme: ElevatedButtonThemeData(
@@ -207,7 +208,7 @@ ThemeData lightTheme = ThemeData(
   ),
   indicatorColor: AppColorsX.indicatorLightColor,
   bottomAppBarTheme: const BottomAppBarTheme(
-    color: Colors.transparent,
+    color: Colors.white,
     elevation: 0,
   ),
   floatingActionButtonTheme: const FloatingActionButtonThemeData(),

@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:base_application/core/extensions/widget_scale.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -46,7 +45,6 @@ class TextFormFieldX extends StatelessWidget {
       onChanged: (value) => onChanged!(value),
       obscuringCharacter: '•',
       onTap: () => log('Text Form Alanı Üzerine tıklandı'),
-      toolbarOptions: const ToolbarOptions(copy: true, paste: true, selectAll: true),
       decoration: InputDecoration(
         fillColor: fillColor,
         hintText: hintText,

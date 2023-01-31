@@ -131,9 +131,9 @@ class PortfolioView extends GetView<PortfolioController> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          SharedPreferencesX.setString("key", "BATU");
-          String? yazi = SharedPreferencesX.getString("key");
-          print(yazi);
+          SharedPreferencesX.setString('key', 'BATU');
+          String? yazi = SharedPreferencesX.getString('key');
+          debugPrint(yazi);
         },
       ),
     );

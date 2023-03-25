@@ -17,7 +17,8 @@ class MaterialAppUpdaterState extends State<MaterialAppUpdater> {
   void changeTheme({required ThemeMode mode, Brightness? brightness}) {
     setState(() {
       themeMode = mode;
-      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarBrightness: brightness));
+      SystemChrome.setSystemUIOverlayStyle(
+          SystemUiOverlayStyle(statusBarBrightness: brightness));
     });
   }
 
@@ -52,7 +53,9 @@ class MaterialAppInheritedWidget extends InheritedWidget {
   });
 
   static MaterialAppUpdaterState of(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<MaterialAppInheritedWidget>()!.state;
+    return context
+        .dependOnInheritedWidgetOfExactType<MaterialAppInheritedWidget>()!
+        .state;
   }
 
   @override

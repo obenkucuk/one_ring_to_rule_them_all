@@ -5,9 +5,7 @@ import 'package:base_application/screens/main_screens/home_screen/home_screen.da
 import 'package:base_application/screens/main_screens/portfolio_screen/portfolio_screen.dart';
 import 'package:base_application/screens/main_screens/settings_screen/settings_screen.dart';
 import 'package:base_application/screens/others/add_stock/add_stock_screen.dart';
-import 'package:base_application/session_services.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 
 import '../main_screen.dart';
@@ -88,14 +86,20 @@ final GoRouter appRouter = GoRouter(
     ),
   ],
   errorPageBuilder: (context, state) {
-    return const MaterialPage(child: Scaffold(body: Center(child: Text('Error Page will be here'))));
+    return const MaterialPage(
+        child: Scaffold(body: Center(child: Text('Error Page will be here'))));
   },
   redirect: (BuildContext context, GoRouterState state) {
-    var settings = Get.find<SessionServices>();
+    // var settings = Get.find<SessionServices>();
 
-    if (settings.isLogin.isFalse && state.subloc != '/') {
-      return '/login';
-    }
+    // if (settings.isLogin.isFalse && state.subloc != '/') {
+    //   print("object");
+    //   return '/login';
+    // }
+
+    // if (state.subloc != '/') {
+    //   return '/login';
+    // }
     return null;
   },
 );

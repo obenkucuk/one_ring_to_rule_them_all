@@ -27,7 +27,8 @@ class MyApp extends StatelessWidget {
       child: Builder(
         builder: (context) {
           return MaterialApp.router(
-            scaffoldMessengerKey: Get.find<SessionServices>().snackbarKey,
+            //  scaffoldMessengerKey: Get.find<SessionServices>().snackbarKey,
+
             debugShowCheckedModeBanner: false,
             theme: lightTheme,
             darkTheme: darkTheme,

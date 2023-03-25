@@ -23,7 +23,7 @@ linter:
   # `// ignore_for_file: name_of_lint` syntax on the line or in the file
   # producing the lint.
   rules:
-    # Error Rules  
+    # Error Rules
     - avoid_empty_else
     - lines_longer_than_80_chars: false
     - avoid_print
@@ -46,6 +46,7 @@ linter:
     - avoid_escaping_inner_quotes
     - avoid_field_initializers_in_const_classes
     - avoid_final_parameters: false
+    - flutter_style_todos: false
     - avoid_function_literals_in_foreach_calls
     - avoid_multiple_declarations_per_line
     - avoid_return_types_on_setters
@@ -59,7 +60,6 @@ linter:
     - do_not_use_environment
     - empty_catches
     - empty_constructor_bodies
-    - flutter_style_todos
     - file_names
     - join_return_with_assignment
     - leading_newlines_in_multiline_strings
@@ -133,9 +133,8 @@ linter:
     - use_to_and_as_if_applicable
     - use_test_throws_matchers
     - use_rethrow_when_possible
-    
+
     # avoid_print: false  # Uncomment to disable the `avoid_print` rule
     # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
-
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options

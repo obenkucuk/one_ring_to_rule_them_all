@@ -43,7 +43,9 @@ class LoginController extends GetxController {
     super.onReady();
 
     /// şifreyi otomatik gizlemek için
-    passwordFocus.addListener(() => (!passwordFocus.hasFocus) ? isPasswordHidden(true) : isPasswordHidden(false));
+    passwordFocus.addListener(() => (!passwordFocus.hasFocus)
+        ? isPasswordHidden(true)
+        : isPasswordHidden(false));
   }
 
   @override

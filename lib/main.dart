@@ -1,4 +1,5 @@
 import 'package:base_application/constants/app_constants.dart';
+import 'package:base_application/core/media_query_x.dart';
 import 'package:base_application/core/shared_preferences_x.dart';
 import 'package:base_application/router/router.dart';
 import 'package:base_application/session_services.dart';
@@ -6,7 +7,6 @@ import 'package:base_application/theme/material_inherited.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:get/get.dart';
-import 'core/media_query_x.dart';
 import 'theme/theme_data_dark.dart';
 import 'theme/theme_data_light.dart';
 
@@ -21,7 +21,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.lazyPut(() => SessionServices());
-    MediaQueryX.setScreenSize();
 
     return MaterialAppUpdater(
       child: Builder(

@@ -14,8 +14,8 @@ class MediaQueryX {
   static late List<DisplayFeature> displayFeatures;
   static late double textScaleFactor;
 
-  static void setScreenSize() {
-    _mediaQueryData = MediaQueryData.fromWindow(WidgetsBinding.instance.window);
+  static void setScreenSize(BuildContext context) {
+    _mediaQueryData = MediaQuery.of(context);
 
     height = _mediaQueryData.size.height;
     width = _mediaQueryData.size.width;

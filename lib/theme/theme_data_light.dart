@@ -1,4 +1,3 @@
-import 'package:base_application/core/extensions/widget_scale.dart';
 import 'package:base_application/theme/app_colors.dart';
 import 'package:base_application/theme/theme_data_dark.dart';
 import 'package:flutter/material.dart';
@@ -107,7 +106,7 @@ ThemeData lightTheme = ThemeData(
   ),
   inputDecorationTheme: InputDecorationTheme(
     fillColor: Colors.grey.shade400,
-    contentPadding: EdgeInsets.symmetric(horizontal: 10.w),
+    contentPadding: const EdgeInsets.symmetric(horizontal: 10),
     filled: true,
     labelStyle: const TextStyle(
       fontSize: 14,
@@ -120,7 +119,7 @@ ThemeData lightTheme = ThemeData(
       fontSize: 14,
     ),
     border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(10.0.w),
+      borderRadius: BorderRadius.circular(10),
       borderSide: BorderSide.none,
     ),
   ),

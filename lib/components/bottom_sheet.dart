@@ -1,5 +1,5 @@
 import 'package:base_application/core/extensions/widget_scale.dart';
-import 'package:base_application/theme/app_colors.dart';
+import 'package:base_application/theme/app_colors_x.dart';
 import 'package:flutter/material.dart';
 
 /// Bütün sayfalardaki bottom sheetler buradan çağırılır.
@@ -12,10 +12,7 @@ Future<T?> showBottomSheetX<T>({
     context: context,
     backgroundColor: AppColorsX.backgroundLight,
     shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.only(
-        topLeft: Radius.circular(20.w),
-        topRight: Radius.circular(20.w),
-      ),
+      borderRadius: BorderRadius.vertical(top: Radius.circular(20.w)),
     ),
     builder: (BuildContext context) {
       return Column(

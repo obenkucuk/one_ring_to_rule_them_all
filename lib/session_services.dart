@@ -26,11 +26,9 @@ class SessionServices extends GetxController {
     } else {
       await MainScreenInheritedWidget.of(context).showSnacbar(
         response.errorMessage ?? 'ananı s,keyim',
-        ScaffoldMessengerType.error,
       );
     }
   }
 }
 
-AppLocalizations? get appLocalization =>
-    AppLocalizations.of(navigatorKey.currentContext!);
+AppLocalizations? get appLocalization => AppLocalizations.of(navigatorKey.currentContext!);

@@ -17,65 +17,66 @@ class AddStockView extends GetView<AddStockController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Add New Stock'),
+      appBar: AppBar(
+        title: const Text('Add New Stock'),
+      ),
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: padding20.w),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              height: 48.h,
+              child: MyDropdownWidget(
+                backgroundColor: Colors.white,
+                itemsList: const ['1', '2', '3'],
+                getSelectedValue: (p0) => null,
+                dropdownWidth: MediaQueryX.width - 40.w,
+              ),
+            ),
+            const Text('Hisse Adı'),
+            TextFieldX(
+              borderRadius: 0,
+              hintText: 'Lütfen hisse adını giriniz',
+              fillColor: Theme.of(context).colorScheme.primaryContainer,
+              focusNode: controller.nameFocus,
+              nextFocus: controller.numberFocus,
+              onChanged: (stockName) => controller.portfolioModel.stockName = stockName,
+            ),
+            const Text('Lot Sayısı'),
+            TextFieldX(
+              hintText: 'Lütfen lot miktarını giriniz',
+              fillColor: Theme.of(context).colorScheme.primaryContainer,
+              focusNode: controller.numberFocus,
+              nextFocus: controller.costFocus,
+              onChanged: (numberOfLots) => controller.portfolioModel.numberOfLots = double.parse(numberOfLots),
+            ),
+            const Text('Birim Maliyet'),
+            TextFieldX(
+              hintText: 'Lütfen birim maliyeti giriniz',
+              fillColor: Theme.of(context).colorScheme.primaryContainer,
+              focusNode: controller.costFocus,
+              textInputAction: TextInputAction.done,
+              onChanged: (unitCost) => controller.portfolioModel.unitCost = double.parse(unitCost),
+            ),
+            const Hero(
+              tag: 'oben',
+              child: SizedBox.square(
+                dimension: 100,
+                child: ColoredBox(color: Colors.amber),
+              ),
+            ),
+            const Spacer(),
+            MaterialButtonX(
+                buttonText: 'Ekle',
+                onTap: () {
+                  Get.find<PortfolioController>().portfolioList.value.add(controller.portfolioModel);
+                  context.pop();
+                }),
+            SizedBox(height: MediaQueryX.padding.bottom),
+          ],
         ),
-        body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: padding20.w),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                height: 48.h,
-                child: MyDropdownWidget(
-                  backgroundColor: Colors.white,
-                  itemsList: const ['1', '2', '3'],
-                  getSelectedValue: (p0) => null,
-                  dropdownWidth: MediaQueryX.width - 40.w,
-                ),
-              ),
-              const Text('Hisse Adı'),
-              TextFieldX(
-                borderRadius: 0,
-                hintText: 'Lütfen hisse adını giriniz',
-                fillColor: Theme.of(context).colorScheme.primaryContainer,
-                focusNode: controller.nameFocus,
-                nextFocus: controller.numberFocus,
-                onChanged: (stockName) => controller.portfolioModel.stockName = stockName,
-              ),
-              const Text('Lot Sayısı'),
-              TextFieldX(
-                hintText: 'Lütfen lot miktarını giriniz',
-                fillColor: Theme.of(context).colorScheme.primaryContainer,
-                focusNode: controller.numberFocus,
-                nextFocus: controller.costFocus,
-                onChanged: (numberOfLots) => controller.portfolioModel.numberOfLots = double.parse(numberOfLots),
-              ),
-              const Text('Birim Maliyet'),
-              TextFieldX(
-                hintText: 'Lütfen birim maliyeti giriniz',
-                fillColor: Theme.of(context).colorScheme.primaryContainer,
-                focusNode: controller.costFocus,
-                textInputAction: TextInputAction.done,
-                onChanged: (unitCost) => controller.portfolioModel.unitCost = double.parse(unitCost),
-              ),
-              const Hero(
-                tag: 'oben',
-                child: SizedBox.square(
-                  dimension: 100,
-                  child: ColoredBox(color: Colors.amber),
-                ),
-              ),
-              const Spacer(),
-              MaterialButtonX(
-                  buttonText: 'Ekle',
-                  onTap: () {
-                    Get.find<PortfolioController>().portfolioList.value.add(controller.portfolioModel);
-                    context.pop();
-                  }),
-              SizedBox(height: MediaQueryX.padding.bottom)
-            ],
-          ),
-        ));
+      ),
+    );
   }
 }

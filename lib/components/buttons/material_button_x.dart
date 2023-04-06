@@ -1,5 +1,5 @@
 import 'package:base_application/core/extensions/widget_scale.dart';
-import 'package:base_application/theme/app_colors.dart';
+import 'package:base_application/theme/app_colors_x.dart';
 import 'package:flutter/material.dart';
 
 class MaterialButtonX extends StatelessWidget {
@@ -11,7 +11,10 @@ class MaterialButtonX extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final primary = Theme.of(context).colorScheme.primary;
+
     return MaterialButton(
+      onPressed: () => onTap(),
       shape: RoundedRectangleBorder(
         side: BorderSide.none, // BorderSide(color: Colors.black, width: 1.w),
         borderRadius: BorderRadius.circular(borderRadius ?? 10.w),
@@ -19,7 +22,7 @@ class MaterialButtonX extends StatelessWidget {
       padding: EdgeInsets.zero,
       height: 50.h,
       minWidth: 100.w,
-      highlightColor: Theme.of(context).colorScheme.primary,
+      highlightColor: primary,
       disabledColor: Colors.red,
       colorBrightness: Brightness.dark,
       disabledElevation: 0,
@@ -31,10 +34,9 @@ class MaterialButtonX extends StatelessWidget {
       textColor: Colors.white,
       animationDuration: Duration.zero,
       hoverColor: AppColorsX.backgroundDark,
-      color: Theme.of(context).colorScheme.primary,
+      color: primary,
       splashColor: Colors.transparent,
       enableFeedback: true,
-      onPressed: () => onTap(),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

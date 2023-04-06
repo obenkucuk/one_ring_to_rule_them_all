@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/state_manager.dart';
 
-enum ScreenStatus { loading, loaded, error }
-
 class HomeController extends GetxController {
   final key = GlobalKey();
 
@@ -29,3 +27,5 @@ class HomeController extends GetxController {
     fetchAllStocks();
   }
 }
+
+enum ScreenStatus { loading, loaded, error }

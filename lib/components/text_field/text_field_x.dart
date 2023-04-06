@@ -56,15 +56,17 @@ class _TextFieldXState extends State<TextFieldX> {
   String? hintText;
   Color hintColor = Colors.grey.shade700;
 
+  void _focusListener() {
+    if (!widget.focusNode.hasFocus) {
+      validate(textEditingController.text);
+    }
+  }
+
   @override
   void initState() {
     super.initState();
     hintText = widget.hintText;
-    widget.focusNode.addListener(() {
-      if (!widget.focusNode.hasFocus) {
-        validate(textEditingController.text);
-      }
-    });
+    widget.focusNode.addListener(_focusListener);
   }
 
   void validate(String value) async {
@@ -92,6 +94,7 @@ class _TextFieldXState extends State<TextFieldX> {
   void dispose() {
     super.dispose();
     textEditingController.dispose();
+    widget.focusNode.removeListener(_focusListener);
   }
 
   @override

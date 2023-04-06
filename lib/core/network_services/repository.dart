@@ -10,25 +10,24 @@ class Repository extends Header {
   Future<BaseHttpRequest<DenemeModel>> denemeIstek(Object? body) async {
     try {
       var response = await HttpClient.instance.request(
-          method: HttpMethods.POST,
-          path: HttpUrls.register,
-          body: body,
-          headers: createHeader());
+        method: HttpMethods.POST,
+        path: HttpUrls.register,
+        body: body,
+        headers: createHeader(),
+      );
 
       if (response!.statusCode == HttpStatus.ok) {
         DenemeModel model = DenemeModel().fromJson(jsonDecode(response.body));
+
         return BaseHttpRequest(status: response.statusCode, data: model);
       } else {
-        HttpNotOkModel model =
-            HttpNotOkModel().fromJson(jsonDecode(response.body));
+        HttpNotOkModel model = HttpNotOkModel().fromJson(jsonDecode(response.body));
 
-        return BaseHttpRequest(
-            status: response.statusCode, errorMessage: model.errorMessage);
+        return BaseHttpRequest(status: response.statusCode, errorMessage: model.errorMessage);
       }
     } catch (e, s) {
       /// TODO: burayı halledin:
-      return BaseHttpRequest(
-          status: 20000, errorMessage: 'Repository Catch Block');
+      return BaseHttpRequest(status: 20000, errorMessage: 'Repository Catch Block');
     }
   }
 }

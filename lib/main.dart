@@ -1,9 +1,8 @@
 import 'package:base_application/constants/app_constants.dart';
-import 'package:base_application/core/media_query_x.dart';
 import 'package:base_application/core/shared_preferences_x.dart';
 import 'package:base_application/router/router.dart';
 import 'package:base_application/session_services.dart';
-import 'package:base_application/theme/material_inherited.dart';
+import 'package:base_application/theme/material_app_updater.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:get/get.dart';
@@ -12,11 +11,11 @@ import 'theme/theme_data_light.dart';
 
 void main() async {
   await SharedPreferencesX.init();
-  runApp(const MyApp());
+  runApp(const Main());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class Main extends StatelessWidget {
+  const Main({super.key});
 
   @override
   Widget build(BuildContext context) {

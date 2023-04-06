@@ -33,6 +33,8 @@ class TextFormFieldX extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final BorderRadius borderRadius = BorderRadius.circular(10.w);
+
     return TextFormField(
       autovalidateMode: autovalidateMode ?? AutovalidateMode.disabled,
       textInputAction: isFinalFormElement == null ? TextInputAction.next : TextInputAction.done,
@@ -53,32 +55,32 @@ class TextFormFieldX extends StatelessWidget {
         isDense: true,
         contentPadding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 15.w),
         focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.w),
+          borderRadius: borderRadius,
           borderSide: BorderSide.none,
           gapPadding: 0,
         ),
         disabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.w),
+          borderRadius: borderRadius,
           borderSide: BorderSide.none,
           gapPadding: 0,
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.w),
+          borderRadius: borderRadius,
           borderSide: BorderSide.none,
           gapPadding: 0,
         ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.w),
+          borderRadius: borderRadius,
           borderSide: BorderSide.none,
           gapPadding: 0,
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.w),
+          borderRadius: borderRadius,
           borderSide: BorderSide.none,
           gapPadding: 0,
         ),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.w),
+          borderRadius: borderRadius,
           borderSide: BorderSide.none,
           gapPadding: 0,
         ),

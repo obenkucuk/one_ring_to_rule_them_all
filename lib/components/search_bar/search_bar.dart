@@ -27,8 +27,11 @@ class _SearchBarState extends State<SearchBar> with SingleTickerProviderStateMix
     super.initState();
     animationController = AnimationController(vsync: this, duration: const Duration(milliseconds: 1000));
 
-    sizeAnimationSearchBar = Tween<double>(begin: 0, end: 1).animate(
-        CurvedAnimation(parent: animationController, curve: Curves.easeInOutCirc, reverseCurve: Curves.easeOutCirc));
+    sizeAnimationSearchBar = Tween<double>(begin: 0, end: 1).animate(CurvedAnimation(
+      parent: animationController,
+      curve: Curves.easeInOutCirc,
+      reverseCurve: Curves.easeOutCirc,
+    ));
 
     oneToZeroAnimation = Tween<double>(begin: 1, end: 0)
         .animate(CurvedAnimation(parent: animationController, curve: Curves.linearToEaseOut));
@@ -107,9 +110,9 @@ class _SearchBarState extends State<SearchBar> with SingleTickerProviderStateMix
               alignment: Alignment.center,
               width: oneToZeroAnimation.value * 40.w,
               height: oneToZeroAnimation.value * 40.w,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.amber,
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.all(Radius.circular(20)),
               ),
               child: const CircleAvatar(radius: 5),
             ),
@@ -121,10 +124,13 @@ class _SearchBarState extends State<SearchBar> with SingleTickerProviderStateMix
               child: Transform.translate(
                 offset: Offset(oneToZeroAnimation.value * (-leadingSize.width), 0),
                 child: Container(
-                    alignment: Alignment.center,
-                    width: zeroToOneAnimation.value * 40.w,
-                    height: zeroToOneAnimation.value * 40.w,
-                    child: FittedBox(child: Text('Cancel', style: s12W500))),
+                  alignment: Alignment.center,
+                  width: zeroToOneAnimation.value * 40.w,
+                  height: zeroToOneAnimation.value * 40.w,
+                  child: FittedBox(
+                    child: Text('Cancel', style: s12W500),
+                  ),
+                ),
               ),
             ),
           ),

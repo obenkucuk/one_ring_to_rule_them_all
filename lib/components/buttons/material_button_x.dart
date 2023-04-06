@@ -11,7 +11,7 @@ class MaterialButtonX extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final primary = Theme.of(context).colorScheme.primary;
+    var primary = Theme.of(context).colorScheme.primary;
 
     return MaterialButton(
       onPressed: () => onTap(),

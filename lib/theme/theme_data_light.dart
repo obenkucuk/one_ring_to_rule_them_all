@@ -29,9 +29,11 @@ ThemeData lightTheme = ThemeData(
     onError: Colors.white,
     brightness: Brightness.light,
   ),
-  cardTheme: CardTheme(
+  cardTheme: const CardTheme(
     elevation: 0,
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(10)),
+    ),
     color: AppColorsX.backgroundLight,
     margin: EdgeInsets.zero,
   ),
@@ -98,8 +100,8 @@ ThemeData lightTheme = ThemeData(
       ),
       padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.zero),
       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-        RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
+        const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(10)),
         ),
       ),
     ),
@@ -118,8 +120,8 @@ ThemeData lightTheme = ThemeData(
       color: Colors.white,
       fontSize: 14,
     ),
-    border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(10),
+    border: const OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(10)),
       borderSide: BorderSide.none,
     ),
   ),
@@ -156,8 +158,8 @@ ThemeData lightTheme = ThemeData(
         ),
       ),
       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-        RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
+        const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(10)),
         ),
       ),
     ),
@@ -166,8 +168,8 @@ ThemeData lightTheme = ThemeData(
     fillColor: MaterialStateProperty.all<Color?>(AppColorsX.primary),
     checkColor: MaterialStateProperty.all<Color?>(Colors.white),
     side: const BorderSide(width: 0.7, color: AppColorsX.primary),
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(10),
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(10)),
     ),
   ),
   radioTheme: RadioThemeData(

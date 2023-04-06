@@ -60,9 +60,9 @@ class _MyDropdownWidgetState extends State<MyDropdownWidget> {
     setState(() => overlayIsVisible = true);
     RenderBox renderBox = dimensionKey.currentContext!.findRenderObject() as RenderBox;
     Offset offset = renderBox.localToGlobal(Offset.zero);
+    var width = renderBox.size.width;
 
     overlayEntry = OverlayEntry(builder: (context) {
-      debugPrint(renderBox.size.width.toString());
       return SizedBox(
         width: MediaQueryX.width,
         height: MediaQueryX.height,
@@ -73,8 +73,8 @@ class _MyDropdownWidgetState extends State<MyDropdownWidget> {
               child: const ColoredBox(color: Colors.transparent),
             ),
             Positioned(
-              left: MediaQueryX.width - offset.dx > (widget.dropdownWidth ?? renderBox.size.width) ? offset.dx : null,
-              right: MediaQueryX.width - offset.dx < (widget.dropdownWidth ?? renderBox.size.width) ? 0 + 20 : null,
+              left: MediaQueryX.width - offset.dx > (widget.dropdownWidth ?? width) ? offset.dx : null,
+              right: MediaQueryX.width - offset.dx < (widget.dropdownWidth ?? width) ? 0 + 20 : null,
               top: offset.dy + renderBox.size.height + 15.h,
               child: Scrollbar(
                 child: SizedBox(

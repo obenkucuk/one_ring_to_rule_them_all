@@ -1,3 +1,4 @@
+import 'package:base_application/core/extensions/widget_scale.dart';
 import 'package:flutter/material.dart';
 
 mixin BottomSheetX {
@@ -20,7 +21,7 @@ mixin BottomSheetX {
         return Column(
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,

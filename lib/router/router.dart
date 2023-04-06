@@ -87,7 +87,8 @@ final GoRouter appRouter = GoRouter(
   ],
   errorPageBuilder: (context, state) {
     return const MaterialPage(
-        child: Scaffold(body: Center(child: Text('Error Page will be here'))));
+      child: Scaffold(body: Center(child: Text('Error Page will be here'))),
+    );
   },
   redirect: (BuildContext context, GoRouterState state) {
     // var settings = Get.find<SessionServices>();

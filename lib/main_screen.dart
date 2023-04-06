@@ -16,6 +16,7 @@ class MainScreen extends StatefulWidget {
 }
 
 class MainScreenState extends State<MainScreen> {
+  late final Color scaffoldBackgroundColor = Theme.of(context).scaffoldBackgroundColor;
   int _selectedIndex = 0;
   final List<Widget> mainScreens = const [HomeScreen(), PortfolioScreen(), SettingsScreen()];
 
@@ -55,7 +56,7 @@ class MainScreenState extends State<MainScreen> {
           children: [
             if (Platform.isAndroid)
               NavigationBar(
-                backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+                backgroundColor: scaffoldBackgroundColor,
                 onDestinationSelected: (int index) => setState(() => _selectedIndex = index),
                 selectedIndex: _selectedIndex,
                 destinations: const [
@@ -70,7 +71,7 @@ class MainScreenState extends State<MainScreen> {
               )
             else
               CupertinoTabBar(
-                backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+                backgroundColor: scaffoldBackgroundColor,
                 currentIndex: _selectedIndex,
                 activeColor: Theme.of(context).colorScheme.primary,
                 onTap: (int index) => setState(() => _selectedIndex = index),

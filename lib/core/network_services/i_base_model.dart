@@ -82,10 +82,12 @@ class HttpClient {
     return response;
   }
 
-  Future<http.Response> _post(Uri uri,
-      [Map<String, String>? headers, Object? body]) async {
-    var response =
-        await http.post(uri, headers: headers, body: jsonEncode(body));
+  Future<http.Response> _post(
+    Uri uri, [
+    Map<String, String>? headers,
+    Object? body,
+  ]) async {
+    var response = await http.post(uri, headers: headers, body: jsonEncode(body));
     return response;
   }
 }

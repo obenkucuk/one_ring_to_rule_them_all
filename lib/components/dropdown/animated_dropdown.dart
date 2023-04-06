@@ -64,6 +64,8 @@ class _AnimatedDropdownState extends State<AnimatedDropdown> with SingleTickerPr
     }
   }
 
+  void onTap(int index) => widget.onTap!(widget.itemsList[index]);
+
   @override
   void didUpdateWidget(AnimatedDropdown oldWidget) {
     super.didUpdateWidget(oldWidget);
@@ -96,9 +98,7 @@ class _AnimatedDropdownState extends State<AnimatedDropdown> with SingleTickerPr
           itemCount: widget.itemsList.length,
           itemBuilder: (BuildContext context, int index) {
             return GestureDetector(
-              onTap: () {
-                widget.onTap!(widget.itemsList[index]);
-              },
+              onTap: () => onTap(index),
               child: ColoredBox(
                 color: Colors.transparent,
                 child: Column(

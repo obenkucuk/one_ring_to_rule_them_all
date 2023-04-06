@@ -143,7 +143,6 @@ dart_code_metrics:
     cyclomatic-complexity: 20
     number-of-parameters: 4
     maximum-nesting-level: 5
-    maintainability-index: 50
   metrics-exclude:
     - test/**
   rules:
@@ -157,6 +156,13 @@ dart_code_metrics:
     - prefer-define-hero-tag
     - prefer-using-list-view
     - avoid-border-all
+    # - prefer-extracting-callbacks
+
+    - avoid-unnecessary-conditionals
+    - prefer-trailing-comma
+    - list-all-equatable-fields
+    - avoid-unnecessary-type-casts
+    # - prefer-moving-to-variable
 
     # avoid_print: false  # Uncomment to disable the `avoid_print` rule
     # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule

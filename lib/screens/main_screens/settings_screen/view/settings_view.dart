@@ -70,15 +70,17 @@ class SettingsView extends GetView<SettingsController> {
               ),
               IconButton(
                 onPressed: () => MaterialAppInheritedWidget.of(context).changeTheme(
-                    mode: ThemeMode.system,
-                    brightness: MediaQueryX.platformBrightness == Brightness.dark ? Brightness.dark : Brightness.light),
+                  mode: ThemeMode.system,
+                  brightness: MediaQueryX.platformBrightness == Brightness.dark ? Brightness.dark : Brightness.light,
+                ),
                 icon: const Icon(Icons.settings),
               ),
             ],
           ),
           TextButton(
-              onPressed: () => MaterialAppInheritedWidget.of(context).changeLocale(),
-              child: const Icon(Icons.language)),
+            onPressed: () => MaterialAppInheritedWidget.of(context).changeLocale(),
+            child: const Icon(Icons.language),
+          ),
         ],
       ),
     );

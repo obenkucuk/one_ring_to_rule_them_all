@@ -30,9 +30,11 @@ ThemeData darkTheme = ThemeData(
     error: AppColorsX.secondary,
     onError: Colors.white,
   ),
-  cardTheme: CardTheme(
+  cardTheme: const CardTheme(
     elevation: 0,
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(10)),
+    ),
     color: AppColorsX.backgroundDark,
     margin: EdgeInsets.zero,
   ),
@@ -90,28 +92,28 @@ ThemeData darkTheme = ThemeData(
       ),
       padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.zero),
       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-        RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
+        const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(10)),
         ),
       ),
     ),
   ),
-  inputDecorationTheme: InputDecorationTheme(
+  inputDecorationTheme: const InputDecorationTheme(
     fillColor: AppColorsX.inputDecorationDark,
     filled: true,
-    contentPadding: const EdgeInsets.symmetric(horizontal: 10),
-    labelStyle: const TextStyle(
+    contentPadding: EdgeInsets.symmetric(horizontal: 10),
+    labelStyle: TextStyle(
       fontSize: 15,
       fontWeight: FontWeight.w400,
       color: AppColorsX.textDarkTheme,
     ),
-    hintStyle: const TextStyle(
+    hintStyle: TextStyle(
       fontWeight: FontWeight.w400,
       color: AppColorsX.paleTextDarkTheme,
       fontSize: 15,
     ),
     border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(10),
+      borderRadius: BorderRadius.all(Radius.circular(10)),
       borderSide: BorderSide.none,
     ),
   ),
@@ -148,8 +150,8 @@ ThemeData darkTheme = ThemeData(
         ),
       ),
       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-        RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
+        const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(10)),
         ),
       ),
     ),
@@ -158,8 +160,8 @@ ThemeData darkTheme = ThemeData(
     fillColor: MaterialStateProperty.all<Color?>(AppColorsX.primary),
     checkColor: MaterialStateProperty.all<Color?>(Colors.white),
     side: const BorderSide(width: 0.7, color: AppColorsX.primary),
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(10),
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(10)),
     ),
   ),
   radioTheme: RadioThemeData(fillColor: MaterialStateProperty.all<Color>(AppColorsX.primary)),

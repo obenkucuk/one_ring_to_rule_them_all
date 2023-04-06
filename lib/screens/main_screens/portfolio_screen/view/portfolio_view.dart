@@ -1,8 +1,6 @@
 import 'package:base_application/components/buttons/icon_button_x.dart';
 import 'package:base_application/core/extensions/widget_scale.dart';
-import 'package:base_application/core/shared_preferences_x.dart';
 import 'package:base_application/router/router.dart';
-
 import 'package:base_application/screens/main_screens/portfolio_screen/controller/portfolio_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -24,7 +22,10 @@ class PortfolioView extends GetView<PortfolioController> {
           style: Theme.of(context).textTheme.bodySmall,
         ),
         actions: [
-          Hero(tag: 'oben', child: IconButtonX(onTap: () => context.pushNamed(RoutesNames.addStock), icon: Icons.add))
+          Hero(
+            tag: 'oben',
+            child: IconButtonX(onTap: () => context.pushNamed(RoutesNames.addStock), icon: Icons.add),
+          ),
         ],
       ),
       body: GetBuilder<PortfolioController>(
@@ -130,11 +131,7 @@ class PortfolioView extends GetView<PortfolioController> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          SharedPreferencesX.setString('key', 'BATU');
-          String? yazi = SharedPreferencesX.getString('key');
-          debugPrint(yazi);
-        },
+        onPressed: () {},
       ),
     );
   }

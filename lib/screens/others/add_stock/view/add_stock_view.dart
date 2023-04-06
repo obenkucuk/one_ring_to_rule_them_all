@@ -14,8 +14,15 @@ import '../../../../components/text_field/text_field_x.dart';
 class AddStockView extends GetView<AddStockController> {
   const AddStockView({super.key});
 
+  void onTap(BuildContext context) {
+    Get.find<PortfolioController>().portfolioList.value.add(controller.portfolioModel);
+    context.pop();
+  }
+
   @override
   Widget build(BuildContext context) {
+    var primaryContainer = Theme.of(context).colorScheme.primaryContainer;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Add New Stock'),
@@ -38,7 +45,7 @@ class AddStockView extends GetView<AddStockController> {
             TextFieldX(
               borderRadius: 0,
               hintText: 'Lütfen hisse adını giriniz',
-              fillColor: Theme.of(context).colorScheme.primaryContainer,
+              fillColor: primaryContainer,
               focusNode: controller.nameFocus,
               nextFocus: controller.numberFocus,
               onChanged: (stockName) => controller.portfolioModel.stockName = stockName,
@@ -46,7 +53,7 @@ class AddStockView extends GetView<AddStockController> {
             const Text('Lot Sayısı'),
             TextFieldX(
               hintText: 'Lütfen lot miktarını giriniz',
-              fillColor: Theme.of(context).colorScheme.primaryContainer,
+              fillColor: primaryContainer,
               focusNode: controller.numberFocus,
               nextFocus: controller.costFocus,
               onChanged: (numberOfLots) => controller.portfolioModel.numberOfLots = double.parse(numberOfLots),
@@ -54,7 +61,7 @@ class AddStockView extends GetView<AddStockController> {
             const Text('Birim Maliyet'),
             TextFieldX(
               hintText: 'Lütfen birim maliyeti giriniz',
-              fillColor: Theme.of(context).colorScheme.primaryContainer,
+              fillColor: primaryContainer,
               focusNode: controller.costFocus,
               textInputAction: TextInputAction.done,
               onChanged: (unitCost) => controller.portfolioModel.unitCost = double.parse(unitCost),
@@ -68,11 +75,9 @@ class AddStockView extends GetView<AddStockController> {
             ),
             const Spacer(),
             MaterialButtonX(
-                buttonText: 'Ekle',
-                onTap: () {
-                  Get.find<PortfolioController>().portfolioList.value.add(controller.portfolioModel);
-                  context.pop();
-                }),
+              buttonText: 'Ekle',
+              onTap: () => onTap(context),
+            ),
             SizedBox(height: MediaQueryX.padding.bottom),
           ],
         ),

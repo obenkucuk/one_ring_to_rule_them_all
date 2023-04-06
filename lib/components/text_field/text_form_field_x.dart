@@ -33,7 +33,7 @@ class TextFormFieldX extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final BorderRadius borderRadius = BorderRadius.circular(10.w);
+    var borderRadius = BorderRadius.circular(10.w);
 
     return TextFormField(
       autovalidateMode: autovalidateMode ?? AutovalidateMode.disabled,

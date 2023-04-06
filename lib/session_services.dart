@@ -17,7 +17,7 @@ class SessionServices extends GetxController {
       'userName': 'batuhasrerran',
       'password': 'batubatu',
       'name': 'batuhan',
-      'email': {'address': 'sssrrsarsd@gmail.com'}
+      'email': {'address': 'sssrrsarsd@gmail.com'},
     };
 
     var response = await Repository.instance.denemeIstek(body);

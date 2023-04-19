@@ -1,10 +1,8 @@
 import 'package:base_application/screens/main_screens/home_screen/controller/home_controller.dart';
 import 'package:base_application/session_services.dart';
 import 'package:base_application/theme/text_style.dart';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../portfolio_screen/model/all_stocks.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -23,8 +21,7 @@ class HomeView extends GetView<HomeController> {
             if (controller.homeStatus.value == ScreenStatus.loading) {
               return const CircularProgressIndicator.adaptive();
             } else if (controller.homeStatus.value == ScreenStatus.loaded) {
-              List<AllStocksDataModel> modelList =
-                  controller.allStocksModel.data!;
+              List<AllStocksDataModel> modelList = controller.allStocksModel.data!;
               return Column(
                 children: [
                   // FutureBuilder(

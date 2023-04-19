@@ -1,13 +1,10 @@
 import 'dart:convert';
 
 import 'package:base_application/screens/main_screens/portfolio_screen/model/all_stocks.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/state_manager.dart';
 
 class HomeController extends GetxController {
-  final key = GlobalKey();
-
   AllStocksModel allStocksModel = AllStocksModel();
   final Rx<ScreenStatus> homeStatus = ScreenStatus.loading.obs;
 

@@ -1,7 +1,5 @@
 ///
 class AppConstants {
-  static const String appName = 'One Ring to Rule Them All';
-
   static const String appleMarketUrl = 'https://www.apple.com/tr/app-store/';
 
   static const String googleMarketUrl =

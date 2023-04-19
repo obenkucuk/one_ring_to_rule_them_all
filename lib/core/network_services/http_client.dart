@@ -1,27 +1,13 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:http/http.dart' as http;
-
+import '../exeptions/custom_http_exception.dart';
 import '../logger.dart';
+import 'http_urls.dart';
 
-abstract class IBaseModel<T> {
-  IBaseModel();
-
-  Map<String, dynamic> toJson();
-
-  T fromJson(Map<String, dynamic> json);
-}
-
-class BaseHttpRequest<T> {
-  int status;
-  T? data;
-  String? errorMessage;
-
-  BaseHttpRequest({
-    required this.status,
-    this.data,
-    this.errorMessage,
-  });
-}
+// ignore_for_file: constant_identifier_names
+// http metods
+enum HttpMethods { GET, POST, PUT, PATCH, DELETE }
 
 class HttpClient {
   HttpClient._();
@@ -29,7 +15,6 @@ class HttpClient {
 
   Future<http.Response?> request({
     required HttpMethods method,
-    String baseUrl = HttpUrls.baseUrl,
     required String path,
     Map<String, dynamic>? queryParameters,
     Map<String, String>? headers,
@@ -38,7 +23,7 @@ class HttpClient {
     var uri = Uri(
       scheme: 'http',
       port: 3002,
-      host: baseUrl,
+      host: HttpUrls.baseUrl,
       path: path,
       queryParameters: queryParameters,
     );
@@ -71,45 +56,30 @@ class HttpClient {
       }
     } catch (e, s) {
       Log.error('$e\nUrl: $uri\nMethod: $method \n sTack: $s');
-      rethrow;
+      if (e is SocketException) {
+        throw CustomHttpException(statusCode: 999, message: 'Internet Connection Not Found!');
+      } else {
+        throw CustomHttpException(statusCode: 998, message: 'Şimdilik bilinmeyen hata!');
+      }
+    }
+    if (response.statusCode != 200) {
+      throw CustomHttpException(statusCode: response.statusCode, message: response.body);
     }
 
     return response;
   }
 
   Future<http.Response> _get(Uri uri, [Map<String, String>? headers]) async {
-    var response = await http.get(uri, headers: headers);
+    var response = await http.get(uri, headers: headers).timeout(const Duration(seconds: 10),
+        onTimeout: () => http.Response(jsonEncode({'message': 'Timed Out'}), 408));
+
     return response;
   }
 
-  Future<http.Response> _post(Uri uri,
-      [Map<String, String>? headers, Object? body]) async {
-    var response =
-        await http.post(uri, headers: headers, body: jsonEncode(body));
+  Future<http.Response> _post(Uri uri, [Map<String, String>? headers, Object? body]) async {
+    var response = await http.post(uri, headers: headers, body: jsonEncode(body)).timeout(const Duration(seconds: 10),
+        onTimeout: () => http.Response(jsonEncode({'message': 'Timed Out'}), 408));
+
     return response;
   }
-}
-
-// ignore_for_file: constant_identifier_names
-enum HttpMethods { GET, POST, PUT, PATCH, DELETE }
-
-class HttpUrls {
-  static const String baseUrl = 'localhost';
-
-  static const String unknown = 'api/unknown';
-  static const String register = 'auth/register';
-}
-
-/// TODO: kaderlerini tayin edin!
-class NoInternetException {
-  final String message;
-  final int statusCode;
-  NoInternetException(this.message, this.statusCode);
-}
-
-/// Status Exception
-class HttpNotOkException implements Exception {
-  final String? message;
-  final int? statusCode;
-  HttpNotOkException({this.message, this.statusCode});
 }

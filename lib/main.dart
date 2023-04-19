@@ -1,5 +1,3 @@
-import 'package:base_application/constants/app_constants.dart';
-import 'package:base_application/core/media_query_x.dart';
 import 'package:base_application/core/shared_preferences_x.dart';
 import 'package:base_application/router/router.dart';
 import 'package:base_application/session_services.dart';
@@ -7,11 +5,13 @@ import 'package:base_application/theme/material_inherited.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:get/get.dart';
+import 'core/config/app_config.dart';
 import 'theme/theme_data_dark.dart';
 import 'theme/theme_data_light.dart';
 
 void main() async {
   await SharedPreferencesX.init();
+  AppConfigs.instance.init();
   runApp(const MyApp());
 }
 
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             theme: lightTheme,
             darkTheme: darkTheme,
-            title: AppConstants.appName,
+            title: AppConfigs.instance.appName,
             themeMode: MaterialAppInheritedWidget.of(context).themeMode,
             locale: MaterialAppInheritedWidget.of(context).locale,
             supportedLocales: AppLocalizations.supportedLocales,

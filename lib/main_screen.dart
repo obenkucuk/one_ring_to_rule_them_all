@@ -26,29 +26,28 @@ class MainScreenState extends State<MainScreen> {
   bool isMessengerActive = false;
   Color _scaffoldColor = AppColorsX.error;
 
-  final List<Widget> mainScreens = const [
-    HomeScreen(),
-    PortfolioScreen(),
-    SettingsScreen()
-  ];
+  final List<Widget> mainScreens = const [HomeScreen(), PortfolioScreen(), SettingsScreen()];
 
-  Future<void> showSnacbar(String message,
-      [ScaffoldMessengerType type = ScaffoldMessengerType.error]) async {
+  Future<void> showSnacbar(String? message, [ScaffoldMessengerType type = ScaffoldMessengerType.error]) async {
     if (type == ScaffoldMessengerType.success) {
       _scaffoldColor = AppColorsX.green;
     } else {
       _scaffoldColor = AppColorsX.error;
     }
-    setState(() {
-      isMessengerActive = true;
+    if (!isMessengerActive) {
+      setState(() {
+        isMessengerActive = true;
 
-      _scaffoldMessage = message;
-    });
+        _scaffoldMessage = message ?? 'Unknown Exeption';
+      });
+    }
 
     await Future.delayed(const Duration(seconds: 3));
-    setState(() {
-      isMessengerActive = false;
-    });
+    if (isMessengerActive) {
+      setState(() {
+        isMessengerActive = false;
+      });
+    }
   }
 
   @override
@@ -63,17 +62,13 @@ class MainScreenState extends State<MainScreen> {
             if (Platform.isAndroid)
               NavigationBar(
                 backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-                onDestinationSelected: (int index) =>
-                    setState(() => _selectedIndex = index),
+                onDestinationSelected: (int index) => setState(() => _selectedIndex = index),
                 selectedIndex: _selectedIndex,
                 destinations: const [
                   NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
+                  NavigationDestination(icon: Icon(Icons.grid_3x3), label: 'Port'),
                   NavigationDestination(
-                      icon: Icon(Icons.grid_3x3), label: 'Port'),
-                  NavigationDestination(
-                      selectedIcon: Icon(Icons.bookmark),
-                      icon: Icon(Icons.bookmark_border),
-                      label: 'Setting'),
+                      selectedIcon: Icon(Icons.bookmark), icon: Icon(Icons.bookmark_border), label: 'Setting'),
                 ],
               )
             else
@@ -82,12 +77,9 @@ class MainScreenState extends State<MainScreen> {
                 currentIndex: _selectedIndex,
                 onTap: (int index) => setState(() => _selectedIndex = index),
                 items: const [
-                  BottomNavigationBarItem(
-                      icon: Icon(Icons.home), label: 'Home'),
-                  BottomNavigationBarItem(
-                      icon: Icon(Icons.grid_3x3), label: 'Port'),
-                  BottomNavigationBarItem(
-                      icon: Icon(Icons.settings), label: 'Settings')
+                  BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+                  BottomNavigationBarItem(icon: Icon(Icons.grid_3x3), label: 'Port'),
+                  BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings')
                 ],
               ),
             ColoredBox(
@@ -120,9 +112,7 @@ class MainScreenInheritedWidget extends InheritedWidget {
   final MainScreenState state;
 
   static MainScreenState of(BuildContext context) {
-    return context
-        .dependOnInheritedWidgetOfExactType<MainScreenInheritedWidget>()!
-        .state;
+    return context.dependOnInheritedWidgetOfExactType<MainScreenInheritedWidget>()!.state;
   }
 
   @override

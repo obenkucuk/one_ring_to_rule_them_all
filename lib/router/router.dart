@@ -7,7 +7,6 @@ import 'package:base_application/screens/main_screens/settings_screen/settings_s
 import 'package:base_application/screens/others/add_stock/add_stock_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
 import '../main_screen.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
@@ -26,21 +25,7 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: '/main',
       name: RoutesNames.main,
-      pageBuilder: (context, state) {
-        return CustomTransitionPage(
-          key: state.pageKey,
-          child: const MainScreen(),
-          transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            return SlideTransition(
-              position: Tween<Offset>(
-                begin: const Offset(1, 0),
-                end: Offset.zero,
-              ).animate(animation),
-              child: child,
-            );
-          },
-        );
-      },
+      pageBuilder: (context, state) => myPageBuilder(context, state, const MainScreen()),
     ),
     GoRoute(
       path: '/login',
@@ -86,8 +71,7 @@ final GoRouter appRouter = GoRouter(
     ),
   ],
   errorPageBuilder: (context, state) {
-    return const MaterialPage(
-        child: Scaffold(body: Center(child: Text('Error Page will be here'))));
+    return const MaterialPage(child: Scaffold(body: Center(child: Text('Error Page will be here'))));
   },
   redirect: (BuildContext context, GoRouterState state) {
     // var settings = Get.find<SessionServices>();
@@ -114,4 +98,20 @@ class RoutesNames {
   static const String register = 'register';
   static const String portfolio = 'portfolio';
   static const String addStock = 'addStock';
+}
+
+CustomTransitionPage myPageBuilder(BuildContext context, GoRouterState state, Widget child) {
+  return CustomTransitionPage(
+    key: state.pageKey,
+    child: child,
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      return SlideTransition(
+        position: Tween<Offset>(
+          begin: const Offset(1, 0),
+          end: Offset.zero,
+        ).animate(animation),
+        child: child,
+      );
+    },
+  );
 }

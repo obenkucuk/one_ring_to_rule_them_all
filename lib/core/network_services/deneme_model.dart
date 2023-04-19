@@ -1,4 +1,4 @@
-import 'package:base_application/core/network_services/i_base_model.dart';
+import 'package:base_application/core/models/i_base_model.dart';
 
 class DenemeModel extends IBaseModel<DenemeModel> {
   DenemeModel({
@@ -40,9 +40,7 @@ class DenemeModel extends IBaseModel<DenemeModel> {
         'per_page': perPage,
         'total': total,
         'total_pages': totalPages,
-        'data': data == null
-            ? []
-            : List<dynamic>.from(data!.map((x) => x.toJson())),
+        'data': data == null ? [] : List<dynamic>.from(data!.map((x) => x.toJson())),
         'support': support?.toJson(),
       };
 
@@ -52,11 +50,8 @@ class DenemeModel extends IBaseModel<DenemeModel> {
         perPage: json['per_page'],
         total: json['total'],
         totalPages: json['total_pages'],
-        data: json['data'] == null
-            ? []
-            : List<Datum>.from(json['data']!.map((x) => Datum.fromJson(x))),
-        support:
-            json['support'] == null ? null : Support.fromJson(json['support']),
+        data: json['data'] == null ? [] : List<Datum>.from(json['data']!.map((x) => Datum.fromJson(x))),
+        support: json['support'] == null ? null : Support.fromJson(json['support']),
       );
 }
 

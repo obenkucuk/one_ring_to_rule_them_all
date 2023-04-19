@@ -5,7 +5,7 @@ import 'package:base_application/core/media_query_x.dart';
 import 'package:base_application/theme/text_style.dart';
 import 'package:flutter/material.dart';
 
-class MyDropdownWidget extends StatefulWidget {
+class OverlayAnimatedDropdownX extends StatefulWidget {
   final List<String> itemsList;
   final Function(String) getSelectedValue;
   final String? title;
@@ -20,7 +20,7 @@ class MyDropdownWidget extends StatefulWidget {
   final double? itemHeight;
   final double? paddingBetween;
 
-  const MyDropdownWidget({
+  const OverlayAnimatedDropdownX({
     super.key,
     this.title,
     this.backgroundColor,
@@ -38,10 +38,10 @@ class MyDropdownWidget extends StatefulWidget {
   });
 
   @override
-  State<MyDropdownWidget> createState() => _MyDropdownWidgetState();
+  State<OverlayAnimatedDropdownX> createState() => _OverlayAnimatedDropdownXState();
 }
 
-class _MyDropdownWidgetState extends State<MyDropdownWidget> {
+class _OverlayAnimatedDropdownXState extends State<OverlayAnimatedDropdownX> {
   final GlobalKey dimensionKey = GlobalKey();
 
   late String selectedItem = widget.itemsList.first;

@@ -7,14 +7,15 @@ import 'package:flutter/material.dart';
 
 import '../../core/media_query_x.dart';
 
-class SearchBar extends StatefulWidget {
-  const SearchBar({super.key});
+class SearchBarX extends StatefulWidget {
+  final Duration animationDuration;
+  const SearchBarX({super.key, this.animationDuration = const Duration(milliseconds: 500)});
 
   @override
-  State<SearchBar> createState() => _SearchBarState();
+  State<SearchBarX> createState() => _SearchBarXState();
 }
 
-class _SearchBarState extends State<SearchBar> with SingleTickerProviderStateMixin {
+class _SearchBarXState extends State<SearchBarX> with SingleTickerProviderStateMixin {
   late AnimationController animationController;
 
   late Animation<double> sizeAnimationSearchBar;
@@ -25,7 +26,7 @@ class _SearchBarState extends State<SearchBar> with SingleTickerProviderStateMix
   @override
   void initState() {
     super.initState();
-    animationController = AnimationController(vsync: this, duration: const Duration(milliseconds: 1000));
+    animationController = AnimationController(vsync: this, duration: widget.animationDuration);
 
     sizeAnimationSearchBar = Tween<double>(begin: 0, end: 1).animate(
         CurvedAnimation(parent: animationController, curve: Curves.easeInOutCirc, reverseCurve: Curves.easeOutCirc));

@@ -1,34 +1,30 @@
 import 'dart:convert';
-import 'dart:io';
+import '../logger.dart';
 import 'deneme_model.dart';
-import 'i_base_model.dart';
+import '../models/i_base_model.dart';
+import 'http_client.dart';
+import 'http_urls.dart';
 
 class Repository extends Header {
   Repository._();
   static final Repository instance = Repository._();
 
-  Future<BaseHttpRequest<DenemeModel>> denemeIstek(Object? body) async {
+  Future<BaseHttpModel<DenemeModel>> denemeIstek(Object? body) async {
     try {
       var response = await HttpClient.instance.request(
-          method: HttpMethods.POST,
-          path: HttpUrls.register,
-          body: body,
-          headers: createHeader());
+        method: HttpMethods.POST,
+        path: HttpUrls.register,
+        body: body,
+        headers: createHeader(),
+      );
 
-      if (response!.statusCode == HttpStatus.ok) {
-        DenemeModel model = DenemeModel().fromJson(jsonDecode(response.body));
-        return BaseHttpRequest(status: response.statusCode, data: model);
-      } else {
-        HttpNotOkModel model =
-            HttpNotOkModel().fromJson(jsonDecode(response.body));
-
-        return BaseHttpRequest(
-            status: response.statusCode, errorMessage: model.errorMessage);
-      }
+      DenemeModel model = DenemeModel().fromJson(jsonDecode(response!.body));
+      return BaseHttpModel(status: response.statusCode, data: model);
     } catch (e, s) {
       /// TODO: burayı halledin:
-      return BaseHttpRequest(
-          status: 20000, errorMessage: 'Repository Catch Block');
+
+      Log.error('error: $e, s: $s');
+      rethrow;
     }
   }
 }
@@ -51,18 +47,4 @@ class Header {
 
     return header;
   }
-}
-
-class HttpNotOkModel {
-  final String? errorMessage;
-
-  HttpNotOkModel({this.errorMessage});
-
-  HttpNotOkModel fromJson(Map<String, dynamic> json) => HttpNotOkModel(
-        errorMessage: json['error'],
-      );
-
-  Map<String, dynamic> toJson() => {
-        'error': errorMessage,
-      };
 }

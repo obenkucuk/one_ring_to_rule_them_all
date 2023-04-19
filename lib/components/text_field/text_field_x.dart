@@ -4,6 +4,7 @@ import 'package:base_application/theme/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+/// NOT: Bunu kullanma
 class TextFieldX extends StatefulWidget {
   final TextEditingController? textEditingController;
   final FocusNode focusNode;

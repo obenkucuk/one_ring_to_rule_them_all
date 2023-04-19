@@ -27,7 +27,7 @@ class AddStockView extends GetView<AddStockController> {
             children: [
               SizedBox(
                 height: 48.h,
-                child: MyDropdownWidget(
+                child: OverlayAnimatedDropdownX(
                   backgroundColor: Colors.white,
                   itemsList: const ['1', '2', '3'],
                   getSelectedValue: (p0) => null,

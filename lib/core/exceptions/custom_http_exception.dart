@@ -6,7 +6,7 @@ class CustomHttpException implements Exception {
 
   CustomHttpException({this.statusCode, this.message}) {
     Log.error(
-      'Custom HTTP Exeption! Status Code: $statusCode Error Message: $message',
+      'Custom HTTP Exception! Status Code: $statusCode Error Message: $message',
     );
   }
 }

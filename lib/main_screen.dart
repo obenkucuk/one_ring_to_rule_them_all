@@ -38,7 +38,7 @@ class MainScreenState extends State<MainScreen> {
       setState(() {
         isMessengerActive = true;
 
-        _scaffoldMessage = message ?? 'Unknown Exeption';
+        _scaffoldMessage = message ?? 'Unknown Exception';
       });
     }
 

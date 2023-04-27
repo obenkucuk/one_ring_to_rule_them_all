@@ -1,6 +1,6 @@
 import 'package:base_application/components/buttons/icon_button_x.dart';
 import 'package:base_application/core/extensions/widget_scale.dart';
-import 'package:base_application/core/shared_preferences_x.dart';
+import 'package:base_application/core/storage/shared_preferences_x.dart';
 import 'package:base_application/router/router.dart';
 
 import 'package:base_application/screens/main_screens/portfolio_screen/controller/portfolio_controller.dart';

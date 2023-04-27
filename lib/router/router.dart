@@ -77,7 +77,7 @@ final GoRouter appRouter = GoRouter(
     // var settings = Get.find<SessionServices>();
 
     // if (settings.isLogin.isFalse && state.subloc != '/') {
-    //   print("object");
+    //   print('object');
     //   return '/login';
     // }
 

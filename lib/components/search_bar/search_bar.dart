@@ -186,7 +186,7 @@ class _SearchBarXState extends State<SearchBarX> with SingleTickerProviderStateM
 //                 width: hasFocus ? 40 : 0,
 //                 height: hasFocus ? 60 : 0,
 //                 child: Text(
-//                   "data",
+//                   'data',
 //                   maxLines: 1,
 //                 ),
 //               ),

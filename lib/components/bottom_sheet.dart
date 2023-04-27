@@ -54,7 +54,7 @@ Future<T?> showBottomSheetX<T>({
   
   // forgotPassword() => showBottomSheetX(
   //       context: context,
-  //       title: "Forgot Password?",
+  //       title: 'Forgot Password?',
   //     ).then((value) => print(value));
 
   /// buradaki value result a eşit olur.

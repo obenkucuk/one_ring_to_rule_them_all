@@ -76,7 +76,7 @@ class SettingsView extends GetView<SettingsController> {
             ],
           ),
           TextButton(
-              onPressed: () => MaterialAppInheritedWidget.of(context).changeLocale(),
+              onPressed: () => MaterialAppInheritedWidget.of(context).changeLocale(AppLocales.en),
               child: const Icon(Icons.language)),
         ],
       ),

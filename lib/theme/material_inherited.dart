@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+enum AppLocales { en, tr }
+
 /// Material App'te değişiklik yapılmak istendiği zaman mantık burada uygulanmalı
 class MaterialAppUpdater extends StatefulWidget {
   final Widget child;
@@ -17,14 +19,13 @@ class MaterialAppUpdaterState extends State<MaterialAppUpdater> {
   void changeTheme({required ThemeMode mode, Brightness? brightness}) {
     setState(() {
       themeMode = mode;
-      SystemChrome.setSystemUIOverlayStyle(
-          SystemUiOverlayStyle(statusBarBrightness: brightness));
+      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarBrightness: brightness));
     });
   }
 
-  void changeLocale() {
+  void changeLocale(AppLocales selectedLocale) {
     setState(() {
-      locale = const Locale('en');
+      locale = Locale(selectedLocale.name);
     });
   }
 
@@ -53,9 +54,7 @@ class MaterialAppInheritedWidget extends InheritedWidget {
   });
 
   static MaterialAppUpdaterState of(BuildContext context) {
-    return context
-        .dependOnInheritedWidgetOfExactType<MaterialAppInheritedWidget>()!
-        .state;
+    return context.dependOnInheritedWidgetOfExactType<MaterialAppInheritedWidget>()!.state;
   }
 
   @override

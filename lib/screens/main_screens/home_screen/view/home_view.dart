@@ -1,5 +1,4 @@
 import 'package:base_application/screens/main_screens/home_screen/controller/home_controller.dart';
-import 'package:base_application/session_services.dart';
 import 'package:base_application/theme/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -27,6 +26,7 @@ class HomeView extends GetView<HomeController> {
               List<AllStocksDataModel> modelList = controller.allStocksModel.data!;
               return Column(
                 children: [
+                  ElevatedButton(onPressed: () {}, child: Text('Example Elevated Button')),
                   // FutureBuilder(
                   //     future: ses.denemeIstek(),
                   //     builder: (context, snapshot) {

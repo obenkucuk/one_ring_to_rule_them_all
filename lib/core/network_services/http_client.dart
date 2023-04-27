@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
-import '../exeptions/custom_http_exception.dart';
+import '../exceptions/custom_http_exception.dart';
 import '../logger.dart';
 import 'http_urls.dart';
 

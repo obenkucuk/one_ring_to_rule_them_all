@@ -1,4 +1,4 @@
-import '../exeptions/custom_http_exception.dart';
+import '../exceptions/custom_http_exception.dart';
 
 abstract class IBaseModel<T> {
   IBaseModel();

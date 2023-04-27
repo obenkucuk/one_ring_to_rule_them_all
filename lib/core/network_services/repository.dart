@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'package:base_application/session_services.dart';
+import 'package:get/get.dart';
 import '../logger.dart';
 import 'deneme_model.dart';
 import '../models/i_base_model.dart';
@@ -15,7 +17,7 @@ class Repository extends Header {
         method: HttpMethods.POST,
         path: HttpUrls.register,
         body: body,
-        headers: createHeader(),
+        headers: createHeader(addHeader: {'cdc': 'csdf'}),
       );
 
       DenemeModel model = DenemeModel().fromJson(jsonDecode(response!.body));
@@ -29,14 +31,9 @@ class Repository extends Header {
   }
 }
 
-// TODO(obenkucuk) buraya token al
 class Header {
-  final String? token;
-
-  Header({this.token});
-
   Map<String, String> createHeader({Map<String, String> addHeader = const {}}) {
-    /// TODO(obenkucuk) Accept-Language localden alıncak!
+    var token = Get.find<SessionServices>().token.value;
 
     Map<String, String> header = {
       'Content-type': 'application/json',

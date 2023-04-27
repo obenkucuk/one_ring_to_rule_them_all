@@ -1,3 +1,4 @@
+import 'package:base_application/constants/size_constants.dart';
 import 'package:base_application/theme/app_colors.dart';
 import 'package:base_application/theme/theme_data_dark.dart';
 import 'package:flutter/material.dart';
@@ -88,15 +89,15 @@ ThemeData lightTheme = ThemeData(
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ButtonStyle(
       elevation: MaterialStateProperty.all(0),
-      backgroundColor: MaterialStateProperty.all<Color>(AppColorsX.green),
+      backgroundColor: MaterialStateProperty.all<Color>(AppColorsX.blue),
       textStyle: MaterialStateProperty.all<TextStyle>(
         const TextStyle(
-          color: Colors.white,
+          color: Colors.yellow,
           fontWeight: FontWeight.w600,
-          fontSize: 16,
+          fontSize: 10,
         ),
       ),
-      padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.zero),
+      padding: MaterialStateProperty.all<EdgeInsets>(const EdgeInsets.symmetric(horizontal: padding10)),
       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
         RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),

@@ -50,15 +50,13 @@ class SettingsView extends GetView<SettingsController> {
           Text(appLocalization!.helloWorld, style: s18W500),
           Text(appLocalization!.settings, style: s8W500),
           Text('data', style: s24W700),
-          const Text('Yazı Boyutu verilmemiş yazı'),
           const SizedBox(height: 50),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               IconButton(
                 onPressed: () => MaterialAppInheritedWidget.of(context)
-                    .changeTheme(
-                        mode: ThemeMode.dark, brightness: Brightness.dark),
+                    .changeTheme(mode: ThemeMode.dark, brightness: Brightness.dark),
                 icon: Icon(
                   Icons.dark_mode,
                   color: Theme.of(context).colorScheme.secondary,
@@ -66,25 +64,19 @@ class SettingsView extends GetView<SettingsController> {
               ),
               IconButton(
                 onPressed: () => MaterialAppInheritedWidget.of(context)
-                    .changeTheme(
-                        mode: ThemeMode.light, brightness: Brightness.light),
+                    .changeTheme(mode: ThemeMode.light, brightness: Brightness.light),
                 icon: const Icon(Icons.light_mode),
               ),
               IconButton(
-                onPressed: () => MaterialAppInheritedWidget.of(context)
-                    .changeTheme(
-                        mode: ThemeMode.system,
-                        brightness:
-                            MediaQueryX.platformBrightness == Brightness.dark
-                                ? Brightness.dark
-                                : Brightness.light),
+                onPressed: () => MaterialAppInheritedWidget.of(context).changeTheme(
+                    mode: ThemeMode.system,
+                    brightness: MediaQueryX.platformBrightness == Brightness.dark ? Brightness.dark : Brightness.light),
                 icon: const Icon(Icons.settings),
               ),
             ],
           ),
           TextButton(
-              onPressed: () =>
-                  MaterialAppInheritedWidget.of(context).changeLocale(),
+              onPressed: () => MaterialAppInheritedWidget.of(context).changeLocale(),
               child: const Icon(Icons.language)),
         ],
       ),

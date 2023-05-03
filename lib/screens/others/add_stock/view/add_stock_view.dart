@@ -3,7 +3,6 @@ import 'package:base_application/components/dropdown/my_dropdown.dart';
 import 'package:base_application/constants/size_constants.dart';
 import 'package:base_application/core/extensions/widget_scale.dart';
 import 'package:base_application/core/media_query_x.dart';
-import 'package:base_application/screens/main_screens/portfolio_screen/controller/portfolio_controller.dart';
 import 'package:base_application/screens/others/add_stock/controller/add_stock_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -41,7 +40,7 @@ class AddStockView extends GetView<AddStockController> {
                 fillColor: Theme.of(context).colorScheme.primaryContainer,
                 focusNode: controller.nameFocus,
                 nextFocus: controller.numberFocus,
-                onChanged: (stockName) => controller.portfolioModel.stockName = stockName,
+                onChanged: (stockName) => 'stockName',
               ),
               const Text('Lot Sayısı'),
               TextFieldX(
@@ -49,7 +48,7 @@ class AddStockView extends GetView<AddStockController> {
                 fillColor: Theme.of(context).colorScheme.primaryContainer,
                 focusNode: controller.numberFocus,
                 nextFocus: controller.costFocus,
-                onChanged: (numberOfLots) => controller.portfolioModel.numberOfLots = double.parse(numberOfLots),
+                onChanged: (numberOfLots) => 'numberOfLots',
               ),
               const Text('Birim Maliyet'),
               TextFieldX(
@@ -57,7 +56,7 @@ class AddStockView extends GetView<AddStockController> {
                 fillColor: Theme.of(context).colorScheme.primaryContainer,
                 focusNode: controller.costFocus,
                 textInputAction: TextInputAction.done,
-                onChanged: (unitCost) => controller.portfolioModel.unitCost = double.parse(unitCost),
+                onChanged: (unitCost) => 'unitCost',
               ),
               const Hero(
                 tag: 'oben',
@@ -70,7 +69,6 @@ class AddStockView extends GetView<AddStockController> {
               MaterialButtonX(
                   buttonText: 'Ekle',
                   onTap: () {
-                    Get.find<PortfolioController>().portfolioList.value.add(controller.portfolioModel);
                     context.pop();
                   }),
               SizedBox(height: MediaQueryX.padding.bottom)

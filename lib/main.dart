@@ -1,4 +1,3 @@
-import 'package:base_application/core/storage/shared_preferences_x.dart';
 import 'package:base_application/router/router.dart';
 import 'package:base_application/session_services.dart';
 import 'package:base_application/theme/material_inherited.dart';
@@ -10,7 +9,6 @@ import 'theme/theme_data_dark.dart';
 import 'theme/theme_data_light.dart';
 
 void main() async {
-  await SharedPreferencesX.init();
   AppConfigs.instance.init();
   runApp(const MyApp());
 }

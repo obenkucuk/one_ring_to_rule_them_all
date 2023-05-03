@@ -1,132 +1,44 @@
 import 'package:base_application/core/models/i_base_model.dart';
 
-class DenemeModel extends IBaseModel<DenemeModel> {
-  DenemeModel({
-    this.page,
-    this.perPage,
-    this.total,
-    this.totalPages,
-    this.data,
-    this.support,
-  });
-
-  final int? page;
-  final int? perPage;
-  final int? total;
-  final int? totalPages;
-  final List<Datum>? data;
-  final Support? support;
-
-  DenemeModel copyWith({
-    int? page,
-    int? perPage,
-    int? total,
-    int? totalPages,
-    List<Datum>? data,
-    Support? support,
-  }) =>
-      DenemeModel(
-        page: page ?? this.page,
-        perPage: perPage ?? this.perPage,
-        total: total ?? this.total,
-        totalPages: totalPages ?? this.totalPages,
-        data: data ?? this.data,
-        support: support ?? this.support,
-      );
-
-  @override
-  Map<String, dynamic> toJson() => {
-        'page': page,
-        'per_page': perPage,
-        'total': total,
-        'total_pages': totalPages,
-        'data': data == null ? [] : List<dynamic>.from(data!.map((x) => x.toJson())),
-        'support': support?.toJson(),
-      };
-
-  @override
-  DenemeModel fromJson(Map<String, dynamic> json) => DenemeModel(
-        page: json['page'],
-        perPage: json['per_page'],
-        total: json['total'],
-        totalPages: json['total_pages'],
-        data: json['data'] == null ? [] : List<Datum>.from(json['data']!.map((x) => Datum.fromJson(x))),
-        support: json['support'] == null ? null : Support.fromJson(json['support']),
-      );
-}
-
-class Datum {
-  Datum({
-    this.id,
-    this.name,
-    this.year,
-    this.color,
-    this.pantoneValue,
-  });
-
+class JsonPlaceHolderPosts extends IBaseModel<JsonPlaceHolderPosts> {
+  final int? userId;
   final int? id;
-  final String? name;
-  final int? year;
-  final String? color;
-  final String? pantoneValue;
+  final String? title;
+  final String? body;
 
-  Datum copyWith({
-    int? id,
-    String? name,
-    int? year,
-    String? color,
-    String? pantoneValue,
-  }) =>
-      Datum(
-        id: id ?? this.id,
-        name: name ?? this.name,
-        year: year ?? this.year,
-        color: color ?? this.color,
-        pantoneValue: pantoneValue ?? this.pantoneValue,
-      );
-
-  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
-        id: json['id'],
-        name: json['name'],
-        year: json['year'],
-        color: json['color'],
-        pantoneValue: json['pantone_value'],
-      );
-
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'name': name,
-        'year': year,
-        'color': color,
-        'pantone_value': pantoneValue,
-      };
-}
-
-class Support {
-  Support({
-    this.url,
-    this.text,
+  JsonPlaceHolderPosts({
+    this.userId,
+    this.id,
+    this.title,
+    this.body,
   });
 
-  final String? url;
-  final String? text;
-
-  Support copyWith({
-    String? url,
-    String? text,
+  JsonPlaceHolderPosts copyWith({
+    int? userId,
+    int? id,
+    String? title,
+    String? body,
   }) =>
-      Support(
-        url: url ?? this.url,
-        text: text ?? this.text,
+      JsonPlaceHolderPosts(
+        userId: userId ?? this.userId,
+        id: id ?? this.id,
+        title: title ?? this.title,
+        body: body ?? this.body,
       );
 
-  factory Support.fromJson(Map<String, dynamic> json) => Support(
-        url: json['url'],
-        text: json['text'],
+  @override
+  JsonPlaceHolderPosts fromJson(Map<String, dynamic> json) => JsonPlaceHolderPosts(
+        userId: json['userId'],
+        id: json['id'],
+        title: json['title'],
+        body: json['body'],
       );
 
+  @override
   Map<String, dynamic> toJson() => {
-        'url': url,
-        'text': text,
+        'userId': userId,
+        'id': id,
+        'title': title,
+        'body': body,
       };
 }

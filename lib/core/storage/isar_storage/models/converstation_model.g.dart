@@ -1,5 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
+// ignore_for_file: unnecessary_final
+
 part of 'converstation_model.dart';
 
 // **************************************************************************
@@ -10,8 +12,7 @@ part of 'converstation_model.dart';
 // ignore_for_file: duplicate_ignore, non_constant_identifier_names, constant_identifier_names, invalid_use_of_protected_member, unnecessary_cast, prefer_const_constructors, lines_longer_than_80_chars, require_trailing_commas, inference_failure_on_function_invocation, unnecessary_parenthesis, unnecessary_raw_strings, unnecessary_null_checks, join_return_with_assignment, prefer_final_locals, avoid_js_rounded_ints, avoid_positional_boolean_parameters, always_specify_types
 
 extension GetIsarConverstationModelCollection on Isar {
-  IsarCollection<IsarConverstationModel> get isarConverstationModels =>
-      this.collection();
+  IsarCollection<IsarConverstationModel> get isarConverstationModels => this.collection();
 }
 
 const IsarConverstationModelSchema = CollectionSchema(
@@ -183,20 +184,16 @@ Id _isarConverstationModelGetId(IsarConverstationModel object) {
   return object.id;
 }
 
-List<IsarLinkBase<dynamic>> _isarConverstationModelGetLinks(
-    IsarConverstationModel object) {
+List<IsarLinkBase<dynamic>> _isarConverstationModelGetLinks(IsarConverstationModel object) {
   return [object.messages];
 }
 
-void _isarConverstationModelAttach(
-    IsarCollection<dynamic> col, Id id, IsarConverstationModel object) {
+void _isarConverstationModelAttach(IsarCollection<dynamic> col, Id id, IsarConverstationModel object) {
   object.id = id;
-  object.messages
-      .attach(col, col.isar.collection<IsarMessageModel>(), r'messages', id);
+  object.messages.attach(col, col.isar.collection<IsarMessageModel>(), r'messages', id);
 }
 
-extension IsarConverstationModelByIndex
-    on IsarCollection<IsarConverstationModel> {
+extension IsarConverstationModelByIndex on IsarCollection<IsarConverstationModel> {
   Future<IsarConverstationModel?> getByConverstationId(String converstationId) {
     return getByIndex(r'converstationId', [converstationId]);
   }
@@ -213,14 +210,12 @@ extension IsarConverstationModelByIndex
     return deleteByIndexSync(r'converstationId', [converstationId]);
   }
 
-  Future<List<IsarConverstationModel?>> getAllByConverstationId(
-      List<String> converstationIdValues) {
+  Future<List<IsarConverstationModel?>> getAllByConverstationId(List<String> converstationIdValues) {
     final values = converstationIdValues.map((e) => [e]).toList();
     return getAllByIndex(r'converstationId', values);
   }
 
-  List<IsarConverstationModel?> getAllByConverstationIdSync(
-      List<String> converstationIdValues) {
+  List<IsarConverstationModel?> getAllByConverstationIdSync(List<String> converstationIdValues) {
     final values = converstationIdValues.map((e) => [e]).toList();
     return getAllByIndexSync(r'converstationId', values);
   }
@@ -239,36 +234,30 @@ extension IsarConverstationModelByIndex
     return putByIndex(r'converstationId', object);
   }
 
-  Id putByConverstationIdSync(IsarConverstationModel object,
-      {bool saveLinks = true}) {
+  Id putByConverstationIdSync(IsarConverstationModel object, {bool saveLinks = true}) {
     return putByIndexSync(r'converstationId', object, saveLinks: saveLinks);
   }
 
-  Future<List<Id>> putAllByConverstationId(
-      List<IsarConverstationModel> objects) {
+  Future<List<Id>> putAllByConverstationId(List<IsarConverstationModel> objects) {
     return putAllByIndex(r'converstationId', objects);
   }
 
-  List<Id> putAllByConverstationIdSync(List<IsarConverstationModel> objects,
-      {bool saveLinks = true}) {
+  List<Id> putAllByConverstationIdSync(List<IsarConverstationModel> objects, {bool saveLinks = true}) {
     return putAllByIndexSync(r'converstationId', objects, saveLinks: saveLinks);
   }
 }
 
-extension IsarConverstationModelQueryWhereSort
-    on QueryBuilder<IsarConverstationModel, IsarConverstationModel, QWhere> {
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterWhere>
-      anyId() {
+extension IsarConverstationModelQueryWhereSort on QueryBuilder<IsarConverstationModel, IsarConverstationModel, QWhere> {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterWhere> anyId() {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(const IdWhereClause.any());
     });
   }
 }
 
-extension IsarConverstationModelQueryWhere on QueryBuilder<
-    IsarConverstationModel, IsarConverstationModel, QWhereClause> {
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterWhereClause> idEqualTo(Id id) {
+extension IsarConverstationModelQueryWhere
+    on QueryBuilder<IsarConverstationModel, IsarConverstationModel, QWhereClause> {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterWhereClause> idEqualTo(Id id) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IdWhereClause.between(
         lower: id,
@@ -277,8 +266,7 @@ extension IsarConverstationModelQueryWhere on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterWhereClause> idNotEqualTo(Id id) {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterWhereClause> idNotEqualTo(Id id) {
     return QueryBuilder.apply(this, (query) {
       if (query.whereSort == Sort.asc) {
         return query
@@ -300,8 +288,8 @@ extension IsarConverstationModelQueryWhere on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterWhereClause> idGreaterThan(Id id, {bool include = false}) {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterWhereClause> idGreaterThan(Id id,
+      {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
         IdWhereClause.greaterThan(lower: id, includeLower: include),
@@ -309,8 +297,8 @@ extension IsarConverstationModelQueryWhere on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterWhereClause> idLessThan(Id id, {bool include = false}) {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterWhereClause> idLessThan(Id id,
+      {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
         IdWhereClause.lessThan(upper: id, includeUpper: include),
@@ -318,8 +306,7 @@ extension IsarConverstationModelQueryWhere on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterWhereClause> idBetween(
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterWhereClause> idBetween(
     Id lowerId,
     Id upperId, {
     bool includeLower = true,
@@ -335,8 +322,8 @@ extension IsarConverstationModelQueryWhere on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterWhereClause> converstationIdEqualTo(String converstationId) {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterWhereClause> converstationIdEqualTo(
+      String converstationId) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IndexWhereClause.equalTo(
         indexName: r'converstationId',
@@ -345,8 +332,8 @@ extension IsarConverstationModelQueryWhere on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterWhereClause> converstationIdNotEqualTo(String converstationId) {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterWhereClause> converstationIdNotEqualTo(
+      String converstationId) {
     return QueryBuilder.apply(this, (query) {
       if (query.whereSort == Sort.asc) {
         return query
@@ -381,10 +368,9 @@ extension IsarConverstationModelQueryWhere on QueryBuilder<
   }
 }
 
-extension IsarConverstationModelQueryFilter on QueryBuilder<
-    IsarConverstationModel, IsarConverstationModel, QFilterCondition> {
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> converstationIdEqualTo(
+extension IsarConverstationModelQueryFilter
+    on QueryBuilder<IsarConverstationModel, IsarConverstationModel, QFilterCondition> {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> converstationIdEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -397,8 +383,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> converstationIdGreaterThan(
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> converstationIdGreaterThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -413,8 +398,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> converstationIdLessThan(
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> converstationIdLessThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -429,8 +413,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> converstationIdBetween(
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> converstationIdBetween(
     String lower,
     String upper, {
     bool includeLower = true,
@@ -449,8 +432,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> converstationIdStartsWith(
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> converstationIdStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -463,8 +445,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> converstationIdEndsWith(
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> converstationIdEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -477,9 +458,9 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-          QAfterFilterCondition>
-      converstationIdContains(String value, {bool caseSensitive = true}) {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> converstationIdContains(
+      String value,
+      {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.contains(
         property: r'converstationId',
@@ -489,9 +470,9 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-          QAfterFilterCondition>
-      converstationIdMatches(String pattern, {bool caseSensitive = true}) {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> converstationIdMatches(
+      String pattern,
+      {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.matches(
         property: r'converstationId',
@@ -501,8 +482,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> converstationIdIsEmpty() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> converstationIdIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'converstationId',
@@ -511,8 +491,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> converstationIdIsNotEmpty() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> converstationIdIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'converstationId',
@@ -521,8 +500,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> createdAtTSIsNull() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> createdAtTSIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'createdAtTS',
@@ -530,8 +508,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> createdAtTSIsNotNull() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> createdAtTSIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
         property: r'createdAtTS',
@@ -539,8 +516,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> createdAtTSEqualTo(int? value) {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> createdAtTSEqualTo(int? value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'createdAtTS',
@@ -549,8 +525,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> createdAtTSGreaterThan(
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> createdAtTSGreaterThan(
     int? value, {
     bool include = false,
   }) {
@@ -563,8 +538,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> createdAtTSLessThan(
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> createdAtTSLessThan(
     int? value, {
     bool include = false,
   }) {
@@ -577,8 +551,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> createdAtTSBetween(
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> createdAtTSBetween(
     int? lower,
     int? upper, {
     bool includeLower = true,
@@ -595,8 +568,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> idEqualTo(Id value) {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> idEqualTo(Id value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'id',
@@ -605,8 +577,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> idGreaterThan(
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> idGreaterThan(
     Id value, {
     bool include = false,
   }) {
@@ -619,8 +590,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> idLessThan(
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> idLessThan(
     Id value, {
     bool include = false,
   }) {
@@ -633,8 +603,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> idBetween(
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> idBetween(
     Id lower,
     Id upper, {
     bool includeLower = true,
@@ -651,8 +620,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> lastMessageIsNull() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> lastMessageIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'lastMessage',
@@ -660,8 +628,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> lastMessageIsNotNull() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> lastMessageIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
         property: r'lastMessage',
@@ -669,8 +636,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> lastMessageEqualTo(
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> lastMessageEqualTo(
     String? value, {
     bool caseSensitive = true,
   }) {
@@ -683,8 +649,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> lastMessageGreaterThan(
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> lastMessageGreaterThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -699,8 +664,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> lastMessageLessThan(
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> lastMessageLessThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -715,8 +679,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> lastMessageBetween(
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> lastMessageBetween(
     String? lower,
     String? upper, {
     bool includeLower = true,
@@ -735,8 +698,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> lastMessageStartsWith(
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> lastMessageStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -749,8 +711,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> lastMessageEndsWith(
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> lastMessageEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -763,9 +724,8 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-          QAfterFilterCondition>
-      lastMessageContains(String value, {bool caseSensitive = true}) {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> lastMessageContains(String value,
+      {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.contains(
         property: r'lastMessage',
@@ -775,9 +735,8 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-          QAfterFilterCondition>
-      lastMessageMatches(String pattern, {bool caseSensitive = true}) {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> lastMessageMatches(String pattern,
+      {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.matches(
         property: r'lastMessage',
@@ -787,8 +746,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> lastMessageIsEmpty() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> lastMessageIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'lastMessage',
@@ -797,8 +755,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> lastMessageIsNotEmpty() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> lastMessageIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'lastMessage',
@@ -807,8 +764,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> lastMessageTSIsNull() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> lastMessageTSIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'lastMessageTS',
@@ -816,8 +772,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> lastMessageTSIsNotNull() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> lastMessageTSIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
         property: r'lastMessageTS',
@@ -825,8 +780,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> lastMessageTSEqualTo(int? value) {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> lastMessageTSEqualTo(int? value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'lastMessageTS',
@@ -835,8 +789,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> lastMessageTSGreaterThan(
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> lastMessageTSGreaterThan(
     int? value, {
     bool include = false,
   }) {
@@ -849,8 +802,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> lastMessageTSLessThan(
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> lastMessageTSLessThan(
     int? value, {
     bool include = false,
   }) {
@@ -863,8 +815,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> lastMessageTSBetween(
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> lastMessageTSBetween(
     int? lower,
     int? upper, {
     bool includeLower = true,
@@ -881,8 +832,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> lastOpenTSIsNull() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> lastOpenTSIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'lastOpenTS',
@@ -890,8 +840,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> lastOpenTSIsNotNull() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> lastOpenTSIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
         property: r'lastOpenTS',
@@ -899,8 +848,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> lastOpenTSEqualTo(int? value) {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> lastOpenTSEqualTo(int? value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'lastOpenTS',
@@ -909,8 +857,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> lastOpenTSGreaterThan(
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> lastOpenTSGreaterThan(
     int? value, {
     bool include = false,
   }) {
@@ -923,8 +870,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> lastOpenTSLessThan(
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> lastOpenTSLessThan(
     int? value, {
     bool include = false,
   }) {
@@ -937,8 +883,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> lastOpenTSBetween(
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> lastOpenTSBetween(
     int? lower,
     int? upper, {
     bool includeLower = true,
@@ -955,8 +900,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> otherMemberIsNull() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> otherMemberIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'otherMember',
@@ -964,8 +908,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> otherMemberIsNotNull() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> otherMemberIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
         property: r'otherMember',
@@ -973,8 +916,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> otherMemberEqualTo(
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> otherMemberEqualTo(
     String? value, {
     bool caseSensitive = true,
   }) {
@@ -987,8 +929,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> otherMemberGreaterThan(
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> otherMemberGreaterThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -1003,8 +944,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> otherMemberLessThan(
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> otherMemberLessThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -1019,8 +959,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> otherMemberBetween(
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> otherMemberBetween(
     String? lower,
     String? upper, {
     bool includeLower = true,
@@ -1039,8 +978,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> otherMemberStartsWith(
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> otherMemberStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1053,8 +991,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> otherMemberEndsWith(
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> otherMemberEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1067,9 +1004,8 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-          QAfterFilterCondition>
-      otherMemberContains(String value, {bool caseSensitive = true}) {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> otherMemberContains(String value,
+      {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.contains(
         property: r'otherMember',
@@ -1079,9 +1015,8 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-          QAfterFilterCondition>
-      otherMemberMatches(String pattern, {bool caseSensitive = true}) {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> otherMemberMatches(String pattern,
+      {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.matches(
         property: r'otherMember',
@@ -1091,8 +1026,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> otherMemberIsEmpty() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> otherMemberIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'otherMember',
@@ -1101,8 +1035,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> otherMemberIsNotEmpty() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> otherMemberIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'otherMember',
@@ -1111,8 +1044,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> otherMemberLastOpenTSIsNull() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> otherMemberLastOpenTSIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'otherMemberLastOpenTS',
@@ -1120,8 +1052,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> otherMemberLastOpenTSIsNotNull() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> otherMemberLastOpenTSIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
         property: r'otherMemberLastOpenTS',
@@ -1129,8 +1060,8 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> otherMemberLastOpenTSEqualTo(int? value) {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> otherMemberLastOpenTSEqualTo(
+      int? value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'otherMemberLastOpenTS',
@@ -1139,8 +1070,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> otherMemberLastOpenTSGreaterThan(
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> otherMemberLastOpenTSGreaterThan(
     int? value, {
     bool include = false,
   }) {
@@ -1153,8 +1083,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> otherMemberLastOpenTSLessThan(
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> otherMemberLastOpenTSLessThan(
     int? value, {
     bool include = false,
   }) {
@@ -1167,8 +1096,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> otherMemberLastOpenTSBetween(
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> otherMemberLastOpenTSBetween(
     int? lower,
     int? upper, {
     bool includeLower = true,
@@ -1185,8 +1113,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> unreadedMessageCountIsNull() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> unreadedMessageCountIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'unreadedMessageCount',
@@ -1194,8 +1121,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> unreadedMessageCountIsNotNull() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> unreadedMessageCountIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
         property: r'unreadedMessageCount',
@@ -1203,8 +1129,8 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> unreadedMessageCountEqualTo(int? value) {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> unreadedMessageCountEqualTo(
+      int? value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'unreadedMessageCount',
@@ -1213,8 +1139,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> unreadedMessageCountGreaterThan(
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> unreadedMessageCountGreaterThan(
     int? value, {
     bool include = false,
   }) {
@@ -1227,8 +1152,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> unreadedMessageCountLessThan(
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> unreadedMessageCountLessThan(
     int? value, {
     bool include = false,
   }) {
@@ -1241,8 +1165,7 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> unreadedMessageCountBetween(
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> unreadedMessageCountBetween(
     int? lower,
     int? upper, {
     bool includeLower = true,
@@ -1260,41 +1183,38 @@ extension IsarConverstationModelQueryFilter on QueryBuilder<
   }
 }
 
-extension IsarConverstationModelQueryObject on QueryBuilder<
-    IsarConverstationModel, IsarConverstationModel, QFilterCondition> {}
+extension IsarConverstationModelQueryObject
+    on QueryBuilder<IsarConverstationModel, IsarConverstationModel, QFilterCondition> {}
 
-extension IsarConverstationModelQueryLinks on QueryBuilder<
-    IsarConverstationModel, IsarConverstationModel, QFilterCondition> {
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> messages(FilterQuery<IsarMessageModel> q) {
+extension IsarConverstationModelQueryLinks
+    on QueryBuilder<IsarConverstationModel, IsarConverstationModel, QFilterCondition> {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> messages(
+      FilterQuery<IsarMessageModel> q) {
     return QueryBuilder.apply(this, (query) {
       return query.link(q, r'messages');
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> messagesLengthEqualTo(int length) {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> messagesLengthEqualTo(
+      int length) {
     return QueryBuilder.apply(this, (query) {
       return query.linkLength(r'messages', length, true, length, true);
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> messagesIsEmpty() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> messagesIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.linkLength(r'messages', 0, true, 0, true);
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> messagesIsNotEmpty() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> messagesIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.linkLength(r'messages', 0, false, 999999, true);
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> messagesLengthLessThan(
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> messagesLengthLessThan(
     int length, {
     bool include = false,
   }) {
@@ -1303,8 +1223,7 @@ extension IsarConverstationModelQueryLinks on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> messagesLengthGreaterThan(
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> messagesLengthGreaterThan(
     int length, {
     bool include = false,
   }) {
@@ -1313,258 +1232,221 @@ extension IsarConverstationModelQueryLinks on QueryBuilder<
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel,
-      QAfterFilterCondition> messagesLengthBetween(
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterFilterCondition> messagesLengthBetween(
     int lower,
     int upper, {
     bool includeLower = true,
     bool includeUpper = true,
   }) {
     return QueryBuilder.apply(this, (query) {
-      return query.linkLength(
-          r'messages', lower, includeLower, upper, includeUpper);
+      return query.linkLength(r'messages', lower, includeLower, upper, includeUpper);
     });
   }
 }
 
-extension IsarConverstationModelQuerySortBy
-    on QueryBuilder<IsarConverstationModel, IsarConverstationModel, QSortBy> {
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy>
-      sortByConverstationId() {
+extension IsarConverstationModelQuerySortBy on QueryBuilder<IsarConverstationModel, IsarConverstationModel, QSortBy> {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy> sortByConverstationId() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'converstationId', Sort.asc);
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy>
-      sortByConverstationIdDesc() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy> sortByConverstationIdDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'converstationId', Sort.desc);
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy>
-      sortByCreatedAtTS() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy> sortByCreatedAtTS() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'createdAtTS', Sort.asc);
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy>
-      sortByCreatedAtTSDesc() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy> sortByCreatedAtTSDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'createdAtTS', Sort.desc);
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy>
-      sortByLastMessage() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy> sortByLastMessage() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'lastMessage', Sort.asc);
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy>
-      sortByLastMessageDesc() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy> sortByLastMessageDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'lastMessage', Sort.desc);
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy>
-      sortByLastMessageTS() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy> sortByLastMessageTS() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'lastMessageTS', Sort.asc);
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy>
-      sortByLastMessageTSDesc() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy> sortByLastMessageTSDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'lastMessageTS', Sort.desc);
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy>
-      sortByLastOpenTS() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy> sortByLastOpenTS() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'lastOpenTS', Sort.asc);
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy>
-      sortByLastOpenTSDesc() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy> sortByLastOpenTSDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'lastOpenTS', Sort.desc);
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy>
-      sortByOtherMember() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy> sortByOtherMember() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'otherMember', Sort.asc);
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy>
-      sortByOtherMemberDesc() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy> sortByOtherMemberDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'otherMember', Sort.desc);
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy>
-      sortByOtherMemberLastOpenTS() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy> sortByOtherMemberLastOpenTS() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'otherMemberLastOpenTS', Sort.asc);
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy>
-      sortByOtherMemberLastOpenTSDesc() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy> sortByOtherMemberLastOpenTSDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'otherMemberLastOpenTS', Sort.desc);
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy>
-      sortByUnreadedMessageCount() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy> sortByUnreadedMessageCount() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'unreadedMessageCount', Sort.asc);
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy>
-      sortByUnreadedMessageCountDesc() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy> sortByUnreadedMessageCountDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'unreadedMessageCount', Sort.desc);
     });
   }
 }
 
-extension IsarConverstationModelQuerySortThenBy on QueryBuilder<
-    IsarConverstationModel, IsarConverstationModel, QSortThenBy> {
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy>
-      thenByConverstationId() {
+extension IsarConverstationModelQuerySortThenBy
+    on QueryBuilder<IsarConverstationModel, IsarConverstationModel, QSortThenBy> {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy> thenByConverstationId() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'converstationId', Sort.asc);
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy>
-      thenByConverstationIdDesc() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy> thenByConverstationIdDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'converstationId', Sort.desc);
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy>
-      thenByCreatedAtTS() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy> thenByCreatedAtTS() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'createdAtTS', Sort.asc);
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy>
-      thenByCreatedAtTSDesc() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy> thenByCreatedAtTSDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'createdAtTS', Sort.desc);
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy>
-      thenById() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy> thenById() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'id', Sort.asc);
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy>
-      thenByIdDesc() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy> thenByIdDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'id', Sort.desc);
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy>
-      thenByLastMessage() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy> thenByLastMessage() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'lastMessage', Sort.asc);
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy>
-      thenByLastMessageDesc() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy> thenByLastMessageDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'lastMessage', Sort.desc);
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy>
-      thenByLastMessageTS() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy> thenByLastMessageTS() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'lastMessageTS', Sort.asc);
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy>
-      thenByLastMessageTSDesc() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy> thenByLastMessageTSDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'lastMessageTS', Sort.desc);
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy>
-      thenByLastOpenTS() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy> thenByLastOpenTS() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'lastOpenTS', Sort.asc);
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy>
-      thenByLastOpenTSDesc() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy> thenByLastOpenTSDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'lastOpenTS', Sort.desc);
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy>
-      thenByOtherMember() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy> thenByOtherMember() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'otherMember', Sort.asc);
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy>
-      thenByOtherMemberDesc() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy> thenByOtherMemberDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'otherMember', Sort.desc);
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy>
-      thenByOtherMemberLastOpenTS() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy> thenByOtherMemberLastOpenTS() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'otherMemberLastOpenTS', Sort.asc);
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy>
-      thenByOtherMemberLastOpenTSDesc() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy> thenByOtherMemberLastOpenTSDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'otherMemberLastOpenTS', Sort.desc);
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy>
-      thenByUnreadedMessageCount() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy> thenByUnreadedMessageCount() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'unreadedMessageCount', Sort.asc);
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy>
-      thenByUnreadedMessageCountDesc() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QAfterSortBy> thenByUnreadedMessageCountDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'unreadedMessageCount', Sort.desc);
     });
@@ -1573,123 +1455,109 @@ extension IsarConverstationModelQuerySortThenBy on QueryBuilder<
 
 extension IsarConverstationModelQueryWhereDistinct
     on QueryBuilder<IsarConverstationModel, IsarConverstationModel, QDistinct> {
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QDistinct>
-      distinctByConverstationId({bool caseSensitive = true}) {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QDistinct> distinctByConverstationId(
+      {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addDistinctBy(r'converstationId',
-          caseSensitive: caseSensitive);
+      return query.addDistinctBy(r'converstationId', caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QDistinct>
-      distinctByCreatedAtTS() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QDistinct> distinctByCreatedAtTS() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'createdAtTS');
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QDistinct>
-      distinctByLastMessage({bool caseSensitive = true}) {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QDistinct> distinctByLastMessage(
+      {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'lastMessage', caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QDistinct>
-      distinctByLastMessageTS() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QDistinct> distinctByLastMessageTS() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'lastMessageTS');
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QDistinct>
-      distinctByLastOpenTS() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QDistinct> distinctByLastOpenTS() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'lastOpenTS');
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QDistinct>
-      distinctByOtherMember({bool caseSensitive = true}) {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QDistinct> distinctByOtherMember(
+      {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'otherMember', caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QDistinct>
-      distinctByOtherMemberLastOpenTS() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QDistinct> distinctByOtherMemberLastOpenTS() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'otherMemberLastOpenTS');
     });
   }
 
-  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QDistinct>
-      distinctByUnreadedMessageCount() {
+  QueryBuilder<IsarConverstationModel, IsarConverstationModel, QDistinct> distinctByUnreadedMessageCount() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'unreadedMessageCount');
     });
   }
 }
 
-extension IsarConverstationModelQueryProperty on QueryBuilder<
-    IsarConverstationModel, IsarConverstationModel, QQueryProperty> {
+extension IsarConverstationModelQueryProperty
+    on QueryBuilder<IsarConverstationModel, IsarConverstationModel, QQueryProperty> {
   QueryBuilder<IsarConverstationModel, int, QQueryOperations> idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'id');
     });
   }
 
-  QueryBuilder<IsarConverstationModel, String, QQueryOperations>
-      converstationIdProperty() {
+  QueryBuilder<IsarConverstationModel, String, QQueryOperations> converstationIdProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'converstationId');
     });
   }
 
-  QueryBuilder<IsarConverstationModel, int?, QQueryOperations>
-      createdAtTSProperty() {
+  QueryBuilder<IsarConverstationModel, int?, QQueryOperations> createdAtTSProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'createdAtTS');
     });
   }
 
-  QueryBuilder<IsarConverstationModel, String?, QQueryOperations>
-      lastMessageProperty() {
+  QueryBuilder<IsarConverstationModel, String?, QQueryOperations> lastMessageProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'lastMessage');
     });
   }
 
-  QueryBuilder<IsarConverstationModel, int?, QQueryOperations>
-      lastMessageTSProperty() {
+  QueryBuilder<IsarConverstationModel, int?, QQueryOperations> lastMessageTSProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'lastMessageTS');
     });
   }
 
-  QueryBuilder<IsarConverstationModel, int?, QQueryOperations>
-      lastOpenTSProperty() {
+  QueryBuilder<IsarConverstationModel, int?, QQueryOperations> lastOpenTSProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'lastOpenTS');
     });
   }
 
-  QueryBuilder<IsarConverstationModel, String?, QQueryOperations>
-      otherMemberProperty() {
+  QueryBuilder<IsarConverstationModel, String?, QQueryOperations> otherMemberProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'otherMember');
     });
   }
 
-  QueryBuilder<IsarConverstationModel, int?, QQueryOperations>
-      otherMemberLastOpenTSProperty() {
+  QueryBuilder<IsarConverstationModel, int?, QQueryOperations> otherMemberLastOpenTSProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'otherMemberLastOpenTS');
     });
   }
 
-  QueryBuilder<IsarConverstationModel, int?, QQueryOperations>
-      unreadedMessageCountProperty() {
+  QueryBuilder<IsarConverstationModel, int?, QQueryOperations> unreadedMessageCountProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'unreadedMessageCount');
     });
